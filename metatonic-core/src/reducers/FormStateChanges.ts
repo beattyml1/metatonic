@@ -1,38 +1,14 @@
 import {Schema, FormSchema} from "domain/Schema/RootSchemas";
 import { Nullable, Nothing, Maybe } from "CoreTypes";
-import {PropertySelection, FormNavigator} from "services/PropertySelection";
-import * as _Array from "extensions/Array"
+import {FormNavigator} from "services/PropertySelection";
+import {isNumeric} from "extensions"
 import {getFormSchemaFromJsonObject} from 'services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
 import {getDefaultFormState} from "../services/DefaultFormState";
 import {runFieldValidations} from "../services/Validation";
-export enum StateEvents {
-	propertyChanged,
-	propertiesChanged,
-	formServerUpdate,
-	fullReload
-}
-function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
-
-
-export type FormEvent<TData, TLocator> = { event: StateEvents; data: TData, locator: TLocator };
-
-export type FormState = {
-	formData: any;
-	serverDocumentData: any;
-	schema: FormSchema;
-	formState: FieldState;
-	navigator: FormNavigator;
-}
+import {StateEvents, FormEvent, FormState} from "/domain/StateManagementTypes";
 
 export class FormStateChanges {
-	constructor() {
-
-	}
-
 	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData);
 
 	getProperty = (state: FormState, propertySelector: string) => this.getNav(state).locate(propertySelector)

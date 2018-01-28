@@ -3,8 +3,8 @@ import {
     FormState, FormStateChanges, FormEvent, StateEvents
 } from "metatonic-core/src/index";
 
-export function startStateManager() {
-    createStore((state: FormState, action: FormEvent) => {
+export function startNewFormStateManager() {
+    return createStore((state: FormState, action: FormEvent) => {
         let formStateChanges = new FormStateChanges();
         switch (action.event) {
             case StateEvents.formServerUpdate: return formStateChanges.formServerUpdate(state, action.data);

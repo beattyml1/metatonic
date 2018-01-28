@@ -1,4 +1,5 @@
 import {FormEvent} from "domain/StateManagementTypes";
+import {render} from "./View";
 
 export enum EventType {
     propertyChanged,
@@ -11,9 +12,13 @@ export enum EventType {
 }
 
 export function dispatch(event: FormEvent)  {
+    stateManagementConfig.mainFormStateManger.dispatch(event);
+}
 
+export function respond(state: FormState) {
+    render(state);
 }
 
 export var stateManagementConfig: {
-    mainFormStateManger?: any
+    mainFormStateManger?: { dispatch: (x) => void }
 } = {}

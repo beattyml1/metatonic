@@ -11,7 +11,7 @@
         "target": "es2016",
         "lib": ["es7", "dom"],
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": false
     },
 
     "exclude": ["node_modules"],

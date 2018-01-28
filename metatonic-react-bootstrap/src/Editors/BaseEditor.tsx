@@ -3,6 +3,7 @@ import {BaseEditorModel} from "metatonic-core/src/index";
 import {AnyTypeParameterType, SchemaType} from "metatonic-core/src/index";
 import {getUniqueId} from "metatonic-core/src/index";
 import {BaseFieldContextComponent} from "BaseFieldContextComponent";
+import {SchemaTypeCategory} from "../../../metatonic-core/src/domain/Schema/SchemaEnums";
 
 export abstract class BaseEditor
     <TData,

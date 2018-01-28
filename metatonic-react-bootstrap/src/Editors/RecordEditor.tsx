@@ -10,7 +10,7 @@ export type RecordParams = BaseEditorModel<any>;
 export type RecordMultiParams = BaseEditorModel<any[]>;
 
 @editorFor("record", FieldSet, {isDefault: true})
-export class RecordEditor extends BaseEditorModel<{[key:string]:any}, RecordSchemaType, BaseEditorModel<RecordSchemaType>, void> {
+export class RecordEditor extends BaseRecordEditor<{[key:string]:any}, BaseEditorModel<RecordSchemaType>, void> {
     render() {
         let recordType = this.props.field.typeParameters.typeParams as SchemaRecordType;
         let fields = recordType.fields;

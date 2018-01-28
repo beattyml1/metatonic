@@ -3,7 +3,10 @@ import {TextModel} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import {TextType} from "metatonic-core";
 import {getTextHtmlInputType} from "metatonic-core";
+import {editorFor} from "../../../metatonic-core/src/decorators/editorDecorator";
+import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
+@editorFor("text", InputBoxLabelContainer, {isDefault: true})
 export class TextFieldEditor extends BaseEditor<string, TextType, TextModel, void> {
     render() {
         return (

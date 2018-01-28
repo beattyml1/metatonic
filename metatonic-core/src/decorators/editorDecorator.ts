@@ -4,6 +4,22 @@ export function editorFor(type: string, labeler: new (...args) => any, options: 
     return function(constructor: Function) {
         if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
 
-        editorConfig.mainEditorRegistrationContext.registerComponent(type, constructor, labeler, options.uiHint, options.isDefault);
+        editorConfig.mainEditorRegistrationContext.registerComponent(type, constructor, labeler, options);
+    }
+}
+
+export function multiEditorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean }) {
+    return function(constructor: Function) {
+        if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
+
+        editorConfig.mainMultiEditorRegistrationContext.registerComponent(type, constructor, labeler, options);
+    }
+}
+
+export function selectorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean }) {
+    return function(constructor: Function) {
+        if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
+
+        editorConfig.mainSelectRegistrationContext.registerComponent(type, constructor, labeler, options);
     }
 }

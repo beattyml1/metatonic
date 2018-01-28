@@ -69,4 +69,6 @@ export class EditorRegistrationContext<TEditor extends (...args) => any, TLabele
 
 export var editorConfig: {
     mainEditorRegistrationContext?: EditorRegistrationContext<any, any>
+    mainMultiEditorRegistrationContext?: EditorRegistrationContext<any, any>
+    mainSelectRegistrationContext?: EditorRegistrationContext<any, any>
 }

@@ -10,8 +10,7 @@
         "strictNullChecks": true,
         "target": "es2016",
         "lib": ["es7", "dom"],
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": false
+        "experimentalDecorators": true
     },
 
     "exclude": ["node_modules"],

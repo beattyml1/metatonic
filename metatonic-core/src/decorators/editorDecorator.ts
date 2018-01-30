@@ -1,6 +1,6 @@
-import {editorConfig} from "../services/BaseEditorService";
+import {editorConfig} from "services/BaseEditorService";
 
-export function editorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean }) {
+export function editorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
         if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
 
@@ -8,7 +8,7 @@ export function editorFor(type: string, labeler: new (...args) => any, options: 
     }
 }
 
-export function multiEditorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean }) {
+export function multiEditorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
         if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
 
@@ -16,7 +16,7 @@ export function multiEditorFor(type: string, labeler: new (...args) => any, opti
     }
 }
 
-export function selectorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean }) {
+export function selectorFor(type: string, labeler: new (...args) => any, options: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
         if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
 

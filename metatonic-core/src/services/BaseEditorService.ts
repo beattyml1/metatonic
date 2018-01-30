@@ -1,7 +1,7 @@
 import {SchemaField} from "../domain/Schema/Records";
 import {SchemaEntryType} from "../domain/Schema/SchemaEnums";
 
-type LabeledEditor<TEditor, TLabeler> = { editor: TEditor, labeler: TLabeler };
+type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater: TRepeater };
 type TypeRegistration<TEditor, TLabeler> = {
     availableComponents: LabeledEditor<TEditor, TLabeler>[];
     uiHintMap: { [uiHint: string]: LabeledEditor<TEditor, TLabeler> };
@@ -11,18 +11,23 @@ type TypeEditorRegistry<TEditor, TLabeler> = {
     [type:string]: TypeRegistration<TEditor, TLabeler>
 }
 
-export class EditorRegistrationContext<TEditor extends (...args) => any, TLabeler extends (...args) => any> {
-    editorRegistrations: TypeEditorRegistry<TEditor, TLabeler>;
+export class EditorRegistrationContext<
+    TEditor extends (...args) => any,
+    TLabeler extends (...args) => any,
+    TRepeater extends (...args) => any> {
+    editorRegistrations: TypeEditorRegistry<TEditor, TLabeler, TRepeater>;
+    private _repeater: TRepeater;
 
     registerComponent<TData, TType, TParams, TState>(
         type: string,
         editor: TEditor,
         labeler: TLabeler,
         uiHint?: string|string[],
-        isDefault: boolean = false
+        isDefault: boolean = false,
+        repeater?: TRepeater
     ) {
         this.createNewTypeEntryIfNeeded(type);
-        let labeledEditor = { editor, labeler };
+        let labeledEditor = { editor, labeler, repeater };
         let typeEntry = this.editorRegistrations[type];
         typeEntry.availableComponents.push(labeledEditor);
 
@@ -38,7 +43,17 @@ export class EditorRegistrationContext<TEditor extends (...args) => any, TLabele
         }
     }
 
-    getComponent(type: string, uiHint?: string) {
+    defaultRepeater(repeater: TRepeater) {
+        this._repeater = repeater;
+
+    }
+
+    getEditorParts(type: string, uiHint?: string) {
+        let editorParts = this.getEditorRegistration(type, uiHint);
+        return editorParts.repeater ? editorParts : Object.assign({ repeater: this._repeater }, editorParts);
+    }
+
+    private getEditorRegistration(type: string, uiHint?: string) {
         let typeRegistration = this.editorRegistrations[type];
         if (typeRegistration) {
             if (uiHint && typeRegistration[uiHint]) {
@@ -49,7 +64,6 @@ export class EditorRegistrationContext<TEditor extends (...args) => any, TLabele
                 return typeRegistration.availableComponents[0];
             }
         } else return null;
-
     }
 
     createNewTypeEntryIfNeeded(type: string) {

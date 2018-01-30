@@ -5,8 +5,9 @@ import * as Base from 'metatonic-core';
 
 export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;
+export type BaseRepeaterClass = new () => React.Component<any, any>
 
-export class EditorRegistrationContext extends Base.EditorRegistrationContext<BaseEditorComponentClass, LabelContainerClass>{}
+export class EditorRegistrationContext extends Base.EditorRegistrationContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>{}
 
 export var EditorService = new EditorRegistrationContext();
 export var SelectorService = new EditorRegistrationContext();
@@ -18,10 +19,10 @@ export var registerMultiSelector = MultiSelectorService.registerComponent;
 
 export function getEditorComponents(field: SchemaField) {
     if (field.entryType === SchemaEntryType.entry) {
-        return EditorService.getComponent(field.name, field.uiControlPreference);
+        return EditorService.getEditorParts(field.name, field.uiControlPreference);
     } else if (field.multiple) {
-        return MultiSelectorService.getComponent(field.name, field.uiControlPreference)
+        return MultiSelectorService.getEditorParts(field.name, field.uiControlPreference)
     } else {
-        return SelectorService.getComponent(field.name, field.uiControlPreference)
+        return SelectorService.getEditorParts(field.name, field.uiControlPreference)
     }
 }

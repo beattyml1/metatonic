@@ -2,5 +2,5 @@
 
 export type FieldState = {
     validationMessages: string[];
-    children: { [property: string]: FieldState };
+    children: { [property: string|number]: FieldState };
 }

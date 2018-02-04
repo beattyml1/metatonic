@@ -7,7 +7,7 @@ export enum ItemCollectionSize {
 }
 
 export type ItemSelectionType<T>  = {
-    items?: T[];
+    items?: T&{ $value, $description }[];
     itemSearchUrl: string;
     canAdd: boolean;
     size: ItemCollectionSize

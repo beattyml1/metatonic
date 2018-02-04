@@ -8,7 +8,7 @@ import {SchemaTypeCategory} from "./SchemaEnums";
 import {SchemaFieldInfo} from "./SchemaFieldInfo";
 import {NumericTypeInfo} from "./Numerics";
 
-export type SchemaRecordTypeParameters = ItemSelectionType<any> &{
+export type SchemaRecordTypeParameters = ItemSelectionType<any> & {
     fields: SchemaField[];
 }
 

@@ -5,12 +5,11 @@ import {FieldEditor} from "./FieldEditor";
 import {createContext} from "../../../metatonic-core/src/services/ContextService";
 import {multiEditorFor} from "../../../metatonic-core/src/decorators/editorDecorator";
 import FieldSet from "../LabeledFieldContainers/FieldSet";
+import {AnyTypeParameterType} from "../../../metatonic-core/src/domain/Schema/Records";
 
-multiEditorFor("", FieldSet)
-export default class Repeater<TData, TSchemaType, BaseEditorModel, TState> extends BaseEditor<TData[], TSchemaType, TProps, State>
-{
-    render()
-    {
+@multiEditorFor("", FieldSet)
+export class Repeater<TData, TSchemaType extends AnyTypeParameterType, TState> extends BaseEditor<TData[], TSchemaType, BaseEditorModel<TData[]>, TState> {
+    render() {
         return this.value().map((item, index) =>
             <div>
                 <FieldEditor

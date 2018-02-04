@@ -1,14 +1,14 @@
 import {TextTypeParameters} from "./TextTypes";
 import {QuantityTypeParameters} from "./Quantities";
 import {DateTimeTypeData} from "./DateTimeType";
-import {CodeDescriptionSelectionType} from "./ItemSelectionType";
+import {CodeDescriptionSelectionType, ItemSelectionType} from "./ItemSelectionType";
 import {DataTypes} from "./DataTypes";
 import {SchemaElement} from "./SchemaElement";
 import {SchemaTypeCategory} from "./SchemaEnums";
 import {SchemaFieldInfo} from "./SchemaFieldInfo";
 import {NumericTypeInfo} from "./Numerics";
 
-export type SchemaRecordTypeParameters = {
+export type SchemaRecordTypeParameters = ItemSelectionType<any> &{
     fields: SchemaField[];
 }
 
@@ -16,7 +16,7 @@ export type SchemaField = SchemaFieldInfo & {
     type: SchemaType;
 }
 
-export type AnyTypeParameterType = TextTypeParameters | SchemaRecordTypeParameters | QuantityTypeParameters | DateTimeTypeData | CodeDescriptionSelectionType | NumericTypeInfo;
+export type AnyTypeParameterType = TextTypeParameters | SchemaRecordTypeParameters | QuantityTypeParameters | DateTimeTypeData | CodeDescriptionSelectionType | NumericTypeInfo | {};
 
 export type SchemaTypeInfo =  SchemaElement & {
     name: DataTypes|string;

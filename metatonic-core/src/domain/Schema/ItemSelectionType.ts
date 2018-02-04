@@ -1,15 +1,17 @@
 import {TextTypeParameters} from "./TextTypes";
 
-export type ItemSelectionType<T>  = (HasItemList<T> | HasItemTextSearchUrl) & {
-    items?: T[];
-    itemSearchUrl?: string;
-    itemAdvancedSearchUrl?: string;
-    canAdd: boolean;
-};
+export enum ItemCollectionSize {
+    Small,
+    Medium,
+    Large
+}
 
-export type HasItemList<T> = { items: T[] };
-export type HasItemTextSearchUrl = { itemTextSearchUrl: string };
-export type HasItemAdvancedSearchUrl = { itemAdvancedSearchUrl: string };
+export type ItemSelectionType<T>  = {
+    items?: T[];
+    itemSearchUrl: string;
+    canAdd: boolean;
+    size: ItemCollectionSize
+};
 
 export type CodeDescriptionItem = { code: string; description?: string; };
 export type CodeDescriptionSelectionType = ItemSelectionType<CodeDescriptionItem> & {

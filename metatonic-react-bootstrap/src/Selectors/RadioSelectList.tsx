@@ -1,12 +1,20 @@
 import * as React from "react";
-import {BaseEditorModel} from "metatonic-core"
-import {SchemaRecordType, SelectableType} from "metatonic-core"
 import {BaseEditor} from "Editors/BaseEditor";
+import {RecordSchemaType, SchemaRecordTypeParameters} from "metatonic-core/src/index";
+import {BaseEditorModel} from "metatonic-core/src/index";
 
-export class RadioSelectList extends BaseEditor<string, SelectableType, BaseEditorModel<string>, void> {
+export class RadioSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
     render() {
         return (
-            <div></div>
+            <div id={this.uniqueId()}>
+                {this.type().items.map((item, index) =>
+                    <label>
+                        <input type="radio" value={item.$value} name={this.uniqueId()} id={`${this.uniqueId()}-${index}`}/>
+                        {item.$description}
+                    </label>
+
+                )}
+            </div>
         );
     }
 }

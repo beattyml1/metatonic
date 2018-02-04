@@ -23,6 +23,7 @@
     "tsd": "^0.6.5"
   },
   "devDependencies": {
+    "@types/react": "*",
     "@types/core-js": "^0.9.35",
     "jest": "*",
     "jest-cli": "*",

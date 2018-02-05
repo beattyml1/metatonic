@@ -18,7 +18,6 @@ function includeIfHasValue<T>(val?: T):T[] {
     return hasValue(val) ? [val] : [];
 }
 
-
 export function createContext(field?: SchemaField, parentContext?: ComponentContext, repeaterIndex?: number) {
     return {
         name: field ? field.name : undefined,
@@ -30,6 +29,6 @@ export function createContext(field?: SchemaField, parentContext?: ComponentCont
 
 function getFieldLocator(field?: SchemaField, parentContext?: ComponentContext, repeaterIndex?: number) {
     let parentLocator = parentContext ? parentContext.fieldLocator : "";
-    let childLocatorPart = hasValue(repeaterIndex) ? repeaterIndex : field ? field.name : ""
-    return `${parentLocator}.${childLocatorPart}`;
+    let childLocatorPart = hasValue(repeaterIndex) ? repeaterIndex : field ? field.name : "";
+    return Array.join([parentLocator, childLocatorPart].filter(_=>_), '.');
 }

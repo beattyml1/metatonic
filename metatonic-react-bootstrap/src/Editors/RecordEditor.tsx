@@ -16,7 +16,7 @@ export class RecordEditor extends BaseRecordEditor<{[key:string]:any}, BaseEdito
         let fields = recordType.fields;
         return (<>{
             fields.map(field =>
-                <FieldEditor value={this.props.value[field.name]} field={field} context={createContext(field, this.props.context)}/>
+                <FieldEditor value={this.props.value[field.name]} field={field} context={createContext(field, this.props.context)} fieldState={this.props.fieldState.children[field.name]}/>
             )}
         </>)
     }

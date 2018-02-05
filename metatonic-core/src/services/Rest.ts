@@ -22,25 +22,25 @@ export interface RestfulClient {
 }
 
 export class RestClient {
-    Get<TResult, TQuery, TId extends IdTypes>(
+    async Get<TResult, TQuery, TId extends IdTypes>(
         resourceUrl: string,
         requestParams?: IdRequest<TId> & QueryRequest<TQuery> & ActionRequest): Promise<TResult> {
         return this.makeRequest("GET", resourceUrl);
 	}
-    Post<TResult, TData, TId extends IdTypes>(
+    async Post<TResult, TData, TId extends IdTypes>(
         resourceUrl: string,
         data: string,
         requestParams?: IdRequest<TId> & ActionRequest): Promise<TResult> {
         return this.makeRequest("POST", resourceUrl, data);
 	}
 
-    Put<TResult, TData, TId extends IdTypes>(
+    async Put<TResult, TData, TId extends IdTypes>(
         resourceUrl: string,
         data: string,
         requestParams?: IdRequest<TId> & ActionRequest): Promise<TResult> {
         return this.makeRequest("PUT", resourceUrl, data);
 	}
-    Delete<TResult, TData, TId extends IdTypes>(
+    async Delete<TResult, TData, TId extends IdTypes>(
         resourceUrl: string,
         requestParams: IdRequest<TId> & ActionRequest): Promise<TResult> {
         return this.makeRequest("DELETE", resourceUrl);

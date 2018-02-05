@@ -1,3 +1,6 @@
+import {FormNavigator} from "services/PropertySelection";
+import {FieldState} from "FieldState/FieldState";
+import {FormSchema} from "Schema/RootSchemas";
 
 export enum StateEvents {
     propertyChanged,
@@ -7,7 +10,7 @@ export enum StateEvents {
     fullReload
 }
 
-export type FormEvent<TData, TLocator> = { event: StateEvents; data: TData, locator: TLocator };
+export type FormEvent<TData> = { event: StateEvents; data: TData };
 
 export type FormState = {
     formData: any;

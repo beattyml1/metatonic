@@ -13,7 +13,10 @@ export class MetatonicRouter {
             .on('/r/:recordType/:recordId', (params: { recordType, recordId} ) => { })
             .on('/r/:recordType/:recordId/display', (params: { recordType, recordId} ) => { })
             .on('/r/:recordType/list/:groupName', (params: { recordType, groupName}, query ) => { })
-            .on('/r/:recordType/', (params: { recordType}, query ) => { })
+            .on('/r/:recordType/', (params: { recordType }, query ) => { })
+            .on('/p/:pageName/', (params, query) => {
+
+            });
     }
 
     displayForm(name: string, schema: FormSchema) {

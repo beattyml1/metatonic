@@ -30,6 +30,7 @@ Examples of unacceptable behavior by participants include:
   address, without explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
   professional setting
+* Intentionally misgendering an individual after that indvidual as informed you of their gender identity or expression
 
 ## Our Responsibilities
 

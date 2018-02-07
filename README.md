@@ -1,5 +1,5 @@
 # metatonic-platform
-Work in progress don't expect anything to work
+Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 
 # Examples
 

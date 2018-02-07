@@ -1,5 +1,5 @@
 import {Maybe} from "CoreTypes";
-import {HtmlInputType, HtmlTextInputType} from "../Html/HtmlInputType";
+import {HtmlInputType, HtmlTextInputType} from "Html/HtmlInputType";
 
 export type TextTypeParameters = {
     type: TextTypes

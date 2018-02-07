@@ -5,13 +5,15 @@ import {FieldEditor} from "./Editors/FieldEditor";
 import {SchemaField} from "../../metatonic-core/src/domain/Schema/Records";
 import {createContext} from "../../metatonic-core/src/services/ContextService";
 import {} from 'metatonic-redux/'
-import {startNewFormStateManager} from "../../metatonic-redux/src/redux-state-manager";
+import {startNewFormStateManager} from "metatonic-core/src/state/redux-state-manager";
+import {PersistantDataStore} from "metatonic-core/src/state/PersistantDataStore";
 
 export class MetaForm extends React.Component<{
     formName?: string,
     recordName?: string,
     recordId?: string,
-    title?: string
+    title?: string,
+    dataStore: PersistantDataStore
 }, {
     schema: FormSchema,
     field: SchemaField,
@@ -46,7 +48,9 @@ export class MetaForm extends React.Component<{
     async init() {
         this.store = startNewFormStateManager();
         this.store.store.subscribe(() => this.setState(store.store.getState()));
-        let data = await Rest.Get(`/api/records/${this.props.recordName}`, {id:this.props.recordId});
-        this.store.fullReload(data);
+        let resource = this.props.dataStore.records(this.props.recordName);
+        let data = await resource.getOne(this.props.recordId);
+        let schema = await resource.schema();
+        this.store.fullReload(data, schema);
     }
 }

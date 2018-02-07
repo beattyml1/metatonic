@@ -1,7 +1,7 @@
 
 import {ComponentContext} from "domain/EditorModels/Context";
-import {hasValue} from "../extensions/hasValue";
-import {SchemaField} from "../domain/Schema/Records";
+import {hasValue} from "extensions/hasValue";
+import {SchemaField} from "domain/Schema/Records";
 
 export function getMostSpecific<T>(context: ComponentContext, getValue: (context: ComponentContext) => T|undefined|null):T|undefined|null  {
     let val = getValue(context);

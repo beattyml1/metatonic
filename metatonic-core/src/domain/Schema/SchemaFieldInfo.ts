@@ -1,5 +1,5 @@
 import {SchemaElement} from "./SchemaElement";
-import {Maybe} from "../../CoreTypes";
+import {Maybe} from "CoreTypes";
 import {SchemaEntryType} from "./SchemaEnums";
 
 export interface SchemaFieldInfo extends SchemaElement {

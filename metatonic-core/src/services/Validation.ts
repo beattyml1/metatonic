@@ -1,5 +1,5 @@
-import {SchemaField, SchemaType} from "../domain/Schema/Records";
-import {hasValue} from "../extensions/hasValue";
+import {SchemaField, SchemaType} from "domain/Schema/Records";
+import {hasValue} from "extensions/hasValue";
 import {max, maxLength, min, required} from "./Validations";
 
 function uniqueItems(array: []) {

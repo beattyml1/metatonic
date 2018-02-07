@@ -4,7 +4,7 @@ import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "domain/
 import {BreakException} from "CoreTypes";
 import {forEachWithBreak} from "extensions/corelib";
 import {SchemaTypeCategory} from "domain/Schema/SchemaEnums";
-import {FieldState} from "../domain/FieldState/FieldState";
+import {FieldState} from "domain/FieldState/FieldState";
 
 export class FormNavigator {
 	constructor(private schema: FormSchema, private data) {}

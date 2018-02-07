@@ -1,7 +1,7 @@
-import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "../domain/Schema/Records";
-import {SchemaEntryType} from "../domain/Schema/SchemaEnums";
-import {ItemCollectionSize} from "../domain/Schema/ItemSelectionType";
-import {FormSchema} from "../domain/Schema/RootSchemas";
+import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "domain/Schema/Records";
+import {SchemaEntryType} from "domain/Schema/SchemaEnums";
+import {ItemCollectionSize} from "domain/Schema/ItemSelectionType";
+import {FormSchema} from "domain/Schema/RootSchemas";
 
 type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater?: TRepeater };
 type TypeRegistration<TEditor, TLabeler, TRepeater> = {

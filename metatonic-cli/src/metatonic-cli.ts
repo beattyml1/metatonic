@@ -1,4 +1,4 @@
-import {Rest} from "../../metatonic-core/src/services/Rest";
+import {Rest} from "metatonic-core/src/index";
 
 export function doCli(action: string, subject, ...args) {
     switch (action) {

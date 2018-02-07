@@ -1,4 +1,4 @@
-import {SchemaType} from "../domain/Schema/Records";
+import {SchemaType} from "domain/Schema/Records";
 
 export function min(min, value) {
     return true;

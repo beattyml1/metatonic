@@ -2,7 +2,7 @@ import {BaseEditor} from "Editors/BaseEditor";
 import * as React from "react";
 import {SchemaEntryType, SchemaField} from "metatonic-core";
 import * as Base from 'metatonic-core';
-import {FormSchema} from "../../../metatonic-core/src/domain/Schema/RootSchemas";
+import {FormSchema} from "metatonic-core/src/index";
 
 export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;

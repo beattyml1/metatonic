@@ -3,9 +3,9 @@ import { Nullable, Nothing, Maybe } from "CoreTypes";
 import {FormNavigator} from "services/PropertySelection";
 import {isNumeric} from "extensions"
 import {getFormSchemaFromJsonObject} from 'services/SchemaFromJsonService'
-import {FieldState} from "../domain/FieldState/FieldState";
-import {getDefaultFormState} from "../services/DefaultFormState";
-import {runFieldValidations} from "../services/Validation";
+import {FieldState} from "domain/FieldState/FieldState";
+import {getDefaultFormState} from "services/DefaultFormState";
+import {runFieldValidations} from "services/Validation";
 import {StateEvents, FormEvent, FormState} from "/domain/StateManagementTypes";
 
 export class FormStateChanges {

@@ -1,8 +1,18 @@
 import {createStore, Store} from 'redux';
 import {
-    FormState, FormStateChanges, FormEvent, StateEvents, Nullable, FormSchema
+    FormState, FormStateChanges, StateEvents, Nullable, FormSchema
 } from "metatonic-core/src/index";
-import {respond, stateManagementConfig} from "../../metatonic-core/src/EventDispatcher";
+import {respond, stateManagementConfig} from "metatonic-core/src/index";
+
+export enum EventType {
+    propertyChanged,
+    propertiesChanged,
+    trySubmit,
+    itemAdded,
+    itemRemoved,
+    formServerDataUpdate,
+    fullReload
+}
 
 export function startNewFormStateManager() {
     let store = createStore((state: FormState, action: FormEvent<any>) => {
@@ -49,9 +59,3 @@ export class ReduxStateManager {
 
     }
 }
-
-export var mainFormStateManager = startNewFormStateManager();
-
-stateManagementConfig.mainFormStateManger = mainFormStateManager;
-
-mainFormStateManager.subscribe(respond)

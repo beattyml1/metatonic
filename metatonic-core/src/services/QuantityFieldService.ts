@@ -1,6 +1,6 @@
-import {SchemaField} from "../domain/Schema/Records";
-import {QuantityTypeParameters} from "../domain/Schema/Quantities";
-import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
+import {SchemaField} from "domain/Schema/Records";
+import {QuantityTypeParameters} from "domain/Schema/Quantities";
+import {SchemaTypeCategory} from "domain/Schema/SchemaEnums";
 
 export function getNumericField(quantityField: SchemaField): SchemaField {
     let quantityType = quantityField.type.parameters as QuantityTypeParameters;

@@ -1,9 +1,7 @@
 import * as React from "react";
 import {BaseEditorModel} from "metatonic-core/src/index";
 import {AnyTypeParameterType, SchemaType} from "metatonic-core/src/index";
-import {getUniqueId} from "metatonic-core/src/index";
-import {BaseFieldContextComponent} from "BaseFieldContextComponent";
-import {SchemaTypeCategory} from "../../../metatonic-core/src/domain/Schema/SchemaEnums";
+import {BaseFieldContextComponent} from "../BaseFieldContextComponent";
 
 export abstract class BaseEditor
     <TData,
@@ -11,6 +9,10 @@ export abstract class BaseEditor
      TParams extends BaseEditorModel<TData>,
      TState>
     extends BaseFieldContextComponent<TParams, TState> {
+
+    fieldLocator() {
+        this.props.context.fieldLocator
+    }
 
     type() {
         return Object.assign({}, this.props.field.type, this.props.field.type.parameters as TType)
@@ -21,6 +23,6 @@ export abstract class BaseEditor
     }
 
     notifyChanged(value) {
-        this.props.store.propertyChanged(this.props.context.fieldLocator, this.value()())
+        this.props.globals.store.propertyChanged(this.fieldLocator(), this.value()())
     }
 }

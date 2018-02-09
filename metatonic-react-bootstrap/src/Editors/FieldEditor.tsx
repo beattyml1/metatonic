@@ -1,10 +1,9 @@
 import * as React from "react";
 import {FieldEditorModel} from "metatonic-core/src/index";
-import {getEditorComponents} from "../Services/ReactEditorService";
 
-export class FieldEditor extends React.Component<FieldEditorModel, void> {
+export class FieldEditor extends React.Component<FieldEditorModel, {}> {
     render() {
-        let editorComponents = getEditorComponents(this.props.field);
+        let editorComponents = this.props.globals.editors.getEditorComponents(this.props.field);
         if (editorComponents) {
             let Editor = editorComponents.editor;
             let Labeler = editorComponents.labeler;

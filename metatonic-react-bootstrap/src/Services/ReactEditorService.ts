@@ -6,12 +6,13 @@ import {
     editorRegistry, multiEditRegistry,
     selectRegistry, EditorContext
 } from "metatonic-core";
+import {EditorResolver} from "../../../metatonic-core/src/services/EditorContext";
 
 export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;
 export type BaseRepeaterClass = new () => React.Component<any, any>
 
-export class ReactEditorContext extends EditorContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass> {
+export class ReactEditorResolver extends EditorResolver<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass> {
     constructor(protected schema: FormSchema) {
         super(
             new EditorSubContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>(

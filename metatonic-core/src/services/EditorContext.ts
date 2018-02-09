@@ -54,7 +54,7 @@ export class EditorSubContext<
 }
 
 
-export class EditorContext<
+export class EditorResolver<
     TEditor extends new (...args) => any,
     TLabeler extends new (...args) => any,
     TRepeater extends new (...args) => any> {

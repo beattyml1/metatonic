@@ -26,7 +26,6 @@
     "@types/core-js": "^0.9.35",
     "jest": "*",
     "jest-cli": "*",
-    "ts-jest": "*",
     "typescript": "~>2.4.1",
     "express": "~>4.15.2"
   },

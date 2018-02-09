@@ -1,7 +1,6 @@
 import * as React from "react";
-import {SchemaField} from "metatonic-core";
 import {LabeledEditorContainer} from "./LabelingProviderBaseComponent";
-import {ComponentContext} from "metatonic-core";
+
 
 export default class InputBoxLabelContainer extends LabeledEditorContainer {
 	render() { return (

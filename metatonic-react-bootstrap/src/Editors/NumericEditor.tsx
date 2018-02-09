@@ -1,10 +1,10 @@
 import * as React from "react";
 import {BaseEditor} from "./BaseEditor";
-import {Numeric, editorFor, NumericTypeInfo, BaseEditorModel, Decimal} from "metatonic-core/src/index";
-import InputBoxLabelContainer from "LabeledFieldContainers/InputFieldLabelAndContainer";
+import {Numeric, editorFor, NumericTypeInfo, BaseEditorModel, Decimal} from "metatonic-core";
+import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
 @editorFor("numeric", InputBoxLabelContainer, { isDefault: true })
-export class NumericEditor extends BaseEditor<Numeric, NumericTypeInfo, BaseEditorModel<Numeric>, void> {
+export class NumericEditor extends BaseEditor<Numeric, NumericTypeInfo, BaseEditorModel<Numeric>> {
     render() {
         return (
             <input type="number"

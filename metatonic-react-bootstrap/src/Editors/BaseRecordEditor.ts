@@ -1,9 +1,10 @@
 import {BaseEditorModel} from "metatonic-core";
 import {RecordSchemaType} from "metatonic-core";
 import {createContext} from "metatonic-core";
+import {BaseEditor} from "./BaseEditor";
 
-export abstract class BaseRecordEditor <TData, TProps extends BaseEditorModel<RecordSchemaType>, TState>
-    extends BaseEditor<TData, RecordSchemaType, TProps, State> {
+export abstract class BaseRecordEditor <TData extends {}, TProps extends BaseEditorModel<TData>, TState={}>
+    extends BaseEditor<TData, RecordSchemaType, TProps, TState> {
 
     type() {
         return super.type() as RecordSchemaType;

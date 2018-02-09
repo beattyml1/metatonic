@@ -1,6 +1,4 @@
-import {isMobile} from "UI";
 import * as React from 'react';
-/// <reference path="./typings/react/react.d.ts" />
 
 export default class FormSection  extends React.Component<{
   id: string;

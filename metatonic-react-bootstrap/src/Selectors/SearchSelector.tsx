@@ -1,7 +1,7 @@
 import * as React from "react";
-import {BaseEditorModel} from "metatonic-core/src/index";
-import {BaseEditor} from "Editors/BaseEditor";
-import {SchemaRecordTypeParameters} from "metatonic-core/src/index";
+import {BaseEditorModel} from "metatonic-core";
+import {BaseEditor} from "../Editors/BaseEditor";
+import {SchemaRecordTypeParameters} from "metatonic-core";
 
 export class SearchSelector extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, { searchText: string }> {
     render() {

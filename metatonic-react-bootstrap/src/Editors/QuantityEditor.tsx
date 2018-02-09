@@ -1,5 +1,5 @@
 import * as React from "react";
-import InputFieldLabelAndContainer, {default as InputBoxLabelContainer} from "LabeledFieldContainers/InputFieldLabelAndContainer";
+import InputFieldLabelAndContainer, {default as InputBoxLabelContainer} from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 import {BaseEditor} from "./BaseEditor";
 import {NumericEditor} from "./NumericEditor";
 import {
@@ -13,10 +13,11 @@ import {
     QuantityEditorProperties,
     LeftRight,
     UnitCategoryData,
-    Quantity
-} from "metatonic-core/src/index";
+    Quantity,
+    QuantityTypeParameters,
+} from "metatonic-core";
 
-export class SelectUnit extends React.Component<{ category: UnitCategoryData, side: LeftRight, unit?: string }, void> {
+export class SelectUnit extends React.Component<{ category: UnitCategoryData, side: LeftRight, unit?: string }, {}> {
     render() {
         return (
             <select
@@ -31,8 +32,8 @@ export class SelectUnit extends React.Component<{ category: UnitCategoryData, si
     }
 }
 
-@editorFor("numeric", InputBoxLabelContainer, { isDefault: true })
-export class QuantityEditor extends BaseEditor<Quantity, QuantityType, QuantityEditorProperties, void> {
+@editorFor("Quantity", InputBoxLabelContainer, { isDefault: true })
+export class QuantityEditor extends BaseEditor<Quantity, QuantityTypeParameters, QuantityEditorProperties, void> {
     render() {
         let hardCodedUnit = this.type().unitSource.unit;
         let unitCategory = this.type().unitSource.unitCategory;
@@ -47,18 +48,10 @@ export class QuantityEditor extends BaseEditor<Quantity, QuantityType, QuantityE
             <div className="quantity-editor-container">
                 { leftUnit ?  unitDropdown || unitDisplay : null}
 
-                <NumericEditor value={this.value().value} field={numericField} context={createContext(numericField, this.context)} fieldState={this.props.fieldState}></NumericEditor>
+                <NumericEditor value={this.value().value} field={numericField} context={createContext(numericField, this.context)} fieldState={this.props.fieldState} globals={this.props.globals}></NumericEditor>
 
                 { rightUnit ?  unitDropdown || unitDisplay : null}
             </div>
         )
-    }
-}
-
-export class LabeledQuantityEditor  extends React.Component<QuantityEditorProperties, void> {
-    render() {
-        return <InputFieldLabelAndContainer {...this.props} >
-            <QuantityEditor {...this.props}/>
-        </InputFieldLabelAndContainer>
     }
 }

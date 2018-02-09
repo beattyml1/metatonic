@@ -1,13 +1,15 @@
 import * as React from "react";
-import {BaseEditorModel} from "metatonic-core/src/index";
+import {BaseEditorModel, BooleanType, editorFor} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
+import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
-export default class BooleanEditor extends BaseEditor<boolean, BooleanType, BaseEditorModel<BooleanType>, void>
+@editorFor("boolean", InputBoxLabelContainer)
+export class BooleanEditor extends BaseEditor<boolean, BooleanType, BaseEditorModel<boolean>, void>
 {
     render()
     {
         return (
-            <input type="checkbox" value={this.value()} onchange={this.notifyChanged} id={this.uniqueId()} />
+            <input type="checkbox" checked={this.value()} onChange={this.notifyChanged} id={this.uniqueId()} />
         );
     }
 }

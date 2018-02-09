@@ -1,15 +1,15 @@
 import * as React from "react";
-import {FormSchema} from "../../metatonic-core/src/domain/Schema/RootSchemas";
-import {Rest} from "metatonic-core/src/services/Rest";
+import {FormSchema} from "metatonic-core";
+import {Rest} from "metatonic-core";
 import {FieldEditor} from "./Editors/FieldEditor";
-import {SchemaField} from "../../metatonic-core/src/domain/Schema/Records";
-import {createContext} from "../../metatonic-core/src/services/ContextService";
+import {SchemaField} from "metatonic-core";
+import {createContext} from "metatonic-core";
 import {} from 'metatonic-redux/'
-import {startNewFormStateManager} from "metatonic-core/src/state/ReduxStateManager";
-import {PersistantDataStore} from "metatonic-core/src/state/PersistantDataStore";
+import {startNewFormStateManager} from "metatonic-core";
+import {PersistantDataStore} from "metatonic-core";
 import {ReactEditorResolver} from "./Services/ReactEditorService";
-import {ReduxStateManager} from "metatonic-core/src/state/ReduxStateManager";
-import {getDefaultFormState} from "../../metatonic-core/src/services/DefaultFormState";
+import {ReduxStateManager} from "metatonic-core";
+import {getDefaultFormState} from "metatonic-core";
 
 export class TopLevelMetatonicComponent<TData, TProps> extends React.Component<TProps, {
     schema: FormSchema,

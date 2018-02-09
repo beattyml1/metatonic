@@ -8,3 +8,4 @@ export * from './QuantityFieldService'
 export * from './Rest'
 export * from './SchemaFromJsonService'
 export * from "./EditorRegistry";
+export * from "./DefaultFormState";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {} from 'metatonic-redux/'
-import {PersistantDataStore} from "metatonic-core/src/state/PersistantDataStore";
+import {PersistantDataStore} from "metatonic-core";
 import {TopLevelMetatonicComponent} from "./TopLevelMetatonicComponent";
 
 export type MetaFormProps= {

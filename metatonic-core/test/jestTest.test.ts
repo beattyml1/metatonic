@@ -2,6 +2,6 @@
 declare var require;
 
 it('test', () => {
-    const x = require('../index');
+    const x = require('../services/index');
     expect(4).toBe(4);
 });

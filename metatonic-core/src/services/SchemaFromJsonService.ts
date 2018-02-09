@@ -1,8 +1,9 @@
-import { Schema, FormSchema } from "domain/Schema/RootSchemas";
-import {SchemaElement} from "domain/Schema/SchemaElement";
-import {SchemaFieldInfo} from "domain/Schema/SchemaFieldInfo";
-import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType} from "domain/Schema/Records";
-import {SchemaTypeCategory} from "domain/Schema/SchemaEnums";
+
+
+import {SchemaField, SchemaRecordTypeParameters, SchemaType} from "../domain/Schema/Records";
+import {FormSchema, Schema} from "../domain/Schema/RootSchemas";
+import {SchemaFieldInfo} from "../domain/Schema/SchemaFieldInfo";
+import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 
 export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
 	return Object.assign({}, schema, { rootType: this.addTypesToFields(schema.rootType, schema) });

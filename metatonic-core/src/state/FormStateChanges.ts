@@ -1,12 +1,12 @@
-import {Schema, FormSchema} from "domain/Schema/RootSchemas";
-import { Nullable, Nothing, Maybe } from "CoreTypes";
-import {FormNavigator} from "services/PropertySelection";
-import {isNumeric} from "extensions"
-import {getFormSchemaFromJsonObject} from 'services/SchemaFromJsonService'
-import {FieldState} from "domain/FieldState/FieldState";
-import {getDefaultFormState} from "services/DefaultFormState";
-import {runFieldValidations} from "services/Validation";
-import {StateEvents, FormEvent, FormState} from "/domain/StateManagementTypes";
+import {Schema, FormSchema} from "../domain/Schema/RootSchemas";
+import { Nullable, Nothing, Maybe } from "../CoreTypes";
+import {FormNavigator} from "../services/PropertySelection";
+import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
+import {FieldState} from "../domain/FieldState/FieldState";
+import {getDefaultFormState} from "../services/DefaultFormState";
+import {runFieldValidations} from "../services/Validation";
+import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes";
+import {insertAt, removeAt} from "../extensions/Array";
 
 export class FormStateChanges {
 	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData);
@@ -35,7 +35,7 @@ export class FormStateChanges {
 	itemAdded(state: FormState, propertySelector: string, item, index: Nullable<number>): FormState{
         let property = this.getProperty(state, propertySelector)
 		let currentArray = property.getValue();
-		let newArray = index === null ? currentArray.concat(item) : _Array.insertAt(currentArray, index, item);
+		let newArray = index === null ? currentArray.concat(item) : insertAt(currentArray, index, item);
 		let form = Object.assign({}, state.formData, property.setValue(newArray));
 		return Object.assign({}, state, { formData: form})
 	}
@@ -43,7 +43,7 @@ export class FormStateChanges {
 	itemRemoved(state: FormState, propertySelector: string, index: number): FormState{
         let property = this.getProperty(state, propertySelector)
 		let currentArray = property.getValue();
-		let newArray = _Array.removeAt(currentArray, index);
+		let newArray = removeAt(currentArray, index);
 		let form = Object.assign({}, state.formData, property.setValue(newArray));
 		return Object.assign({}, state, { formData: form})
 	}

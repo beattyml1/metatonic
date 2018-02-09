@@ -1,5 +1,4 @@
-import {FormEvent} from "domain/StateManagementTypes";
-import {render} from "./View";
+import {FormEvent, FormState} from "./domain/StateManagementTypes";
 
 export enum EventType {
     propertyChanged,
@@ -10,15 +9,3 @@ export enum EventType {
     formServerDataUpdate,
     fullReload
 }
-
-export function dispatch(event: FormEvent)  {
-    stateManagementConfig.mainFormStateManger.dispatch(event);
-}
-
-export function respond(state: FormState) {
-    render(state);
-}
-
-export var stateManagementConfig: {
-    mainFormStateManger?: { dispatch: (x) => void }
-} = {}

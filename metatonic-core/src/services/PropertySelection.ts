@@ -1,10 +1,9 @@
-import {isNumeric} from "extensions/Number";
-import {FormSchema} from "domain/Schema/RootSchemas";
-import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "domain/Schema/Records";
-import {BreakException} from "CoreTypes";
-import {forEachWithBreak} from "extensions/corelib";
-import {SchemaTypeCategory} from "domain/Schema/SchemaEnums";
-import {FieldState} from "domain/FieldState/FieldState";
+import {isNumeric} from "../extensions/Number";
+import {FormSchema} from "../domain/Schema/RootSchemas";
+import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "../domain/Schema/Records";
+import {BreakException} from "../CoreTypes";
+import {forEachWithBreak} from "../extensions/Array";
+import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 
 export class FormNavigator {
 	constructor(private schema: FormSchema, private data) {}
@@ -24,13 +23,16 @@ export class PropertySelection {
 	}
 
 	getField() {
-        return this.propertyLocatorArray.reduce((type, key) => {
-        	if (isNumeric(key)) return type;
-			let fields = (type as RecordSchemaType).parameters.fields;
-			let field = fields.find(f => f.name === key);
-			if (!field) return type;
-			return field.type;
-        }, this.schema.rootType);
+		let key = "";
+		let parentType =this.propertyLocatorArray.reduce((type, key, currentIndex) => {
+            // TODO: Return type if it is the last string item in the property locator array and set key
+            if (isNumeric(key)) return type;
+            let fields = (type as RecordSchemaType).parameters.fields;
+            let field = fields.find(f => f.name === key);
+            if (!field) return type;
+            return field.type;
+        }, this.schema.rootType)
+        return (parentType as RecordSchemaType).parameters.fields.find(f => f.name === key);
 	}
 
     setValue(value) {
@@ -50,7 +52,7 @@ export class PropertySelection {
     }
 
     private getFieldMetaData(schema: FormSchema) {
-		let type = schema.rootType;
+		let type = schema.rootType.parameters;
 		let field: SchemaField;
 		let nodes = new Array<{key: number|string, field?: SchemaField}>(0);
 

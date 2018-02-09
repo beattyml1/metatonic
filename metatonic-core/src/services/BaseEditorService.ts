@@ -1,7 +1,7 @@
-import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "domain/Schema/Records";
-import {SchemaEntryType} from "domain/Schema/SchemaEnums";
-import {ItemCollectionSize} from "domain/Schema/ItemSelectionType";
-import {FormSchema} from "domain/Schema/RootSchemas";
+import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters} from "../domain/Schema/Records";
+import {SchemaEntryType} from "../domain/Schema/SchemaEnums";
+import {ItemCollectionSize} from "../domain/Schema/ItemSelectionType";
+import {FormSchema} from "../domain/Schema/RootSchemas";
 
 type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater?: TRepeater };
 type TypeRegistration<TEditor, TLabeler, TRepeater> = {
@@ -27,12 +27,16 @@ export class EditorRegistrationContext<
         type: string,
         editor: TEditor,
         labeler: TLabeler,
-        uiHint?: string|string[],
-        isDefault: boolean = false,
-        repeater?: TRepeater
+        options?: {
+            uiHint?: string | string[],
+            isDefault?: boolean,
+            repeater?: TRepeater
+        }
     ) {
+        options = options || {}
+        let uiHint = options.uiHint;
         this.createNewTypeEntryIfNeeded(type);
-        let labeledEditor = { editor, labeler, repeater };
+        let labeledEditor = { editor, labeler, repeater: options.repeater };
         let typeEntry = this.editorRegistrations[type];
         typeEntry.availableComponents.push(labeledEditor);
 
@@ -43,7 +47,7 @@ export class EditorRegistrationContext<
                 typeEntry[uiHint] = labeledEditor;
         }
 
-        if (isDefault) {
+        if (options.isDefault) {
             typeEntry.defaultComponent = labeledEditor;
         }
     }

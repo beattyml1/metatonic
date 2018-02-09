@@ -1,6 +1,6 @@
-import { FieldState } from 'domain/FieldState/FieldState'
-import {SchemaField, SchemaRecordTypeParameters, SchemaType} from "domain/Schema/Records";
-import {SchemaTypeCategory} from "domain/Schema/SchemaEnums";
+import { FieldState } from '../domain/FieldState/FieldState'
+import {SchemaField, SchemaRecordTypeParameters, SchemaType} from "../domain/Schema/Records";
+import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 
 export function getDefaultFormState(type: SchemaType) {
     switch (type.category) {

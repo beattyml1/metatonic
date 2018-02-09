@@ -1,6 +1,6 @@
-import {TextTypeParameters, TextTypes} from "domain/Schema/TextTypes";
-import {HtmlInputType, HtmlInputTypes} from "domain/Html/HtmlInputType";
-import {DateTimeTypes} from "domain/Schema/DateTimeType";
+import {TextTypeParameters, TextTypes} from "../domain/Schema/TextTypes";
+import {HtmlInputType, HtmlInputTypes} from "../domain/Html/HtmlInputType";
+import {DateTimeTypes} from "../domain/Schema/DateTimeType";
 
 
 export function getDateHtmlInputType(x: DateTimeTypes): HtmlInputType {

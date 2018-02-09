@@ -21,6 +21,6 @@ export abstract class BaseEditor
     }
 
     notifyChanged(value) {
-        this.props.context
+        this.props.store.propertyChanged(this.props.context.fieldLocator, this.value()())
     }
 }

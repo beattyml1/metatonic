@@ -1,5 +1,5 @@
 import {ValueDataType} from "./BaseDataTypes";
-import {SchemaField} from "Schema/Records";
+import {SchemaField} from "../Schema/Records";
 
 export class Float implements ValueDataType {
     constructor(stringValue: string, field?: SchemaField) {

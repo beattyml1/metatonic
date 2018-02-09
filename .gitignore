@@ -7,4 +7,5 @@ built/**
 **.js.map
 **/built/**
 **/.idea/**
-
+**.js
+**.jsx

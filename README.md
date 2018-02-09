@@ -1,4 +1,5 @@
 # metatonic-platform
+[![Build Status](https://travis-ci.org/beattyml1/metatonic-platform.svg?branch=master)](https://travis-ci.org/beattyml1/metatonic-platform)
 Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 
 Some things we do and don't care about

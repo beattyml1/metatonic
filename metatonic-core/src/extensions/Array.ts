@@ -1,4 +1,4 @@
-import {BreakException} from "CoreTypes";
+import {BreakException} from "../CoreTypes";
 
 export function insertAt<T>(array:T[], index: number, item:T) {
 	let newArray = [...array];

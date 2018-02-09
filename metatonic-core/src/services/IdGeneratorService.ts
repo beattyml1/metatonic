@@ -1,6 +1,6 @@
-import {SchemaField} from "domain/Schema/Records";
-import {ComponentContext} from "domain/EditorModels/Context";
-import {hasValue} from "extensions/hasValue";
+import {SchemaField} from "../domain/Schema/Records";
+import {ComponentContext} from "../domain/EditorModels/Context";
+import {hasValue} from "../extensions/hasValue";
 import {getAllWithValue} from "./ContextService";
 
 export function getUniqueId(field: SchemaField, context: ComponentContext) {

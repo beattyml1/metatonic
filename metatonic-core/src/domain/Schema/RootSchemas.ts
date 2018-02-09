@@ -1,5 +1,6 @@
-import {SchemaField, SchemaRecordTypeParameters, SchemaType, SchemaTypeGeneric} from "./Records";
+import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType, SchemaTypeGeneric} from "./Records";
 import {SchemaElement} from "./SchemaElement";
+import {SchemaTypeCategory} from "./SchemaEnums";
 
 interface JsMap<T> {
     [key: string]: T;
@@ -10,7 +11,7 @@ export type Schema = {
 }
 
 export type FormInfo = SchemaElement & {
-    rootType: SchemaTypeGeneric<SchemaRecordTypeParameters, >;
+    rootType: RecordSchemaType;
 };
 
 export type FormSchema = Schema & FormInfo

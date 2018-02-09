@@ -1,0 +1,54 @@
+{
+  "name": "metatonic-react-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "built/bin/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node server.js",
+    "test": "tsc & jest"
+  },
+  "dependencies": {
+    "inversify": "~>4.3",
+    "metatonic-core": "file:../metatonic-core",
+    "react": "~>15.4.2",
+    "react-bootstrap": "*",
+    "react-bootstrap-date-picker": "*",
+    "react-bootstrap-datetimepicker": "*",
+    "react-data-grid": "*",
+    "react-dom": "~>15.4.2",
+    "react-modal-bootstrap": "^1.1.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "reflect-metadata": "~>0.1",
+    "tsd": "^0.6.5"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "@types/react-router": "*",
+    "@types/react-router-dom": "*",
+    "@types/react-router-redux": "*",
+    "@types/core-js": "^0.9.35",
+    "jest": "*",
+    "jest-cli": "*",
+    "ts-jest": "*",
+    "typescript": "~>2.4.1",
+    "express": "~>4.15.2"
+  },
+  "engines": {
+    "node": ">=0.8.x"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  }
+}

@@ -1,25 +1,19 @@
-import {editorConfig} from "services/BaseEditorService";
+import {editorRegistry, multiEditRegistry, selectRegistry} from "../services/EditorRegistry";
 
 export function editorFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
-        if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
-
-        editorConfig.mainEditorRegistrationContext.registerComponent(type, constructor, labeler, options);
+        editorRegistry.registerComponent(type, constructor, labeler, options);
     }
 }
 
 export function multiEditorFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
-        if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
-
-        editorConfig.mainMultiEditorRegistrationContext.registerComponent(type, constructor, labeler, options);
+        multiEditRegistry.registerComponent(type, constructor, labeler, options);
     }
 }
 
-export function selectorFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
+export function selectFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
     return function(constructor: Function) {
-        if (!editorConfig.mainEditorRegistrationContext) throw "No main editor registration context created by View Binding library";
-
-        editorConfig.mainSelectRegistrationContext.registerComponent(type, constructor, labeler, options);
+        selectRegistry.registerComponent(type, constructor, labeler, options);
     }
 }

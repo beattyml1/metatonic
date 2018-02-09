@@ -1,4 +1,4 @@
-import {field, model} from "metatonic-schema-from-ts/src/MetatonicModelDecorator";
+import {field, model} from "metatonic-schema-from-ts/src/index";
 import {SchemaFieldInfo, SchemaEntryType, Maybe} from "metatonic-core/src/index";
 
 @model

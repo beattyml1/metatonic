@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- "node"
+install: 
+- ./install-and-link.sh
+
+script: 
+- ./build-all.sh

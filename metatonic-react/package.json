@@ -28,7 +28,6 @@
     "jest": "*",
     "jest-cli": "*",
     "react-addons-test-utils": "*",
-    "typescript": "~>2.4.1",
     "express": "~>4.15.2",
     "typescript": "~>2.4.1"
   },

@@ -1,6 +1,13 @@
 # metatonic-platform
 Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 
+Some things we do and don't care about
+* We care about helping you write least code possible, hopefully no code sometimes
+* We care deeply about data entry. Good data is the backbone of so many jobs that matter.
+* We care about you being to create what ever you want. We provide a way to make creating data entry and display parts of your app very quickly. We believe in Configuration and convention.
+* We care about you being to write in the UI framework of your choice. Right now we support React but it's coded to be able to have plugins later for Angular, Vue, Knockout whatever floats your boat. As long as it works well with one way bindings and state managment like redux you should be good.
+* We care about the developer experience in TypeScript, we aren't terribly worried about plain old JavaScript. Types are central to MetaTonic and trying to worry about JS users would be counterproductive at this time.
+
 # Examples
 
 ## Record Editor

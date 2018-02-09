@@ -1,4 +1,4 @@
-import {Maybe} from 'CoreTypes';
+import {Maybe} from '../CoreTypes';
 export function hasValue(value): value is {} {
 	return isKnown(value) && value !== "";
 }

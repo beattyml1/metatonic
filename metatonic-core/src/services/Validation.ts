@@ -2,11 +2,12 @@ import {SchemaField, SchemaType} from "../domain/Schema/Records";
 import {hasValue} from "../extensions/hasValue";
 import {max, maxLength, min, required} from "./Validations";
 
-function uniqueItems(array: []) {
+function uniqueItems(array: any[]) {
     return array.reduce((uniqueItems, item) => uniqueItems.contains(item) ? uniqueItems : uniqueItems.concat(item), []);
 }
 
-export function runFieldValidations(field: SchemaField, value: any) {
+export function runFieldValidations(field?: SchemaField, value?: any) {
+    if (!field) return [];
     return uniqueItems([
         ...(runCustomTypeValidations(field.type)),
         doValidation(field, field.min, field.type.parameters["min"], m => min(m, value), `${field.label} must be at least ${min}`),
@@ -25,5 +26,5 @@ function passesValidation(first, second, callback: (x) => boolean) {
 }
 
 function doValidation(field: SchemaField, first, second, callback: (x) => boolean, message: string) {
-    passesValidation(first, second, callback) ? null : message;
+    return passesValidation(first, second, callback) ? null : message;
 }

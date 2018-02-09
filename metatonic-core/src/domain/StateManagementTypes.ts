@@ -1,6 +1,6 @@
-import {FormNavigator} from "services/PropertySelection";
-import {FieldState} from "FieldState/FieldState";
-import {FormSchema} from "Schema/RootSchemas";
+import {FormNavigator} from "../services/PropertySelection";
+import {FieldState} from "./FieldState/FieldState";
+import {FormSchema} from "./Schema/RootSchemas";
 
 export enum StateEvents {
     propertyChanged,

@@ -1,6 +1,6 @@
-import * as core from '../../metatonic-core/src/index';
-import { Schema, SchemaField, SchemaType, FormSchema, FormInfo, SchemaFieldInfo } from '../../metatonic-core/src/index'
-import {RecordSchemaType} from "../../metatonic-core/src/domain/Schema/Records";
+import * as core from 'metatonic-core/src/index';
+import { Schema, SchemaField, SchemaType, FormSchema, FormInfo, SchemaFieldInfo } from 'metatonic-core/src/index'
+import {RecordSchemaType} from "metatonic-core/src/index";
 
 let schema = <Schema> {
     types: {

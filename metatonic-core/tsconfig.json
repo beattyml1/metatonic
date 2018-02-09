@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-	    "module": "es2015",
+	    "module": "commonjs",
         "jsx": "react",
         "noImplicitAny": false,
         "removeComments": true,
@@ -9,7 +9,7 @@
         "outDir": "built/bin",
         "strictNullChecks": true,
         "target": "es2016",
-        "lib": ["es7", "dom"],
+        "lib": ["dom", "es6", "es7"],
         "experimentalDecorators": true
     },
 

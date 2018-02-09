@@ -1,5 +1,5 @@
 
-import {ComponentContext} from "domain/EditorModels/Context";
+import {ComponentContext} from "../domain/EditorModels/Context";
 import {hasValue} from "../extensions/hasValue";
 import {SchemaField} from "../domain/Schema/Records";
 

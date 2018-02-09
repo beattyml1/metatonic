@@ -1,4 +1,4 @@
-import {NumericType} from "./Numerics";
+import {NumericTypeInfo} from "./Numerics";
 
 export enum LeftRight { Left, Right}
 
@@ -30,7 +30,7 @@ export type Unit = {
 }
 
 export type QuantityTypeParameters = {
-    numericFormat: NumericType;
+    numericFormat: NumericTypeInfo;
     unitSource: UnitSourceSpec;
     shouldConvertLocal: number;
     inputTypeHint: "maskedText" | "multiPart";

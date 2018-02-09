@@ -1,4 +1,4 @@
-import {SchemaField} from "domain/Schema/Records";
+import {SchemaField} from "../Schema/Records";
 
 export interface ValueDataTypeConstructor {
     new (stringValue: string, field?: SchemaField);

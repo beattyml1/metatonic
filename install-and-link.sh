@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo 
+echo -- Installing globals --
+npm install -g jest
+
 cd metatonic-core
 echo
 echo --- Starting Install metatonic-core --

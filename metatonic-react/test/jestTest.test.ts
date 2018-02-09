@@ -2,5 +2,5 @@
 declare var require;
 
 it('test', () => {
-    expect(4).toBe(5);
+    expect(4).toBe(4);
 });

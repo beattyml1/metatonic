@@ -1,25 +1,25 @@
 import {BaseEditor} from "../Editors/BaseEditor";
 import * as React from "react";
-import {SchemaEntryType, SchemaField} from "metatonic-core";
-import * as Base from 'metatonic-core';
 import {FormSchema} from "metatonic-core/src/index";
 import {EditorSubContext} from "metatonic-core";
-import {editorConfig} from "../../../metatonic-core/src/services/BaseEditorService";
+import {
+    editorRegistry, multiEditRegistry,
+    selectRegistry, EditorContext
+} from "metatonic-core";
 
 export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;
 export type BaseRepeaterClass = new () => React.Component<any, any>
 
-export class EditorContext extends Base.EditorContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass> {
-
+export class ReactEditorContext extends EditorContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass> {
     constructor(protected schema: FormSchema) {
         super(
             new EditorSubContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>(
-                editorConfig.mainEditorRegistrationContext, schema, false),
+                editorRegistry, schema, false),
             new EditorSubContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>(
-                editorConfig.mainSelectRegistrationContext,schema, true),
+                selectRegistry,schema, true),
             new EditorSubContext<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>(
-                editorConfig.mainMultiEditorRegistrationContext,schema, false)
-            );
+                multiEditRegistry,schema, false)
+        );
     }
 }

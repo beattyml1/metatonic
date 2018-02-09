@@ -34,10 +34,16 @@
     "node": ">=0.8.x"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
     },
-    "testMatch": ["**/test/*.(ts|tsx|js)"]
+    "testMatch": [
+      "**/test/*.(ts|tsx|js)"
+    ]
   }
 }

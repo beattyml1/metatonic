@@ -13,4 +13,3 @@ export class MetaEdit<T> extends TopLevelMetatonicComponent<T, Props<T>,> {
     render() {
         return this.renderEditor();
     }
-}

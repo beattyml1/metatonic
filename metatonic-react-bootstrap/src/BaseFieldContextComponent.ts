@@ -1,8 +1,8 @@
 import * as React from "react";
-import {BaseEditorModel} from "metatonic-core/src/index";
-import {AnyTypeParameterType, SchemaField, SchemaType} from "metatonic-core/src/index";
-import {getUniqueId} from "metatonic-core/src/index";
-import {ComponentContext} from "metatonic-core/src/index";
+import {BaseEditorModel} from "metatonic-core";
+import {AnyTypeParameterType, SchemaField, SchemaType} from "metatonic-core";
+import {getUniqueId} from "metatonic-core";
+import {ComponentContext} from "metatonic-core";
 
 export abstract class BaseFieldContextComponent<TParams extends { field: SchemaField, context: ComponentContext}, TState>
     extends React.Component<TParams, TState> {

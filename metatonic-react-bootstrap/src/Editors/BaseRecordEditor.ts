@@ -1,6 +1,6 @@
-import {BaseEditorModel} from "metatonic-core/src/index";
-import {RecordSchemaType} from "metatonic-core/src/index";
-import {createContext} from "metatonic-core/src/index";
+import {BaseEditorModel} from "metatonic-core";
+import {RecordSchemaType} from "metatonic-core";
+import {createContext} from "metatonic-core";
 
 export abstract class BaseRecordEditor <TData, TProps extends BaseEditorModel<RecordSchemaType>, TState>
     extends BaseEditor<TData, RecordSchemaType, TProps, State> {

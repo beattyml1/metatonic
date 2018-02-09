@@ -1,12 +1,11 @@
 import {BaseEditor} from "../Editors/BaseEditor";
 import * as React from "react";
-import {FormSchema} from "metatonic-core/src/index";
+import {FormSchema} from "metatonic-core";
 import {EditorSubContext} from "metatonic-core";
 import {
     editorRegistry, multiEditRegistry,
-    selectRegistry, EditorContext
+    selectRegistry, EditorResolver
 } from "metatonic-core";
-import {EditorResolver} from "../../../metatonic-core/src/services/EditorContext";
 
 export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;

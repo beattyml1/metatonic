@@ -12,7 +12,7 @@
         "lib": ["es7", "dom"],
         "experimentalDecorators": true
     },
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules", "test"],
     "filesGlobal": [
         "src/*.ts",
         "src/*.tsx",

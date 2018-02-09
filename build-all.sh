@@ -4,6 +4,12 @@ echo
 echo
 echo -- Starting build and test metatonic-core --
 npm test
+testresult=$?
+if [ $testresult -ne 0 ]
+then
+   echo test failed
+   exit $testresult
+fi
 echo
 cd ..
 
@@ -12,6 +18,12 @@ echo
 echo
 echo -- Starting build and test metaonic-react --
 npm test
+testresult=$?
+if [ $testresult -ne 0 ]
+then
+   echo test failed
+   exit $testresult
+fi
 cd ..
 echo
 

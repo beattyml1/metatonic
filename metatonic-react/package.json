@@ -23,9 +23,11 @@
   },
   "devDependencies": {
     "@types/react": "*",
+    "@types/jest": "^19.2.4",
     "@types/core-js": "^0.9.35",
     "jest": "*",
     "jest-cli": "*",
+    "react-addons-test-utils": "*",
     "typescript": "~>2.4.1",
     "express": "~>4.15.2"
   },
@@ -33,14 +35,16 @@
     "node": ">=0.8.x"
   },
   "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
+    },
+    "testMatch": [
+      "**/test/*.(ts|tsx|js)"
     ]
   }
 }

@@ -10,7 +10,7 @@
     "test": "tsc & jest"
   },
   "dependencies": {
-    "metatonic-core": "file:../metatonic-core",
+    "metatonic-core": "*",
     "inversify": "~>4.3",
     "react": "~>15.4.2",
     "react-bootstrap": "*",
@@ -19,7 +19,6 @@
     "react-data-grid": "*",
     "react-dom": "~>15.4.2",
     "react-modal-bootstrap": "^1.1.1",
-    "reflect-metadata": "~>0.1",
     "tsd": "^0.6.5"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 import {Maybe, Nothing} from "../CoreTypes";
-import any = jasmine.any;
 export type IdTypes = string|number;
 export type IdRequest<TId extends IdTypes> = { id?: Maybe<TId> };
 export type QueryRequest<TQuery> = {  query?: Maybe<TQuery> };

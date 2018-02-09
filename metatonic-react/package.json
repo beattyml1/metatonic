@@ -29,6 +29,8 @@
     "jest-cli": "*",
     "react-addons-test-utils": "*",
     "express": "~>4.15.2",
+    "ts-jest": "21.2.4",
+    "ts-node": "^4.1.0",
     "typescript": "~>2.4.1"
   },
   "engines": {

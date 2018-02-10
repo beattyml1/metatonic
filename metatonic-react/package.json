@@ -42,9 +42,6 @@
       "tsx",
       "js"
     ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
-    },
     "testMatch": [
       "**/test/*.(ts|tsx|js)"
     ]

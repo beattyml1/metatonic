@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "cover": "tsc & jest --coverage",
     "test": "tsc & jest"
   },
   "dependencies": {
@@ -42,7 +43,7 @@
       "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
     },
     "testMatch": [
-      "**/test/*.(ts|tsx|js)"
+      "**/test/*.test.(ts|tsx|js)"
     ]
   }
 }

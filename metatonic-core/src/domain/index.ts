@@ -1,8 +1,8 @@
 //export * from 'domain/Data/DateTime'
 //export * from 'domain/Data/Date'
-export * from './Data/Numeric'
-export * from './Data/Quantity'
-export * from './Data/BaseDataTypes'
+export * from '../Data/Numeric'
+export * from '../Data/Quantity'
+export * from '../Data/BaseDataTypes'
 export * from './Schema/DataTypes'
 export * from './Schema/TextTypes'
 export * from './Schema/ItemSelectionType'
@@ -27,3 +27,4 @@ export * from "./Schema/SchemaEnums";
 export * from "./Schema/SchemaFieldInfo";
 export * from "./Schema/Numerics";
 export * from './StateManagementTypes'
+export {createValueStoreDataType} from "../Data/BaseValueDataType";

@@ -14,6 +14,10 @@ export abstract class BaseEditor
         return this.props.context.fieldLocator
     }
 
+    store() {
+        return this.props.globals.store;
+    }
+
     type() {
         return Object.assign({}, this.props.field.type, this.props.field.type.parameters as TType)
     }

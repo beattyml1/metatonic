@@ -40,7 +40,7 @@ export class ReduxStateManager {
         this.store.dispatch({event: StateEvents.propertyChanged, data: { propertySelector, value }} as any)
     }
 
-    itemAdded(propertySelector: string, item, index: Nullable<number>) {
+    itemAdded(propertySelector: string, item, index?: Nullable<number>) {
         this.store.dispatch({event: StateEvents.propertyChanged, data: { propertySelector, index, item }} as any)
     }
 

@@ -18,6 +18,7 @@ export class TextFieldEditor extends BaseEditor<string, DateTimeType, TextModel,
                 required={this.field().required}
                 max={this.field().max || this.type().max}
                 min={this.field().min || this.type().min}
+                onChange={(value) => this.notifyChanged(value)}
                 className={this.inputTypeClasses()}
             />
         )

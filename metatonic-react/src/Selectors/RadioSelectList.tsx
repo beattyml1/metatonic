@@ -9,10 +9,16 @@ export class RadioSelect extends BaseEditor<any, SchemaRecordTypeParameters, Bas
             <div id={this.uniqueId()}>
                 {this.type().items.map((item, index) =>
                     <label>
-                        <input type="radio" value={item.$value} name={this.uniqueId()} id={`${this.uniqueId()}-${index}`}/>
+                        <input
+                            type="radio"
+                            value={item.$value}
+                            name={this.uniqueId()}
+                            id={`${this.uniqueId()}-${index}`}
+                            checked={item.$value === this.value()}
+                            onChange={(changeEvent) => this.notifyChanged(changeEvent.target.value)}
+                        />
                         {item.$description}
                     </label>
-
                 )}
             </div>
         );

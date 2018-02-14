@@ -17,6 +17,7 @@ export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, Text
                 required={this.field().required}
                 maxLength={this.field().maxLength || this.type().maxLength}
                 className={this.inputTypeClasses()}
+                onChange={(value) => this.notifyChanged(value)}
             />
         )
     }

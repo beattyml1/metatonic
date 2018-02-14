@@ -6,7 +6,7 @@ import {BaseEditorModel} from "metatonic-core";
 export class DropdownSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
     render() {
         return (
-            <select value={this.value()} id={this.uniqueId()}>
+            <select value={this.value()} id={this.uniqueId()} onChange={(value) => this.notifyChanged(value)}>
                 {this.type().items.map(item =>
                     <option value={item.$value}>{item.$description}</option>
                 )}

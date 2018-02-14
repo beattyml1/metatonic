@@ -50,7 +50,7 @@ export class ReduxStateManager {
 
     propertiesChanged(properties: { property: string, value: any }[]) {
         this.store.dispatch({event: StateEvents.propertyChanged, data: { properties }} as any)
-    }ß
+    }
 
     formServerUpdate(formData: any) {
         this.store.dispatch({event: StateEvents.propertyChanged, data: { formData }} as any)

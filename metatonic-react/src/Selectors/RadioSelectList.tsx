@@ -6,7 +6,7 @@ import {BaseEditorModel} from "metatonic-core";
 export class RadioSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
     render() {
         return (
-            <div id={this.uniqueId()}>
+            <div id={this.uniqueId()} role="radiogroup">
                 {this.type().items.map((item, index) =>
                     <label>
                         <input

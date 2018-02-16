@@ -30,5 +30,5 @@ export function createContext(field?: SchemaField, parentContext?: ComponentCont
 function getFieldLocator(field?: SchemaField, parentContext?: ComponentContext, repeaterIndex?: number) {
     let parentLocator = parentContext ? parentContext.fieldLocator : "";
     let childLocatorPart = hasValue(repeaterIndex) ? repeaterIndex : field ? field.name : "";
-    return Array.join([parentLocator, childLocatorPart].filter(_=>_), '.');
+    return [parentLocator, childLocatorPart].filter(_=>_).join('.');
 }

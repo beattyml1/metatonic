@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "cover": "tsc && jest --coverage",
-    "cover": "tsc && jest --coverage --coverageDirectory=\"../coverage\"",
+    "ci": "tsc && jest --coverage --coverageDirectory=\"../coverage\"",
     "test": "tsc && jest"
   },
   "dependencies": {

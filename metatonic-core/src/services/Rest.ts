@@ -1,6 +1,6 @@
 import {Maybe} from "../CoreTypes";
 import * as Http from "./Http";
-import * as QueryString from "./QueryStringEncodeing";
+import * as QueryString from "./QueryStringEncoding";
 
 export type IdTypes = string|number;
 export type IdRequest<TId extends IdTypes> = { id?: Maybe<TId> };

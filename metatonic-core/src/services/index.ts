@@ -10,6 +10,6 @@ export * from './SchemaFromJsonService'
 export * from "./EditorRegistry";
 export * from "./DefaultFormState";
 import * as _Http from "./Http";
-import * as _QueryString from "./QueryStringEncodeing";
+import * as _QueryString from "./QueryStringEncoding";
 export const Http = _Http;
 export const QueryString = _QueryString;

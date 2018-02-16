@@ -30,7 +30,7 @@
     "react-dom": "^16.2.0",
     "ts-jest": "21.2.4",
     "ts-node": "^4.1.0",
-    "typescript": "~>2.4.1"
+    "typescript": "~>2.7.1"
   },
   "engines": {
     "node": ">=0.8.x"

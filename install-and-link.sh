@@ -3,6 +3,8 @@
 echo 
 echo -- Installing globals --
 npm install -g jest
+npm install -g typescript@2.7.1
+
 
 cd metatonic-core
 echo

@@ -1,19 +1,13 @@
-import {editorRegistry, multiEditRegistry, selectRegistry} from "../services/EditorRegistry";
+import {editorRegistry, EditorRegistry, multiEditRegistry, selectRegistry} from "../services/EditorRegistry";
 
-export function editorFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
-    return function(constructor: Function) {
-        editorRegistry.registerComponent(type, constructor, labeler, options);
+function editorRegistrationDecorator(registry: EditorRegistry<any, any, any>) {
+    return function(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
+        return function(constructor: Function) {
+            editorRegistry.registerComponent(type, constructor, labeler, options);
+        }
     }
 }
 
-export function multiEditorFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
-    return function(constructor: Function) {
-        multiEditRegistry.registerComponent(type, constructor, labeler, options);
-    }
-}
-
-export function selectFor(type: string, labeler: new (...args) => any, options?: { uiHint?: string|string[], isDefault?: boolean, repeater?: new (...args) => any }) {
-    return function(constructor: Function) {
-        selectRegistry.registerComponent(type, constructor, labeler, options);
-    }
-}
+export const editorFor = editorRegistrationDecorator(editorRegistry);
+export const multiEditorFor = editorRegistrationDecorator(multiEditRegistry);
+export const selectFor = editorRegistrationDecorator(selectRegistry);

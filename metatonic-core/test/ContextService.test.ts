@@ -21,5 +21,4 @@ describe('createContext', () => {
         let context = createContext({name:"c"} as any);
         expect(context.fieldLocator).toBe("c");
     })
-
 })

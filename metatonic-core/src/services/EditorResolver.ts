@@ -2,7 +2,7 @@ import {RecordSchemaType, SchemaField} from "../domain/Schema/Records";
 import {SchemaEntryType} from "../domain/Schema/SchemaEnums";
 import {ItemCollectionSize} from "../domain/Schema/ItemSelectionType";
 import {FormSchema} from "../domain/Schema/RootSchemas";
-import {EditorRegistry} from "./EditorRegistry";
+import {EditorRegistry, TypeRegistration} from "./EditorRegistry";
 
 export class EditorSubContext<
     TEditor extends new (...args) => any,
@@ -16,12 +16,12 @@ export class EditorSubContext<
     }
 
     getEditorParts(type: string, uiHint?: string) {
-        let editorParts = this.getEditorRegistration(type, uiHint);
+        let editorParts = this.getLabeledEditorEntry(type, uiHint);
         if (!editorParts) return null;
         return editorParts.repeater ? editorParts : Object.assign({ repeater: this.editors.repeater }, editorParts);
     }
 
-    private getAvailableEditors(type: string) {
+    private getEditorForBestAvailableType(type: string): TypeRegistration<TEditor, TLabeler, TRepeater>|null {
         let types = [type, ...this.getParentTypes(type)];
         return types.reduce((editor, type) => editor || this.editors.editorRegistrations[type], null)
     }
@@ -30,18 +30,23 @@ export class EditorSubContext<
         return this.schema.types[type].parentTypeNames
     }
 
-    private getEditorRegistration(type: string, uiHint?: string) {
-        let typeRegistration = this.getAvailableEditors(type);
-        if (!uiHint && this.select) uiHint = this.getUiHintForCollectionSize(this.schema.types[type] as RecordSchemaType)
-        if (typeRegistration) {
-            if (uiHint && typeRegistration[uiHint]) {
-                return typeRegistration.uiHintMap[uiHint];
-            } else if (typeRegistration.defaultComponent) {
-                return typeRegistration.defaultComponent;
-            } else {
-                return typeRegistration.availableComponents[0];
-            }
-        } else return null;
+    private getLabeledEditorEntry(type: string, uiHint?: string) {
+        let typeRegistration = this.getEditorForBestAvailableType(type);
+        if (!typeRegistration) return null;
+
+        if (!uiHint && this.select) uiHint = this.getUiHintForCollectionSize(this.schema.types[type] as RecordSchemaType);
+
+        return this.getEditorFromTypeEntry(typeRegistration, uiHint);
+    }
+
+    private getEditorFromTypeEntry(typeRegistration: TypeRegistration<TEditor, TLabeler, TRepeater>, uiHint?: string) {
+        if (uiHint && typeRegistration[uiHint]) {
+            return typeRegistration.uiHintMap[uiHint];
+        } else if (typeRegistration.defaultComponent) {
+            return typeRegistration.defaultComponent;
+        } else {
+            return typeRegistration.availableComponents[0];
+        }
     }
 
     getUiHintForCollectionSize(type: RecordSchemaType) {

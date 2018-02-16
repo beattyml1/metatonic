@@ -1,10 +1,10 @@
 type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater?: TRepeater };
-type TypeRegistration<TEditor, TLabeler, TRepeater> = {
+export type TypeRegistration<TEditor, TLabeler, TRepeater> = {
     availableComponents: LabeledEditor<TEditor, TLabeler, TRepeater>[];
     uiHintMap: { [uiHint: string]: LabeledEditor<TEditor, TLabeler, TRepeater> };
     defaultComponent?: LabeledEditor<TEditor, TLabeler, TRepeater>;
 }
-type TypeEditorRegistry<TEditor, TLabeler, TRepeater> = {
+export type TypeEditorRegistry<TEditor, TLabeler, TRepeater> = {
     [type: string]: TypeRegistration<TEditor, TLabeler, TRepeater>
 }
 

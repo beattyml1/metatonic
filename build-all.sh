@@ -3,8 +3,8 @@ cd metatonic-core
 echo
 echo
 echo -- Starting build and test metatonic-core --
-npm run cover
-uestresult=$?
+npm run ci 
+testresult=$?
 if [ $testresult -ne 0 ]
 then
    echo test failed

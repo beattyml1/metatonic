@@ -4,9 +4,11 @@ env:
 language: node_js
 node_js:
 - "node"
+before_install:
+- sudo apt-get install lcov
+
 install: 
 - ./install-and-link.sh
-- apt-get install lcov
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

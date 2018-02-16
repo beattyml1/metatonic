@@ -42,6 +42,12 @@
       "tsx",
       "js"
     ],
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/src/domain/**",
+      "!**/vendor/**"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
     },

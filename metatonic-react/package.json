@@ -1,6 +1,6 @@
 {
   "name": "metatonic-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dynamic Data Entry Framework",
   "main": "built/bin/index.js",
   "types": "src/index.ts",

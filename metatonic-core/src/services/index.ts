@@ -1,5 +1,5 @@
 export * from './PropertySelection'
-export * from './EditorContext'
+export * from './EditorResolver'
 export * from './ContextService'
 export * from './HtmlInputTypeService'
 export * from './IdGeneratorService'

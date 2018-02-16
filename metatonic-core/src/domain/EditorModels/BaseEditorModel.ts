@@ -2,7 +2,7 @@ import {ComponentContext} from "./Context";
 import {FieldState} from "../FieldState/FieldState";
 import {SchemaField} from "../Schema/Records";
 import {ReduxStateManager} from "../../state/ReduxStateManager";
-import {EditorResolver} from "../../services/EditorContext";
+import {EditorResolver} from "../../services/EditorResolver";
 
 export type BaseEditorModel<T> = {
     value: T;

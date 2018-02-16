@@ -7,12 +7,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "cover": "tsc & jest --coverage",
-    "test": "tsc & jest"
+    "cover": "tsc && jest --coverage",
+    "test": "tsc && jest"
   },
   "dependencies": {
-    "redux": "^3.7.2",
     "core-js": "^2.5.3",
+    "moment": "^2.20.1",
+    "redux": "^3.7.2",
     "tsd": "^0.6.5"
   },
   "devDependencies": {

@@ -20,6 +20,7 @@
     "@types/core-js": "^0.9.46",
     "@types/jest": "^19.2.4",
     "@types/redux": "^3.6.31",
+    "chalk": "*",
     "chai": "^4.1.2",
     "express": "~>4.15.2",
     "jest": "21.2.1",

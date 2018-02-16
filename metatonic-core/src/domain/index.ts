@@ -21,7 +21,7 @@ export * from './EditorModels/QuantityModel'
 export * from './EditorModels/TextModel'
 export * from './EditorModels/DateTimeModel'
 
-export * from './html/HtmlInputType'
+export * from './Html/HtmlInputType'
 
 export * from "./Schema/SchemaEnums";
 export * from "./Schema/SchemaEnums";

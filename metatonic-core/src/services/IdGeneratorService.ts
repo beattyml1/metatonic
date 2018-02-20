@@ -15,7 +15,7 @@ function getFieldUniqueId(parentId: string, index) {
 
 function setFieldUniqueId(field: SchemaField, parentId: string, index) {
     let uniqueId = getFieldUniqueId(parentId, index);
-    let withUniqueId = Object.assign(field, { uiUniqueId: uniqueId };
+    let withUniqueId = Object.assign(field, { uiUniqueId: uniqueId });
 
     let isRecord = field.type.category === SchemaTypeCategory.Record;
 

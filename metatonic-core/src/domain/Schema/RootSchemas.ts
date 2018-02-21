@@ -12,6 +12,7 @@ export type Schema = {
 
 export type FormInfo = SchemaElement & {
     rootType: RecordSchemaType;
+    rootTypeName: string;
 };
 
 export type FormSchema = Schema & FormInfo

@@ -2,13 +2,12 @@ import * as React from "react";
 import {SchemaRecordTypeParameters} from "metatonic-core";
 import {RecordMultiParams} from "./RecordEditor";
 import {FieldCell} from "./FieldEditor";
-import {createContext, RecordSchemaType, BaseEditorModel} from "metatonic-core";
+import {createContext, RecordSchemaType, BaseEditorModel, SchemaField} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 
 export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
     render() {
-        let recordType = this.props.field.type.parameters as SchemaRecordTypeParameters;
-        let fields = recordType.fields;
+        let fields = this.type().fields;
         return (
             <div className="data-grid">
                 <div className="data-grid-buttons">
@@ -17,33 +16,46 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
                 <table>
                     <thead>
                     <tr>
-                        {fields.map(field =>
-                            <th>{field.label}</th>
-                        )}
+                        {fields.map(this.headerCell)}
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.value.map((record, rowIndex) =>
-                        <tr>
-                            {fields.map((field, columnIndex) =>
-                                <td>
-                                    <FieldCell value={record} field={field}
-                                               context={createContext(field, this.props.context, columnIndex)}
-                                               fieldState={this.props.fieldState.children[rowIndex][field.name]}
-                                               globals={this.props.globals}/>
-                                </td>
-                            )}
-                            <td>
-                                <button type="button" onClick={() => this.remove(rowIndex)}>Remove</button>
-                                {/*<button type="button" onClick={() => this.edit(rowIndex, record)}>Edit</button>*/}
-                            </td>
-                        </tr>
-                    )}
+                    {this.props.value.map(this.row)}
                     </tbody>
                 </table>
             </div>
         )
+    }
+
+    headerCell(field: SchemaField) {
+        return <th>{field.label}</th>
+    }
+
+    row(record, rowIndex) {
+        return (
+        <tr>
+            {this.getCells(record, rowIndex)}
+            <td>
+                <button type="button" onClick={() => this.remove(rowIndex)}>Remove</button>
+                {/*<button type="button" onClick={() => this.edit(rowIndex, record)}>Edit</button>*/}
+            </td>
+        </tr>);
+    }
+
+    cell(record, field: SchemaField, rowIndex, columnIndex) {
+        return (
+            <td>
+                <FieldCell value={record} field={field}
+                           context={createContext(field, this.props.context, columnIndex)}
+                           fieldState={this.props.fieldState.children[rowIndex][field.name]}
+                           globals={this.props.globals}/>
+            </td>
+        );
+    }
+
+    getCells(record, rowIndex) {
+        return this.type().fields.map((field, columnIndex) => this.cell(record, field, rowIndex, columnIndex))
     }
 
     edit(rowIndex, record) {

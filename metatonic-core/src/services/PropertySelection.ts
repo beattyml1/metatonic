@@ -48,7 +48,7 @@ export class PropertySelection {
 
         reverseNavTree.forEach(current => {
         	if (previous) {
-        		current.data = Object.assign({}, current.data, { [current.key]: previous });
+                current.data = Object.assign({}, current.data, { [current.key]: previous });
 			} else {
 				current.data = Object.assign({}, current.data, { [current.key]: value });
             }

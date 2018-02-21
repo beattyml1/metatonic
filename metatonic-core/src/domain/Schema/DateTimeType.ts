@@ -22,7 +22,7 @@ export type TimeType = TimeTypeParams & DateTimeBaseParams;
 export type DateType = DateTypeParams & DateTimeBaseParams;
 export type MonthType = MonthTypeParams & DateTimeBaseParams;
 export type DateTimeType = DateType & TimeType;
-export enum DateTimeTypes { Date = "date", Time = "time", DateTime = "datetime", Month = "month" };
+export enum DateTimeTypes { Date = "date", Time = "time", DateTime = "datetime", Month = "month", TimeStamp = "timestamp" };
 type ParametrizedType<TParams, TType> = {
     type: TType;
     params: TParams;

@@ -7,6 +7,7 @@ export function getDateHtmlInputType(x: DateTimeTypes): HtmlInputType {
     switch (x){
         case DateTimeTypes.Date: return "date";
         case DateTimeTypes.DateTime: return "datetime-local";
+        case DateTimeTypes.TimeStamp: return "datetime-local";
         case DateTimeTypes.Month: return "month";
         case DateTimeTypes.Time: return "time";
         default: throw "Invalid DateTimeTypes value";

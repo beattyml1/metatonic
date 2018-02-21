@@ -9,6 +9,9 @@ export * from './Rest'
 export * from './SchemaFromJsonService'
 export * from "./EditorRegistry";
 export * from "./DefaultFormState";
+export {findField} from "./FieldNavigationHelpers";
+export {typeOfField} from "./FieldNavigationHelpers";
+export {getPropertyLocatorArray} from "./FieldNavigationHelpers";
 import * as _Http from "./Http";
 import * as _QueryString from "./QueryStringEncoding";
 export const Http = _Http;

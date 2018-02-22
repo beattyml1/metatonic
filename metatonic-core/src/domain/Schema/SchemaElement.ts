@@ -1,7 +1,6 @@
-import {SchemaElementId} from "./ID";
+import {NamedAndLabeled} from "./NamedAndLabeled";
+import {CustomValidation} from "./CustomValidation";
 
-export interface SchemaElement {
-    id: SchemaElementId;
-    name: string;
-    label: string;
+export interface SchemaElement extends NamedAndLabeled{
+    customValidations: CustomValidation[]
 }

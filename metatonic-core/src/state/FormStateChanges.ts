@@ -4,7 +4,7 @@ import {FormNavigator} from "../services/PropertySelection";
 import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
 import {getDefaultFormState} from "../services/DefaultFormState";
-import {runFieldValidations} from "../services/Validation";
+import {getValidationMessages} from "../services/Validation";
 import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes";
 import {insertAt, removeAt} from "../extensions/Array";
 
@@ -16,14 +16,14 @@ export class FormStateChanges {
 	propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = this.getProperty(state, propertySelector)
 		let form = Object.assign({}, state.formData, property.setValue(value));
-		let validations = runFieldValidations(property.getField(), property.getValue());
+		let validations = getValidationMessages(property.getField(), property.getValue(), false);
 
 		return Object.assign({}, state, { formData: form });
 	}
 
 	trySubmit(state: FormState) {
         let property = this.getProperty(state, "")
-        let validations = runFieldValidations(property.getField(), property.getValue());
+        let validations = getValidationMessages(property.getField(), property.getValue(), true);
         return Object.assign({},
 			state, {
 				formState: Object.assign({},

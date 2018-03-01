@@ -3,7 +3,7 @@ import {SchemaField} from "../domain/Schema/Records";
 import {createValueStoreDataType} from "./BaseValueDataType";
 import moment = require("moment");
 import {Moment} from "moment";
-import {BaseDateTimeData} from "./BaseDateTimeData";
+import {BaseDateTimeData, ValueFormats} from "./BaseDateTimeData";
 import {DateTime} from "./DateTime";
 import {hasValue} from "../extensions/hasValue";
 
@@ -21,13 +21,16 @@ export class TimeStamp  extends BaseDateTimeData implements ValueDataType {
         return input.split(':').length >= 2
     }
 
-    static fromEditor(input: string, field: SchemaField) {
+    private static fromFormat(input: string, format: (v:ValueFormats) => string) {
         let formats = TimeStamp.formats(DateTime.hasSeconds(input));
-        return new TimeStamp(hasValue(input)? moment.parseZone(input, formats.editorFormat) : null, formats)
+        return new TimeStamp(hasValue(input)? moment.parseZone(input, format(formats)) : null, formats);
+    }
+
+    static fromEditor(input: string, field: SchemaField) {
+        return TimeStamp.fromFormat(input, f => f.editorFormat);
     }
 
     static fromData(input: string, field: SchemaField) {
-        let formats = TimeStamp.formats(DateTime.hasSeconds(input));
-        return new TimeStamp(hasValue(input)? moment.parseZone(input, formats.dataFormat) : null, formats);
+        return TimeStamp.fromFormat(input, f => f.dataFormat);
     }
 }

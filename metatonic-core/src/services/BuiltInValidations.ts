@@ -3,25 +3,28 @@ import {Validation} from "../domain/Schema/Validation";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 import {QuantityTypeParameters} from "../domain/Schema/Quantities";
 import {hasValue} from "../extensions/hasValue";
+import {ComparableValueDataType} from "../Data/BaseDataTypes";
+
+function isNonEmptyComparable(value) {
+    return value && value.hasValue && value.hasValue() && value.lessThan && value.greaterThan;
+}
 
 export const min: Validation = (value, type, field) => {
-    if (!value || !value.hasValue()) [];
-    if (!value['lessThan']) return [];
+    if(!isNonEmptyComparable(value)) return [];
 
     let min = field.min;
-    let minVal =value.constructor.fromData(min);
+    let minVal = value.constructor.fromData(min);
 
-    return hasValue(min) && value.hasValue() && value.lessThan(minVal) ? [`${field.label} must be greater than ${min}`] : []
+    return hasValue(min) && value.lessThan(minVal) ? [`${field.label} must be greater than ${min}`] : []
 }
 
 export const max: Validation = (value, type, field) => {
-    if (!value || !value.hasValue()) [];
-    if (!value['greaterThan']) return [];
+    if (!isNonEmptyComparable(value)) return [];
 
     let max = field.max;
     let maxVal =value.constructor.fromData(max);
 
-    return hasValue(max) && value.hasValue() && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
+    return hasValue(max) && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
 }
 export const required: Validation = (value, type, field) =>  {
     if (!value['hasValue']) return [];

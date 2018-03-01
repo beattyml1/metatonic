@@ -8,47 +8,57 @@ let bigger = "2";
 let val = Integer.fromData;
 
 describe('min', () => {
-    it('return messages when value less than min', () => {
+    it('should return messages when value less than min', () => {
         let field = { min: bigger, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = min(val(smaller), {} as any, field);
         expect(messages).toHaveLength(1);
     })
-    it('return a message containing min val when value less than min', () => {
+    it('should return a message containing min val when value less than min', () => {
         let field = { min: bigger, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = min(val(smaller), {} as any, field);
         expect(messages[0]).toContain(bigger);
     })
-    it('return empty when value greater than min', () => {
+    it('should return empty when value greater than min', () => {
         let field = { min: smaller, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = min(val(bigger), {} as any, field);
         expect(messages).toHaveLength(0);
     })
-    it('return empty when value equal to min', () => {
+    it('should return empty when value equal to min', () => {
         let field = { min: smaller, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
+        let messages = min(val(smaller), {} as any, field);
+        expect(messages).toHaveLength(0);
+    })
+    it('should return no messages when no min set', () => {
+        let field = { name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = min(val(smaller), {} as any, field);
         expect(messages).toHaveLength(0);
     })
 })
 
 describe('max', () => {
-    it('return messages when value greater than max', () => {
+    it('should return messages when value greater than max', () => {
         let field = { max: smaller, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = max(val(bigger), {} as any, field);
         expect(messages).toHaveLength(1);
     })
-    it('return message containing max val when value greater than max', () => {
+    it('should return message containing max val when value greater than max', () => {
         let field = { max: smaller, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = max(val(bigger), {} as any, field);
         expect(messages[0]).toContain(smaller);
     })
-    it('return empty when value less than max', () => {
+    it('should return empty when value less than max', () => {
         let field = { max: bigger, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = max(val(smaller), {} as any, field);
         expect(messages).toHaveLength(0);
     })
-    it('return empty when value equal to max', () => {
+    it('should return empty when value equal to max', () => {
         let field = { max: smaller, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = max(val(smaller), {} as any, field);
+        expect(messages).toHaveLength(0);
+    })
+    it('should return no messages when no max set', () => {
+        let field = { name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
+        let messages = min(val(smaller), {} as any, field);
         expect(messages).toHaveLength(0);
     })
 })
@@ -74,6 +84,10 @@ describe('required', () => {
     it('should return pass when value data type is full', () => {
         let value = val("1");
         let messages = required(value, {} as any, { required: true, name: 'a', label: 'ABC'} as any);
+        expect(messages).toHaveLength(0);
+    })
+    it('should return no message when required is not entered', () => {
+        let messages = required(null, {} as any, { name: 'a', label: 'ABC'} as any);
         expect(messages).toHaveLength(0);
     })
 })

@@ -39,18 +39,21 @@ export class BaseDateTimeData implements ComparableValueDataType {
         return this.moment.format(formatString);
     }
 
-    lessThan(x: string | ValueDataType): boolean {
-        if (this.moment === null) return hasValue(x);
+    lessThan(x: string | ValueDataType): boolean|null {
+        if (this.moment === null) return null;
         return this.moment.isBefore(this.getMomentOrString(x));
     }
 
-    greaterThan(x: string | ValueDataType): boolean {
-        if (this.moment === null) return hasValue(x);
+    greaterThan(x: string | ValueDataType): boolean|null {
+        if (this.moment === null) return null;
         return this.moment.isAfter(this.getMomentOrString(x));
     }
 
     equals(x: string | ValueDataType): boolean {
-        if (this.moment === null) return hasValue(x);
+        let rightHasValue = hasValue(x) && ((typeof x === "string") || (x['hasValue'] && x['hasValue']()))
+        if (this.moment === null) return !rightHasValue;
+        if (this.moment && !rightHasValue) return false;
+
         return this.moment.isSame(this.getMomentOrString(x));
     }
 

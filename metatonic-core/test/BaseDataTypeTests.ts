@@ -78,7 +78,7 @@ export function valueTypeTests(
                 let result = left.equals("");
                 expect(result).toBe(false);
             })
-            it('should return false full left and empty left and full right string', () => {
+            it('should return false and empty left and full right string', () => {
                 let left = dataType.fromData("", <SchemaField>{});
                 let result = left.equals(smaller);
                 expect(result).toBe(false);

@@ -1,19 +1,20 @@
 import {ComparableValueDataType, ValueDataType} from "./BaseDataTypes";
 import {hasValue} from "../extensions/hasValue";
 import {parse} from "ts-node";
+import {SchemaField} from "../domain/Schema/Records";
 
 export function createValueStoreDataType<T>(parse: (inputString: string, format?: string) => T, format: (val: T, format?: string) => string) {
     return class BaseValueDataType implements ComparableValueDataType {
         value: T|null;
 
-        static fromData(value: string) {
-            let data = new BaseValueDataType();
+        static fromData(value: string, field?: SchemaField, Class?: new () => BaseValueDataType) {
+            let data = new (Class||BaseValueDataType)();
             data.value = hasValue(value) ? parse(value) : null;
             return data;
         }
 
-        static fromEditor(value: string) {
-            let data = new BaseValueDataType();
+        static fromEditor(value: string, field?: SchemaField, Class?: new () => BaseValueDataType) {
+            let data = new (Class||BaseValueDataType)();
             data.value = hasValue(value) ? parse(value) : null;
             return data;
         }
@@ -60,7 +61,7 @@ export function createValueStoreDataType<T>(parse: (inputString: string, format?
             return this.value > right.value;
         }
 
-        private asDataType(x: string | ValueDataType) {
+        protected asDataType(x: string | ValueDataType) {
             return typeof x === "string" ? BaseValueDataType.fromData(x) : x as BaseValueDataType;
         }
     }

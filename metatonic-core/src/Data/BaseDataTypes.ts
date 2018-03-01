@@ -14,8 +14,8 @@ export interface ValueDataType {
 }
 
 export interface ComparableValueDataTypeConstructor extends ValueDataTypeConstructor{
-    fromData(stringValue: string, field?: SchemaField): ComparableValueDataType;
-    fromEditor(stringValue: string, field?: SchemaField): ComparableValueDataType;
+    fromData(stringValue: string|null, field?: SchemaField): ComparableValueDataType;
+    fromEditor(stringValue: string|null, field?: SchemaField): ComparableValueDataType;
 }
 
 export interface ComparableValueDataType extends ValueDataType {

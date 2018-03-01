@@ -5,4 +5,4 @@ declare var require;
 declare var it;
 declare var expect;
 
-valueTypeTests(Float, "34.4445");
+valueTypeTests(Float, "34.4445", "34.4445", "34.4445", "34.4447");

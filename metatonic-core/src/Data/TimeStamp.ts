@@ -5,6 +5,7 @@ import moment = require("moment");
 import {Moment} from "moment";
 import {BaseDateTimeData} from "./BaseDateTimeData";
 import {DateTime} from "./DateTime";
+import {hasValue} from "../extensions/hasValue";
 
 export class TimeStamp  extends BaseDateTimeData implements ValueDataType {
     static dataFormat(showSeconds) {
@@ -16,16 +17,17 @@ export class TimeStamp  extends BaseDateTimeData implements ValueDataType {
     }
 
     static hasSeconds(input: string) {
+        if (!hasValue(input)) return false;
         return input.split(':').length >= 2
     }
 
     static fromEditor(input: string, field: SchemaField) {
         let formats = TimeStamp.formats(DateTime.hasSeconds(input));
-        return new TimeStamp(moment.parseZone(input, formats.editorFormat), formats)
+        return new TimeStamp(hasValue(input)? moment.parseZone(input, formats.editorFormat) : null, formats)
     }
 
     static fromData(input: string, field: SchemaField) {
         let formats = TimeStamp.formats(DateTime.hasSeconds(input));
-        return new TimeStamp(moment.parseZone(input, formats.dataFormat), formats);
+        return new TimeStamp(hasValue(input)? moment.parseZone(input, formats.dataFormat) : null, formats);
     }
 }

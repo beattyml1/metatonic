@@ -5,19 +5,23 @@ import {QuantityTypeParameters} from "../domain/Schema/Quantities";
 import {hasValue} from "../extensions/hasValue";
 
 export const min: Validation = (value, type, field) => {
+    if (!value || !value.hasValue()) [];
     if (!value['lessThan']) return [];
 
     let min = field.min;
+    let minVal =value.constructor.fromData(min);
 
-    return hasValue(min) && value.lessThan(min) ? [`${field.label} must be greater than ${min}`] : []
+    return hasValue(min) && value.hasValue() && value.lessThan(minVal) ? [`${field.label} must be greater than ${min}`] : []
 }
 
 export const max: Validation = (value, type, field) => {
+    if (!value || !value.hasValue()) [];
     if (!value['greaterThan']) return [];
 
     let max = field.max;
+    let maxVal =value.constructor.fromData(max);
 
-    return hasValue(max) && value.greaterThan(max) ? [`${field.label} must be greater than ${max}`] : []
+    return hasValue(max) && value.hasValue() && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
 }
 export const required: Validation = (value, type, field) =>  {
     if (!value['hasValue']) return [];

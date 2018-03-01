@@ -4,6 +4,7 @@ import {createValueStoreDataType} from "./BaseValueDataType";
 import moment = require("moment");
 import {Moment} from "moment";
 import {BaseDateTimeData} from "./BaseDateTimeData";
+import {hasValue} from "../extensions/hasValue";
 
 export class DateTime  extends BaseDateTimeData implements ValueDataType {
     static dataFormat(showSeconds) {
@@ -23,16 +24,17 @@ export class DateTime  extends BaseDateTimeData implements ValueDataType {
     }
 
     static hasSeconds(input: string) {
+        if (!hasValue(input)) return false;
         return input.split(':').length >= 2
     }
 
     static fromEditor(input: string, field: SchemaField) {
         let formats = DateTime.formats(DateTime.hasSeconds(input));
-        return new DateTime(moment(input, formats.editorFormat), formats)
+        return new DateTime(BaseDateTimeData.getMoment(input, formats.editorFormat), formats)
     }
 
     static fromData(input: string, field: SchemaField) {
         let formats = DateTime.formats(DateTime.hasSeconds(input));
-        return new DateTime(moment(input, formats.dataFormat), formats);
+        return new DateTime(BaseDateTimeData.getMoment(input, formats.dataFormat), formats);
     }
 }

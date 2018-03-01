@@ -1,25 +1,68 @@
-import {ValueDataType, ValueDataTypeConstructor} from "./BaseDataTypes";
+import {
+    ComparableValueDataType, DefaultEmptyValueString, ValueDataType,
+    ValueDataTypeConstructor
+} from "./BaseDataTypes";
 import {SchemaField} from "../domain/Schema/Records";
 import {createValueStoreDataType} from "./BaseValueDataType";
 import moment = require("moment");
 import {Moment} from "moment";
+import {hasValue} from "../extensions/hasValue";
 
-export class BaseDateTimeData implements ValueDataType {
-    constructor(public moment: Moment, public formats: { dataFormat: string, displayFormat: string, editorFormat: string}){}
+
+export type DateTimeType<T> = {
+    formats(showSeconds): ValueFormats,
+    hasSeconds(input: string): boolean
+} & (new (moment:Moment|null, format: ValueFormats) => T)
+
+export type ValueFormats = { dataFormat: string, displayFormat: string, editorFormat: string};
+
+export class BaseDateTimeData implements ComparableValueDataType {
+    constructor(public moment: Moment|null, public formats: ValueFormats){}
 
     toDataString(): string {
+        if (!hasValue(this.moment)) return DefaultEmptyValueString;
         return this.moment.format(this.formats.dataFormat);
     }
 
     toDisplayString(): string {
+        if (!hasValue(this.moment)) return DefaultEmptyValueString;
         return this.moment.format(this.formats.displayFormat);
     }
 
     toEditorString(): string {
+        if (!hasValue(this.moment)) return DefaultEmptyValueString;
         return this.moment.format(this.formats.editorFormat);
     }
 
     format(formatString?: string | undefined): string {
+        if (!hasValue(this.moment)) return DefaultEmptyValueString;
         return this.moment.format(formatString);
+    }
+
+    lessThan(x: string | ValueDataType): boolean {
+        if (this.moment === null) return hasValue(x);
+        return this.moment.isBefore(this.getMomentOrString(x));
+    }
+
+    greaterThan(x: string | ValueDataType): boolean {
+        if (this.moment === null) return hasValue(x);
+        return this.moment.isAfter(this.getMomentOrString(x));
+    }
+
+    equals(x: string | ValueDataType): boolean {
+        if (this.moment === null) return hasValue(x);
+        return this.moment.isSame(this.getMomentOrString(x));
+    }
+
+    getMomentOrString(x) {
+        return typeof x === "string" ? x as string : x['moment'] as Moment;
+    }
+
+    hasValue(): boolean {
+        return hasValue(this.moment);
+    }
+
+    static getMoment(input, format) {
+        return hasValue(input) ? moment(input, format) : null;
     }
 }

@@ -27,8 +27,6 @@ export const max: Validation = (value, type, field) => {
     return hasValue(max) && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
 }
 export const required: Validation = (value, type, field) =>  {
-    if (!value['hasValue']) return [];
-
     let required = field.required;
 
     let $hasValue = typeof value === "string" || value === null ? hasValue(value) : value.hasValue();

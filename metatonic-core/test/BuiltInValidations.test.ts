@@ -1,4 +1,4 @@
-import {max, min, required} from "../src/services/BuiltInValidations";
+import {max, maxLength, min, required} from "../src/services/BuiltInValidations";
 import {SchemaField} from "../src/domain/Schema/Records";
 import {OptionalProps} from "../src/CoreTypes";
 import {Integer} from "../src/Data/Integer";
@@ -74,6 +74,25 @@ describe('required', () => {
     it('should return pass when value data type is full', () => {
         let value = val("1");
         let messages = required(value, {} as any, { required: true, name: 'a', label: 'ABC'} as any);
+        expect(messages).toHaveLength(0);
+    })
+})
+
+describe('maxLength', () => {
+    it('should return messages when text length greater than max length', () => {
+        let messages = maxLength("123456", {} as any, { maxLength: 5, name: 'a', label: 'ABC'} as any);
+        expect(messages).toHaveLength(1);
+    })
+    it('should return no message when text length less than max length', () => {
+        let messages = maxLength("1234", {} as any, { maxLength: 5, name: 'a', label: 'ABC'} as any);
+        expect(messages).toHaveLength(0);
+    })
+    it('should return no messages when text length equals than max length', () => {
+        let messages = maxLength("12345", {} as any, { maxLength: 5, name: 'a', label: 'ABC'} as any);
+        expect(messages).toHaveLength(0);
+    })
+    it('should return no messages when no max length', () => {
+        let messages = maxLength("123456", {} as any, { name: 'a', label: 'ABC'} as any);
         expect(messages).toHaveLength(0);
     })
 })

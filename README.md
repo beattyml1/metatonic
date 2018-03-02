@@ -1,9 +1,11 @@
 # metatonic-platform
 [![Build Status](https://travis-ci.org/beattyml1/metatonic-platform.svg?branch=master)](https://travis-ci.org/beattyml1/metatonic-platform)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/maintainability)](https://codeclimate.com/github/beattyml1/metatonic-platform/maintainability)
-[![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core)
-[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic-platform/test_coverage)
+
+metatonic-core: [![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core)
+
+metatonic-react: [![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
 
 Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 

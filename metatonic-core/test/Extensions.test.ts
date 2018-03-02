@@ -1,5 +1,6 @@
 import {transfrom} from "../src/extensions/functional";
 import {hasValue} from "../src/extensions/hasValue";
+import {isNumeric} from "../src/extensions/Number";
 
 describe('transform', () => {
     it('should be able to pipe data through to transfromers', () => {
@@ -23,5 +24,23 @@ describe('hasValue', () => {
     })
     it('should return true for 0', () => {
         expect(hasValue(0)).toBe(true);
+    })
+})
+
+describe('isNumeric', () => {
+    it('should return true for "1"', () => {
+        expect(isNumeric("1")).toBe(true)
+    })
+    it('should return true for 1', () => {
+        expect(isNumeric(1)).toBe(true)
+    })
+    it('should return false for "a"', () => {
+        expect(isNumeric("a")).toBe(false)
+    })
+    it('should return false for null', () => {
+        expect(isNumeric(null)).toBe(false)
+    })
+    it('should return false for ""', () => {
+        expect(isNumeric("")).toBe(false)
     })
 })

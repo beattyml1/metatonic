@@ -57,12 +57,15 @@ export class FormStateChanges {
 	}
 
 	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
+		schema = getFormSchemaFromJsonObject(schema)
 		return {
-            formData: formData,
+            formData,
             serverDocumentData: formData,
 			formState: getDefaultFormState(schema.rootType),
-            schema: getFormSchemaFromJsonObject(schema),
+            schema,
             navigator: new FormNavigator(schema, formData)
         };
 	}
 }
+
+export const formStateChanges = new FormStateChanges();

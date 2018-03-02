@@ -17,7 +17,7 @@ export class EditorRegistry<TEditor extends new (...args) => any,
     constructor() {
     }
 
-    registerComponent<TData, TType, TParams, TState>(type: string,
+    registerComponent<TData, TType, TParams, TState>(type: string|(new () => any),
                                                      editor: TEditor,
                                                      labeler: TLabeler,
                                                      options?: {
@@ -25,6 +25,7 @@ export class EditorRegistry<TEditor extends new (...args) => any,
                                                          isDefault?: boolean,
                                                          repeater?: TRepeater
                                                      }) {
+        type = typeof type === "string" ? type : type.name;
         options = options || {}
         let uiHint = options.uiHint;
         this.createNewTypeEntryIfNeeded(type);
@@ -34,9 +35,9 @@ export class EditorRegistry<TEditor extends new (...args) => any,
 
         if (uiHint) {
             if (Array.isArray(uiHint))
-                uiHint.forEach(hint => typeEntry[hint] = labeledEditor);
+                uiHint.forEach(hint => typeEntry.uiHintMap[hint] = labeledEditor);
             else
-                typeEntry[uiHint] = labeledEditor;
+                typeEntry.uiHintMap[uiHint] = labeledEditor;
         }
 
         if (options.isDefault) {

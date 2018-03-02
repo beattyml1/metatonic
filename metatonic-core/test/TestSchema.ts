@@ -7,26 +7,28 @@ import {
 import {FormSchema} from "../src/domain/Schema/RootSchemas";
 import {OptionalProps} from "../src/CoreTypes";
 import {QuantityTypeParameters} from "../src/domain/Schema/Quantities";
+import {DateTimeTypes} from "../src/domain/Schema/DateTimeType";
 
 let _id = 0;
 let id = () => (_id++).toString();
 
-function record(name: string, label: string, fields: SchemaField[], optionalProps?: OptionalProps<SchemaType>) {
+export function record(name: string, label: string, fields: SchemaField[], optionalProps?: OptionalProps<SchemaType>) {
     return Object.assign({
         name,
         label,
         parameters: { fields },
         id: id(),
         category: SchemaTypeCategory.Record,
-        parentTypeNames: []
+        parentTypeNames: [],
+        customValidations:[]
     }, optionalProps) as RecordSchemaType;
 }
 
-function field(name: string, label: string, typeName: string, optionalProps?: OptionalProps<SchemaField>) {
-    return Object.assign({}, { name, label, typeName, id: id() }, optionalProps) as SchemaField;
+export function field(name: string, label: string, typeName: string, optionalProps?: OptionalProps<SchemaField>) {
+    return Object.assign({}, { name, label, typeName, id: id(), customValidations:[] }, optionalProps) as SchemaField;
 }
 
-function type(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {
+export function type(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {
     return Object.assign({
         name,
         label,
@@ -34,6 +36,7 @@ function type(name: string, label: string, category: SchemaTypeCategory, parentT
         category,
         parentTypeNames: parentTypeNames||[],
         parameters,
+        customValidations:[],
     }) as RecordSchemaType;
 }
 
@@ -41,13 +44,16 @@ export const exampleSchema = {
     id: 'aa',
     name: 'a',
     label: 'A',
-    rootTypeName: 'Home',
-    rootType: null as any,
+    typeName: 'Home',
+    type: null as any,
+    customValidations:[],
     types: {
         'Home': record('Home', 'Home', [
             field('owners', 'Owners', 'Person', {multiple: true}),
             field('address', 'Address', 'Address'),
-            field('askingPrice', 'Asking Price', 'Dollars')
+            field('askingPrice', 'Asking Price', 'Dollars'),
+            field('datePutOnSale', 'Date Put On Sale', 'Date'),
+            field('numberOfBedRooms', 'Bed Rooms', 'Integer', { min: "0" })
         ]),
         'Person': record('Person', 'Person', [
             field('fullName', 'Full Name', 'text'),
@@ -60,6 +66,8 @@ export const exampleSchema = {
             field('state', 'State', 'text'),
             field('zip', 'Zip', 'text'),
         ]),
+        'Integer': type('Integer', 'Integer', SchemaTypeCategory.Numeric, [], {isInteger:true, isFloating: false }),
+        'Date': type('Date', "Date", SchemaTypeCategory.DateTime, [], {type:DateTimeTypes.Date, params: { } }),
         'Dollars': type('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [
             'Currency'
         ], { unitSource: { unit: 'dollars'}, numericFormat: {}} as any as QuantityTypeParameters),

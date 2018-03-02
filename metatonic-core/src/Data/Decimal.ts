@@ -39,11 +39,11 @@ const formatDecimal = (val:DecimalData|null) => {
 }
 
 export class Decimal extends createValueStoreDataType<DecimalData|null>(parseDecimal, formatDecimal) implements ValueDataType {
-    static fromData(value: string, field: SchemaField) {
+    static fromData(value: string, field?: SchemaField) {
         return super.fromData(value, field, Decimal);
     }
 
-    static fromEditor(value: string, field: SchemaField) {
+    static fromEditor(value: string, field?: SchemaField) {
         return super.fromEditor(value, field, Decimal);
     }
 

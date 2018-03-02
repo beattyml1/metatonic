@@ -4,8 +4,8 @@ import {SchemaFieldInfo} from "../domain/Schema/SchemaFieldInfo";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 
 export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
-	if (!schema.rootType) schema.rootType = schema.types[schema.rootTypeName] as RecordSchemaType;
-	return Object.assign({}, schema, { rootType: this.addTypesToFields(schema.rootType, schema) });
+	if (!schema.type) schema.type = schema.types[schema.typeName] as RecordSchemaType;
+	return Object.assign({}, schema, { type: this.addTypesToFields(schema.type, schema) });
 }
 
 export function addTypeToField(field: SchemaFieldInfo, schema: Schema): SchemaField {

@@ -61,7 +61,7 @@ export class FormStateChanges {
 		return {
             formData,
             serverDocumentData: formData,
-			formState: getDefaultFormState(schema.rootType),
+			formState: getDefaultFormState(schema.type),
             schema,
             navigator: new FormNavigator(schema, formData)
         };

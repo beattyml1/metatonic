@@ -1,6 +1,6 @@
 {
   "name": "metatonic-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dynamic Data Entry Framework",
   "main": "built/bin/index.js",
   "repository": "https://github.com/beattyml1/metatonic-platform",

@@ -33,8 +33,8 @@ export class TopLevelMetatonicComponent<TData, TProps> extends React.Component<T
         return {
             label: "",
             uiUniqueId: "",
-            type: this.state.schema.rootType,
-            typeName: this.state.schema.rootType.name
+            type: this.state.schema.type,
+            typeName: this.state.schema.type.name
         } as SchemaField;
     }
 

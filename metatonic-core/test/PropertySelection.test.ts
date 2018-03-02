@@ -5,7 +5,7 @@ import {SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
 import {field} from "../src/decorators/MetatonicModelDecorator";
 describe('FormNavigator', () => {
     let schema_ab1c = () => ({
-        rootType: {
+        type: {
             category: SchemaTypeCategory.Record,
             parameters: {
                 fields: [

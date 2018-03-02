@@ -14,4 +14,5 @@ export interface SchemaFieldInfo extends SchemaElement {
     canAdd?: boolean;
     canEditSelection?: boolean;
     uiControlPreference?: string;
+    readonly?: boolean;
 }

@@ -28,12 +28,12 @@ export class DateTime  extends BaseDateTimeData implements ValueDataType {
         return input.split(':').length >= 2
     }
 
-    static fromEditor(input: string, field: SchemaField) {
+    static fromEditor(input: string, field?: SchemaField) {
         let formats = DateTime.formats(DateTime.hasSeconds(input));
         return new DateTime(BaseDateTimeData.getMoment(input, formats.editorFormat), formats)
     }
 
-    static fromData(input: string, field: SchemaField) {
+    static fromData(input: string, field?: SchemaField) {
         let formats = DateTime.formats(DateTime.hasSeconds(input));
         return new DateTime(BaseDateTimeData.getMoment(input, formats.dataFormat), formats);
     }

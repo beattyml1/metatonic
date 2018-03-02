@@ -14,7 +14,7 @@ describe('getFormSchemaFromJsonObject', () => {
         it('should not error', () =>
             expect(result).toBeTruthy())
 
-        let homeParams = result.rootType.parameters;
+        let homeParams = result.type.parameters;
 
         it('should have a root type properly configured', () =>
             expect(homeParams).toBeTruthy())

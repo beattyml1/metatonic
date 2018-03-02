@@ -10,3 +10,8 @@ describe('fullReload', () => {
         expect(state).toBeTruthy();
     })
 })
+describe('propertyChanged', () => {
+    it('should change the property referenced', () => {
+
+    })
+})

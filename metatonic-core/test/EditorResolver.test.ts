@@ -22,8 +22,8 @@ describe('EditorResolver', () => {
             name: 'Form',
             label: 'Form',
             id: '1',
-            rootTypeName: 'MyType',
-            rootType: {
+            typeName: 'MyType',
+            type: {
                 name: 'MyType',
                 label: 'My Type',
                 id: '2',

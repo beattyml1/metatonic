@@ -26,11 +26,11 @@ export class TimeStamp  extends BaseDateTimeData implements ValueDataType {
         return new TimeStamp(hasValue(input)? moment.parseZone(input, format(formats)) : null, formats);
     }
 
-    static fromEditor(input: string, field: SchemaField) {
+    static fromEditor(input: string, field?: SchemaField) {
         return TimeStamp.fromFormat(input, f => f.editorFormat);
     }
 
-    static fromData(input: string, field: SchemaField) {
+    static fromData(input: string, field?: SchemaField) {
         return TimeStamp.fromFormat(input, f => f.dataFormat);
     }
 }

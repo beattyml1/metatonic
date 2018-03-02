@@ -40,7 +40,10 @@ export class EditorSubContext<
     }
 
     private getEditorFromTypeEntry(typeRegistration: TypeRegistration<TEditor, TLabeler, TRepeater>, uiHint?: string) {
-        if (uiHint && typeRegistration[uiHint]) {
+        console.log(uiHint)
+        console.log(this.select)
+        if (uiHint && typeRegistration.uiHintMap[uiHint]) {
+            console.log(typeRegistration.uiHintMap[uiHint])
             return typeRegistration.uiHintMap[uiHint];
         } else if (typeRegistration.defaultComponent) {
             return typeRegistration.defaultComponent;
@@ -70,12 +73,14 @@ export class EditorResolver<
 
     getEditorComponents(field: SchemaField) {
         if (field.entryType === SchemaEntryType.entry) {
-            return this.edit.getEditorParts(field.name, field.uiControlPreference);
-        } else if (field.multiple) {
-            return this.select.getEditorParts(field.name, field.uiControlPreference)
-        } else {
-            return this.multiEdit.getEditorParts(field.name, field.uiControlPreference)
-        }
+            if (field.multiple) {
+                return this.multiEdit.getEditorParts(field.typeName, field.uiControlPreference)
+            } else {
+                return this.edit.getEditorParts(field.typeName, field.uiControlPreference);
+            }
+        } else if (field.entryType === SchemaEntryType.selection) {
+            return this.select.getEditorParts(field.typeName, field.uiControlPreference)
+        } else throw "Invalid entry type"
     }
 }
 

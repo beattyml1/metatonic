@@ -57,7 +57,6 @@ function getDefaultSingleDateEdit(type: DateTimeTypeData) {
 }
 
 function getDefaultSingleRecordEdit(type: RecordSchemaType) {
-    console.log(type.parameters.fields.map(x => x.name))
     return type.parameters.fields.reduce((data, field) => Object.assign(data, { [field.name]: getDefaultDataForField(field) }), {});
 }
 

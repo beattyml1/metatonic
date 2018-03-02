@@ -7,6 +7,8 @@ import {getDefaultFormState} from "../services/DefaultFormState";
 import {getValidationMessages} from "../services/Validation";
 import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes";
 import {insertAt, removeAt} from "../extensions/Array";
+import {getDefaultDataForField} from "../services/DefaultDataService";
+import {hasValue} from "../extensions/hasValue";
 
 export class FormStateChanges {
 	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData);
@@ -32,10 +34,10 @@ export class FormStateChanges {
 			});
 	}
 
-	itemAdded(state: FormState, propertySelector: string, item, index: Nullable<number>): FormState{
+	itemAdded(state: FormState, propertySelector: string, item, index?: number): FormState{
         let property = this.getProperty(state, propertySelector)
 		let currentArray = property.getValue();
-		let newArray = index === null ? currentArray.concat(item) : insertAt(currentArray, index, item);
+		let newArray = !hasValue(index) ? [...currentArray, item] : insertAt(currentArray, index, item);
 		let form = Object.assign({}, state.formData, property.setValue(newArray));
 		return Object.assign({}, state, { formData: form})
 	}
@@ -59,7 +61,7 @@ export class FormStateChanges {
 	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
 		schema = getFormSchemaFromJsonObject(schema)
 		return {
-            formData,
+            formData: formData || getDefaultDataForField(schema),
             serverDocumentData: formData,
 			formState: getDefaultFormState(schema.type),
             schema,

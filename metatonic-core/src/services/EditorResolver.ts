@@ -40,10 +40,7 @@ export class EditorSubContext<
     }
 
     private getEditorFromTypeEntry(typeRegistration: TypeRegistration<TEditor, TLabeler, TRepeater>, uiHint?: string) {
-        console.log(uiHint)
-        console.log(this.select)
         if (uiHint && typeRegistration.uiHintMap[uiHint]) {
-            console.log(typeRegistration.uiHintMap[uiHint])
             return typeRegistration.uiHintMap[uiHint];
         } else if (typeRegistration.defaultComponent) {
             return typeRegistration.defaultComponent;

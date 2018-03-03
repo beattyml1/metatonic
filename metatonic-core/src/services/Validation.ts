@@ -7,7 +7,7 @@ function uniqueItems(array: any[]) {
     return array.reduce((uniqueItems, item) => uniqueItems.contains(item) ? uniqueItems : uniqueItems.concat(item), []);
 }
 
-export function getValidationMessages(field: SchemaField, value, recursive: boolean) {
+export function getValidationMessages(field: SchemaField, value, recursive: boolean = false) {
     let builtInMessages = builtInValidations.reduce((messages, validation) =>
         messages.concat(validation(value, field.type, field)), new Array<string>());
 

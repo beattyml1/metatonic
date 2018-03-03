@@ -41,7 +41,7 @@ export const maxLength: Validation = (value, type, field) =>  {
 
     let length = value ? value.length : 0;
 
-    return maxLength && length > maxLength ? [`${field.label} is must be shorter than ${maxLength} characters`] : [];
+    return maxLength && length > maxLength ? [`${field.label} must be shorter than ${maxLength} characters`] : [];
 }
 
 export const regexValidaiton: Validation<any> = (value, type, field, config, params) =>  {

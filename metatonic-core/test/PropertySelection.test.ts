@@ -3,6 +3,7 @@ import {FormSchema} from "../src/domain/Schema/RootSchemas";
 import {FormNavigator} from "../src/services/PropertySelection";
 import {SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
 import {field} from "../src/decorators/MetatonicModelDecorator";
+import {getDefaultFormState} from "../src/services/DefaultFormState";
 describe('FormNavigator', () => {
     let schema_ab1c = () => ({
         type: {
@@ -45,21 +46,24 @@ describe('FormNavigator', () => {
         aa: 'aa'
     });
 
+    let ab1c_formNav = () =>
+        new FormNavigator(schema_ab1c(), data_ab1c(), getDefaultFormState(schema_ab1c().type));
+
     it('should be able to get a value from a.b.1.c', () => {
-        let nav = new FormNavigator(schema_ab1c(), data_ab1c());
+        let nav = ab1c_formNav();
         let prop = nav.locate('a.b.1.c');
         let val = prop.getValue();
         expect(val).toBe('hello')
     })
     it('should be able to set a value for a.b.1.c', () => {
-        let nav = new FormNavigator(schema_ab1c(), data_ab1c());
+        let nav = ab1c_formNav();
         let prop = nav.locate('a.b.1.c');
         let result = prop.setValue('hi');
         let val = result['a']['b'][1]['c'];
         expect(val).toBe('hi')
     })
     it('should be able to set a value for a.b.1.c and not change existing values', () => {
-        let nav = new FormNavigator(schema_ab1c(), data_ab1c());
+        let nav = ab1c_formNav();
         let prop = nav.locate('a.b.1.c');
         let result = prop.setValue('hi');
 
@@ -69,7 +73,7 @@ describe('FormNavigator', () => {
         expect(result['a']['b'][0]['cc']).toBe('cc0');
     })
     it('should be able to get the field for a.b.1.c', () => {
-        let nav = new FormNavigator(schema_ab1c(), data_ab1c());
+        let nav = ab1c_formNav();
         let prop = nav.locate('a.b.1.c');
         let field = prop.getField();
         expect(field.name).toBe('c');

@@ -8,6 +8,11 @@ let bigger = "2";
 let val = Integer.fromData;
 
 describe('min', () => {
+    it('should return messages for min: 0, value: -1', () => {
+        let field = { min: bigger, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
+        let messages = min(val(smaller), {} as any, field);
+        expect(messages).toHaveLength(1);
+    })
     it('should return messages when value less than min', () => {
         let field = { min: bigger, name: "a", label: "ABC" } as OptionalProps<SchemaField> as any
         let messages = min(val(smaller), {} as any, field);

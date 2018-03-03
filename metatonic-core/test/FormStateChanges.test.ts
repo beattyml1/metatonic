@@ -4,6 +4,7 @@ import {FieldState} from "../src/domain/FieldState/FieldState";
 import {getDefaultFormState} from "../src/services/DefaultFormState";
 import {exampleSchema} from "./TestSchema";
 import {getDefaultDataForField} from "../src/services/DefaultDataService";
+import {Integer} from "../src/Data/Integer";
 
 describe('fullReload', () => {
     it('should not error on full reload', () => {
@@ -18,6 +19,23 @@ describe('propertyChanged', () => {
         let state = formStateChanges.propertyChanged(initialState, 'address.state', "PA");
         expect(state.formData).toHaveProperty('address.state');
         expect(state.formData.address.state).toBe('PA')
+    })
+    it('should not change other properties', () => {
+        let initialState = formStateChanges.fullReload({} as any, null as any, exampleSchema);
+        let state = formStateChanges.propertyChanged(initialState, 'address.state', "PA");
+        state.formData.address.state = "";
+        expect(state.formData).toMatchObject(initialState.formData)
+    })
+    it('should validate property', () => {
+        let initialState = formStateChanges.fullReload({} as any, null as any, exampleSchema);
+        let state = formStateChanges.propertyChanged(initialState, 'numberOfBedRooms', Integer.fromData("-1"));
+        expect(state.formState.children['numberOfBedRooms'].validationMessages).toHaveLength(1);
+    })
+    it('should should not change other state', () => {
+        let initialState = formStateChanges.fullReload({} as any, null as any, exampleSchema);
+        let state = formStateChanges.propertyChanged(initialState, 'numberOfBedRooms', Integer.fromData("-1"));
+        state.formState.children.numberOfBedRooms.validationMessages = [];
+        expect(state.formState).toMatchObject(initialState.formState);
     })
 })
 describe('itemAdd', () => {

@@ -1,5 +1,5 @@
 import {Schema, FormSchema} from "../domain/Schema/RootSchemas";
-import { Nullable, Nothing, Maybe } from "../CoreTypes";
+import {Nullable, Nothing, Maybe, OptionalProps} from "../CoreTypes";
 import {FormNavigator} from "../services/PropertySelection";
 import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
@@ -9,18 +9,25 @@ import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes"
 import {insertAt, removeAt} from "../extensions/Array";
 import {getDefaultDataForField} from "../services/DefaultDataService";
 import {hasValue} from "../extensions/hasValue";
+import {copyAndSet} from "../extensions/functional";
 
 export class FormStateChanges {
-	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData);
+	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
 
 	getProperty = (state: FormState, propertySelector: string) => this.getNav(state).locate(propertySelector)
 
 	propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = this.getProperty(state, propertySelector)
-		let form = Object.assign({}, state.formData, property.setValue(value));
-		let validations = getValidationMessages(property.getField(), property.getValue(), false);
+		let formData = copyAndSet(state.formData, property.setValue(value));
 
-		return Object.assign({}, state, { formData: form });
+		state = copyAndSet(state, {formData});
+		property = this.getProperty(state, propertySelector);
+
+		let validationMessages = getValidationMessages(property.getField(), property.getValue(), false);
+        let fieldState =  copyAndSet(property.getState(), { validationMessages })
+        let formState = property.setState(fieldState);
+
+        return copyAndSet(state, { formState });
 	}
 
 	trySubmit(state: FormState) {
@@ -60,12 +67,13 @@ export class FormStateChanges {
 
 	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
 		schema = getFormSchemaFromJsonObject(schema)
+        let formState = getDefaultFormState(schema.type);
 		return {
             formData: formData || getDefaultDataForField(schema),
             serverDocumentData: formData,
-			formState: getDefaultFormState(schema.type),
+			formState,
             schema,
-            navigator: new FormNavigator(schema, formData)
+            navigator: new FormNavigator(schema, formData, formState)
         };
 	}
 }

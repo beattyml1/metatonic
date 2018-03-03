@@ -5,7 +5,6 @@ import {
 } from "../src/domain/Schema/Records";
 import {SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
 import {exampleSchema} from "./TestSchema";
-import {explain} from "./TestUtils";
 import {TextTypeParameters} from "../src/domain/Schema/TextTypes";
 
 describe('getFormSchemaFromJsonObject', () => {

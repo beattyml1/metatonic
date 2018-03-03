@@ -8,7 +8,7 @@ export type QueryRequest<TQuery> = {  query?: Maybe<TQuery> };
 export type ActionRequest = {  action?: Maybe<string>; };
 
 export class RestClient {
-    async Get<TResult, TQuery=void>(
+    async Get<TResult, TQuery={}>(
         resourceUrl: string,
         query?: TQuery): Promise<TResult> {
         return Http.makeRequest("GET", query ? `${resourceUrl}?${QueryString.encode(query)}` : resourceUrl);

@@ -1,4 +1,4 @@
-import {makeRequest} from "../src/services/Http";
+import {Rest} from "../src/services/Rest";
 import  mock from 'xhr-mock';
 
 function fixAsyncErrors(action: (wrapExpect: (expectation: () => void) => void) => Promise<any>|void) {
@@ -26,7 +26,7 @@ describe('makeRequest', () => {
             })
         });
 
-        let x = await  makeRequest('post', '/test', {x:'yy'})
+        let x = await Rest.Post('/test', {x:'yy'})
         if (errors) errors.forEach(fail);
         expect(x).toBeTruthy();
     })
@@ -39,7 +39,7 @@ describe('makeRequest', () => {
             })
         });
 
-        let x = await  makeRequest('get', '/test', {})
+        let x = await Rest.Get<{a}>('/test')
         if (errors) errors.forEach(fail);
         expect(x).toBeTruthy();
         expect(x).toHaveProperty('a');
@@ -54,7 +54,7 @@ describe('makeRequest', () => {
             })
         });
 
-        let x = await  makeRequest('get', '/test?x=y', {})
+        let x = await Rest.Get<{a}>('/test', {x:'y'})
         if (errors) errors.forEach(fail);
         expect(x).toBeTruthy();
         expect(x).toHaveProperty('a');
@@ -70,7 +70,7 @@ describe('makeRequest', () => {
             })
         });
 
-        let x = await  makeRequest('put', '/test', {x:'yy'})
+        let x = await  Rest.Put('/test', {x:'yy'})
         if (errors) errors.forEach(fail);
         expect(x).toBeTruthy();
     })
@@ -83,7 +83,7 @@ describe('makeRequest', () => {
             })
         });
 
-        let x = await  makeRequest('delete', '/test')
+        let x = await  Rest.Delete('/test')
         if (errors) errors.forEach(fail);
         expect(x).toBeTruthy();
     })

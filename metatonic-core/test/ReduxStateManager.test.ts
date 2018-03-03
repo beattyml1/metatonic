@@ -22,11 +22,11 @@ describe('ReduxStateManager', () => {
         let x = stateManager.store.getState().formData.numberOfBedRooms;
         expect(x.value).toBe(1);
     })
-    // it('should handle item added', () => {
-    //     let stateManager = startNewFormStateManager();
-    //     stateManager.fullReload(null, exampleSchema)
-    //     stateManager.itemAdded('owners', {})
-    //     let x = stateManager.store.getState().formData.owners;
-    //     expect(x).toHaveLength(1);
-    // })
+    it('should handle item added', () => {
+        let stateManager = startNewFormStateManager();
+        stateManager.fullReload(null, exampleSchema)
+        stateManager.itemAdded('owners', {})
+        let x = stateManager.store.getState().formData.owners;
+        expect(x).toHaveLength(1);
+    })
 })

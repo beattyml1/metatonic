@@ -42,7 +42,7 @@ export class FormStateChanges {
 	}
 
 	itemAdded(state: FormState, propertySelector: string, item, index?: number): FormState{
-        let property = this.getProperty(state, propertySelector)
+	    let property = this.getProperty(state, propertySelector)
 		let currentArray = property.getValue();
 		let newArray = !hasValue(index) ? [...currentArray, item] : insertAt(currentArray, index, item);
 		let form = Object.assign({}, state.formData, property.setValue(newArray));

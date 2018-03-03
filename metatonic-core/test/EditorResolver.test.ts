@@ -70,7 +70,9 @@ describe('EditorResolver', () => {
     }
 
     afterEach(() => {
-        Object.getOwnPropertyNames(editorRegistry.editorRegistrations).forEach(x => delete editorRegistry.editorRegistrations[x])
+        editorRegistry.clearAll();
+        selectRegistry.clearAll()
+        multiEditRegistry.clearAll();
     })
 
     it('should resolve with one item entered with no hints', () => {

@@ -26,4 +26,13 @@ describe('EditorRegistry', () => {
         })
         expect(registry.editorRegistrations["Abc"].uiHintMap["xyz"]).toBeTruthy()
     })
+    it('should clear all when needed', () => {
+        let registry = new EditorRegistry();
+        registry.registerComponent("Abc", class Editor{}, class Labeler{}, {
+
+        })
+        registry.clearAll();
+
+        expect(registry.editorRegistrations["Abc"]).toBeFalsy()
+    })
 })

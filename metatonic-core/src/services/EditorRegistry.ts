@@ -45,6 +45,13 @@ export class EditorRegistry<TEditor extends new (...args) => any,
         }
     }
 
+    clearAll() {
+        let registrations = Object.getOwnPropertyNames(this.editorRegistrations)
+        registrations.forEach(x => {
+            delete this.editorRegistrations[x]
+        })
+    }
+
     defaultRepeater(repeater: TRepeater) {
         this.repeater = repeater;
     }

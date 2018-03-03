@@ -7,6 +7,8 @@ export enum StateEvents {
     propertiesChanged,
     formServerUpdate,
     trySubmit,
+    itemAdded,
+    itemRemoved,
     fullReload
 }
 

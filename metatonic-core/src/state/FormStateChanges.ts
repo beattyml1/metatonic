@@ -66,7 +66,7 @@ export class FormStateChanges {
 	}
 
 	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
-		schema = getFormSchemaFromJsonObject(schema)
+	    schema = getFormSchemaFromJsonObject(schema)
         let formState = getDefaultFormState(schema.type);
 		return {
             formData: formData || getDefaultDataForField(schema),

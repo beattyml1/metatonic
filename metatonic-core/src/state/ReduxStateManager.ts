@@ -20,12 +20,14 @@ export enum EventType {
 export function startNewFormStateManager() {
     let store = createStore<FormState>((state: FormState, action) => {
         let formStateChanges = new FormStateChanges();
-        switch (action.event) {
+        switch (action.type) {
+            case StateEvents.itemAdded: return formStateChanges.itemAdded(state, action.propertySelector, action.item, action.index);
+            case StateEvents.itemRemoved: return formStateChanges.itemRemoved(state, action.propertySelector, action.index);
             case StateEvents.formServerUpdate: return formStateChanges.formServerUpdate(state, action.data.formData);
             case StateEvents.propertiesChanged: return formStateChanges.propertiesChanged(state, action.data.properties);
             case StateEvents.propertyChanged: return formStateChanges.propertyChanged(state, action.data.propertySelector, action.data.value);
-            case StateEvents.fullReload: return formStateChanges.fullReload(state, action.data.formData, action.data.schema);
-            default: return state;
+            case StateEvents.fullReload: return formStateChanges.fullReload(state||{}, action.data.formData, action.data.schema);
+            default: return state||{};
         }
     });
     return new ReduxStateManager(store);
@@ -37,27 +39,27 @@ export class ReduxStateManager {
     }
 
     propertyChanged(propertySelector: string, value){
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { propertySelector, value }} as any)
+        this.store.dispatch({type: StateEvents.propertyChanged, data: { propertySelector, value }} as any)
     }
 
     itemAdded(propertySelector: string, item, index?: Nullable<number>) {
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { propertySelector, index, item }} as any)
+        this.store.dispatch({type: StateEvents.itemAdded, data: { propertySelector, index, item }} as any)
     }
 
     itemRemoved(propertySelector: string, index: number) {
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { propertySelector, index }} as any)
+        this.store.dispatch({type: StateEvents.itemRemoved, data: { propertySelector, index }} as any)
     }
 
     propertiesChanged(properties: { property: string, value: any }[]) {
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { properties }} as any)
+        this.store.dispatch({type: StateEvents.propertiesChanged, data: { properties }} as any)
     }
 
     formServerUpdate(formData: any) {
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { formData }} as any)
+        this.store.dispatch({type: StateEvents.formServerUpdate, data: { formData }} as any)
     }
 
     fullReload(formData: any, schema: FormSchema) {
-        this.store.dispatch({event: StateEvents.propertyChanged, data: { formData, schema }} as any)
+        this.store.dispatch({type: StateEvents.fullReload, data: { formData, schema }} as any)
     }
     trySubmit() {
 

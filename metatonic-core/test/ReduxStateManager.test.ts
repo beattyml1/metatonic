@@ -29,4 +29,13 @@ describe('ReduxStateManager', () => {
         let x = stateManager.store.getState().formData.owners;
         expect(x).toHaveLength(1);
     })
+
+    it('should handle item removed', () => {
+        let stateManager = startNewFormStateManager();
+        stateManager.fullReload(null, exampleSchema)
+        stateManager.itemAdded('owners', {})
+        stateManager.itemRemoved('owners', 0)
+        let x = stateManager.store.getState().formData.owners;
+        expect(x).toHaveLength(0);
+    })
 })

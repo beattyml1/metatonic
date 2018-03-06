@@ -42,6 +42,7 @@
       "tsx",
       "js"
     ],
+    "testPathIgnorePatterns": ["/node_modules/", "/node_modules/metatonic-core", "../metatonic-core"],
     "testMatch": [
       "**/test/*.(ts|tsx|js)"
     ]

@@ -13,10 +13,12 @@ export interface ValueDataType {
     hasValue(): boolean;
 }
 
-export interface ComparableValueDataTypeConstructor extends ValueDataTypeConstructor{
+export interface ComparableValueDataTypeStatic extends ValueDataTypeConstructor{
     fromData(stringValue: string|null, field?: SchemaField): ComparableValueDataType;
     fromEditor(stringValue: string|null, field?: SchemaField): ComparableValueDataType;
 }
+
+export type ComparableValueDataTypeConstructor = ComparableValueDataTypeStatic & (new (...args) => ComparableValueDataType);
 
 export interface ComparableValueDataType extends ValueDataType {
     lessThan(x: ValueDataType|string): boolean|null;

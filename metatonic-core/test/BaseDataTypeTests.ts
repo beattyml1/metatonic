@@ -1,6 +1,6 @@
 
 import {
-    ComparableValueDataType, ComparableValueDataTypeConstructor, ValueDataType,
+    ComparableValueDataType, ComparableValueDataTypeStatic, ValueDataType,
     ValueDataTypeConstructor
 } from "../src/Data/BaseDataTypes";
 import {SchemaField} from "../src/domain/Schema/Records";
@@ -11,7 +11,7 @@ declare var expect;
 
 
 export function valueTypeTests(
-    dataType: ComparableValueDataTypeConstructor & (new (...args) => ValueDataType&ComparableValueDataType),
+    dataType: ComparableValueDataTypeStatic & (new (...args) => ValueDataType&ComparableValueDataType),
     dataInputString: string,
     editorInputString?:string,
     smaller?: string, bigger?: string) {

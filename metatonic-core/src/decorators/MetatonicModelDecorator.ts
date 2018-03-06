@@ -75,7 +75,6 @@ export function field (
     editSelect: SchemaEntryType,
     options?: OptionalProps<SchemaField>) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor):void {
-        console.log(target.constructor.name)
         let fieldTypeName = getTypeName(type);
         let parentTypeName = getTypeName(target.constructor);
         let parentTypeSchema = getRecordSchema(parentTypeName);

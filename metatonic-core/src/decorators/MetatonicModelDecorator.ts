@@ -59,29 +59,34 @@ export function valueType() {
     }
 }
 
-let getField = function (fieldTypeName: string, propertyKey: string, label: string, editSelect: SchemaEntryType, options?: OptionalProps<SchemaField>) {
+let getField = function (fieldTypeName: string, propertyKey: string, label: string, editSelect: SchemaEntryType, isMulti: boolean, options?: OptionalProps<SchemaField>) {
     return Object.assign({
         typeName: fieldTypeName,
         name: propertyKey,
         label: label,
+        multiple: isMulti,
         entryType: editSelect,
     } as SchemaField, options || {});
 };
 
-
-export function field (
-    type: Type,
-    label: string,
-    editSelect: SchemaEntryType,
-    options?: OptionalProps<SchemaField>) {
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor):void {
-        let fieldTypeName = getTypeName(type);
-        let parentTypeName = getTypeName(target.constructor);
-        let parentTypeSchema = getRecordSchema(parentTypeName);
-        if (!parentTypeSchema)  parentTypeSchema = handleFieldWithNoModelAttribute(target.constructor)
-        parentTypeSchema.parameters.fields.push(getField(fieldTypeName, propertyKey, label, editSelect, options));
+function fieldAttribute(isMulti: boolean = false, editSelect: SchemaEntryType = SchemaEntryType.entry) {
+    return function (
+        type: Type,
+        label: string,
+        options?: OptionalProps<SchemaField>) {
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor):void {
+            let fieldTypeName = getTypeName(type);
+            let parentTypeName = getTypeName(target.constructor);
+            let parentTypeSchema = getRecordSchema(parentTypeName);
+            if (!parentTypeSchema)  parentTypeSchema = handleFieldWithNoModelAttribute(target.constructor)
+            parentTypeSchema.parameters.fields.push(getField(fieldTypeName, propertyKey, label, editSelect, isMulti, options));
+        }
     }
 }
+
+export const field = fieldAttribute(false);
+export const list = fieldAttribute(true);
+export const select = fieldAttribute(false, SchemaEntryType.selection);
 
 function handleFieldWithNoModelAttribute(target) {
     if (target && target.name) {
@@ -96,20 +101,4 @@ function getTypeName(type: Type) {
 
 function getRecordSchema(typeName) {
     return recordTypes.find(t => t.name === typeName)
-}
-
-export function list (
-    type: MetatonicType | ((...args) => any),
-    label: string,
-    editSelect: SchemaEntryType,
-    options: {
-        required: boolean,
-        max: number,
-        min: number,
-        maxLength: number,
-        canAdd: boolean
-    }) {
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-
-    }
 }

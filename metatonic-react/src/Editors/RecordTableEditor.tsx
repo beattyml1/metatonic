@@ -4,6 +4,7 @@ import {RecordMultiParams} from "./RecordEditor";
 import {FieldCell} from "./FieldEditor";
 import {createContext, RecordSchemaType, BaseEditorModel, SchemaField} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
+import {} from 'metatonic-core/'
 
 export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
     render() {

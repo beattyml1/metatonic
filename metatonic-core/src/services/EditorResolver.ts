@@ -2,7 +2,7 @@ import {RecordSchemaType, SchemaField} from "../domain/Schema/Records";
 import {SchemaEntryType} from "../domain/Schema/SchemaEnums";
 import {ItemCollectionSize} from "../domain/Schema/ItemSelectionType";
 import {FormSchema} from "../domain/Schema/RootSchemas";
-import {EditorRegistry, TypeRegistration} from "./EditorRegistry";
+import {EditorRegistry, editorRegistry, multiEditRegistry, selectRegistry, TypeRegistration} from "./EditorRegistry";
 
 export class EditorSubContext<
     TEditor extends new (...args) => any,
@@ -78,6 +78,22 @@ export class EditorResolver<
         } else if (field.entryType === SchemaEntryType.selection) {
             return this.select.getEditorParts(field.typeName, field.uiControlPreference)
         } else throw "Invalid entry type"
+    }
+}
+
+export class DefaultEditorResolver<
+    TEditor extends new (...args) => any,
+    TLabeler extends new (...args) => any,
+    TRepeater extends new (...args) => any>  extends EditorResolver<TEditor, TLabeler, TRepeater> {
+    constructor(protected schema: FormSchema) {
+        super(
+            new EditorSubContext<TEditor, TLabeler, TRepeater>(
+                editorRegistry, schema, false),
+            new EditorSubContext<TEditor, TLabeler, TRepeater>(
+                selectRegistry,schema, true),
+            new EditorSubContext<TEditor, TLabeler, TRepeater>(
+                multiEditRegistry,schema, false)
+        );
     }
 }
 

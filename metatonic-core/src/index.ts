@@ -1,6 +1,33 @@
 export * from './domain/index'
-export * from './services/index'
-export * from './decorators/index'
-export * from './extensions/index';
-export * from './state/FormStateChanges'
-export  * from './state/index'
+export {
+    model,
+    valueType,
+    field,
+    list,
+    select,
+    selectFor,
+    editorFor,
+    multiEditorFor
+} from './decorators'
+export {
+    Rest, RestClient, Http,
+    EditorResolver, EditorRegistry, EditorSubContext, DefaultEditorResolver,
+    editorRegistry, multiEditRegistry, selectRegistry,
+    FormNavigator,
+    getDefaultFormState,
+    getTextHtmlInputType, getDateHtmlInputType,
+    typeOfField, findField, createContext, getUniqueId, getNumericField
+} from './services';
+
+export {
+    copyAndSet, transform,
+    isNumeric,
+    isKnown, hasNonWhiteSpaceValue, hasValue,
+    forEachWithBreak, insertAt, removeAt,
+} from './extensions'
+
+export {
+    RestDataStore, ObjectDataStorage,
+    PersistantDataStore, RecordResource,
+    startNewFormStateManager, ReduxStateManager
+} from './state';

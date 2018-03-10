@@ -16,7 +16,7 @@ export class Transformer<T> {
 export function __<T>(value: T):Transformer<T> {
 	return new Transformer(value);
 }
-export function transfrom<T>(value: T):Transformer<T> {
+export function transform<T>(value: T):Transformer<T> {
 	return new Transformer(value);
 }
 

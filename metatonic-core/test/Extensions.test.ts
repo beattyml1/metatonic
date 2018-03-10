@@ -1,10 +1,10 @@
-import {transfrom} from "../src/extensions/functional";
+import {transform} from "../src/extensions/functional";
 import {hasValue} from "../src/extensions/hasValue";
 import {isNumeric} from "../src/extensions/Number";
 
 describe('transform', () => {
     it('should be able to pipe data through to transfromers', () => {
-        let result = transfrom({a:'a'}).with(v => Object.assign({b:'b'}, v)).with(v => Object.assign({}, v, {a:v.a+'c'})).value();
+        let result = transform({a:'a'}).with(v => Object.assign({b:'b'}, v)).with(v => Object.assign({}, v, {a:v.a+'c'})).value();
         expect(result).toMatchObject({a:'ac',b:'b'});
     })
 })

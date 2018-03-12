@@ -3,7 +3,7 @@ cd metatonic-core
 echo
 echo
 echo -- Starting build and test metatonic-core --
-npm run ci 
+npm run cover 
 testresult=$?
 if [ $testresult -ne 0 ]
 then
@@ -17,7 +17,7 @@ cd metatonic-react
 echo
 echo
 echo -- Starting build and test metaonic-react --
-npm test
+npm run cover 
 testresult=$?
 if [ $testresult -ne 0 ]
 then
@@ -27,4 +27,6 @@ fi
 cd ..
 echo
 
+echo 
+echo
 echo -- Metatonic Build Complete --

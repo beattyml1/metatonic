@@ -1,38 +1,38 @@
 {
-  "name": "metatonic-react",
-  "version": "0.0.2",
+  "name": "metatonic-core",
+  "version": "0.0.3",
   "description": "Dynamic Data Entry Framework",
   "main": "built/bin/index.js",
-  "types": "src/index.ts",
+  "repository": "https://github.com/beattyml1/metatonic-platform",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "tsc & jest",
-    "cover": "tsc & jest --coverage"
+    "cover": "tsc && jest --coverage",
+    "ci": "tsc && jest --coverage --coverageDirectory=\"../coverage\"",
+    "test": "tsc && jest"
   },
   "dependencies": {
-    "metatonic-core": "*",
     "core-js": "^2.5.3",
-    "inversify": "~>4.3",
-    "react": "~>15.4.2",
-    "react-bootstrap": "*",
-    "react-bootstrap-date-picker": "*",
-    "react-bootstrap-datetimepicker": "*",
-    "react-data-grid": "*",
-    "react-dom": "~>15.4.2",
-    "react-modal-bootstrap": "^1.1.1",
+    "moment": "^2.20.1",
+    "redux": "^3.7.2",
     "tsd": "^0.6.5"
   },
   "devDependencies": {
-    "@types/react": "*",
+    "@types/core-js": "^0.9.46",
     "@types/jest": "^19.2.4",
-    "@types/core-js": "^0.9.35",
+    "@types/redux": "^3.6.31",
+    "chalk": "*",
+    "chai": "^4.1.2",
+    "express": "~>4.15.2",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
+    "mocha": "^4.1.0",
     "react-addons-test-utils": "*",
-    "express": "~>4.15.2",
+    "react-dom": "^16.2.0",
     "ts-jest": "21.2.4",
     "ts-node": "^4.1.0",
-    "typescript": "~>2.4.1"
+    "typescript": "~>2.4.1",
+    "xhr-mock": "^2.2.0"
   },
   "engines": {
     "node": ">=0.8.x"
@@ -44,7 +44,8 @@
       "js"
     ],
     "collectCoverageFrom": [
-      "**/*.{ts,tsx}",
+      "metatonic-core/src/**.{ts,tsx}",
+      "metatonic-react/src/**.{ts,tsx}",
       "!**/node_modules/**",
       "!**/src/domain/**",
       "!**/vendor/**"
@@ -54,6 +55,7 @@
     },
     "testMatch": [
       "**/test/*.test.(ts|tsx|js)"
-    ]
+    ],
+   "testPathIgnorePatterns": ["node_modules", "built/bin", ".*/node_modules", ".*/built/bin"]
   }
 }

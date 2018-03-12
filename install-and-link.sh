@@ -4,7 +4,9 @@ echo
 echo -- Installing globals --
 npm install -g jest
 npm install -g typescript@2.7.1
+npm install -g autopublish
 
+npm install 
 
 cd metatonic-core
 echo

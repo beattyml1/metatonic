@@ -4,8 +4,6 @@ env:
 language: node_js
 node_js:
 - "node"
-before_install:
-- sudo apt-get install lcov
 
 install: 
 - ./install-and-link.sh
@@ -16,7 +14,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 script: 
-- ./build-all.sh
+- npm run cover
 
 after_script:
+  - ./auto-publish.sh
   - ./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT

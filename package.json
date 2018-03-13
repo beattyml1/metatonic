@@ -1,5 +1,5 @@
 {
-  "name": "metatonic-core",
+  "name": "metatonic",
   "version": "0.0.3",
   "description": "Dynamic Data Entry Framework",
   "main": "built/bin/index.js",

@@ -39,7 +39,7 @@ export type TextType = SchemaTypeGeneric<SchemaTypeCategory.Text, TextTypeParame
 export type CodeDescriptionType = SchemaTypeGeneric<SchemaTypeCategory.Code, CodeDescriptionSelectionType>
 export type BooleanType = SchemaTypeGeneric<SchemaTypeCategory.Boolean, {}>
 
-export type SchemaType = SchemaTypeInfo & (RecordSchemaType | DateTimeSchemaType | QuantityType | NumericType | TextType | CodeDescriptionType);
+export type SchemaType = SchemaTypeInfo & (RecordSchemaType | DateTimeSchemaType | QuantityType | NumericType | TextType | CodeDescriptionType | BooleanType);
 
 let x: SchemaType;
 

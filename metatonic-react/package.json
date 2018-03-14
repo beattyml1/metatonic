@@ -6,7 +6,8 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc",
-    "test": "tsc & jest"
+    "test": "tsc & jest",
+    "cover": "tsc & jest --coverage"
   },
   "dependencies": {
     "metatonic-core": "*",
@@ -42,9 +43,17 @@
       "tsx",
       "js"
     ],
-    "testPathIgnorePatterns": ["/node_modules/", "/node_modules/metatonic-core", "../metatonic-core"],
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/src/domain/**",
+      "!**/vendor/**"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/jestPreprocess.js"
+    },
     "testMatch": [
-      "**/test/*.(ts|tsx|js)"
+      "**/test/*.test.(ts|tsx|js)"
     ]
   }
 }

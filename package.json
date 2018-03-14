@@ -6,10 +6,10 @@
   "repository": "https://github.com/beattyml1/metatonic-platform",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "cover": "tsc && jest --coverage",
-    "ci": "tsc && jest --coverage --coverageDirectory=\"../coverage\"",
-    "test": "tsc && jest"
+    "build": "./build-all.sh",
+    "cover": "./build-all.sh && jest --coverage",
+    "ci": "./build-all.sh && jest --coverage --coverageDirectory=\"../coverage\"",
+    "test": "./build-all.sh && jest"
   },
   "dependencies": {
     "core-js": "^2.5.3",
@@ -21,8 +21,8 @@
     "@types/core-js": "^0.9.46",
     "@types/jest": "^19.2.4",
     "@types/redux": "^3.6.31",
-    "chalk": "*",
     "chai": "^4.1.2",
+    "chalk": "^2.3.2",
     "express": "~>4.15.2",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
@@ -56,6 +56,11 @@
     "testMatch": [
       "**/test/*.test.(ts|tsx|js)"
     ],
-   "testPathIgnorePatterns": ["node_modules", "built/bin", ".*/node_modules", ".*/built/bin"]
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "built/bin",
+      ".*/node_modules",
+      ".*/built/bin"
+    ]
   }
 }

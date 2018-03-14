@@ -2,8 +2,8 @@
 cd metatonic-core
 echo
 echo
-echo -- Starting build and test metatonic-core --
-npm run cover 
+echo -- Starting build  metatonic-core --
+tsc
 testresult=$?
 if [ $testresult -ne 0 ]
 then
@@ -16,8 +16,8 @@ cd ..
 cd metatonic-react
 echo
 echo
-echo -- Starting build and test metaonic-react --
-npm run cover 
+echo -- Starting build  metaonic-react --
+tsc
 testresult=$?
 if [ $testresult -ne 0 ]
 then

@@ -3,12 +3,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/maintainability)](https://codeclimate.com/github/beattyml1/metatonic-platform/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic-platform/test_coverage)
 
-| metatonic-core | metatonic-react |
-|:--------------:|:----------------|
-| [![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) | [![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react) |
-| Coverage: 88% | Coverage: N/A |
+| metatonic-core | metatonic-react | cli | app-builder | example |
+|:--------------:|:----------------|:----|:------------|:--------|
+| [![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) | [![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react) | Package: N/A | Package: N/A | Package: N/A |
+| Coverage: 88% | Coverage: N/A | Coverage: N/A | Coverage: N/A | Coverage: N/A |
 
-Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
+The N/A items above are still in early stage development. Test coverage for the parts of metatonic-react that have been written is the current number one priority, followed by finishing that module and fleshing out examples and documentation. 
+
+Everything is still a work in progress. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 
 Some things we do and don't care about
 * We care about helping you write least code possible, hopefully no code sometimes

@@ -2,5 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "built/bin",
+    "target": "es2016",
+    "lib": ["dom", "es6", "es7"]
   }
 }

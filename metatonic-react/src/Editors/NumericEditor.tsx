@@ -3,7 +3,7 @@ import {BaseEditor} from "./BaseEditor";
 import {Numeric, editorFor, NumericTypeInfo, BaseEditorModel, Decimal} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
-@editorFor("numeric", InputBoxLabelContainer, { isDefault: true })
+@editorFor("Numeric", InputBoxLabelContainer, { isDefault: true })
 export class NumericEditor extends BaseEditor<Numeric, NumericTypeInfo, BaseEditorModel<Numeric>> {
     render() {
         return (

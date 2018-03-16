@@ -14,7 +14,7 @@ export {
     EditorResolver, EditorRegistry, EditorSubContext, DefaultEditorResolver,
     editorRegistry, multiEditRegistry, selectRegistry,
     FormNavigator,
-    getDefaultFormState,
+    getDefaultFormState, getDefaultDataForField,
     getTextHtmlInputType, getDateHtmlInputType,
     typeOfField, findField, createContext, getUniqueId, getNumericField
 } from './services';

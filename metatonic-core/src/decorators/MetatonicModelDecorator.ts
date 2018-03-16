@@ -6,7 +6,6 @@ import {
 import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType} from "../domain/Schema/Records";
 import {OptionalProps} from "../CoreTypes";
 import {copyAndSet} from "../extensions/functional";
-import {type} from "../../test/TestSchema";
 
 type Type = MetatonicType | (new (...args) => any)| ((...args) => any);
 

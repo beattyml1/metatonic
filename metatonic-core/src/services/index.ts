@@ -9,6 +9,7 @@ export * from './Rest'
 export * from './SchemaFromJsonService'
 export * from "./EditorRegistry";
 export * from "./DefaultFormState";
+export * from './DefaultDataService'
 export {findField} from "./FieldNavigationHelpers";
 export {typeOfField} from "./FieldNavigationHelpers";
 export {getPropertyLocatorArray} from "./FieldNavigationHelpers";

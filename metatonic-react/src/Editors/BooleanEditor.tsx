@@ -3,7 +3,7 @@ import {BaseEditorModel, BooleanType, editorFor} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
-@editorFor("boolean", InputBoxLabelContainer)
+@editorFor("Boolean", InputBoxLabelContainer)
 export class BooleanEditor extends BaseEditor<boolean, BooleanType, BaseEditorModel<boolean>, void>
 {
     render()

@@ -6,6 +6,7 @@
 | metatonic-core | metatonic-react |
 |:--------------:|:----------------|
 | [![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) | [![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react) |
+| Coverage: 88% | Coverage: N/A |
 
 Work in progress don't expect anything to work. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 

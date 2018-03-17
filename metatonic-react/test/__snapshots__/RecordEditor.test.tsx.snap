@@ -117,16 +117,7 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
       onChange={[Function]}
       required={undefined}
       type="date"
-      value={
-        Date {
-          "formats": Object {
-            "dataFormat": "YYYY-MM-DD",
-            "displayFormat": "MMMM DD YYYY",
-            "editorFormat": "MM/DD/YYYY",
-          },
-          "moment": null,
-        }
-      }
+      value=""
     />
   </div>
   <div

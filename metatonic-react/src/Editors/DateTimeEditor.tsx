@@ -4,17 +4,19 @@ import {BaseEditor} from "./BaseEditor";
 import {getDateHtmlInputType, DateTimeType} from "metatonic-core";
 import {editorFor} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
+import {TimeStamp, DateTime, Date} from "metatonic-core";
+import {DateTimeModel} from "../../../metatonic-core/src/domain/EditorModels/DateTimeModel";
 
 @editorFor("date", InputBoxLabelContainer, {isDefault: true})
 @editorFor("datetime", InputBoxLabelContainer, {isDefault: true})
 @editorFor("time", InputBoxLabelContainer, {isDefault: true})
 @editorFor("timestamp", InputBoxLabelContainer, {isDefault: true})
-export class TextFieldEditor extends BaseEditor<string, DateTimeType, TextModel, void> {
+export class DateTimeEditor extends BaseEditor<Date|DateTime|TimeStamp, DateTimeType, DateTimeModel, void> {
     render() {
         return (
             <input
                 id={this.uniqueId()}
-                value={this.props.value}
+                value={this.props.value.toEditorString()}
                 type={getDateHtmlInputType(this.type().name as any)}
                 required={this.field().required}
                 max={this.field().max || this.type().max}

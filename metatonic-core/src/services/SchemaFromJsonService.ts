@@ -11,7 +11,10 @@ export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
 
 export function addTypeToField(field: SchemaFieldInfo, schema: Schema): SchemaField {
 	let type = schema.types[field.typeName];
-	return Object.assign({}, field, { type: addTypesToFields(type, schema) });
+
+	return Object.assign({}, field, {
+		type: addTypesToFields(type, schema)
+	});
 }
 
 export function addTypesToFields(type: SchemaType, schema: Schema) {
@@ -20,6 +23,7 @@ export function addTypesToFields(type: SchemaType, schema: Schema) {
 		return Object.assign({}, type, { parameters: <SchemaRecordTypeParameters> {
 			fields: recordInfo.fields.map(_ => addTypeToField(_, schema))
 		}});
+
 	}
 	return type;
 }

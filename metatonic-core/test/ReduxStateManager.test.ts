@@ -5,13 +5,14 @@ import {exampleSchema} from "./TestSchema";
 import {getFormSchemaFromJsonObject} from "../src/services/SchemaFromJsonService";
 import {Integer} from "../src/Data/Integer";
 import {getDefaultDataForField} from "../src/services/DefaultDataService";
+import {addUniqueIdsToChildren} from "../src/services/IdGeneratorService";
 
 describe('ReduxStateManager', () => {
     it('should handle initial load', () => {
         let stateManager = startNewFormStateManager();
         stateManager.fullReload(null, exampleSchema)
         let x = stateManager.store.getState();
-        expect(x.schema).toMatchObject(getFormSchemaFromJsonObject(exampleSchema));
+        expect(x.schema).toMatchObject(addUniqueIdsToChildren(getFormSchemaFromJsonObject(exampleSchema), "")); // TODO : better way to do this
         expect(x.formData).toBeTruthy();
         expect(x.formState).toBeTruthy();
     })

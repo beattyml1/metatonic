@@ -13,6 +13,7 @@ export class TextFieldEditor extends BaseEditor<string, DateTimeType, TextModel,
     render() {
         return (
             <input
+                id={this.uniqueId()}
                 value={this.props.value}
                 type={getDateHtmlInputType(this.type().name as any)}
                 required={this.field().required}

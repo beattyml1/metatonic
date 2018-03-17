@@ -2,6 +2,7 @@ import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType} f
 import {FormSchema, Schema} from "../domain/Schema/RootSchemas";
 import {SchemaFieldInfo} from "../domain/Schema/SchemaFieldInfo";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
+import {addUniqueIdsToChildren} from "./IdGeneratorService";
 
 export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
 	if (!schema.type) schema.type = schema.types[schema.typeName] as RecordSchemaType;

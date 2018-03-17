@@ -12,12 +12,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         className="field-editor input-field-editor"
       >
         <label
-          htmlFor={undefined}
+          htmlFor="f1f0"
         >
           Address 1
         </label>
         <input
           className="input-text"
+          id="f1f0"
           maxLength={undefined}
           onChange={[Function]}
           required={undefined}
@@ -29,12 +30,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         className="field-editor input-field-editor"
       >
         <label
-          htmlFor={undefined}
+          htmlFor="f1f1"
         >
           Address 2
         </label>
         <input
           className="input-text"
+          id="f1f1"
           maxLength={undefined}
           onChange={[Function]}
           required={undefined}
@@ -46,12 +48,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         className="field-editor input-field-editor"
       >
         <label
-          htmlFor={undefined}
+          htmlFor="f1f2"
         >
           City
         </label>
         <input
           className="input-text"
+          id="f1f2"
           maxLength={undefined}
           onChange={[Function]}
           required={undefined}
@@ -63,12 +66,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         className="field-editor input-field-editor"
       >
         <label
-          htmlFor={undefined}
+          htmlFor="f1f3"
         >
           State
         </label>
         <input
           className="input-text"
+          id="f1f3"
           maxLength={undefined}
           onChange={[Function]}
           required={undefined}
@@ -80,12 +84,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         className="field-editor input-field-editor"
       >
         <label
-          htmlFor={undefined}
+          htmlFor="f1f4"
         >
           Zip
         </label>
         <input
           className="input-text"
+          id="f1f4"
           maxLength={undefined}
           onChange={[Function]}
           required={undefined}
@@ -100,12 +105,13 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
     className="field-editor input-field-editor"
   >
     <label
-      htmlFor={undefined}
+      htmlFor="f3"
     >
       Date Put On Sale
     </label>
     <input
       className="input-DateTime input-date"
+      id="f3"
       max={undefined}
       min={undefined}
       onChange={[Function]}
@@ -127,12 +133,12 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
     className="field-editor input-field-editor"
   >
     <label
-      htmlFor={undefined}
+      htmlFor="f4"
     >
       Bed Rooms
     </label>
     <input
-      id=""
+      id="f4"
       max={undefined}
       min="0"
       onChange={[Function]}

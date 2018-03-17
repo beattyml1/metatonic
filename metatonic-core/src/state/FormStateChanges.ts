@@ -10,6 +10,7 @@ import {insertAt, removeAt} from "../extensions/Array";
 import {getDefaultDataForField} from "../services/DefaultDataService";
 import {hasValue} from "../extensions/hasValue";
 import {copyAndSet} from "../extensions/functional";
+import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
 
 export class FormStateChanges {
 	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
@@ -66,7 +67,7 @@ export class FormStateChanges {
 	}
 
 	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
-	    schema = getFormSchemaFromJsonObject(schema)
+	    schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schema), "")
         let formState = getDefaultFormState(schema.type);
 		return {
             formData: formData || getDefaultDataForField(schema),

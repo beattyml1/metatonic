@@ -12,6 +12,7 @@ import {FormSchema} from "metatonic-core";
 import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 import {editorRegistry} from "../../metatonic-core/src/services/EditorRegistry";
 import '../src';
+import {addUniqueIdsToChildren} from "../../metatonic-core/src/services/IdGeneratorService";
 
 describe('RecordEditor', () => {
     function createTopField(type: Core.SchemaType) {
@@ -23,7 +24,7 @@ describe('RecordEditor', () => {
         } as SchemaField;
     }
     it('renders correctly with a text field and numeric field', () => {
-        const schema = getFormSchemaFromJsonObject(exampleSchema);
+        const schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(exampleSchema), '');
         const type = schema.type;
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);

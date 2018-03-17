@@ -3,6 +3,7 @@ import {ComponentContext} from "../domain/EditorModels/Context";
 import {hasValue} from "../extensions/hasValue";
 import {getAllWithValue} from "./ContextService";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
+import {FormSchema} from "../domain/Schema/RootSchemas";
 
 export function getUniqueId(field: SchemaField, context: ComponentContext) {
     let indexes = getAllRepeaterIndexes(context);
@@ -13,7 +14,7 @@ function getFieldUniqueId(parentId: string, index) {
     return parentId ? `${parentId}f${index}` : `f${index}`;
 }
 
-function setFieldUniqueId(field: SchemaField, parentId: string, index) {
+function setFieldUniqueId(field: SchemaField|FormSchema, parentId: string, index) {
     let uniqueId = getFieldUniqueId(parentId, index);
     let withUniqueId = Object.assign(field, { uiUniqueId: uniqueId });
 
@@ -22,7 +23,7 @@ function setFieldUniqueId(field: SchemaField, parentId: string, index) {
     return isRecord ? addUniqueIdsToChildren(withUniqueId, uniqueId) : withUniqueId;
 }
 
-export function addUniqueIdsToChildren(field: SchemaField, parentId: string) {
+export function addUniqueIdsToChildren(field: SchemaField|FormSchema, parentId: string) {
     let type = field.type.parameters as SchemaRecordTypeParameters;
     let fields = type.fields;
 

@@ -12,6 +12,7 @@ export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, Text
     render() {
         return (
             <input
+                id={this.uniqueId()}
                 value={this.props.value}
                 type={getTextHtmlInputType(this.type().name as TextTypes)}
                 required={this.field().required}

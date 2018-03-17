@@ -19,12 +19,13 @@ export function recordSchema(name: string, label: string, fields: SchemaField[],
 }
 
 export function fieldSchema(name: string, label: string, typeName: string, optionalProps?: OptionalProps<SchemaField>) {
+    let fieldId = id();
     return Object.assign({}, {
         name, label, typeName,
-        id: id(),
+        id: fieldId,
         entryType: SchemaEntryType.entry,
         customValidations: []
-    }, optionalProps) as SchemaField;
+    } as SchemaField, optionalProps) as SchemaField;
 }
 
 export function typeSchema(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {

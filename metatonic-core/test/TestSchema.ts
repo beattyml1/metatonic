@@ -28,7 +28,7 @@ export const exampleSchema = {
             fieldSchema('address1', 'Address 1', 'text'),
             fieldSchema('address2', 'Address 2', 'text'),
             fieldSchema('city', 'City', 'text'),
-            fieldSchema('state', 'State', 'text'),
+            fieldSchema('state', 'State', 'text', {maxLength:2}),
             fieldSchema('zip', 'Zip', 'text'),
         ]),
         'Record': recordSchema('Record', 'Record', []),

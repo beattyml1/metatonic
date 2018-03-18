@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RecordEditor renders correctly with a text field and numeric field 1`] = `
+exports[`RecordEditor renders correctly with default/blank data 1`] = `
 <div>
   <div />
   <fieldset>
@@ -73,7 +73,7 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
         <input
           className="input-text"
           id="f1f3"
-          maxLength={undefined}
+          maxLength={2}
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -137,6 +137,148 @@ exports[`RecordEditor renders correctly with a text field and numeric field 1`] 
       step={1}
       type="number"
       value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`RecordEditor renders correctly with fully filled data 1`] = `
+<div>
+  <div />
+  <fieldset>
+    <legend>
+      Address
+    </legend>
+    <div>
+      <div
+        className="field-editor input-field-editor"
+      >
+        <label
+          htmlFor="f1f0"
+        >
+          Address 1
+        </label>
+        <input
+          className="input-text"
+          id="f1f0"
+          maxLength={undefined}
+          onChange={[Function]}
+          required={undefined}
+          type="text"
+          value="123 My Place"
+        />
+      </div>
+      <div
+        className="field-editor input-field-editor"
+      >
+        <label
+          htmlFor="f1f1"
+        >
+          Address 2
+        </label>
+        <input
+          className="input-text"
+          id="f1f1"
+          maxLength={undefined}
+          onChange={[Function]}
+          required={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field-editor input-field-editor"
+      >
+        <label
+          htmlFor="f1f2"
+        >
+          City
+        </label>
+        <input
+          className="input-text"
+          id="f1f2"
+          maxLength={undefined}
+          onChange={[Function]}
+          required={undefined}
+          type="text"
+          value="Pittsburgh"
+        />
+      </div>
+      <div
+        className="field-editor input-field-editor"
+      >
+        <label
+          htmlFor="f1f3"
+        >
+          State
+        </label>
+        <input
+          className="input-text"
+          id="f1f3"
+          maxLength={2}
+          onChange={[Function]}
+          required={undefined}
+          type="text"
+          value="PA"
+        />
+      </div>
+      <div
+        className="field-editor input-field-editor"
+      >
+        <label
+          htmlFor="f1f4"
+        >
+          Zip
+        </label>
+        <input
+          className="input-text"
+          id="f1f4"
+          maxLength={undefined}
+          onChange={[Function]}
+          required={undefined}
+          type="text"
+          value="15224"
+        />
+      </div>
+    </div>
+  </fieldset>
+  <div />
+  <div
+    className="field-editor input-field-editor"
+  >
+    <label
+      htmlFor="f3"
+    >
+      Date Put On Sale
+    </label>
+    <input
+      className="input-DateTime input-date"
+      id="f3"
+      max={undefined}
+      min={undefined}
+      onChange={[Function]}
+      required={undefined}
+      type="date"
+      value="03/30/2018"
+    />
+  </div>
+  <div
+    className="field-editor input-field-editor"
+  >
+    <label
+      htmlFor="f4"
+    >
+      Bed Rooms
+    </label>
+    <input
+      id="f4"
+      max={undefined}
+      min="0"
+      onChange={[Function]}
+      required={undefined}
+      step={1}
+      type="number"
+      value="2"
     />
   </div>
 </div>

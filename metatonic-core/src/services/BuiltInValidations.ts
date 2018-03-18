@@ -29,7 +29,9 @@ export const max: Validation = (value, type, field) => {
 export const required: Validation = (value, type, field) =>  {
     let required = field.required;
 
-    let $hasValue = typeof value === "string" || value === null ? hasValue(value) : value.hasValue();
+    let isValueType = value && value.hasValue;
+
+    let $hasValue = isValueType ? value.hasValue() : hasValue(value);
 
     return required && !$hasValue ? [`${field.label} is required`] : [];
 }

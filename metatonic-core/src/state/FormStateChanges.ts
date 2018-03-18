@@ -42,12 +42,22 @@ export class FormStateChanges {
 			});
 	}
 
-	itemAdded(state: FormState, propertySelector: string, item, index?: number): FormState{
-	    let property = this.getProperty(state, propertySelector)
+	itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
+        let property = this.getProperty(state, propertySelector);
+		let field = property.getField();
+
+		item = item || getDefaultDataForField(field, true);
+
 		let currentArray = property.getValue();
 		let newArray = !hasValue(index) ? [...currentArray, item] : insertAt(currentArray, index, item);
+		let indexInsertedAt = hasValue(index) ? index : currentArray.length;
+
 		let form = Object.assign({}, state.formData, property.setValue(newArray));
-		return Object.assign({}, state, { formData: form})
+
+		let itemFieldState = getDefaultFormState(field.type);
+		property.getState().children[indexInsertedAt] = itemFieldState;
+
+		return Object.assign({}, state, { formData: form });
 	}
 
 	itemRemoved(state: FormState, propertySelector: string, index: number): FormState{
@@ -59,7 +69,7 @@ export class FormStateChanges {
 	}
 
 	propertiesChanged(state: FormState, properties: { property: string, value: any }[]): FormState {
-		return properties.reduce((s, p) => Object.assign({}, state, { data: this.propertyChanged(s, p.property, p.value)}), state);
+		return properties.reduce((s, p) => this.propertyChanged(s, p.property, p.value), state);
 	}
 
 	formServerUpdate(state: FormState, formData: any): FormState {

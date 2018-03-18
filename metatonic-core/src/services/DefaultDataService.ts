@@ -16,8 +16,8 @@ import {TimeStamp} from "../Data/TimeStamp";
 import {QuantityTypeParameters} from "../domain/Schema/Quantities";
 import {Quantity} from "../Data/Quantity";
 
-export function getDefaultDataForField(field: SchemaField|FormSchema) {
-    if ((field as SchemaField).multiple) {
+export function getDefaultDataForField(field: SchemaField|FormSchema, forceSingle?: boolean) {
+    if ((field as SchemaField).multiple && !forceSingle) {
         return getDefaultMultiEdit(field.type);
     }
     return getDefaultSingleEdit(field.type);

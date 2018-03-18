@@ -18,11 +18,11 @@ export enum EventType {
 }
 
 export function startNewFormStateManager() {
-    let store = createStore<FormState>((state: FormState, action) => {
+    let store = createStore<FormState>((state: FormState, action: {type, data}) => {
         let formStateChanges = new FormStateChanges();
         switch (action.type) {
-            case StateEvents.itemAdded: return formStateChanges.itemAdded(state, action.data.propertySelector, action.item, action.index);
-            case StateEvents.itemRemoved: return formStateChanges.itemRemoved(state, action.data.propertySelector, action.index);
+            case StateEvents.itemAdded: return formStateChanges.itemAdded(state, action.data.propertySelector, action.data.item, action.data.index);
+            case StateEvents.itemRemoved: return formStateChanges.itemRemoved(state, action.data.propertySelector, action.data.index);
             case StateEvents.formServerUpdate: return formStateChanges.formServerUpdate(state, action.data.formData);
             case StateEvents.propertiesChanged: return formStateChanges.propertiesChanged(state, action.data.properties);
             case StateEvents.propertyChanged: return formStateChanges.propertyChanged(state, action.data.propertySelector, action.data.value);

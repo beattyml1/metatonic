@@ -10,7 +10,7 @@ import {copyAndSet} from "../extensions/functional";
 type Type = MetatonicType | (new (...args) => any)| ((...args) => any);
 
 export function model(label?: string, params?: OptionalProps<SchemaRecordTypeParameters>&{uiControlPreference}) {
-    return function (constructor) {
+    return function (constructor): void {
         let existing = getRecordSchema(constructor.name);
         let type = {
             name: constructor.name,
@@ -73,7 +73,7 @@ function fieldAttribute(isMulti: boolean = false, editSelect: SchemaEntryType = 
         type: Type,
         label: string,
         options?: OptionalProps<SchemaField>) {
-        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor):void {
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor): void {
             let fieldTypeName = getTypeName(type);
             let parentTypeName = getTypeName(target.constructor);
             let parentTypeSchema = getRecordSchema(parentTypeName);

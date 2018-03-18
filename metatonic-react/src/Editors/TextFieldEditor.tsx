@@ -5,7 +5,7 @@ import {TextTypeParameters} from "metatonic-core";
 import {getTextHtmlInputType} from "metatonic-core";
 import {editorFor} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
-import {TextTypes} from "metatonic-core";
+import {TextTypes, fieldInputClasses} from "metatonic-core";
 
 @editorFor("text", InputBoxLabelContainer, {isDefault: true})
 export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, TextModel, void> {
@@ -17,12 +17,11 @@ export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, Text
                 type={getTextHtmlInputType(this.type().name as TextTypes)}
                 required={this.field().required}
                 maxLength={this.field().maxLength || this.type().maxLength}
-                className={this.inputTypeClasses()}
+                className={fieldInputClasses(this.field())}
+                name={this.props.context.fieldLocator}
+                data-fieldName={this.field().name}
                 onChange={(value) => this.notifyChanged(value)}
             />
         )
     }
-
-    inputTypeClasses = () =>
-        this.type().parentTypeNames.concat(this.type().name).map(_ => `input-${_}`).join(' ')
 }

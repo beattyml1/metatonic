@@ -6,6 +6,7 @@ import {
     getNumericField,
     editorFor,
     SchemaField,
+    fieldEditorClasses,
     createContext,
     UnitCategory,
     Unit,
@@ -17,11 +18,11 @@ import {
     QuantityTypeParameters,
 } from "metatonic-core";
 
-export class SelectUnit extends React.Component<{ category: UnitCategoryData, side: LeftRight, unit?: string }, {}> {
+export class SelectUnit extends React.Component<{ category: UnitCategoryData, side: LeftRight, unit?: string, field: SchemaField }, {}> {
     render() {
         return (
             <select
-                className={`unit ${this.props.side === LeftRight.Right ? 'right' : 'left'}`}
+                className={`unit ${this.props.side === LeftRight.Right ? 'right' : 'left'} ${this.props.field.name}-field-unit`}
                 value={this.props.unit}
             >
                 {this.props.category.units.map(unit =>
@@ -41,11 +42,11 @@ export class QuantityEditor extends BaseEditor<Quantity, QuantityTypeParameters,
         let unitSide = hasUnits ? unitCategory!.side : null;
         let leftUnit = unitSide === LeftRight.Left;
         let rightUnit = unitSide === LeftRight.Right;
-        let unitDropdown = !hardCodedUnit && hasUnits ? <SelectUnit unit={this.value().unit} side={unitSide!} category={unitCategory!} ></SelectUnit> : null;
+        let unitDropdown = !hardCodedUnit && hasUnits ? <SelectUnit unit={this.value().unit} side={unitSide!} category={unitCategory!} field={this.field()} ></SelectUnit> : null;
         let unitDisplay = hardCodedUnit && hasUnits ? <span className={`unit ${unitSide === LeftRight.Right ? 'right' : 'left'}`}>{hardCodedUnit}</span> : null;
         let numericField = getNumericField(this.field());
         return (
-            <div className="quantity-editor-container">
+            <div className={fieldEditorClasses(this.field())}>
                 { leftUnit ?  unitDropdown || unitDisplay : null}
 
                 <NumericEditor value={this.value().value} field={numericField} context={createContext(numericField, this.context)} fieldState={this.props.fieldState} globals={this.props.globals}></NumericEditor>

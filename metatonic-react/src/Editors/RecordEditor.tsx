@@ -3,7 +3,7 @@ import {FieldEditor} from "./FieldEditor";
 import {BaseEditorModel, createContext, editorFor, RecordSchemaType, SchemaRecordTypeParameters} from "metatonic-core";
 import FieldSet from "../LabeledFieldContainers/FieldSet";
 import {BaseRecordEditor} from "./BaseRecordEditor";
-import {field} from "../../../metatonic-core/src/decorators/MetatonicModelDecorator";
+import {fieldEditorClasses} from "metatonic-core";
 
 export type RecordParams = BaseEditorModel<any>;
 export type RecordMultiParams = BaseEditorModel<any[]>;
@@ -23,7 +23,7 @@ export class RecordEditor extends BaseRecordEditor<{[key:string]:any}, BaseEdito
             />
         );
         //fieldEditors.forEach(console.log);
-        return (<div>{fieldEditors}</div>)
+        return (<div className={fieldEditorClasses(this.field())}>{fieldEditors}</div>)
     }
 }
 

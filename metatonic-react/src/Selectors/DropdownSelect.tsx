@@ -1,12 +1,12 @@
 import * as React from "react";
 import {BaseEditor} from "../Editors/BaseEditor";
-import {RecordSchemaType, SchemaRecordTypeParameters} from "metatonic-core";
+import {RecordSchemaType, SchemaRecordTypeParameters, fieldInputClasses} from "metatonic-core";
 import {BaseEditorModel} from "metatonic-core";
 
 export class DropdownSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
     render() {
         return (
-            <select value={this.value()} id={this.uniqueId()} onChange={(value) => this.notifyChanged(value)}>
+            <select value={this.value()} id={this.uniqueId()} onChange={(value) => this.notifyChanged(value)} className={fieldInputClasses(this.field())}>
                 {this.type().items.map(item =>
                     <option value={item.$value}>{item.$description}</option>
                 )}

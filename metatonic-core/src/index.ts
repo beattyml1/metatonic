@@ -18,6 +18,7 @@ export {
     getTextHtmlInputType, getDateHtmlInputType,
     typeOfField, findField, createContext, getUniqueId, getNumericField
 } from './services';
+export * from './services/TypeEditorClasses';
 
 export {
     copyAndSet, transform,

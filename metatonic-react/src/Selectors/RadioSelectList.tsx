@@ -1,6 +1,6 @@
 import * as React from "react";
 import {BaseEditor} from "../Editors/BaseEditor";
-import {RecordSchemaType, SchemaRecordTypeParameters} from "metatonic-core";
+import {RecordSchemaType, SchemaRecordTypeParameters, fieldInputClasses} from "metatonic-core";
 import {BaseEditorModel} from "metatonic-core";
 
 export class RadioSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
@@ -15,6 +15,7 @@ export class RadioSelect extends BaseEditor<any, SchemaRecordTypeParameters, Bas
                             name={this.uniqueId()}
                             id={`${this.uniqueId()}-${index}`}
                             checked={item.$value === this.value()}
+                            className={fieldInputClasses(this.field())}
                             onChange={(changeEvent) => this.notifyChanged(changeEvent.target.value)}
                         />
                         {item.$description}

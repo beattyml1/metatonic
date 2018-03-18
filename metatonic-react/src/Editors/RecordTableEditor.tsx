@@ -2,7 +2,7 @@ import * as React from "react";
 import {SchemaRecordTypeParameters} from "metatonic-core";
 import {RecordMultiParams} from "./RecordEditor";
 import {FieldCell} from "./FieldEditor";
-import {createContext, RecordSchemaType, BaseEditorModel, SchemaField} from "metatonic-core";
+import {createContext, RecordSchemaType, BaseEditorModel, SchemaField, fieldEditorClasses} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import {} from 'metatonic-core/'
 
@@ -10,7 +10,7 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
     render() {
         let fields = this.type().fields;
         return (
-            <div className="data-grid">
+            <div className={`data-grid ${fieldEditorClasses(this.field())}`}>
                 <div className="data-grid-buttons">
                     <button onClick={this.add}>Add</button>
                 </div>

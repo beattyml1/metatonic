@@ -1,25 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RecordEditor renders correctly with default/blank data 1`] = `
-<div>
+<div
+  className="edit-Record edit-Home undefined-field"
+>
   <div />
-  <fieldset>
-    <legend>
+  <fieldset
+    className="contain-Record contain-Address address-field"
+  >
+    <legend
+      className="label-Record label-Address address-field"
+    >
       Address
     </legend>
-    <div>
+    <div
+      className="edit-Record edit-Address address-field"
+    >
       <div
-        className="field-editor input-field-editor"
+        className="contain-text address1-field"
       >
         <label
+          className="label-text address1-field"
           htmlFor="f1f0"
         >
           Address 1
         </label>
         <input
-          className="input-text"
+          className="input-text address1-field"
+          data-fieldName="address1"
           id="f1f0"
           maxLength={undefined}
+          name="address.address1"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -27,17 +38,20 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text address2-field"
       >
         <label
+          className="label-text address2-field"
           htmlFor="f1f1"
         >
           Address 2
         </label>
         <input
-          className="input-text"
+          className="input-text address2-field"
+          data-fieldName="address2"
           id="f1f1"
           maxLength={undefined}
+          name="address.address2"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -45,17 +59,20 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text city-field"
       >
         <label
+          className="label-text city-field"
           htmlFor="f1f2"
         >
           City
         </label>
         <input
-          className="input-text"
+          className="input-text city-field"
+          data-fieldName="city"
           id="f1f2"
           maxLength={undefined}
+          name="address.city"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -63,17 +80,20 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text state-field"
       >
         <label
+          className="label-text state-field"
           htmlFor="f1f3"
         >
           State
         </label>
         <input
-          className="input-text"
+          className="input-text state-field"
+          data-fieldName="state"
           id="f1f3"
           maxLength={2}
+          name="address.state"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -81,17 +101,20 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text zip-field"
       >
         <label
+          className="label-text zip-field"
           htmlFor="f1f4"
         >
           Zip
         </label>
         <input
-          className="input-text"
+          className="input-text zip-field"
+          data-fieldName="zip"
           id="f1f4"
           maxLength={undefined}
+          name="address.zip"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -102,18 +125,21 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
   </fieldset>
   <div />
   <div
-    className="field-editor input-field-editor"
+    className="contain-DateTime contain-date datePutOnSale-field"
   >
     <label
+      className="label-DateTime label-date datePutOnSale-field"
       htmlFor="f3"
     >
       Date Put On Sale
     </label>
     <input
-      className="input-DateTime input-date"
+      className="input-DateTime input-date datePutOnSale-field"
+      data-fieldName="datePutOnSale"
       id="f3"
       max={undefined}
       min={undefined}
+      name="datePutOnSale"
       onChange={[Function]}
       required={undefined}
       type="date"
@@ -121,17 +147,21 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
     />
   </div>
   <div
-    className="field-editor input-field-editor"
+    className="contain-Numeric contain-Integer numberOfBedRooms-field"
   >
     <label
+      className="label-Numeric label-Integer numberOfBedRooms-field"
       htmlFor="f4"
     >
       Bed Rooms
     </label>
     <input
+      className="input-Numeric input-Integer numberOfBedRooms-field"
+      data-fieldName="numberOfBedRooms"
       id="f4"
       max={undefined}
       min="0"
+      name="numberOfBedRooms"
       onChange={[Function]}
       required={undefined}
       step={1}
@@ -143,25 +173,36 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
 `;
 
 exports[`RecordEditor renders correctly with fully filled data 1`] = `
-<div>
+<div
+  className="edit-Record edit-Home undefined-field"
+>
   <div />
-  <fieldset>
-    <legend>
+  <fieldset
+    className="contain-Record contain-Address address-field"
+  >
+    <legend
+      className="label-Record label-Address address-field"
+    >
       Address
     </legend>
-    <div>
+    <div
+      className="edit-Record edit-Address address-field"
+    >
       <div
-        className="field-editor input-field-editor"
+        className="contain-text address1-field"
       >
         <label
+          className="label-text address1-field"
           htmlFor="f1f0"
         >
           Address 1
         </label>
         <input
-          className="input-text"
+          className="input-text address1-field"
+          data-fieldName="address1"
           id="f1f0"
           maxLength={undefined}
+          name="address.address1"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -169,17 +210,20 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text address2-field"
       >
         <label
+          className="label-text address2-field"
           htmlFor="f1f1"
         >
           Address 2
         </label>
         <input
-          className="input-text"
+          className="input-text address2-field"
+          data-fieldName="address2"
           id="f1f1"
           maxLength={undefined}
+          name="address.address2"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -187,17 +231,20 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text city-field"
       >
         <label
+          className="label-text city-field"
           htmlFor="f1f2"
         >
           City
         </label>
         <input
-          className="input-text"
+          className="input-text city-field"
+          data-fieldName="city"
           id="f1f2"
           maxLength={undefined}
+          name="address.city"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -205,17 +252,20 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text state-field"
       >
         <label
+          className="label-text state-field"
           htmlFor="f1f3"
         >
           State
         </label>
         <input
-          className="input-text"
+          className="input-text state-field"
+          data-fieldName="state"
           id="f1f3"
           maxLength={2}
+          name="address.state"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -223,17 +273,20 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
         />
       </div>
       <div
-        className="field-editor input-field-editor"
+        className="contain-text zip-field"
       >
         <label
+          className="label-text zip-field"
           htmlFor="f1f4"
         >
           Zip
         </label>
         <input
-          className="input-text"
+          className="input-text zip-field"
+          data-fieldName="zip"
           id="f1f4"
           maxLength={undefined}
+          name="address.zip"
           onChange={[Function]}
           required={undefined}
           type="text"
@@ -244,18 +297,21 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
   </fieldset>
   <div />
   <div
-    className="field-editor input-field-editor"
+    className="contain-DateTime contain-date datePutOnSale-field"
   >
     <label
+      className="label-DateTime label-date datePutOnSale-field"
       htmlFor="f3"
     >
       Date Put On Sale
     </label>
     <input
-      className="input-DateTime input-date"
+      className="input-DateTime input-date datePutOnSale-field"
+      data-fieldName="datePutOnSale"
       id="f3"
       max={undefined}
       min={undefined}
+      name="datePutOnSale"
       onChange={[Function]}
       required={undefined}
       type="date"
@@ -263,17 +319,21 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
     />
   </div>
   <div
-    className="field-editor input-field-editor"
+    className="contain-Numeric contain-Integer numberOfBedRooms-field"
   >
     <label
+      className="label-Numeric label-Integer numberOfBedRooms-field"
       htmlFor="f4"
     >
       Bed Rooms
     </label>
     <input
+      className="input-Numeric input-Integer numberOfBedRooms-field"
+      data-fieldName="numberOfBedRooms"
       id="f4"
       max={undefined}
       min="0"
+      name="numberOfBedRooms"
       onChange={[Function]}
       required={undefined}
       step={1}

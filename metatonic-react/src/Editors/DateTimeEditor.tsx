@@ -5,7 +5,8 @@ import {getDateHtmlInputType, DateTimeType} from "metatonic-core";
 import {editorFor} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 import {TimeStamp, DateTime, Date} from "metatonic-core";
-import {DateTimeModel} from "../../../metatonic-core/src/domain/EditorModels/DateTimeModel";
+import {DateTimeModel} from "metatonic-core";
+import {fieldInputClasses} from "metatonic-core";
 
 @editorFor("date", InputBoxLabelContainer, {isDefault: true})
 @editorFor("datetime", InputBoxLabelContainer, {isDefault: true})
@@ -22,11 +23,10 @@ export class DateTimeEditor extends BaseEditor<Date|DateTime|TimeStamp, DateTime
                 max={this.field().max || this.type().max}
                 min={this.field().min || this.type().min}
                 onChange={(value) => this.notifyChanged(value)}
-                className={this.inputTypeClasses()}
+                name={this.props.context.fieldLocator}
+                data-fieldName={this.field().name}
+                className={fieldInputClasses(this.field())}
             />
         )
     }
-
-    inputTypeClasses = () =>
-        this.type().parentTypeNames.concat(this.type().name).map(_ => `input-${_}`).join(' ')
 }

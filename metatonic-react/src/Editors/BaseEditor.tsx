@@ -15,7 +15,7 @@ export abstract class BaseEditor
     }
 
     store() {
-        return this.props.globals.store;
+        return this.props.resources.store;
     }
 
     type() {
@@ -27,6 +27,6 @@ export abstract class BaseEditor
     }
 
     notifyChanged(value) {
-        this.props.globals.store.propertyChanged(this.fieldLocator(), this.value())
+        this.props.resources.dispatcher.propertyChanged(this.fieldLocator(), this.value())
     }
 }

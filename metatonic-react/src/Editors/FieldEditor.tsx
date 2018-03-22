@@ -3,7 +3,7 @@ import {FieldEditorModel} from "metatonic-core";
 
 export class FieldEditor extends React.Component<FieldEditorModel, {}> {
     render() {
-        let editorComponents = this.props.globals.editors.getEditorComponents(this.props.field);
+        let editorComponents = this.props.resources.editors.getEditorComponents(this.props.field);
         if (editorComponents) {
             let Editor = editorComponents.editor;
             let Labeler = editorComponents.labeler;
@@ -29,9 +29,9 @@ export class FieldDisplay extends React.Component<FieldEditorModel, {}> {
 export class FieldCell extends React.Component<FieldEditorModel, {isEditing}> {
     render() {
         if (this.state.isEditing) {
-            return <FieldEditor value={this.props.value} field={this.props.field} context={this.props.context} fieldState={this.props.fieldState} globals={this.props.globals}/>
+            return <FieldEditor value={this.props.value} field={this.props.field} context={this.props.context} fieldState={this.props.fieldState} resources={this.props.resources}/>
         } else {
-            return <FieldDisplay value={this.props.value} field={this.props.field} context={this.props.context} fieldState={this.props.fieldState} globals={this.props.globals}/>
+            return <FieldDisplay value={this.props.value} field={this.props.field} context={this.props.context} fieldState={this.props.fieldState} resources={this.props.resources}/>
         }
     }
 }

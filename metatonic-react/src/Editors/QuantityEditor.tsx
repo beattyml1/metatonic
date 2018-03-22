@@ -49,7 +49,7 @@ export class QuantityEditor extends BaseEditor<Quantity, QuantityTypeParameters,
             <div className={fieldEditorClasses(this.field())}>
                 { leftUnit ?  unitDropdown || unitDisplay : null}
 
-                <NumericEditor value={this.value().value} field={numericField} context={createContext(numericField, this.context)} fieldState={this.props.fieldState} globals={this.props.globals}></NumericEditor>
+                <NumericEditor value={this.value().value} field={numericField} context={createContext(numericField, this.context)} fieldState={this.props.fieldState} resources={this.props.resources}></NumericEditor>
 
                 { rightUnit ?  unitDropdown || unitDisplay : null}
             </div>

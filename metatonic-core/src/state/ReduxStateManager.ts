@@ -6,6 +6,8 @@ import {Nullable} from "../CoreTypes"
 import {
     FormStateChanges,
 } from "./FormStateChanges";
+import {FormProperties} from "../domain/EditorModels/FormProperties";
+import {MetatonicFormEventDispatcher} from "../domain/contracts/MetatonicFormEventDispatcher";
 
 export enum EventType {
     propertyChanged,
@@ -19,21 +21,21 @@ export enum EventType {
 
 export function startNewFormStateManager() {
     let store = createStore<FormState>((state: FormState, action: {type, data}) => {
-        let formStateChanges = new FormStateChanges();
         switch (action.type) {
-            case StateEvents.itemAdded: return formStateChanges.itemAdded(state, action.data.propertySelector, action.data.item, action.data.index);
-            case StateEvents.itemRemoved: return formStateChanges.itemRemoved(state, action.data.propertySelector, action.data.index);
-            case StateEvents.formServerUpdate: return formStateChanges.formServerUpdate(state, action.data.formData);
-            case StateEvents.propertiesChanged: return formStateChanges.propertiesChanged(state, action.data.properties);
-            case StateEvents.propertyChanged: return formStateChanges.propertyChanged(state, action.data.propertySelector, action.data.value);
-            case StateEvents.fullReload: return formStateChanges.fullReload(state||{}, action.data.formData, action.data.schema);
+            case StateEvents.itemAdded: return FormStateChanges.itemAdded(state, action.data.propertySelector, action.data.item, action.data.index);
+            case StateEvents.itemRemoved: return FormStateChanges.itemRemoved(state, action.data.propertySelector, action.data.index);
+            case StateEvents.formServerUpdate: return FormStateChanges.formServerUpdate(state, action.data.formData);
+            case StateEvents.propertiesChanged: return FormStateChanges.propertiesChanged(state, action.data.properties);
+            case StateEvents.propertyChanged: return FormStateChanges.propertyChanged(state, action.data.propertySelector, action.data.value);
+            case StateEvents.fullReload: return FormStateChanges.fullReload(state||{}, action.data.formData, action.data.schema);
+            case 'SetSate': return action.data;
             default: return state||{};
         }
     });
     return new ReduxStateManager(store);
 }
 
-export class ReduxStateManager {
+export class ReduxStateManager implements MetatonicFormEventDispatcher{
     constructor(public store: Store<FormState>) {
 
     }
@@ -63,5 +65,13 @@ export class ReduxStateManager {
     }
     trySubmit() {
 
+    }
+
+    handleFormOverwritePromise<T>(state, asyncAction: () => Promise<T>) {
+        asyncAction().then(s => this.store.dispatch({type: 'SetState', data: s}))
+    }
+
+    loadFormFromServer(formProps: FormProperties) {
+        return this.handleFormOverwritePromise({}, () => FormStateChanges.loadFormFromServer({} ,formProps))
     }
 }

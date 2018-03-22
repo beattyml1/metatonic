@@ -11,6 +11,7 @@ export * from "./EditorRegistry";
 export * from "./DefaultFormState";
 export * from './DefaultDataService';
 export * from './TypeEditorClasses';
+export * from  './ChildPropsService'
 export {findField} from "./FieldNavigationHelpers";
 export {typeOfField} from "./FieldNavigationHelpers";
 export {getPropertyLocatorArray} from "./FieldNavigationHelpers";

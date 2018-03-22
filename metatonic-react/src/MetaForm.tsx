@@ -9,12 +9,13 @@ export type MetaFormProps= {
     recordId?: string,
     title?: string,
     dataStore: PersistantDataStore
+    afterLoad?: () => void
 }
 
 export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, MetaFormProps> {
     constructor(props: MetaFormProps, context?) {
         super(props, context);
-        this.init();
+        
     }
 
     render() {
@@ -30,11 +31,19 @@ export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, MetaFormPro
     submit() {
         this.store.trySubmit();
     }
+    
+    componentDidMount() {
+        this.init().then(() => {
+            if (this.props.afterLoad) {
+                this.props.afterLoad
+            }
+        })
+    }
 
     async init() {
         let resource = this.props.dataStore.records(this.props.recordName);
         let formData = await resource.getOne(this.props.recordId||"new");
         let schema = await resource.schema();
-        super.init(formData, schema);
+        return await super.init(formData, schema);
     }
 }

@@ -19,6 +19,7 @@ export {
     typeOfField, findField, createContext, getUniqueId, getNumericField
 } from './services';
 export * from './services/TypeEditorClasses';
+export * from './services/ChildPropsService';
 
 export {
     copyAndSet, transform,

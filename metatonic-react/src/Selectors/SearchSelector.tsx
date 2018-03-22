@@ -6,7 +6,7 @@ import {SchemaRecordTypeParameters, fieldInputClasses} from "metatonic-core";
 export class SearchSelector extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, { searchText: string }> {
     render() {
         return  <div>
-           <input type="text"
+           <input type="search"
                   value={this.state.searchText}
                   id={this.uniqueId()}
                   onKeyUp={this.doSearch}

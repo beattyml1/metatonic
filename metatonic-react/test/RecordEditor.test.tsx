@@ -44,7 +44,7 @@ describe('RecordEditor', () => {
                 field={field}
                 context={Core.createContext(field)}
                 fieldState={store.store.getState().formState}
-                globals={{editors, store}}></RecordEditor>)
+                resources={{editors, store}}></RecordEditor>)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -77,7 +77,7 @@ describe('RecordEditor', () => {
                 field={field}
                 context={Core.createContext(field)}
                 fieldState={store.store.getState().formState}
-                globals={{editors, store}}></RecordEditor>)
+                resources={{editors, store}}></RecordEditor>)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });

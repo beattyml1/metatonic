@@ -1,4 +1,4 @@
-import {field, model} from "metatonic-core/src/decorators/MetatonicModelDecorator";
+import {field, model} from "metatonic-core";
 import {Address} from "./Address";
 
 @model()

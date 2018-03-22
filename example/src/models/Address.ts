@@ -1,6 +1,7 @@
-import {field} from "../../../metatonic-core/src/decorators/MetatonicModelDecorator";
-import {SchemaEntryType} from "../../../metatonic-core/src/domain/Schema/SchemaEnums";
+import {field, model, select} from "metatonic-core";
+import {SchemaEntryType} from "metatonic-core";
 
+@model()
 export class Address {
     @field("text", "Address Line 1")
     address1: string;
@@ -11,8 +12,8 @@ export class Address {
     @field("text", "City")
     city: string;
 
-    @field("State", "State", SchemaEntryType.selection)
-    city: string;
+    @select("State", "State")
+    state: string;
 
     @field("ZipCode", "Zip Code")
     zipCode: string;

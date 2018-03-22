@@ -1,8 +1,9 @@
-import {model} from "metatonic-core/src/index";
-import {field, list} from "../../../metatonic-core/src/decorators/MetatonicModelDecorator";
+import {model} from "metatonic-core";
+import {field, list} from "metatonic-core";
 import {Homeowner} from "./Homeowner";
-import {SchemaEntryType} from "../../../metatonic-core/src/domain/Schema/SchemaEnums";
+import {SchemaEntryType} from "metatonic-core";
 import {Address} from "./Address";
+import {Quantity} from "metatonic-core";
 
 @model()
 export class House {
@@ -10,7 +11,7 @@ export class House {
     address: Address;
 
     @field("Currency", "Asking Price", SchemaEntryType.entry, {min: 0, max: 100000000})
-    askingPrice: Currency;
+    askingPrice: Quantity;
 
     @list("Homeowner", "Homeowners", SchemaEntryType.entry, { canAdd: true })
     homeowners: Homeowner[];

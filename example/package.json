@@ -10,15 +10,12 @@
     "test": "tsc & jest"
   },
   "dependencies": {
-    "inversify": "~>4.3",
-    "metatonic-core": "file:../metatonic-core",
+    "metatonic-core": "*",
+    "metatonic-react": "*",
     "react": "~>15.4.2",
-    "react-bootstrap": "*",
-    "react-bootstrap-date-picker": "*",
-    "react-bootstrap-datetimepicker": "*",
-    "react-data-grid": "*",
     "react-dom": "~>15.4.2",
-    "react-modal-bootstrap": "^1.1.1",
+    "react-helmet": "^5.2.0",
+    "react-redux": "*",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
@@ -35,7 +32,14 @@
     "jest-cli": "*",
     "ts-jest": "*",
     "typescript": "~>2.4.1",
-    "express": "~>4.15.2"
+    "react-test-renderer": "^16.2.0",
+    "jest-react": "*",
+    "webpack": "2.1.0-beta.8",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "webpack-externals-plugin": "^1.0.0",
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-manifest-plugin": "^1.0.1"
   },
   "engines": {
     "node": ">=0.8.x"

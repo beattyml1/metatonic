@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "outDir": "./dist/",
+        "strictNullChecks": true,
+        "module": "es6",
+        "target": "es5",
+        "lib": ["dom", "es6", "es7"],
+        "experimentalDecorators": true
+    },
+
+    "exclude": ["node_modules", "test"],
+    "include": [
+        "src/*.ts",
+        "src/*.tsx"
+
+    ]
+}

@@ -1,7 +1,8 @@
-import {model} from "metatonic-core/src/index";
-import {field} from "../../../metatonic-core/src/decorators/MetatonicModelDecorator";
+import {model} from "metatonic-core";
+import {field} from "metatonic-core";
 import {Person} from "./Person";
-import {SchemaEntryType} from "../../../metatonic-core/src/domain/Schema/SchemaEnums";
+import {SchemaEntryType} from "metatonic-core";
+import {Quantity} from "metatonic-core";
 
 @model({label: 'Home Owner'})
 export class ProspectiveBuyer {
@@ -9,5 +10,5 @@ export class ProspectiveBuyer {
     person: Person;
 
     @field("Currency", "MaxBudget", SchemaEntryType.entry, { min: 0 })
-    maxBudget: Currency;
+    maxBudget: Quantity;
 }

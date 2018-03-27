@@ -1,9 +1,9 @@
 import {getDefaultDataForField} from '../src/services/DefaultDataService';
 import {exampleSchema} from "./TestSchema";
-import {Decimal} from "../src/Data/Decimal";
+import {Decimal} from "../src/data/Decimal";
 import {getFormSchemaFromJsonObject} from "../src/services/SchemaFromJsonService";
-import {Date} from "../src/Data/Date";
-import {Integer} from "../src/Data/Integer";
+import {Date} from "../src/data/Date";
+import {Integer} from "../src/data/Integer";
 
 describe('getDefaultDataForField', () =>{
     it('should get setup example schema data properly', () => {

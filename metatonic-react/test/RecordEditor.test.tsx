@@ -13,12 +13,16 @@ import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 import {editorRegistry} from "../../metatonic-core/src/services/EditorRegistry";
 import '../src';
 import {addUniqueIdsToChildren} from "../../metatonic-core/src/services/IdGeneratorService";
-import {Quantity} from "../../metatonic-core/src/Data/Quantity";
-import {Decimal} from "../../metatonic-core/src/Data/Decimal";
-import {Integer} from "../../metatonic-core/src/Data/Integer";
-import {Date} from "../../metatonic-core/src/Data/Date";
+import {Quantity} from "../../metatonic-core/src/data/Quantity";
+import {Decimal} from "../../metatonic-core/src/data/Decimal";
+import {Integer} from "../../metatonic-core/src/data/Integer";
+import {Date} from "../../metatonic-core/src/data/Date";
 import {findField} from "../../metatonic-core/src/services/FieldNavigationHelpers";
 import {copyAndSet} from "../../metatonic-core/src/extensions/functional";
+import {createMetatonicApp} from "../../metatonic-core/src/MetatonicApp";
+import {createStore} from "redux";
+import {AppDispatcher} from "../../metatonic-core/src/domain/contracts/AppDispatcher";
+import {ObjectDataStorage} from "../../metatonic-core/src/state/LocalStorageDataStore";
 
 describe('RecordEditor', () => {
     function createTopField(type: Core.SchemaType) {
@@ -35,16 +39,18 @@ describe('RecordEditor', () => {
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
 
-        let store = startNewFormStateManager();
-        store.fullReload(formData, schema);
         let editors = new ReactEditorResolver(schema);
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, new ObjectDataStorage({}));
+        let resources = metatonicApp.createFormResources();
+        resources.formDispatcher.fullReload(formData, schema);
+
         const tree = renderer
             .create(<RecordEditor
-                value={store.store.getState().formData}
+                value={resources.formStore.getState().formData}
                 field={field}
                 context={Core.createContext(field)}
-                fieldState={store.store.getState().formState}
-                resources={{editors, store}}></RecordEditor>)
+                fieldState={resources.formStore.getState().formState}
+                resources={metatonicApp.createFormResources()}></RecordEditor>)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -53,13 +59,16 @@ describe('RecordEditor', () => {
         const type = schema.type;
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
+        let editors = new ReactEditorResolver(schema);
 
-        let store = startNewFormStateManager();
-        store.fullReload(formData, schema);
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, new ObjectDataStorage({}));
+        let resources = metatonicApp.createFormResources();
+        resources.formDispatcher.fullReload(formData, schema);
+
         let ownerField = findField(schema.type, 'owners');
         let owner = getDefaultDataForField(ownerField, true);
-        store.itemAdded('owners', owner)
-        store.propertiesChanged([
+        resources.formDispatcher.itemAdded('owners', owner)
+        resources.formDispatcher.propertiesChanged([
             {property: 'address.address1', value: '123 My Place'},
             {property: 'address.city', value: 'Pittsburgh'},
             {property: 'address.state', value: 'PA'},
@@ -69,15 +78,14 @@ describe('RecordEditor', () => {
             {property: 'numberOfBedRooms', value: Integer.fromData('2')},
             {property: 'datePutOnSale', value: Date.fromData('2018-03-30')}
         ]);
-        let data = store.store.getState().formData;
-        let editors = new ReactEditorResolver(schema);
+        let data = resources.formStore.getState().formData;
         const tree = renderer
             .create(<RecordEditor
                 value={data}
                 field={field}
                 context={Core.createContext(field)}
-                fieldState={store.store.getState().formState}
-                resources={{editors, store}}></RecordEditor>)
+                fieldState={resources.formStore.getState().formState}
+                resources={resources}></RecordEditor>)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });

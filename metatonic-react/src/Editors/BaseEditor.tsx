@@ -15,7 +15,11 @@ export abstract class BaseEditor
     }
 
     store() {
-        return this.props.resources.store;
+        return this.props.resources.formStore;
+    }
+
+    formDispatcher() {
+        return this.props.resources.formDispatcher;
     }
 
     type() {
@@ -27,6 +31,6 @@ export abstract class BaseEditor
     }
 
     notifyChanged(value) {
-        this.props.resources.dispatcher.propertyChanged(this.fieldLocator(), this.value())
+        this.props.resources.formDispatcher.propertyChanged(this.fieldLocator(), this.value())
     }
 }

@@ -1,6 +1,6 @@
 import {Nullable} from "../../CoreTypes";
 import {FormSchema} from "../Schema/RootSchemas";
-import {FormProperties} from "../EditorModels/FormProperties";
+import {FormBaseProperties, FormProperties} from "../EditorModels/FormProperties";
 
 export interface MetatonicFormEventDispatcher {
     propertyChanged(propertySelector: string, value);
@@ -10,5 +10,5 @@ export interface MetatonicFormEventDispatcher {
     formServerUpdate(formData: any);
     fullReload(formData: any, schema: FormSchema);
     trySubmit();
-    loadFormFromServer(formProps: FormProperties);
+    loadFormFromServer(formProps: FormBaseProperties);
 }

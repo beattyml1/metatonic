@@ -2,7 +2,7 @@ import {MetatonicType, SchemaEntryType, SchemaTypeCategory} from "../domain/Sche
 import {
     ComparableValueDataType, ComparableValueDataTypeConstructor, ComparableValueDataTypeStatic,
     ValueDataType, ValueDataTypeConstructor
-} from "../Data/BaseDataTypes";
+} from "../data/BaseDataTypes";
 import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType} from "../domain/Schema/Records";
 import {OptionalProps} from "../CoreTypes";
 import {copyAndSet} from "../extensions/functional";

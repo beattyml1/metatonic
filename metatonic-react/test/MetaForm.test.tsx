@@ -13,13 +13,16 @@ import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 import {editorRegistry} from "../../metatonic-core/src/services/EditorRegistry";
 import '../src';
 import {addUniqueIdsToChildren} from "../../metatonic-core/src/services/IdGeneratorService";
-import {Quantity} from "../../metatonic-core/src/Data/Quantity";
-import {Decimal} from "../../metatonic-core/src/Data/Decimal";
-import {Integer} from "../../metatonic-core/src/Data/Integer";
-import {Date} from "../../metatonic-core/src/Data/Date";
+import {Quantity} from "../../metatonic-core/src/data/Quantity";
+import {Decimal} from "../../metatonic-core/src/data/Decimal";
+import {Integer} from "../../metatonic-core/src/data/Integer";
+import {Date} from "../../metatonic-core/src/data/Date";
 import {findField} from "../../metatonic-core/src/services/FieldNavigationHelpers";
 import {copyAndSet} from "../../metatonic-core/src/extensions/functional";
 import {MetaForm} from '../src/MetaForm'
+import {createMetatonicApp} from "../../metatonic-core/src/MetatonicApp";
+import {createStore} from "redux";
+import {AppDispatcher} from "../../metatonic-core/src/domain/contracts/AppDispatcher";
 
 describe('RecordEditor', () => {
     function createTopField(type: Core.SchemaType) {
@@ -31,26 +34,23 @@ describe('RecordEditor', () => {
         } as SchemaField;
     }
     it('renders correctly for new data', () => {
-        expect.assertions(2);
         const schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(exampleSchema), '');
         const type = schema.type;
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
 
-        let store = startNewFormStateManager();
-        store.fullReload(formData, schema);
-        let editors = new ReactEditorResolver(schema);
-
-        let component;
-        let promise = new Promise<any>((resolve, reject) => {
-            component = renderer
-                .create(
-                    <MetaForm recordName='Home' recordId={null} title='Enter Record' dataStore={new ObjectDataStorage({})} afterLoad={resolve} />)
-                ;
-            expect(component.toJSON()).toMatchSnapshot();
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, new ReactEditorResolver(schema), new ObjectDataStorage({}));
+        let formProps = metatonicApp.createFormParameters({
+            recordName: 'Home',
+            recordId: null,
+            title: 'Enter Record'
         });
-        return promise.then(() =>
-            expect(component.toJSON()).toMatchSnapshot());
+
+        formProps.resources.formDispatcher.loadFormFromServer(formProps);
+
+        let component = renderer.create(
+                <MetaForm {...formProps} />);
+        expect(component.toJSON()).toMatchSnapshot();
     });
     it('renders correctly for existing data', () => {
 

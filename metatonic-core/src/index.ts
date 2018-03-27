@@ -28,6 +28,8 @@ export {
     forEachWithBreak, insertAt, removeAt,
 } from './extensions'
 
+export * from './MetatonicApp';
+
 export {
     RestDataStore, ObjectDataStorage,
     PersistantDataStore, RecordResource,

@@ -3,7 +3,7 @@ import {Validation} from "../domain/Schema/Validation";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 import {QuantityTypeParameters} from "../domain/Schema/Quantities";
 import {hasValue} from "../extensions/hasValue";
-import {ComparableValueDataType} from "../Data/BaseDataTypes";
+import {ComparableValueDataType} from "../data/BaseDataTypes";
 
 function isNonEmptyComparable(value) {
     return value && value.hasValue && value.hasValue() && value.lessThan && value.greaterThan;

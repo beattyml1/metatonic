@@ -89,11 +89,4 @@ export module FormStateChanges {
             navigator: new FormNavigator(schema, formData, formState)
         };
 	}
-
-    export async function loadFormFromServer(state: {}, formProps: FormProperties) {
-		let resource = formProps.dataStore.records(formProps.recordName);
-		let formData = await resource.getOne(formProps.recordId||"new");
-		let schema = await resource.schema();
-		return fullReload({formProps}, formData, schema);
-    }
 }

@@ -10,13 +10,25 @@ import {PersistantDataStore} from "metatonic-core";
 import {ReactEditorResolver} from "./Services/ReactEditorService";
 import {ReduxStateManager} from "metatonic-core";
 import {getDefaultFormState, getDefaultDataForField} from "metatonic-core";
+import {MetatonicResources} from "metatonic-core";
+import {FormState} from "metatonic-core";
+import {Store} from "redux";
+import {MetatonicFormEventDispatcher} from "metatonic-core";
 
-export class TopLevelMetatonicComponent<TData, TProps> extends React.Component<TProps, {
+export class TopLevelMetatonicComponent<TData, TProps extends { resources: MetatonicResources }> extends React.Component<TProps, {
     schema: FormSchema,
     formData: any
 }> {
-    protected store: ReduxStateManager;
+    protected dispatcher: MetatonicFormEventDispatcher;
+    protected reduxStore: Store<FormState>;
     protected  editors: ReactEditorResolver;
+    constructor(props, context?) {
+        super(props, context);
+        this.dispatcher = this.props.resources.formDispatcher;
+        this.reduxStore = this.props.resources.formStore;
+        this.editors = this.props.resources.editors as ReactEditorResolver;
+        this.reduxStore.subscribe(this.setStateFromStore);
+    }
 
     renderEditor() {
         if (!this.state) return <div></div>;
@@ -26,8 +38,13 @@ export class TopLevelMetatonicComponent<TData, TProps> extends React.Component<T
                     value={this.state.formData}
                     field={field} context={createContext(field)}
                     fieldState={getDefaultFormState(field.type)}
-                    resources={{editors: this.editors, store: this.store}}/>
+                    resources={this.props.resources}/>
         );
+    }
+
+    setStateFromStore() {
+        let state = this.reduxStore.getState();
+        this.setState(state);
     }
 
     createTopField() {
@@ -37,17 +54,5 @@ export class TopLevelMetatonicComponent<TData, TProps> extends React.Component<T
             type: this.state.schema.type,
             typeName: this.state.schema.type.name
         } as SchemaField;
-    }
-
-    async init(formData, schema: FormSchema) {
-        this.store = startNewFormStateManager();
-        this.store.store.subscribe(() => {
-            let state = this.store.store.getState();
-            console.log(state);
-            this.setState(state);
-        });
-        this.store.fullReload(formData, schema);
-        this.editors = new ReactEditorResolver(schema);
-        return {};
     }
 }

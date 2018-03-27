@@ -2,7 +2,7 @@
 import {
     ComparableValueDataType, ComparableValueDataTypeStatic, ValueDataType,
     ValueDataTypeConstructor
-} from "../src/Data/BaseDataTypes";
+} from "../src/data/BaseDataTypes";
 import {SchemaField} from "../src/domain/Schema/Records";
 
 declare var require;

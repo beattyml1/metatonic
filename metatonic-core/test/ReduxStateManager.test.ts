@@ -3,7 +3,7 @@ import {FormState} from "../src/domain/StateManagementTypes";
 import {FormSchema} from "../src/domain/Schema/RootSchemas";
 import {exampleSchema} from "./TestSchema";
 import {getFormSchemaFromJsonObject} from "../src/services/SchemaFromJsonService";
-import {Integer} from "../src/Data/Integer";
+import {Integer} from "../src/data/Integer";
 import {getDefaultDataForField} from "../src/services/DefaultDataService";
 import {addUniqueIdsToChildren} from "../src/services/IdGeneratorService";
 

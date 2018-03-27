@@ -5,16 +5,16 @@ import {
 import {FormSchema} from "../domain/Schema/RootSchemas";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 import {NumericTypeInfo} from "../domain/Schema/Numerics";
-import {Integer} from "../Data/Integer";
-import {Float} from "../Data/Float";
-import {Decimal} from "../Data/Decimal";
+import {Integer} from "../data/Integer";
+import {Float} from "../data/Float";
+import {Decimal} from "../data/Decimal";
 import {DateTimeType, DateTimeTypes} from "../domain/Schema/DateTimeType";
 import {DateTimeTypeData} from "../index";
-import {Date} from "../Data/Date";
-import {DateTime} from "../Data/DateTime";
-import {TimeStamp} from "../Data/TimeStamp";
+import {Date} from "../data/Date";
+import {DateTime} from "../data/DateTime";
+import {TimeStamp} from "../data/TimeStamp";
 import {QuantityTypeParameters} from "../domain/Schema/Quantities";
-import {Quantity} from "../Data/Quantity";
+import {Quantity} from "../data/Quantity";
 
 export function getDefaultDataForField(field: SchemaField|FormSchema, forceSingle?: boolean) {
     if ((field as SchemaField).multiple && !forceSingle) {

@@ -38,15 +38,20 @@ describe('RecordEditor', () => {
         const type = schema.type;
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
+        let storage = new ObjectDataStorage({
+            records: {
+                $schema: exampleSchema
+            }
+        });
 
-        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, new ReactEditorResolver(schema), new ObjectDataStorage({}));
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, new ReactEditorResolver(schema), storage);
         let formProps = metatonicApp.createFormParameters({
             recordName: 'Home',
             recordId: null,
             title: 'Enter Record'
         });
 
-        formProps.resources.formDispatcher.loadFormFromServer(formProps);
+        formProps.resources.formDispatcher.fullReload(formData, schema);
 
         let component = renderer.create(
                 <MetaForm {...formProps} />);

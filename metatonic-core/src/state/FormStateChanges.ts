@@ -19,11 +19,11 @@ export module FormStateChanges {
     export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector)
 
     export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
-		let property = this.getProperty(state, propertySelector)
+		let property = getProperty(state, propertySelector)
 		let formData = copyAndSet(state.formData, property.setValue(value));
 
 		state = copyAndSet(state, {formData});
-		property = this.getProperty(state, propertySelector);
+		property = getProperty(state, propertySelector);
 
 		let validationMessages = getValidationMessages(property.getField(), property.getValue(), false);
         let fieldState =  copyAndSet(property.getState(), { validationMessages })
@@ -33,7 +33,7 @@ export module FormStateChanges {
 	}
 
     export function trySubmit(state: FormState) {
-        let property = this.getProperty(state, "")
+        let property = getProperty(state, "")
         let validations = getValidationMessages(property.getField(), property.getValue(), true);
         return Object.assign({},
 			state, {
@@ -44,7 +44,7 @@ export module FormStateChanges {
 	}
 
     export function itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
-        let property = this.getProperty(state, propertySelector);
+        let property = getProperty(state, propertySelector);
 		let field = property.getField();
 
 		item = item || getDefaultDataForField(field, true);

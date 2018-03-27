@@ -38,9 +38,14 @@ describe('RecordEditor', () => {
         const type = schema.type;
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
+        let storage = new ObjectDataStorage({
+            records: {
+                $schema: exampleSchema
+            }
+        });
 
         let editors = new ReactEditorResolver(schema);
-        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, new ObjectDataStorage({}));
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, storage);
         let resources = metatonicApp.createFormResources();
         resources.formDispatcher.fullReload(formData, schema);
 
@@ -60,8 +65,13 @@ describe('RecordEditor', () => {
         const field = createTopField(type);
         let formData = getDefaultDataForField(field);
         let editors = new ReactEditorResolver(schema);
+        let storage = new ObjectDataStorage({
+            records: {
+                $schema: exampleSchema
+            }
+        });
 
-        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, new ObjectDataStorage({}));
+        let metatonicApp = createMetatonicApp(createStore(x=>x), { } as AppDispatcher, editors, storage);
         let resources = metatonicApp.createFormResources();
         resources.formDispatcher.fullReload(formData, schema);
 

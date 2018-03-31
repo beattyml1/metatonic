@@ -14,10 +14,6 @@ export abstract class BaseEditor
         return this.props.context.fieldLocator
     }
 
-    store() {
-        return this.props.resources.formStore;
-    }
-
     formDispatcher() {
         return this.props.resources.formDispatcher;
     }
@@ -31,6 +27,9 @@ export abstract class BaseEditor
     }
 
     notifyChanged(value) {
-        this.props.resources.formDispatcher.propertyChanged(this.fieldLocator(), this.value())
+        this.props.resources.formDispatcher.propertyChanged({
+            propertySelector: this.fieldLocator(),
+            value: this.value()
+        })
     }
 }

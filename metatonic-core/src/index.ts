@@ -1,4 +1,4 @@
-export * from './domain/index'
+export * from './domain'
 export {
     model,
     valueType,
@@ -11,9 +11,11 @@ export {
 } from './decorators'
 export {
     Rest, RestClient, Http,
-    EditorResolver, EditorRegistry, EditorSubContext, DefaultEditorResolver,
-    editorRegistry, multiEditRegistry, selectRegistry,
+    EditorResolver, EditorRegistry, EditorResolutionGroup, ComponentRegistry,
+    defaultComponentRegistry, defaultMultiFrameworkRegistrySet,
     FormNavigator,
+    getFormSchemaFromJsonObject,
+    addUniqueIdsToChildren,
     getDefaultFormState, getDefaultDataForField,
     getTextHtmlInputType, getDateHtmlInputType,
     typeOfField, findField, createContext, getUniqueId, getNumericField
@@ -28,10 +30,12 @@ export {
     forEachWithBreak, insertAt, removeAt,
 } from './extensions'
 
-export * from './MetatonicApp';
+export * from './MetatonicApp.interfaces';
+export * from './state/FormUserEvents'
+export * from './state/FormStateChanges'
 
 export {
     RestDataStore, ObjectDataStorage,
-    PersistantDataStore, RecordResource,
-    startNewFormStateManager, ReduxStateManager
+    PersistantDataStore, RecordResource
 } from './state';
+export * from './MetatonicBaseContext'

@@ -27,7 +27,7 @@ function getDefaultMultiEdit(type: SchemaType) {
     return [];
 }
 
-function getDefaultSingleEdit(type: SchemaType) {
+export function getDefaultSingleEdit(type: SchemaType) {
     switch (type.category) {
         case SchemaTypeCategory.Record: return getDefaultSingleRecordEdit(type as RecordSchemaType);
         case SchemaTypeCategory.Numeric: return getDefaultSingleNumericEdit(type.parameters as NumericTypeInfo);

@@ -62,10 +62,10 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
     }
 
     remove(rowIndex) {
-        this.formDispatcher().itemRemoved(this.fieldLocator(), rowIndex);
+        this.formDispatcher().itemRemoved({ propertySelector: this.fieldLocator(), index: rowIndex} );
     }
 
     add() {
-        this.formDispatcher().itemAdded(this.fieldLocator(), {});
+        this.formDispatcher().itemAdded({ propertySelector: this.fieldLocator(), item: {} });
     }
 }

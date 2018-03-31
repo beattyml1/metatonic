@@ -2,9 +2,9 @@ import * as React from "react";
 import {} from 'metatonic-redux/'
 import {PersistantDataStore} from "metatonic-core";
 import {TopLevelMetatonicComponent} from "./TopLevelMetatonicComponent";
-import {FormProperties} from "../../metatonic-core/src/domain/EditorModels/FormProperties";
+import {FormProperties} from "metatonic-core";
 
-export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, FormProperties> {
+export class MetaForm<T = any> extends TopLevelMetatonicComponent<T> {
     constructor(props: FormProperties, context?) {
         super(props, context);
         
@@ -21,6 +21,6 @@ export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, FormPropert
     }
 
     submit() {
-        this.dispatcher.trySubmit();
+        this.dispatcher.trySubmit({});
     }
 }

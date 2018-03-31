@@ -1,16 +1,19 @@
 import {PersistantDataStore} from "../../state/PersistantDataStore";
 import {EditorResolver} from "../../services/EditorResolver";
 import {MetatonicResources} from "../MetatonicResources";
+import {FormSchema, Schema} from "../Schema/RootSchemas";
+import {MetatonicApp, MetatonicContext} from "../../MetatonicApp.interfaces";
+import {FieldState} from "../FieldState/FieldState";
+import {FormAction} from "../StateManagementTypes";
 
-export type FormBaseProperties<T extends {} = any> = {
+export type FormProperties<T extends {} = any> =  {
     formName?: string,
-    recordName: string,
+    recordName?: string,
     recordId?: string,
     title?: string,
     formData?: T;
-    afterLoad?: () => void
-}
-
-export type FormProperties<T extends {} = any> = FormBaseProperties & {
-    resources: MetatonicResources;
+    schema?: FormSchema;
+    onFormEvent: (event: FormAction) => void
+    formState: FieldState;
+    editors?: EditorResolver<any, any, any>;
 }

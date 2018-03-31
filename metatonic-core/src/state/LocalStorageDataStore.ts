@@ -10,6 +10,9 @@ export class ObjectDataStorage implements PersistantDataStore {
         return new ObjectStoreRecordResource<T>(this.store, resourceName);
     }
 
+    schema(): Promise<FormSchema> {
+        return Promise.resolve(this.store["$schema"]);
+    }
 }
 
 export  class ObjectStoreRecordResource<T extends {id}> implements RecordResource<T> {

@@ -31,5 +31,6 @@ export * from "./Schema/SchemaEnums";
 export * from "./Schema/SchemaFieldInfo";
 export * from "./Schema/Numerics";
 export * from './StateManagementTypes'
+export * from './EditorModels/FormProperties'
 export {createValueStoreDataType} from "../data/BaseValueDataType";
 export {MetatonicResources} from "./MetatonicResources";

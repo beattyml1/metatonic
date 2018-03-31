@@ -12,9 +12,11 @@ export * from "./DefaultFormState";
 export * from './DefaultDataService';
 export * from './TypeEditorClasses';
 export * from  './ChildPropsService'
+export * from  './fetchFormState'
 export {findField} from "./FieldNavigationHelpers";
 export {typeOfField} from "./FieldNavigationHelpers";
 export {getPropertyLocatorArray} from "./FieldNavigationHelpers";
+export {EditorResolutionGroup} from "./EditorResolutionGroup";
 import * as _Http from "./Http";
 import * as _QueryString from "./QueryStringEncoding";
 export const Http = _Http;

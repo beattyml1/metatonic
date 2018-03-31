@@ -1,14 +1,14 @@
 import {Nullable} from "../../CoreTypes";
 import {FormSchema} from "../Schema/RootSchemas";
-import {FormBaseProperties, FormProperties} from "../EditorModels/FormProperties";
+import {MetatonicResources} from "../MetatonicResources";
+
 
 export interface MetatonicFormEventDispatcher {
-    propertyChanged(propertySelector: string, value);
-    itemAdded(propertySelector: string, item, index?: Nullable<number>);
-    itemRemoved(propertySelector: string, index: number);
-    propertiesChanged(properties: { property: string, value: any }[]);
-    formServerUpdate(formData: any);
-    fullReload(formData: any, schema: FormSchema);
-    trySubmit();
-    loadFormFromServer(formProps: FormBaseProperties);
+    propertyChanged(payload: { propertySelector: string, value });
+    itemAdded(payload: { propertySelector: string, item, index?: Nullable<number> });
+    itemRemoved(payload: { propertySelector: string, index: number });
+    propertiesChanged(payload: { properties: { property: string, value: any }[] });
+    localUpdate(payload: { formData: any });
+    localReload(payload: { formData: any, schema: FormSchema, resources: MetatonicResources });
+    trySubmit(payload?: { });
 }

@@ -1,4 +1,4 @@
-import {editorRegistry, EditorRegistry, multiEditRegistry, selectRegistry} from "../services/EditorRegistry";
+import {EditorRegistry, defaultComponentRegistry} from "../services/EditorRegistry";
 
 function editorRegistrationDecorator(registry: EditorRegistry<any, any, any>) {
     return function(
@@ -13,11 +13,11 @@ function editorRegistrationDecorator(registry: EditorRegistry<any, any, any>) {
                       typeof type === "function" ? type.name : "";
 
         return function(constructor: Function) {
-            editorRegistry.registerComponent(typeStr, constructor, labeler, options);
+            registry.registerComponent(typeStr, constructor, labeler, options);
         }
     }
 }
 
-export const editorFor = editorRegistrationDecorator(editorRegistry);
-export const multiEditorFor = editorRegistrationDecorator(multiEditRegistry);
-export const selectFor = editorRegistrationDecorator(selectRegistry);
+export const editorFor = editorRegistrationDecorator(defaultComponentRegistry.editors);
+export const multiEditorFor = editorRegistrationDecorator(defaultComponentRegistry.multiEdits);
+export const selectFor = editorRegistrationDecorator(defaultComponentRegistry.selects);

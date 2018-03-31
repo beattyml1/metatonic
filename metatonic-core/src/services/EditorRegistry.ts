@@ -1,4 +1,4 @@
-type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater?: TRepeater };
+export type LabeledEditor<TEditor, TLabeler, TRepeater> = { editor: TEditor, labeler: TLabeler, repeater?: TRepeater };
 export type TypeRegistration<TEditor, TLabeler, TRepeater> = {
     availableComponents: LabeledEditor<TEditor, TLabeler, TRepeater>[];
     uiHintMap: { [uiHint: string]: LabeledEditor<TEditor, TLabeler, TRepeater> };
@@ -71,6 +71,46 @@ export class EditorRegistry<TEditor extends new (...args) => any,
     }
 }
 
-export const editorRegistry = new EditorRegistry<any, any, any>();
-export const multiEditRegistry = new EditorRegistry<any, any, any>();
-export const selectRegistry = new EditorRegistry<any, any, any>();
+export type ComponentRegistry = {
+    editors: EditorRegistry<any, any, any>
+    multiEdits: EditorRegistry<any, any, any>
+    selects: EditorRegistry<any, any, any>
+}
+
+const editorRegistry = new EditorRegistry<any, any, any>();
+const multiEditRegistry = new EditorRegistry<any, any, any>();
+const selectRegistry = new EditorRegistry<any, any, any>();
+
+export const defaultComponentRegistry = {
+    editors: editorRegistry,
+    multiEdits: multiEditRegistry,
+    selects: selectRegistry
+}
+
+export const defaultMultiFrameworkRegistrySet = {
+    react: {
+        editorRegistry: new EditorRegistry<any, any, any>(),
+        multiEditRegistry: new EditorRegistry<any, any, any>(),
+        selectRegistry: new EditorRegistry<any, any, any>(),
+    },
+    angular: {
+        editorRegistry: new EditorRegistry<any, any, any>(),
+        multiEditRegistry: new EditorRegistry<any, any, any>(),
+        selectRegistry: new EditorRegistry<any, any, any>(),
+    },
+    angularJs: {
+        editorRegistry: new EditorRegistry<any, any, any>(),
+        multiEditRegistry: new EditorRegistry<any, any, any>(),
+        selectRegistry: new EditorRegistry<any, any, any>(),
+    },
+    vue: {
+        editorRegistry: new EditorRegistry<any, any, any>(),
+        multiEditRegistry: new EditorRegistry<any, any, any>(),
+        selectRegistry: new EditorRegistry<any, any, any>(),
+    },
+    knockout: {
+        editorRegistry: new EditorRegistry<any, any, any>(),
+        multiEditRegistry: new EditorRegistry<any, any, any>(),
+        selectRegistry: new EditorRegistry<any, any, any>(),
+    },
+}

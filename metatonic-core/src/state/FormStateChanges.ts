@@ -5,7 +5,7 @@ import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
 import {getDefaultFormState} from "../services/DefaultFormState";
 import {getValidationMessages} from "../services/Validation";
-import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes";
+import {FormState} from "../domain/StateManagementTypes";
 import {insertAt, removeAt} from "../extensions/Array";
 import {getDefaultDataForField} from "../services/DefaultDataService";
 import {hasValue} from "../extensions/hasValue";

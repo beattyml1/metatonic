@@ -10,7 +10,7 @@ import {recordSchema} from "../../metatonic-core/test/TestUtils";
 import {getDefaultDataForField} from "metatonic-core";
 import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 import {} from "metatonic-core";
-import '../src';
+import '../src/edtitors';
 import {addUniqueIdsToChildren} from "metatonic-core";
 import {Quantity} from "metatonic-core";
 import {Decimal} from "metatonic-core";

@@ -7,6 +7,13 @@ import {ComponentRegistry, defaultComponentRegistry} from "metatonic-core";
 import {RestDataStore} from "metatonic-core";
 import { MetatonicApp, MetatonicContext, MetatonicGlobalState} from "metatonic-core";
 import {MetatonicReduxApp, MetatonicReduxContext} from "./MetatonicReduxApp.interfaces";
+import {FormEvents, MetatonicAction} from "../../metatonic-core/src/domain/StateManagementTypes";
+import {SchemaElement} from "../../metatonic-core/src/domain/Schema/SchemaElement";
+import {SchemaTypeCategory} from "../../metatonic-core/src/domain/Schema/SchemaEnums";
+import {FormProperties} from "../../metatonic-core/src/domain/EditorModels/FormProperties";
+import {formReduce} from "./PrimaryFormReducer";
+import {getEditorResolverContext} from "../../metatonic-core/src/services/EditorResolver";
+import {fetchInitialFormState} from "../../metatonic-core/src/services/fetchFormState";
 
 let identity = 0;
 
@@ -19,6 +26,45 @@ type Map<T> = { [key:string]: T };
 let defaultDataStore = (apiUrl = '/api') => new RestDataStore(apiUrl)
 let defaultContextInitializer = (apiUrl = '/api') =>
     <MetatonicContextInitializer>{ componentRegistry: defaultComponentRegistry, dataStore: defaultDataStore() };
+
+class MetatonicReduxContextInstance extends MetatonicBaseContext implements  MetatonicReduxContext{
+    constructor(app: MetatonicReduxApp, componentRegistry: ComponentRegistry, dataStore: PersistantDataStore) {
+        super(app, componentRegistry, dataStore);
+    }
+
+    app: MetatonicReduxApp;
+
+    createFormReducer(formId: any): (state: FormState, action: MetatonicRootAction) => FormState {
+        return formReduce(formId);
+    }
+
+    mapStateToProps(formState: FormState): FormProperties {
+        return {
+            editors: getEditorResolverContext(this.componentRegistry, formState.schema),
+            schema: formState.schema,
+            formState: formState.formState,
+            recordName: formState.schema.typeName,
+            formData: formState.formData,
+            formName: '',
+            title: '',
+            recordId: formState.formData['id']
+        } as FormProperties;
+    }
+
+    mapStateToDispatch(formId: string):
+        (dispatch: (action: MetatonicRootAction) => void) =>
+            { onFormEvent: (action: MetatonicRootAction) => void; } {
+        return (dispatch: (action: MetatonicRootAction) => void) => (
+            { onFormEvent:(action: MetatonicRootAction) => dispatch(action) }
+        );
+    }
+
+    async loadForm(formId: any, recordName: any, recordId: any) {
+        let form = await fetchInitialFormState(this, recordName, recordId);
+        // TODO: Something
+    }
+
+}
 
 class MetatonicReduxAppInstance implements MetatonicReduxApp {
     public appStore: Store<any>;

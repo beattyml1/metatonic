@@ -1,8 +1,9 @@
 import {OptionalProps} from "../CoreTypes";
-import {FormSchema} from "../domain/Schema/RootSchemas";
+import {FormSchema, Schema} from "../domain/Schema/RootSchemas";
 
 export interface PersistantDataStore {
-    records<T extends {id}>(resourceName: string): RecordResource<T>
+    records<T extends {id}>(resourceName: string): RecordResource<T>;
+    schema(): Promise<Schema>
 }
 
 export interface RecordResource<T extends {id}> {

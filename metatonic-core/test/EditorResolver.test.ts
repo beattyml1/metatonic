@@ -1,5 +1,5 @@
-import {EditorResolver, EditorSubContext} from "../src/services/EditorResolver";
-import {EditorRegistry, editorRegistry, multiEditRegistry, selectRegistry} from "../src/services/EditorRegistry";
+import {EditorResolver, getEditorResolverContext} from "../src/services/EditorResolver";
+import {EditorRegistry, defaultComponentRegistry} from "../src/services/EditorRegistry";
 import {FormSchema} from "../src/domain/Schema/RootSchemas";
 import {SchemaEntryType, SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
 import {NumericTypeInfo} from "../src/domain/Schema/Numerics";
@@ -8,13 +8,7 @@ import {ItemCollectionSize} from "../src/domain/Schema/ItemSelectionType";
 
 describe('EditorResolver', () => {
     function getResolver(schema: FormSchema) {
-        return new EditorResolver(
-            new EditorSubContext<any, any, any>(
-                editorRegistry, schema, false),
-            new EditorSubContext<any, any, any>(
-                selectRegistry,schema, true),
-            new EditorSubContext<any, any, any>(
-                multiEditRegistry,schema, false));
+        return getEditorResolverContext(defaultComponentRegistry, schema);
     }
 
     function getDefaultSchema(): FormSchema {
@@ -70,14 +64,14 @@ describe('EditorResolver', () => {
     }
 
     afterEach(() => {
-        editorRegistry.clearAll();
-        selectRegistry.clearAll()
-        multiEditRegistry.clearAll();
+        defaultComponentRegistry.editors.clearAll();
+        defaultComponentRegistry.selects.clearAll()
+        defaultComponentRegistry.multiEdits.clearAll();
     })
 
     it('should resolve with one item entered with no hints', () => {
         let resolver = getResolver(getDefaultSchema())
-        editorRegistry.registerComponent("MyType", class Editor{}, class Labeler{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor{}, class Labeler{}, {
 
         });
         let components = resolver.getEditorComponents(getDefaultField())!;
@@ -87,10 +81,10 @@ describe('EditorResolver', () => {
 
     it('should resolve with two item entered with hints', () => {
         let resolver = getResolver(getDefaultSchema())
-        editorRegistry.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
             uiHint: "123"
         });
-        editorRegistry.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
             uiHint: ["abc", "xyz"]
         });
         let components = resolver.getEditorComponents(getDefaultField())!;
@@ -100,10 +94,10 @@ describe('EditorResolver', () => {
 
     it('should resolve with two item based on default', () => {
         let resolver = getResolver(getDefaultSchema())
-        editorRegistry.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
 
         });
-        editorRegistry.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
             isDefault: true
         });
         let components = resolver.getEditorComponents(getDefaultField())!;
@@ -113,10 +107,10 @@ describe('EditorResolver', () => {
 
     it('should auto resolve select based on size', () => {
         let resolver = getResolver(getDefaultSchema())
-        selectRegistry.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
+        defaultComponentRegistry.selects.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
             uiHint: "search"
         });
-        selectRegistry.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
+        defaultComponentRegistry.selects.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
             uiHint: "radio"
         });
         let field = Object.assign({}, getDefaultField(), { uiControlPreference: "", entryType: SchemaEntryType.selection });
@@ -127,10 +121,10 @@ describe('EditorResolver', () => {
 
     it('should resolve to the first editor added if no hint or default', () => {
         let resolver = getResolver(getDefaultSchema())
-        editorRegistry.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
 
         });
-        editorRegistry.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
+        defaultComponentRegistry.editors.registerComponent("MyType", class Editor2{}, class Labeler2{}, {
 
         });
         let components = resolver.getEditorComponents(getDefaultField())!;
@@ -140,7 +134,7 @@ describe('EditorResolver', () => {
 
     it('should resolve resolve a multi editor when set', () => {
         let resolver = getResolver(getDefaultSchema())
-        multiEditRegistry.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
+        defaultComponentRegistry.multiEdits.registerComponent("MyType", class Editor1{}, class Labeler1{}, {
 
         });
         let field = Object.assign({}, getDefaultField(), { multiple: true });

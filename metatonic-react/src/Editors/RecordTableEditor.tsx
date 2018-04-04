@@ -5,6 +5,7 @@ import {FieldCell} from "./FieldEditor";
 import {createContext, RecordSchemaType, BaseEditorModel, SchemaField, fieldEditorClasses} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import {} from 'metatonic-core/'
+import {getChildCellProps} from "metatonic-core";
 
 export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
     render() {
@@ -47,10 +48,7 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
     cell(record, field: SchemaField, rowIndex, columnIndex) {
         return (
             <td>
-                <FieldCell value={record} field={field}
-                           context={createContext(field, this.props.context, columnIndex)}
-                           fieldState={this.props.fieldState.children[rowIndex][field.name]}
-                           globals={this.props.globals}/>
+                <FieldCell {...getChildCellProps(this.props, field, rowIndex)} />
             </td>
         );
     }
@@ -64,10 +62,10 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
     }
 
     remove(rowIndex) {
-        this.store().itemRemoved(this.fieldLocator(), rowIndex);
+        this.formDispatcher().itemRemoved({ propertySelector: this.fieldLocator(), index: rowIndex} );
     }
 
     add() {
-        this.store().itemAdded(this.fieldLocator(), {});
+        this.formDispatcher().itemAdded({ propertySelector: this.fieldLocator(), item: {} });
     }
 }

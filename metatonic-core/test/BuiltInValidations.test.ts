@@ -1,7 +1,7 @@
 import {max, maxLength, min, required} from "../src/services/BuiltInValidations";
 import {SchemaField} from "../src/domain/Schema/Records";
 import {OptionalProps} from "../src/CoreTypes";
-import {Integer} from "../src/Data/Integer";
+import {Integer} from "../src/data/Integer";
 
 let smaller = "1";
 let bigger = "2";

@@ -1,6 +1,6 @@
 import {model, field, list, select, valueType, clearTsModels, getTsModels} from '../src/decorators/MetatonicModelDecorator';
 import {MetatonicType, SchemaEntryType} from "../src/domain/Schema/SchemaEnums";
-import {Integer} from "../src/Data/Integer";
+import {Integer} from "../src/data/Integer";
 
 
 describe('model', () => {

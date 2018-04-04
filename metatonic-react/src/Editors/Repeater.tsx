@@ -17,7 +17,7 @@ export class Repeater<TData, TSchemaType extends AnyTypeParameterType, TState> e
                     value={item}
                     context={createContext(this.field(), this.context(), index)}
                     fieldState={this.props.fieldState.children[index]}
-                    globals={this.props.globals}
+                    resources={this.props.resources}
                 />
             </div>
         );

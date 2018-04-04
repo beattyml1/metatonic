@@ -3,17 +3,21 @@ import {FormSchema} from "../domain/Schema/RootSchemas";
 
 export class ObjectDataStorage implements PersistantDataStore {
     constructor(protected store) {
-
+        if (!store.records) store.records = {};
     }
 
     records<T extends {id}>(resourceName: string): RecordResource<T> {
         return new ObjectStoreRecordResource<T>(this.store, resourceName);
     }
 
+    schema(): Promise<FormSchema> {
+        return Promise.resolve(this.store["$schema"]);
+    }
 }
 
 export  class ObjectStoreRecordResource<T extends {id}> implements RecordResource<T> {
     constructor(protected store, protected resourceName: string) {
+        if (!this.store.records[this.resourceName]) this.store.records[this.resourceName] = {};
     }
 
     getOne(id: string) {

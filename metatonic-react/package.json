@@ -12,15 +12,11 @@
   "dependencies": {
     "core-js": "^2.5.3",
     "inversify": "~>4.3",
-    "metatonic-core": "*",
+    "metatonic-core": "^0.0.4",
     "react": "~>15.4.2",
-    "react-bootstrap": "*",
-    "react-bootstrap-date-picker": "*",
-    "react-bootstrap-datetimepicker": "*",
-    "react-data-grid": "*",
     "react-dom": "~>15.4.2",
-    "react-modal-bootstrap": "^1.1.1",
-    "tsd": "^0.6.5"
+    "tsd": "^0.6.5",
+    "react-modal-bootstrap":"~>1.1.1"
   },
   "devDependencies": {
     "@types/react": "*",

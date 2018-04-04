@@ -1,7 +1,7 @@
 import {valueTypeTests} from './BaseDataTypeTests'
 import {TimeStamp} from "../src";
 import {SchemaField} from "../src/domain/Schema/Records";
-import {ValueDataType} from "../src/Data/BaseDataTypes";
+import {ValueDataType} from "../src/data/BaseDataTypes";
 
 declare var require;
 declare var it;

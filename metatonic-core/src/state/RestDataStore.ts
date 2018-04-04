@@ -6,7 +6,9 @@ export class RestDataStore implements PersistantDataStore {
     records<T extends {id}>(resourceName: string) {
         return new RestRecordResource<T>(this.metaTonicApiUrl, resourceName)
     }
-
+    schema(): Promise<FormSchema> {
+        return Rest.Get<FormSchema, any>(`${this.metaTonicApiUrl}/$global-schema`);
+    }
 }
 
 export class RestRecordResource<T extends {id}> implements RecordResource<T> {

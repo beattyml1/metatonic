@@ -1,16 +1,16 @@
-import {editorRegistry} from "../src/services/EditorRegistry";
+import {defaultComponentRegistry} from "../src/services/EditorRegistry";
 import {editorFor} from "../src/decorators/editorDecorator";
 
 describe('editorDecorator',() => {
-    afterEach(() => editorRegistry.clearAll())
+    afterEach(() => defaultComponentRegistry.editors.clearAll())
     it('should add a the editor for a string type', () => {
         @editorFor('Xyz', class Labeler{})
         class Abc {
 
         }
 
-        expect(editorRegistry.editorRegistrations['Xyz']).toBeTruthy()
-        expect(editorRegistry.editorRegistrations['Xyz'].availableComponents).toBeTruthy()
+        expect(defaultComponentRegistry.editors.editorRegistrations['Xyz']).toBeTruthy()
+        expect(defaultComponentRegistry.editors.editorRegistrations['Xyz'].availableComponents).toBeTruthy()
     })
 
     it('should add a the editor for a class type', () => {
@@ -19,7 +19,7 @@ describe('editorDecorator',() => {
 
         }
 
-        expect(editorRegistry.editorRegistrations['MyClass']).toBeTruthy()
-        expect(editorRegistry.editorRegistrations['MyClass'].availableComponents).toBeTruthy()
+        expect(defaultComponentRegistry.editors.editorRegistrations['MyClass']).toBeTruthy()
+        expect(defaultComponentRegistry.editors.editorRegistrations['MyClass'].availableComponents).toBeTruthy()
     })
 })

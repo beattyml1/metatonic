@@ -5,24 +5,25 @@ import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
 import {getDefaultFormState} from "../services/DefaultFormState";
 import {getValidationMessages} from "../services/Validation";
-import {StateEvents, FormEvent, FormState} from "../domain/StateManagementTypes";
+import {FormState} from "../domain/StateManagementTypes";
 import {insertAt, removeAt} from "../extensions/Array";
 import {getDefaultDataForField} from "../services/DefaultDataService";
 import {hasValue} from "../extensions/hasValue";
 import {copyAndSet} from "../extensions/functional";
 import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
+import {FormProperties} from "../domain/EditorModels/FormProperties";
 
-export class FormStateChanges {
-	getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
+export module FormStateChanges {
+	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
 
-	getProperty = (state: FormState, propertySelector: string) => this.getNav(state).locate(propertySelector)
+    export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector)
 
-	propertyChanged(state: FormState, propertySelector: string, value): FormState{
-		let property = this.getProperty(state, propertySelector)
+    export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
+		let property = getProperty(state, propertySelector)
 		let formData = copyAndSet(state.formData, property.setValue(value));
 
 		state = copyAndSet(state, {formData});
-		property = this.getProperty(state, propertySelector);
+		property = getProperty(state, propertySelector);
 
 		let validationMessages = getValidationMessages(property.getField(), property.getValue(), false);
         let fieldState =  copyAndSet(property.getState(), { validationMessages })
@@ -31,8 +32,8 @@ export class FormStateChanges {
         return copyAndSet(state, { formState });
 	}
 
-	trySubmit(state: FormState) {
-        let property = this.getProperty(state, "")
+    export function trySubmit(state: FormState) {
+        let property = getProperty(state, "")
         let validations = getValidationMessages(property.getField(), property.getValue(), true);
         return Object.assign({},
 			state, {
@@ -42,8 +43,8 @@ export class FormStateChanges {
 			});
 	}
 
-	itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
-        let property = this.getProperty(state, propertySelector);
+    export function itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
+        let property = getProperty(state, propertySelector);
 		let field = property.getField();
 
 		item = item || getDefaultDataForField(field, true);
@@ -60,27 +61,28 @@ export class FormStateChanges {
 		return Object.assign({}, state, { formData: form });
 	}
 
-	itemRemoved(state: FormState, propertySelector: string, index: number): FormState{
-        let property = this.getProperty(state, propertySelector)
+    export function itemRemoved(state: FormState, propertySelector: string, index: number): FormState{
+        let property = getProperty(state, propertySelector)
 		let currentArray = property.getValue();
 		let newArray = removeAt(currentArray, index);
 		let form = Object.assign({}, state.formData, property.setValue(newArray));
 		return Object.assign({}, state, { formData: form})
 	}
 
-	propertiesChanged(state: FormState, properties: { property: string, value: any }[]): FormState {
-		return properties.reduce((s, p) => this.propertyChanged(s, p.property, p.value), state);
+    export function propertiesChanged(state: FormState, properties: { property: string, value: any }[]): FormState {
+		return properties.reduce((s, p) => propertyChanged(s, p.property, p.value), state);
 	}
 
-	formServerUpdate(state: FormState, formData: any): FormState {
+    export function formServerUpdate(state: FormState, formData: any): FormState {
 		return Object.assign({}, state, { formData, serverDocumentData: formData });
 	}
 
-	fullReload(state: FormState, formData: any, schema: FormSchema): FormState {
+    export function fullReload(state: { formProps: FormProperties }, formData: any, schema: FormSchema): FormState {
 	    schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schema), "")
         let formState = getDefaultFormState(schema.type);
 		return {
             formData: formData || getDefaultDataForField(schema),
+            formProps: state.formProps,
             serverDocumentData: formData,
 			formState,
             schema,
@@ -88,5 +90,3 @@ export class FormStateChanges {
         };
 	}
 }
-
-export const formStateChanges = new FormStateChanges();

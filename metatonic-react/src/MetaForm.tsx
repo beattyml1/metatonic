@@ -2,19 +2,12 @@ import * as React from "react";
 import {} from 'metatonic-redux/'
 import {PersistantDataStore} from "metatonic-core";
 import {TopLevelMetatonicComponent} from "./TopLevelMetatonicComponent";
+import {FormProperties} from "metatonic-core";
 
-export type MetaFormProps= {
-    formName?: string,
-    recordName: string,
-    recordId?: string,
-    title?: string,
-    dataStore: PersistantDataStore
-}
-
-export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, MetaFormProps> {
-    constructor(props: MetaFormProps, context?) {
+export class MetaForm<T = any> extends TopLevelMetatonicComponent<T> {
+    constructor(props: FormProperties, context?) {
         super(props, context);
-        this.init();
+        
     }
 
     render() {
@@ -28,13 +21,6 @@ export class MetaForm<T = any> extends TopLevelMetatonicComponent<T, MetaFormPro
     }
 
     submit() {
-        this.store.trySubmit();
-    }
-
-    async init() {
-        let resource = this.props.dataStore.records(this.props.recordName);
-        let formData = await resource.getOne(this.props.recordId||"new");
-        let schema = await resource.schema();
-        super.init(formData, schema);
+        this.dispatcher.trySubmit({});
     }
 }

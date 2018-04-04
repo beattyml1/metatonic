@@ -1,8 +1,17 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
     "outDir": "built/bin",
+    "strictNullChecks": true,
     "target": "es2016",
-    "lib": ["dom", "es6", "es7"]
-  }
+    "lib": ["dom", "es6", "es7"],
+    "experimentalDecorators": true
+  },
+
+  "exclude": ["node_modules"]
 }

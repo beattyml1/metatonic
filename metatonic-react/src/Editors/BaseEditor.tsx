@@ -10,6 +10,19 @@ export abstract class BaseEditor
      TState = {}>
     extends BaseFieldContextComponent<TParams, TState> {
 
+    renderValidationMessages() {
+        return (
+            <div className="error-list">
+                {this.validationMessages().map(message => {
+                    <label className="error" htmlFor={this.uniqueId()}>{message}</label>
+                })}
+            </div>);
+    }
+
+    validationMessages() {
+        return this.props.fieldState.validationMessages;
+    }
+
     fieldLocator() {
         return this.props.context.fieldLocator
     }

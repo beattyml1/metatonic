@@ -1,8 +1,8 @@
-import {CustomValidationsContext} from "../src/services/CustomValidations";
+import {ValidationsContext} from "../src/services/CustomValidations";
 
 describe('CustomValidationsContext', () => {
     it('should handle structured data', () => {
-        let context = new CustomValidationsContext();
+        let context = new ValidationsContext();
         context.register({name: "abc", validate: () => ["a"]});
         context.register({name: "xyz", validate: () => ["x"]});
 
@@ -13,7 +13,7 @@ describe('CustomValidationsContext', () => {
         expect(validation.validate("", {} as any, {} as any)).toContain("a");
     });
     it('should handle a function as only argument to register', () => {
-        let context = new CustomValidationsContext();
+        let context = new ValidationsContext();
         context.register(function abc() { return ["a"]});
         context.register({name: "xyz", validate: () => ["x"]});
 

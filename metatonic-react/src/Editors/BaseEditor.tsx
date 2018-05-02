@@ -2,6 +2,7 @@ import * as React from "react";
 import {BaseEditorModel} from "metatonic-core";
 import {AnyTypeParameterType, SchemaType} from "metatonic-core";
 import {BaseFieldContextComponent} from "../BaseFieldContextComponent";
+import {ValidationSeverity} from "../../../metatonic-core/src/domain/Schema/SchemaValidation";
 
 export abstract class BaseEditor
     <TData,
@@ -31,5 +32,10 @@ export abstract class BaseEditor
             propertySelector: this.fieldLocator(),
             value: this.value()
         })
+    }
+
+    primaryInputAriaAttributes() {
+        return {
+        }
     }
 }

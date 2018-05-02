@@ -22,12 +22,14 @@ export * from './EditorModels/TextModel'
 export * from './EditorModels/DateTimeModel'
 
 export * from './contracts/AppDispatcher'
+export * from './contracts/Validation'
 export * from './contracts/MetatonicFormEventDispatcher'
 
 export * from './Html/HtmlInputType'
 
 export * from "./Schema/SchemaEnums";
 export * from "./Schema/SchemaEnums";
+export * from "./Schema/SchemaValidation";
 export * from "./Schema/SchemaFieldInfo";
 export * from "./Schema/Numerics";
 export * from './StateManagementTypes'

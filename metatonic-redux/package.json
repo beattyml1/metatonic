@@ -2,7 +2,7 @@
   "name": "metatonic-redux",
   "version": "0.0.4",
   "description": "Dynamic Data Entry Framework",
-  "main": "built/bin/index.js",
+  "main": "built/bin/metatonic-redux/index.js",
   "repository": "https://github.com/beattyml1/metatonic-platform",
   "license": "MIT",
   "scripts": {
@@ -13,9 +13,13 @@
   },
   "dependencies": {
     "core-js": "^2.5.3",
-    "moment": "^2.20.1",
-    "redux": "^3.7.2",
     "metatonic-core": "*",
+    "moment": "^2.20.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.18.0",
+    "redux-promise": "^0.5.3",
+    "rxjs": "^5.5.10",
     "tsd": "^0.6.5"
   },
   "devDependencies": {

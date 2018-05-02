@@ -1,33 +1,32 @@
-import {SchemaType} from "../domain/Schema/Records";
-import {Validation} from "../domain/Schema/Validation";
-import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
-import {QuantityTypeParameters} from "../domain/Schema/Quantities";
+import {Validation, ValidationTime} from "../domain";
 import {hasValue} from "../extensions/hasValue";
-import {ComparableValueDataType} from "../data/BaseDataTypes";
+import {SchemaValidation} from "../domain";
+import {whenTimeMatches} from "./ValidationUtils";
+import {globalValidations} from "./CustomValidations";
 
 function isNonEmptyComparable(value) {
     return value && value.hasValue && value.hasValue() && value.lessThan && value.greaterThan;
 }
 
-export const min: Validation = (value, type, field) => {
+export const min: Validation = (value, field, validation, time, params) => {
     if(!isNonEmptyComparable(value)) return [];
 
-    let min = field.min;
+    let min = params;
     let minVal = value.constructor.fromData(min);
 
     return hasValue(min) && value.lessThan(minVal) ? [`${field.label} must be greater than ${min}`] : []
 }
 
-export const max: Validation = (value, type, field) => {
+export const max: Validation = (value, field, validation, time, params) => {
     if (!isNonEmptyComparable(value)) return [];
 
-    let max = field.max;
-    let maxVal =value.constructor.fromData(max);
+    let max = params;
+    let maxVal = value.constructor.fromData(max);
 
     return hasValue(max) && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
 }
-export const required: Validation = (value, type, field) =>  {
-    let required = field.required;
+export const required: Validation = (value, field, validation, time, params) =>  {
+    let required = params;
 
     let isValueType = value && value.hasValue;
 
@@ -36,20 +35,20 @@ export const required: Validation = (value, type, field) =>  {
     return required && !$hasValue ? [`${field.label} is required`] : [];
 }
 
-export const maxLength: Validation = (value, type, field) =>  {
+export const maxLength: Validation = (value, field, validation, time, params) =>  {
     if (!(typeof value === "string")) return [];
 
-    let maxLength = field.maxLength;
+    let maxLength = params;
 
     let length = value ? value.length : 0;
 
     return maxLength && length > maxLength ? [`${field.label} must be shorter than ${maxLength} characters`] : [];
 }
 
-export const regexValidaiton: Validation<any> = (value, type, field, config, params) =>  {
+export const regexValidaiton: Validation<any> = (value, field, validation, time, params) =>  {
     if (!(typeof value === "string")) return [];
 
-    let regex = params.regex;
+    let regex = params;
     let matches = val => new RegExp(regex).test(val);
     let message = typeof params.message === "string" ? () => params.message :
                   typeof params.message === "function" ? params.message :
@@ -58,6 +57,5 @@ export const regexValidaiton: Validation<any> = (value, type, field, config, par
     return regex && !matches(value) ? [message(field, value)] : [];
 }
 
-export const builtInValidations:  Validation[] = [
-    min, max, maxLength, required
-]
+
+[ min, max, maxLength, required ].map(whenTimeMatches).forEach(x => globalValidations.register(x));

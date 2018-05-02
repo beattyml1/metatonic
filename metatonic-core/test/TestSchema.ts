@@ -11,7 +11,7 @@ export const exampleSchema = {
     label: 'A',
     typeName: 'Home',
     type: null as any,
-    customValidations:[],
+    validations:[],
     types: {
         'Home': recordSchema('Home', 'Home', [
             fieldSchema('owners', 'Owners', 'Person', {multiple: true}),

@@ -1,5 +1,8 @@
 import {PersistantDataStore, RecordResource} from "./PersistantDataStore";
 import {FormSchema} from "../domain/Schema/RootSchemas";
+import {OptionalProps} from "../CoreTypes";
+
+let id = 0;
 
 export class ObjectDataStorage implements PersistantDataStore {
     constructor(protected store) {
@@ -18,6 +21,7 @@ export class ObjectDataStorage implements PersistantDataStore {
 export  class ObjectStoreRecordResource<T extends {id}> implements RecordResource<T> {
     constructor(protected store, protected resourceName: string) {
         if (!this.store.records[this.resourceName]) this.store.records[this.resourceName] = {};
+        if (!this.store.records['$schema']) this.store.records['$schema'] = {};
     }
 
     getOne(id: string) {
@@ -32,20 +36,24 @@ export  class ObjectStoreRecordResource<T extends {id}> implements RecordResourc
         throw 'Not implemented'
     }
 
-    parametricSearch<TParams>(params: TParams): Promise<T[]> {
+    getMany<TParams = OptionalProps<T>>(group: string, params: TParams): Promise<T[]> {
         throw 'Not implemented'
     }
 
     create(data: T) {
+        data.id = data.id || id++;
         this.store.records[this.resourceName][data["id"]] = data;
+        return Promise.resolve(data);
     }
 
     update(data: T) {
         this.store.records[this.resourceName][data["id"]] = data;
+        return Promise.resolve(data);
     }
 
     delete(id: string) {
         delete this.store.records[this.resourceName][id];
+        return Promise.resolve();
     }
 
     schema(): Promise<FormSchema> {

@@ -6,10 +6,11 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
 >
   <div />
   <fieldset
-    className="contain-Record contain-Address address-field"
+    className="field-set-field-container contain-Record contain-Address address-field"
   >
     <legend
       className="label-Record label-Address address-field"
+      id="f1-label"
     >
       Address
     </legend>
@@ -17,11 +18,12 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
       className="edit-Record edit-Address address-field"
     >
       <div
-        className="contain-text address1-field"
+        className="input-box-field-container contain-text address1-field"
       >
         <label
           className="label-text address1-field"
           htmlFor="f1f0"
+          id="f1f0-label"
         >
           Address 1
         </label>
@@ -37,15 +39,18 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text address2-field"
+        className="input-box-field-container contain-text address2-field"
       >
         <label
           className="label-text address2-field"
           htmlFor="f1f1"
+          id="f1f1-label"
         >
           Address 2
         </label>
@@ -61,15 +66,18 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text city-field"
+        className="input-box-field-container contain-text city-field"
       >
         <label
           className="label-text city-field"
           htmlFor="f1f2"
+          id="f1f2-label"
         >
           City
         </label>
@@ -85,15 +93,18 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text state-field"
+        className="input-box-field-container contain-text state-field"
       >
         <label
           className="label-text state-field"
           htmlFor="f1f3"
+          id="f1f3-label"
         >
           State
         </label>
@@ -109,15 +120,18 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text zip-field"
+        className="input-box-field-container contain-text zip-field"
       >
         <label
           className="label-text zip-field"
           htmlFor="f1f4"
+          id="f1f4-label"
         >
           Zip
         </label>
@@ -133,21 +147,26 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
     </div>
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </fieldset>
   <div />
   <div
-    className="contain-DateTime contain-date datePutOnSale-field"
+    className="input-box-field-container contain-DateTime contain-date datePutOnSale-field"
   >
     <label
       className="label-DateTime label-date datePutOnSale-field"
       htmlFor="f3"
+      id="f3-label"
     >
       Date Put On Sale
     </label>
@@ -164,15 +183,18 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
       value=""
     />
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </div>
   <div
-    className="contain-Numeric contain-Integer numberOfBedRooms-field"
+    className="input-box-field-container contain-Numeric contain-Integer numberOfBedRooms-field"
   >
     <label
       className="label-Numeric label-Integer numberOfBedRooms-field"
       htmlFor="f4"
+      id="f4-label"
     >
       Bed Rooms
     </label>
@@ -190,8 +212,10 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
       value=""
     />
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
@@ -202,10 +226,11 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
 >
   <div />
   <fieldset
-    className="contain-Record contain-Address address-field"
+    className="field-set-field-container contain-Record contain-Address address-field"
   >
     <legend
       className="label-Record label-Address address-field"
+      id="f1-label"
     >
       Address
     </legend>
@@ -213,11 +238,12 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
       className="edit-Record edit-Address address-field"
     >
       <div
-        className="contain-text address1-field"
+        className="input-box-field-container contain-text address1-field"
       >
         <label
           className="label-text address1-field"
           htmlFor="f1f0"
+          id="f1f0-label"
         >
           Address 1
         </label>
@@ -233,15 +259,18 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
           value="123 My Place"
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text address2-field"
+        className="input-box-field-container contain-text address2-field"
       >
         <label
           className="label-text address2-field"
           htmlFor="f1f1"
+          id="f1f1-label"
         >
           Address 2
         </label>
@@ -257,15 +286,18 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
           value=""
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text city-field"
+        className="input-box-field-container contain-text city-field"
       >
         <label
           className="label-text city-field"
           htmlFor="f1f2"
+          id="f1f2-label"
         >
           City
         </label>
@@ -281,15 +313,18 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
           value="Pittsburgh"
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text state-field"
+        className="input-box-field-container contain-text state-field"
       >
         <label
           className="label-text state-field"
           htmlFor="f1f3"
+          id="f1f3-label"
         >
           State
         </label>
@@ -305,15 +340,18 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
           value="PA"
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
       <div
-        className="contain-text zip-field"
+        className="input-box-field-container contain-text zip-field"
       >
         <label
           className="label-text zip-field"
           htmlFor="f1f4"
+          id="f1f4-label"
         >
           Zip
         </label>
@@ -329,21 +367,26 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
           value="15224"
         />
         <div
-          className="error-list"
-        />
+          className="validation-list"
+        >
+          <div />
+        </div>
       </div>
     </div>
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </fieldset>
   <div />
   <div
-    className="contain-DateTime contain-date datePutOnSale-field"
+    className="input-box-field-container contain-DateTime contain-date datePutOnSale-field"
   >
     <label
       className="label-DateTime label-date datePutOnSale-field"
       htmlFor="f3"
+      id="f3-label"
     >
       Date Put On Sale
     </label>
@@ -360,15 +403,18 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
       value="03/30/2018"
     />
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </div>
   <div
-    className="contain-Numeric contain-Integer numberOfBedRooms-field"
+    className="input-box-field-container contain-Numeric contain-Integer numberOfBedRooms-field"
   >
     <label
       className="label-Numeric label-Integer numberOfBedRooms-field"
       htmlFor="f4"
+      id="f4-label"
     >
       Bed Rooms
     </label>
@@ -386,8 +432,10 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
       value="2"
     />
     <div
-      className="error-list"
-    />
+      className="validation-list"
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;

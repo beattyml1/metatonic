@@ -21,7 +21,7 @@ describe('EditorResolver', () => {
                 name: 'MyType',
                 label: 'My Type',
                 id: '2',
-                customValidations:[],
+                validations:[],
                 category: SchemaTypeCategory.Record,
                 parentTypeNames: [],
                 parameters: {  itemSearchUrl: '', fields: [], items: [], canAdd: false, size: ItemCollectionSize.Small }as SchemaRecordTypeParameters
@@ -37,7 +37,7 @@ describe('EditorResolver', () => {
                     parameters: {  itemSearchUrl: '', fields: [], items: [], canAdd: false, size: ItemCollectionSize.Small }as SchemaRecordTypeParameters
                 }
             },
-            customValidations: []
+            validations: []
         };
     }
 
@@ -47,7 +47,7 @@ describe('EditorResolver', () => {
             label: 'Field',
             id: '1',
             uiUniqueId: "abc",
-            customValidations: [],
+            validations: [],
             typeName:"MyType",
             uiControlPreference: "abc",
             entryType: SchemaEntryType.entry,
@@ -55,7 +55,7 @@ describe('EditorResolver', () => {
                 name: 'MyType',
                 label: 'My Type',
                 id: '2',
-                customValidations:[],
+                validations:[],
                 category: SchemaTypeCategory.Record,
                 parentTypeNames: [],
                 parameters: {  itemSearchUrl: '', fields: [], items: [], canAdd: false, size: ItemCollectionSize.Small }as SchemaRecordTypeParameters

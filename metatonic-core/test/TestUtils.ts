@@ -1,6 +1,7 @@
 import {AnyTypeParameterType, RecordSchemaType, SchemaField, SchemaType} from "../src/domain/Schema/Records";
 import {OptionalProps} from "../src/CoreTypes";
 import {SchemaEntryType, SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
+import {SchemaFieldInfo} from "../src/domain/Schema/SchemaFieldInfo";
 export {getFormSchemaFromJsonObject} from '../src/services/SchemaFromJsonService';
 
 let _id = 0;
@@ -14,7 +15,7 @@ export function recordSchema(name: string, label: string, fields: SchemaField[],
         id: id(),
         category: SchemaTypeCategory.Record,
         parentTypeNames: ['Record'],
-        customValidations: []
+        validations: []
     }, optionalProps) as RecordSchemaType;
 }
 
@@ -24,8 +25,9 @@ export function fieldSchema(name: string, label: string, typeName: string, optio
         name, label, typeName,
         id: fieldId,
         entryType: SchemaEntryType.entry,
-        customValidations: []
-    } as SchemaField, optionalProps) as SchemaField;
+        validations: [],
+        uiUniqueId:'a'
+    } as SchemaFieldInfo, optionalProps) as SchemaField;
 }
 
 export function typeSchema(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {
@@ -36,7 +38,7 @@ export function typeSchema(name: string, label: string, category: SchemaTypeCate
         category,
         parentTypeNames: parentTypeNames || (getRootType(category) === name ? [] :[ getRootType(category) ]),
         parameters,
-        customValidations: [],
+        validations: [],
     }) as RecordSchemaType;
 }
 

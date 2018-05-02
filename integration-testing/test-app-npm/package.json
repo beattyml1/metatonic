@@ -1,0 +1,30 @@
+{
+  "name": "test-app-npm",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "metatonic-core": "^0.0.4",
+    "metatonic-react": "^0.0.4",
+    "metatonic-redux": "*",
+    "react-redux": "^5.0.7",
+    "react-scripts-ts": "2.14.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.8",
+    "@types/react": "^16.3.13",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^5.0.19",
+    "typescript": "^2.8.3"
+  }
+}

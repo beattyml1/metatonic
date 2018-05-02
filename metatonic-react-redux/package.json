@@ -2,7 +2,7 @@
   "name": "metatonic-react-redux",
   "version": "0.0.4",
   "description": "Dynamic Data Entry Framework",
-  "main": "built/bin/index.js",
+  "main": "built/bin/metatonic-react-redux/index.js",
   "repository": "https://github.com/beattyml1/metatonic-platform",
   "license": "MIT",
   "scripts": {
@@ -12,22 +12,25 @@
     "test": "tsc && jest"
   },
   "dependencies": {
-    "core-js": "^2.5.3",
-    "moment": "^2.20.1",
-    "redux": "^3.7.2",
-    "react": "~>15.4.2",
-    "react-dom": "~>15.4.2",
+    "core-js": "^2.5.5",
     "metatonic-core": "*",
     "metatonic-react": "*",
     "metatonic-redux": "*",
+    "moment": "^2.22.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
     "tsd": "^0.6.5"
   },
   "devDependencies": {
+    "@types/react": "^16.3.13",
+    "@types/react-redux": "^5.0.19",
     "@types/core-js": "^0.9.46",
     "@types/jest": "^19.2.4",
     "@types/redux": "^3.6.31",
-    "chalk": "*",
     "chai": "^4.1.2",
+    "chalk": "^2.4.1",
     "express": "~>4.15.2",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
@@ -37,7 +40,7 @@
     "ts-jest": "21.2.4",
     "ts-node": "^4.1.0",
     "typescript": "~>2.4.1",
-    "xhr-mock": "^2.2.0"
+    "xhr-mock": "^2.3.2"
   },
   "engines": {
     "node": ">=0.8.x"

@@ -3,6 +3,7 @@ import {BaseEditorModel} from "metatonic-core";
 import {AnyTypeParameterType, SchemaField, SchemaType} from "metatonic-core";
 import {getUniqueId} from "metatonic-core";
 import {ComponentContext} from "metatonic-core";
+import {ValidationMessageDetailed} from "../../metatonic-core/src/domain/contracts/Validation";
 
 export abstract class BaseFieldContextComponent<TParams extends BaseEditorModel<any>, TState = {}>
     extends React.Component<TParams, TState> {
@@ -15,17 +16,22 @@ export abstract class BaseFieldContextComponent<TParams extends BaseEditorModel<
         return getUniqueId(this.field(), this.props.context);
     }
 
-
     renderValidationMessages() {
         return (
-            <div className="error-list">
-                {this.validationMessages().map(message => {
-                    <label className="error" htmlFor={this.uniqueId()}>{message}</label>
-                })}
+            <div className="validation-list">
+                <div >
+                    {this.validationMessages().map((message, index) => {
+                        <div className={`validation-message ${message.severity}`}
+                             id={`${this.uniqueId()}-message-${index}`}
+                             role="alert" >
+                            {message.message}
+                        </div>
+                    })}
+                </div>
             </div>);
     }
 
-    validationMessages() {
+    validationMessages(): ValidationMessageDetailed[] {
         return this.props.fieldState.validationMessages;
     }
 }

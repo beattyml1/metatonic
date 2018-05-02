@@ -22,6 +22,8 @@ export {
 } from './services';
 export * from './services/TypeEditorClasses';
 export * from './services/ChildPropsService';
+export * from './state/FormAsyncMethods';
+export {getEditorResolverContext} from './services/EditorResolver'
 
 export {
     copyAndSet, transform,

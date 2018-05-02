@@ -4,13 +4,23 @@ import {FormSchema} from "./Schema/RootSchemas";
 import {FormProperties} from "./EditorModels/FormProperties";
 
 export enum FormEvents {
+    initialize = 'METATONIC_FORM__initialize',
+    initializeState = 'METATONIC_FORM__initializeState',
     propertyChanged = 'METATONIC_FORM__PROPERTY_CHANGED',
     propertiesChanged = 'METATONIC_FORM__PROPERTIES_CHANGED',
     trySubmit = 'METATONIC_FORM__TRY_SUBMIT',
+    validateFormSync = ' METATONIC_FORM__validateFormSync',
     itemAdded = 'METATONIC_FORM__ITEM_ADDED',
     itemRemoved = 'METATONIC_FORM__ITEM_REMOVED',
     formServerDataUpdate = 'METATONIC_FORM__FORM_SERVER_DATA_UPDATE',
-    fullReload = 'METATONIC_FORM__FULL_RELOAD'
+    fullReload = 'METATONIC_FORM__FULL_RELOAD',
+    submitCallStarted = 'METATONIC_FORM__submitCallStarted',
+    submitSucceeded = 'METATONIC_FORM__submitSucceeded',
+    submitFailed = 'METATONIC_FORM__submitFailed',
+    submitAttemptFinished = 'METATONIC_FORM__submitAttemptFinished',
+    loadStarted = 'METATONIC_FORM__loadStarted',
+    loadFinished = 'METATONIC_FORM__loadFinished'
+
 }
 
 export type AllMetatonicEvents = FormEvents;
@@ -27,4 +37,5 @@ export type FormState = {
     schema: FormSchema;
     formState: FieldState;
     navigator: FormNavigator;
+    isNew: boolean;
 }

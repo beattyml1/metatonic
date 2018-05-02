@@ -13,6 +13,7 @@ export function formReduce(formId): (state: FormState, action: MetatonicRootActi
             case FormEvents.propertiesChanged: return FormStateChanges.propertiesChanged(state, action.payload.properties);
             case FormEvents.propertyChanged: return FormStateChanges.propertyChanged(state, action.payload.propertySelector, action.payload.value);
             case FormEvents.fullReload: return FormStateChanges.fullReload(state||{}, action.payload.formData, action.payload.schema);
+            case FormEvents.initializeState: return action.payload;
             default: return state||{};
         }
     };

@@ -7,13 +7,13 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "outDir": "built",
+        "outDir": "lib",
         "strictNullChecks": true,
         "target": "es5",
-        "lib": ["dom", "es6", "es7"],
+        "lib": ["dom", "es6", "es7", "es2015"],
         "experimentalDecorators": true,
         "rootDir": "."
     },
-    "files": ["./index.ts"],
-    "exclude": ["node_modules", "test", "./built/**"]
+    "files": ["./index.ts", "./test-tools.ts"],
+    "exclude": ["node_modules", "test", "./lib/**"]
 }

@@ -2,8 +2,8 @@
   "name": "metatonic-react",
   "version": "0.0.4",
   "description": "Dynamic Data Entry Framework",
-  "main": "built/bin/index.js",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "tsc & jest",

@@ -12,10 +12,10 @@ import {formReduce} from "./PrimaryFormReducer";
 import {getEditorResolverContext} from "metatonic-core";
 import {Store} from "redux";
 import {AppDispatcher} from "metatonic-core";
-import {StandardAction} from "../../metatonic-core/src/domain/StateManagementTypes";
-import {OptionalProps} from "../../metatonic-core/src/CoreTypes";
-import {MetatonicGlobalState} from "../../metatonic-core/src/MetatonicApp.interfaces";
-import {copyAndSet} from "../../metatonic-core/src/extensions/functional";
+import {StandardAction} from "metatonic-core";
+import {OptionalProps} from "metatonic-core";
+import {MetatonicGlobalState} from "metatonic-core";
+import {copyAndSet} from "metatonic-core";
 
 export class MetatonicReduxContextInstance extends MetatonicBaseContext implements  MetatonicReduxContext{
     constructor(app: MetatonicReduxApp, componentRegistry: ComponentRegistry, dataStore: PersistantDataStore, wrappers: (context: MetatonicReduxContext) => MetatonicReduxWrappers) {

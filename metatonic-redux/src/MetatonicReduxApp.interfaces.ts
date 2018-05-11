@@ -7,7 +7,7 @@ import { MetatonicApp, MetatonicContext} from "metatonic-core";
 import {MetatonicReduxApp, MetatonicReduxContext} from "./MetatonicReduxApp.interfaces";
 import {FormEvents, MetatonicAction} from "metatonic-core";
 import {FormProperties} from "metatonic-core";
-import {MetatonicGlobalState} from "../../metatonic-core/src/MetatonicApp.interfaces";
+import {MetatonicGlobalState} from "metatonic-core";
 import {Map} from './PrivateTypes'
 
 

@@ -2,7 +2,8 @@
   "name": "metatonic-react-redux",
   "version": "0.0.4",
   "description": "Dynamic Data Entry Framework",
-  "main": "built/bin/metatonic-react-redux/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/beattyml1/metatonic-platform",
   "license": "MIT",
   "scripts": {

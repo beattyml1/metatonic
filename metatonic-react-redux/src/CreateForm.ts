@@ -1,8 +1,13 @@
-import {MetatonicReduxContext} from "../../metatonic-redux/src/MetatonicReduxApp.interfaces";
-import {MetaForm} from "../../metatonic-react/src/MetaForm";
-import {FormEvents} from "../../metatonic-core/src/domain/StateManagementTypes";
+import {MetatonicReduxContext} from "metatonic-redux";
+import {MetaForm} from "metatonic-react";
+import {FormEvents} from "metatonic-core";
 import {Store} from "redux";
 import {connect} from 'react-redux';
+
+// Needed for declaration files
+// noinspection ES6UnusedImports
+import {EditorResolver,FieldState, FormInfo, Schema } from "metatonic-core" // noinspection ES6UnusedImports
+import * as React from 'react'
 
 let formCounter = 1;
 export function createReactReduxFormInstance(context: MetatonicReduxContext, formId) {

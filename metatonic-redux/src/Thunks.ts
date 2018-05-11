@@ -1,4 +1,4 @@
-import {MetatonicRootAction, FormState} from "metatonic-core";
+import {MetatonicRootAction, FormState, RecordResource} from "metatonic-core";
 import {copyAndSet} from "metatonic-core";
 import {FormEvents} from "metatonic-core";
 import {MetatonicReduxContext, MetatonicAppConfig} from "./MetatonicReduxApp.interfaces";
@@ -14,7 +14,7 @@ export class Thunks {
 
     form = (formId, typeName?) => ({
         getState: () => this.context.form(formId).state(),
-        resource: this.context.dataStore.records(typeName||this.context.form(formId).state().schema.typeName)
+        resource: this.context.dataStore.records(typeName||this.context.form(formId).state().schema.typeName) as RecordResource<any>
     })
 
     submitThunk = (action: MetatonicRootAction) => {

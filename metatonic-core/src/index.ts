@@ -36,6 +36,8 @@ export * from './MetatonicApp.interfaces';
 export * from './state/FormUserEvents'
 export * from './state/FormStateChanges'
 
+export * from './CoreTypes'
+
 export {
     RestDataStore, ObjectDataStorage,
     PersistantDataStore, RecordResource

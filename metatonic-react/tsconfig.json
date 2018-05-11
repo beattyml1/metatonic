@@ -7,10 +7,10 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "outDir": "built",
+        "outDir": "lib",
         "strictNullChecks": true,
         "target": "es5",
-        "lib": ["es7", "es6", "dom"],
+        "lib": ["es7", "es6", "dom", "es2015"],
         "experimentalDecorators": true,
         "rootDir": "."
     },

@@ -16,8 +16,7 @@ export class RecordEditor extends BaseRecordEditor<{[key:string]:any}, BaseEdito
         let fields = recordType.fields;
         let fieldEditors = fields.map(field =>
             <FieldEditor {...getChildFieldProps(this.props, field)} />);
-        
-        //fieldEditors.forEach(console.log);
+
         return (<div className={fieldEditorClasses(this.field())}>{fieldEditors}</div>)
     }
 }

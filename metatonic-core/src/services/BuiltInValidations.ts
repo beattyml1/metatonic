@@ -8,7 +8,7 @@ function isNonEmptyComparable(value) {
     return value && value.hasValue && value.hasValue() && value.lessThan && value.greaterThan;
 }
 
-export const min: Validation = (value, field, validation, time, params) => {
+export const min: Validation = function min(value, field, validation, time, params) {
     if(!isNonEmptyComparable(value)) return [];
 
     let min = params;
@@ -17,7 +17,7 @@ export const min: Validation = (value, field, validation, time, params) => {
     return hasValue(min) && value.lessThan(minVal) ? [`${field.label} must be greater than ${min}`] : []
 }
 
-export const max: Validation = (value, field, validation, time, params) => {
+export const max: Validation = function max(value, field, validation, time, params) {
     if (!isNonEmptyComparable(value)) return [];
 
     let max = params;
@@ -25,7 +25,7 @@ export const max: Validation = (value, field, validation, time, params) => {
 
     return hasValue(max) && value.greaterThan(maxVal) ? [`${field.label} must be greater than ${max}`] : []
 }
-export const required: Validation = (value, field, validation, time, params) =>  {
+export const required: Validation = function required(value, field, validation, time, params)  {
     let required = params;
 
     let isValueType = value && value.hasValue;
@@ -35,7 +35,7 @@ export const required: Validation = (value, field, validation, time, params) => 
     return required && !$hasValue ? [`${field.label} is required`] : [];
 }
 
-export const maxLength: Validation = (value, field, validation, time, params) =>  {
+export const maxLength: Validation = function maxLength(value, field, validation, time, params)  {
     if (!(typeof value === "string")) return [];
 
     let maxLength = params;
@@ -45,7 +45,7 @@ export const maxLength: Validation = (value, field, validation, time, params) =>
     return maxLength && length > maxLength ? [`${field.label} must be shorter than ${maxLength} characters`] : [];
 }
 
-export const regexValidaiton: Validation<any> = (value, field, validation, time, params) =>  {
+export const regexValidaiton: Validation<any> = function regex(value, field, validation, time, params)  {
     if (!(typeof value === "string")) return [];
 
     let regex = params;
@@ -55,7 +55,6 @@ export const regexValidaiton: Validation<any> = (value, field, validation, time,
                       () => `${field.label} must match`
 
     return regex && !matches(value) ? [message(field, value)] : [];
-}
-
+};
 
 [ min, max, maxLength, required ].map(whenTimeMatches).forEach(x => globalValidations.register(x));

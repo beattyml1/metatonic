@@ -12,8 +12,9 @@ class ValidationsContextInstance implements ValidationsContext {
     register(validation: ValidationRegistration | Validation<any>){
         if (typeof validation === "function") {
             this.__customValidations[validation.name] = { name: validation.name, validate: validation };
-        } else
-          this.__customValidations[validation.name] = validation as ValidationRegistration;
+        } else{
+            this.__customValidations[validation.name] = validation as ValidationRegistration;
+        }
     }
     getValidation(name: string) {
         return this.__customValidations[name];

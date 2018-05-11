@@ -25,12 +25,20 @@ function getValidation(name) {
 }
 
 function getValidationMessagesForField(field: SchemaField, value, validationTime: ValidationTime): ValidationMessageDetailed[] {
-    return [...field.validations, ...field.type.validations]
-        .map(v => ({ ...v, validate: getValidation(v.name).validate }))
-        .map(v => formatValidationResults(v.validate(value, field, v, validationTime, v.parameters), v))
-        .reduce((allMessages, messagesForValidation) => [...allMessages, ...messagesForValidation], []);
+    let validate = fieldValidator(field, value, validationTime);
+    return [...field.validations, ...field.type.validations].map(validate).reduce(flatten, []);
 }
 
+const fieldValidator =
+    (field: SchemaField, value, validationTime: ValidationTime) =>
+    (validationMetaData: SchemaValidation) =>
+{
+    let validation = getValidation(validationMetaData.name)
+    let results = validation.validate(value, field, validationMetaData, validationTime, validationMetaData.parameters);
+    return formatValidationResults(results, validationMetaData)
+}
+
+const flatten = (allMessages, messagesForValidation) => [...allMessages, ...messagesForValidation]
 const severityLevels = { [ValidationSeverity.Error]: 0, [ValidationSeverity.Warning]: 1, [ValidationSeverity.Info]: 2 }
 const bySeverityLevel = (a: ValidationMessageDetailed, b: ValidationMessageDetailed) => severityLevels[a.severity] - severityLevels[b.severity];
 const distinctMessages = (message: ValidationMessageDetailed, index, allMessages: ValidationMessageDetailed[]) =>

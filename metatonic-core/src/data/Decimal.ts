@@ -49,7 +49,7 @@ export class Decimal extends createValueStoreDataType<DecimalData|null>(parseDec
 
     compare(x: string | ValueDataType) {
         if (!hasValue(this.value)) return null;
-        let right = super.asDataType(x).value;
+        let right = super.__asDataType(x).value;
         if (!hasValue(right)) return null;
         return compare(this.value, right);
     }

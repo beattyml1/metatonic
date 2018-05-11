@@ -2,7 +2,7 @@ import * as React from "react";
 import {BaseEditorModel} from "metatonic-core";
 import {AnyTypeParameterType, SchemaType} from "metatonic-core";
 import {BaseFieldContextComponent} from "../BaseFieldContextComponent";
-import {ValidationSeverity} from "../../../metatonic-core/src/domain/Schema/SchemaValidation";
+import {ValidationSeverity} from "metatonic-core";
 
 export abstract class BaseEditor
     <TData,

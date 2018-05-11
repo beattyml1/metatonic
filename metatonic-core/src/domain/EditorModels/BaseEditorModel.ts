@@ -3,7 +3,7 @@ import {FieldState} from "../FieldState/FieldState";
 import {SchemaField} from "../Schema/Records";
 import {MetatonicResources} from "../MetatonicResources";
 
-export type BaseEditorModel<T> = {
+export interface BaseEditorModel<T> {
     value: T;
     field: SchemaField;
     context: ComponentContext;
@@ -11,7 +11,7 @@ export type BaseEditorModel<T> = {
     resources: MetatonicResources;
 }
 
-export type SingleInputEditorModel<T> = BaseEditorModel<T> & {
+export interface SingleInputEditorModel<T>  extends BaseEditorModel<T>  {
     displayText: string;
     editText: string;
     htmlType: string;

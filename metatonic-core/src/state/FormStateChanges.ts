@@ -1,4 +1,4 @@
-import {Schema, FormSchema} from "../domain/Schema/RootSchemas";
+import {FormSchema} from "../domain/Schema/RootSchemas";
 import {FormNavigator} from "../services/PropertySelection";
 import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
@@ -12,11 +12,12 @@ import {copyAndSet} from "../extensions/functional";
 import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
 import {FormProperties} from "../domain/EditorModels/FormProperties";
 import {ValidationMessageDetailed} from "../domain/contracts/Validation";
+import {PropertySelection} from "../services/PropertySelection";
 
 export module FormStateChanges {
-	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
+	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState) as FormNavigator;
 
-    export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector)
+    export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector) as PropertySelection
 
     export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = getProperty(state, propertySelector)

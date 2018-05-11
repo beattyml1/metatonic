@@ -1,14 +1,11 @@
-import {createStore, Store} from 'redux';
-import {FormSchema, FormState, FormEvents} from "../domain"
+import {FormSchema, FormEvents} from "../domain"
 import {Nullable} from "../CoreTypes"
 import {MetatonicFormEventDispatcher} from "../domain/contracts/MetatonicFormEventDispatcher";
-import {PersistantDataStore} from "../state/PersistantDataStore";
-import {MetatonicContext} from "../MetatonicApp.interfaces";
 import {MetatonicResources} from "../domain/MetatonicResources";
 import {MetatonicAction} from "../domain/StateManagementTypes";
 
 export class FormUserEvents implements MetatonicFormEventDispatcher{
-    constructor(private store: {dispatch(event: MetatonicAction)}) {
+    constructor(public store: {dispatch(event: MetatonicAction)}) {
 
     }
 

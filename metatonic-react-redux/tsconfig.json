@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "declaration": true,
 	    "module": "commonjs",
         "jsx": "react",
         "noImplicitAny": false,
@@ -10,7 +11,8 @@
         "strictNullChecks": true,
         "target": "es2016",
         "lib": ["dom", "es6", "es7"],
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "rootDir": "."
     },
 
     "exclude": ["node_modules", "test"],

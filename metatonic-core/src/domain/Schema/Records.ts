@@ -8,40 +8,40 @@ import {SchemaTypeCategory} from "./SchemaEnums";
 import {SchemaFieldInfo} from "./SchemaFieldInfo";
 import {NumericTypeInfo} from "./Numerics";
 
-export type SchemaRecordTypeParameters = ItemSelectionType<any> & {
+export interface SchemaRecordTypeParameters extends ItemSelectionType<any> {
     fields: SchemaField[];
 }
 
-export type SchemaField = SchemaFieldInfo & {
+export interface SchemaField extends SchemaFieldInfo {
     type: SchemaType;
 }
 
 export type AnyTypeParameterType = TextTypeParameters | SchemaRecordTypeParameters | QuantityTypeParameters | DateTimeTypeData | CodeDescriptionSelectionType | NumericTypeInfo | {};
 
-export type SchemaTypeInfo =  SchemaElement & {
+export interface SchemaTypeInfo extends SchemaElement {
     name: DataTypes|string;
     uiControlPreference?: string;
     category: SchemaTypeCategory;
     parentTypeNames: string[];
-    parameters: SchemaRecordTypeParameters | DateTimeTypeData | QuantityTypeParameters | NumericTypeInfo | TextTypeParameters | CodeDescriptionSelectionType;
+    parameters: AnyTypeParameterType
 }
 
-export type SchemaTypeGeneric<TCategory extends SchemaTypeCategory, TType extends AnyTypeParameterType> =  SchemaTypeInfo & {
+// TODO: Refactor this over complicate type stuff
+
+export interface SchemaTypeGeneric<TCategory extends SchemaTypeCategory, TType extends AnyTypeParameterType> extends  SchemaTypeInfo {
     category: TCategory;
     parameters: TType;
 }
 
-export type RecordSchemaType = SchemaTypeGeneric<SchemaTypeCategory.Record, SchemaRecordTypeParameters>
-export type DateTimeSchemaType = SchemaTypeGeneric<SchemaTypeCategory.DateTime, DateTimeTypeData>
-export type QuantityType = SchemaTypeGeneric<SchemaTypeCategory.Quantity, QuantityTypeParameters>
-export type NumericType = SchemaTypeGeneric<SchemaTypeCategory.Numeric, NumericTypeInfo>
-export type TextType = SchemaTypeGeneric<SchemaTypeCategory.Text, TextTypeParameters>
-export type CodeDescriptionType = SchemaTypeGeneric<SchemaTypeCategory.Code, CodeDescriptionSelectionType>
-export type BooleanType = SchemaTypeGeneric<SchemaTypeCategory.Boolean, {}>
+export interface RecordSchemaType extends SchemaTypeGeneric<SchemaTypeCategory.Record, SchemaRecordTypeParameters>{}
+export interface DateTimeSchemaType extends SchemaTypeGeneric<SchemaTypeCategory.DateTime, DateTimeTypeData> {}
+export interface QuantityType extends SchemaTypeGeneric<SchemaTypeCategory.Quantity, QuantityTypeParameters> {}
+export interface NumericType extends SchemaTypeGeneric<SchemaTypeCategory.Numeric, NumericTypeInfo> {}
+export interface TextType extends SchemaTypeGeneric<SchemaTypeCategory.Text, TextTypeParameters> {}
+export interface CodeDescriptionType extends SchemaTypeGeneric<SchemaTypeCategory.Code, CodeDescriptionSelectionType> {}
+export interface BooleanType extends SchemaTypeGeneric<SchemaTypeCategory.Boolean, {}> {}
 
-export type SchemaType = SchemaTypeInfo & (RecordSchemaType | DateTimeSchemaType | QuantityType | NumericType | TextType | CodeDescriptionType | BooleanType);
-
-let x: SchemaType;
+export interface SchemaType extends SchemaTypeInfo{} //& (RecordSchemaType | DateTimeSchemaType | QuantityType | NumericType | TextType | CodeDescriptionType | BooleanType);
 
 export type SelectableType =  CodeDescriptionSelectionType | SchemaRecordTypeParameters;
 

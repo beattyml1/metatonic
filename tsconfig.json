@@ -1,28 +1,18 @@
 {
     "compilerOptions": {
 	    "module": "commonjs",
+        "declaration": true,
         "jsx": "react",
         "noImplicitAny": false,
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "outDir": "built/bin",
+        "outDir": "built",
         "strictNullChecks": true,
         "target": "es2016",
         "lib": ["dom", "es6", "es7"],
         "experimentalDecorators": true
     },
 
-    "exclude": ["node_modules", "test"],
-    "include": [
-        "metatonic-core/src/*.ts",
-        "metatonic-core/src/*.tsx",
-        "metatonic-core/src/**/*.ts",
-        "metatonic-core/src/**/*.tsx",
-        "metatonic-react/src/*.ts",
-        "metatonic-react/src/*.tsx",
-        "metatonic-react/src/**/*.ts",
-        "metatonic-react/src/**/*.tsx"
-
-    ]
+    "exclude": ["node_modules", "test", "built"]
 }

@@ -1,14 +1,11 @@
-import {FormEvents, FormState} from "../domain/StateManagementTypes";
-import {FormStateChanges} from "./FormStateChanges";
+import {FormState} from "../domain/StateManagementTypes";
 import {FieldState} from "../domain/FieldState/FieldState";
-import {getValidationMessages} from "../services/Validation";
-import {PersistantDataStore} from "./PersistantDataStore";
-import {fetchInitialFormState} from "../services/fetchFormState";
+import {RecordResource} from "./PersistantDataStore";
 import {MetatonicContext} from "../MetatonicApp.interfaces";
 import {getTsModels} from "../decorators/MetatonicModelDecorator";
 import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
 import {getFormSchemaFromJsonObject} from "../services/SchemaFromJsonService";
-import {getEditorResolverContext} from "../services/EditorResolver";
+import {EditorResolver, getEditorResolverContext} from "../services/EditorResolver";
 import {getDefaultFormState} from "../services/DefaultFormState";
 import {getDefaultSingleEdit} from "../services/DefaultDataService";
 import {FormSchema} from "../domain/Schema/RootSchemas";
@@ -18,7 +15,7 @@ export class FormAsyncMethods {
     constructor(private context: MetatonicContext) {
 
     }
-    resource(recordName) {
+    resource(recordName): RecordResource<any> {
         return this.context.dataStore.records(recordName);
     }
 
@@ -44,10 +41,10 @@ export class FormAsyncMethods {
         return {
             recordName,
             recordId,
-            schema,
-            formState,
-            formData,
-            editors: editorResolver,
+            schema: formState as FormSchema,
+            formState: formState as FieldState,
+            formData: formState as FieldState,
+            editors: editorResolver as EditorResolver<any, any, any>,
         };
     }
 }

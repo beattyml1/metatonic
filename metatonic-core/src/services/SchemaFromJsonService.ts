@@ -19,7 +19,7 @@ export function addTypeToField(field: SchemaFieldInfo, schema: Schema): SchemaFi
 	});
 }
 
-function addDefaultValidations(field: SchemaFieldInfo) {
+function addDefaultValidations(field: SchemaFieldInfo): SchemaValidation[] {
     return [
         ...field.validations,
         ...addValidation(hasValue(field.min))({
@@ -53,11 +53,11 @@ function addDefaultValidations(field: SchemaFieldInfo) {
     ]
 }
 
-function addValidation(hasValidation: boolean) {
+function addValidation(hasValidation: boolean): (validation: SchemaValidation) => SchemaValidation[] {
 	return (validation: SchemaValidation) => hasValidation ? [ validation ] : [];
 }
 
-export function addTypesToFields(type: SchemaType, schema: Schema) {
+export function addTypesToFields(type: SchemaType, schema: Schema): SchemaType {
 	if (type.category === SchemaTypeCategory.Record) {
 		let recordInfo = type.parameters as SchemaRecordTypeParameters;
 		return Object.assign({}, type, { parameters: <SchemaRecordTypeParameters> {

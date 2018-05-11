@@ -3,7 +3,7 @@ import {BaseEditorModel} from "metatonic-core";
 import {AnyTypeParameterType, SchemaField, SchemaType} from "metatonic-core";
 import {getUniqueId} from "metatonic-core";
 import {ComponentContext} from "metatonic-core";
-import {ValidationMessageDetailed} from "../../metatonic-core/src/domain/contracts/Validation";
+import {ValidationMessageDetailed} from "metatonic-core";
 
 export abstract class BaseFieldContextComponent<TParams extends BaseEditorModel<any>, TState = {}>
     extends React.Component<TParams, TState> {

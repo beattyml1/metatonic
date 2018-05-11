@@ -14,7 +14,7 @@ import {Map} from "./PrivateTypes";
 export function createMetatonicAppInitializer(config: MetatonicAppConfig){
     let o = config;
     let hasDefaultContext = o.dataStore && o.componentRegistry;
-    let getAllKeys = (...maps: any[]) => maps.filter(_=>_).reduce((keys, map) => new Set([...keys, Object.keys(map)]), new Set());
+    let getAllKeys = (...maps: any[]) => new Set(maps.filter(_=>_).reduce((keys, map) => [...keys, Object.keys(map)], new Array<string>()));
     let allKeys = getAllKeys(o.dataStores, o.contexts, o.componentRegistries, hasDefaultContext ? { default: {} } : {});
     let getContext = (key) =>
         o.contexts && o.contexts[key] || {

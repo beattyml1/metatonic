@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
 	    "module": "commonjs",
-        "declaration": true,
+        "declaration": false,
         "jsx": "react",
         "noImplicitAny": false,
         "removeComments": true,
@@ -9,10 +9,10 @@
         "sourceMap": true,
         "outDir": "built",
         "strictNullChecks": true,
-        "target": "es2016",
-        "lib": ["dom", "es6", "es7"],
+        "target": "es5",
+        "lib": ["dom", "es6", "es7", "es2015"],
         "experimentalDecorators": true
     },
 
-    "exclude": ["node_modules", "test", "built"]
+    "exclude": ["node_modules", "test", "built", "lib"]
 }

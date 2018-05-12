@@ -1,35 +1,35 @@
 {
   "name": "metatonic-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dynamic Data Entry Framework",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "tsc & jest",
-    "cover": "tsc & jest --coverage"
+    "test": "tsc && jest",
+    "cover": "tsc && jest --coverage"
   },
   "dependencies": {
     "core-js": "^2.5.6",
+    "@types/core-js": "^0.9.46",
     "inversify": "~>4.3",
     "metatonic-core": "^0.0.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-modal-bootstrap": "~>1.1.1",
-    "@types/jest": "^19.2.4",
     "@types/react": "^16.3.14",
     "tsd": "^0.6.5"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.35",
     "express": "~>4.15.2",
+    "@types/jest": "^19.2.4",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.3.2",
     "ts-jest": "21.2.4",
     "ts-node": "^4.1.0",
-    "typescript": "~>2.4.1"
+    "typescript": "~>2.8.3"
   },
   "engines": {
     "node": ">=0.8.x"

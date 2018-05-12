@@ -13,6 +13,6 @@ export function SchemaJsonDisplay(props: Schema) {
 }
 
 export const SchemaJsonDisplayBound = connect(
-    (state) => getSchema(state),
+    (state) => getSchema(state) as Schema,
     (dispatch) => ({})
 )(SchemaJsonDisplay)

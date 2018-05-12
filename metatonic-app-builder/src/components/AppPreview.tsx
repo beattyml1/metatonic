@@ -6,6 +6,8 @@ import {defaultComponentRegistry, getEditorResolverContext} from "metatonic-core
 import {ReactEditorResolver} from "metatonic-react";
 import {getDefaultDataForField} from "../../../metatonic-core/src/services/DefaultDataService";
 
+export type AppPreviewProps = { schema, formState, formData }
+export type AppPreviewEvents = {onFormEvent}
 
 export function AppPreview(props: {onFormEvent, schema, formState, formData }) {
     return <MetaEdit
@@ -18,6 +20,6 @@ export function AppPreview(props: {onFormEvent, schema, formState, formData }) {
 }
 
 export const AppPreviewBound = connect(
-    (state: any) => state.formPreviewState,
-    dispatch => ({ onFormEvent: (action) => dispatch({...action, meta: {formId: 'preview'}}) })
+    (state: any) => state.formPreviewState as AppPreviewProps,
+    dispatch => ({ onFormEvent: (action) => dispatch({...action, meta: {formId: 'preview'}}) }) as AppPreviewEvents
 )(AppPreview)

@@ -1,11 +1,10 @@
 import {field, model} from "metatonic-core";
 import {SchemaFieldInfo, SchemaEntryType, Maybe} from "metatonic-core";
-import {codeValue, list, select} from "metatonic-core";
+import {list, select} from "metatonic-core";
 import {Validation} from "./ValidationModel";
 
 @model('Field')
 export class Field {
-    @codeValue()
     @field("text", "Name", { required: true })
     name: string;
 
@@ -28,13 +27,13 @@ export class Field {
     required: boolean;
 
     @field("numeric", "Max Length", { required: false })
-    maxLength?: Maybe<number>;
+    maxLength?: number;
 
     @field("numeric", "Max", { required: false })
-    max?: Maybe<number>;
+    max?: number;
 
     @field("numeric", "Min", { required: false })
-    min?: Maybe<number>;
+    min?: number;
 
     @field("boolean", "Can Add", { required: false })
     canAdd?: boolean;

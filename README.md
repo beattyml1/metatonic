@@ -3,10 +3,16 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/maintainability)](https://codeclimate.com/github/beattyml1/metatonic-platform/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic-platform/test_coverage)
 
-|Name| metatonic-core | metatonic-react | cli | app-builder | example |
-|:---|:--------------:|:----------------|:----|:------------|:--------|
-|NPM| [![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) | [![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react) | Package: N/A | Package: N/A | Package: N/A |
-|Statement Coverage| 96% | 46% | N/A | N/A | N/A |
+|Name                   | Status            | Coverage        |NPM|
+|:----------------------|:------------------|:----------------|:---------|
+| metatonic-core        | Complete(ish)     | 96%             |[![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) |
+| metatonic-react       |Mostly done/testing| 46%             |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-redux       |Mostly done/testing| 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-redux.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-react-redux |Mostly done/testing| 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
+| app-builder           | Early Dev         |||
+| Examples              | Early Dev         |||
+| metatonic-server      | Early Dev         |||
+| metatonic-metatstore  | Brainstorming     |||     
 
 The N/A items above are still in early stage development. Test coverage for the parts of metatonic-react that have been written is the current number one priority, followed by finishing that module and fleshing out examples and documentation. 
 

@@ -8,6 +8,9 @@ import moment = require("moment");
 import {Moment} from "moment";
 import {hasValue} from "../extensions/hasValue";
 
+function argumentHasValue(x: string | ValueDataType) {
+    return hasValue(x) && ((typeof x === "string") || (x['hasValue'] && x['hasValue']()));
+}
 
 export type DateTimeType<T> = {
     formats(showSeconds): ValueFormats,
@@ -50,15 +53,11 @@ export class BaseDateTimeData implements ComparableValueDataType {
     }
 
     equals(x: string | ValueDataType): boolean {
-        let rightHasValue = this.argumentHasValue(x)
+        let rightHasValue = argumentHasValue(x)
         if (this.moment === null) return !rightHasValue;
         if (this.moment && !rightHasValue) return false;
 
         return this.moment.isSame(this.getMomentOrString(x));
-    }
-
-    private argumentHasValue(x: string | ValueDataType) {
-        return hasValue(x) && ((typeof x === "string") || (x['hasValue'] && x['hasValue']()));
     }
 
     getMomentOrString(x) {

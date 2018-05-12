@@ -5,8 +5,8 @@ import * as Core from 'metatonic-core'
 import {SchemaField} from "metatonic-core";
 import {SchemaType} from "metatonic-core";
 import {getFormSchemaFromJsonObject,defaultComponentRegistry} from "metatonic-core";
-import {exampleSchema} from "../../metatonic-core/test/TestSchema";
-import {recordSchema} from "../../metatonic-core/test/TestUtils";
+import {exampleSchema} from "metatonic-core/lib/test-tools";
+import {recordSchema} from "metatonic-core/lib/test-tools";
 import {getDefaultDataForField} from "metatonic-core";
 import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 import {} from "metatonic-core";
@@ -20,10 +20,10 @@ import {findField} from "metatonic-core";
 import {createStore} from "redux";
 import {AppDispatcher} from "metatonic-core";
 import {ObjectDataStorage} from "metatonic-core";
-import {getDefaultFormState} from "../../metatonic-core/src/services/DefaultFormState";
-import {getEditorResolverContext} from "../../metatonic-core/src/services/EditorResolver";
-import {FormUserEvents} from "../../metatonic-core/src/state/FormUserEvents";
-import {RecordSchemaType} from "../../metatonic-core/src/domain/Schema/Records";
+import {getDefaultFormState} from "metatonic-core";
+import {getEditorResolverContext} from "metatonic-core";
+import {FormUserEvents} from "metatonic-core";
+import {RecordSchemaType} from "metatonic-core";
 
 describe('RecordEditor', () => {
     function createTopField(type: Core.SchemaType) {

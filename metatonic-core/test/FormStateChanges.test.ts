@@ -1,7 +1,4 @@
 import {FormStateChanges} from '../src/state/FormStateChanges'
-import {FormState} from "../src/domain/StateManagementTypes";
-import {FieldState} from "../src/domain/FieldState/FieldState";
-import {getDefaultFormState} from "../src/services/DefaultFormState";
 import {exampleSchema} from "./TestSchema";
 import {getDefaultDataForField} from "../src/services/DefaultDataService";
 import {Integer} from "../src/data/Integer";

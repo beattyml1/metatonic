@@ -6,4 +6,4 @@ export type BaseEditorComponentClass = new () => BaseEditor<any, any, any, any>
 export type LabelContainerClass = new () => React.Component<any, any>;
 export type BaseRepeaterClass = new () => React.Component<any, any>
 
-export type ReactEditorResolver = EditorResolver<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>;
+export interface ReactEditorResolver extends EditorResolver<BaseEditorComponentClass, LabelContainerClass, BaseRepeaterClass>{};

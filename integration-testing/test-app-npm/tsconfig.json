@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "strictNullChecks": true,
+    "target": "es2016",
+    "lib": ["es7", "dom"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ],
+  "filesGlobal": [
+    "src/*.ts",
+    "src/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
+}

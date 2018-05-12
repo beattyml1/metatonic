@@ -6,9 +6,9 @@ export interface SchemaFieldInfo extends SchemaElement {
     typeName: string;
     uiUniqueId: string;
     required?: boolean;
-    maxLength?: Maybe<number>;
-    max?: Maybe<string>;
-    min?: Maybe<string>;
+    maxLength?: number;
+    max?: string;
+    min?: string;
     entryType?: SchemaEntryType;
     multiple?: boolean;
     canAdd?: boolean;

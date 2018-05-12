@@ -1,6 +1,7 @@
 import {PersistantDataStore, RecordResource} from "./PersistantDataStore";
 import {Rest} from "../services/Rest";
 import {FormSchema} from "../domain/Schema/RootSchemas";
+import {OptionalProps} from "../CoreTypes";
 export class RestDataStore implements PersistantDataStore {
     constructor(protected metaTonicApiUrl: string){}
     records<T extends {id}>(resourceName: string) {
@@ -29,7 +30,7 @@ export class RestRecordResource<T extends {id}> implements RecordResource<T> {
         return Rest.Get<T[], any>(`${this.metaTonicApiUrl}/records/${this.recordName}`, { $textSearch: text });
     }
 
-    parametricSearch<TParams>(params: TParams) {
+    getMany<TParams = OptionalProps<T>>(group: string, params: TParams) {
         return Rest.Get<T[], any>(`${this.metaTonicApiUrl}/records/${this.recordName}`, params);
     }
 
@@ -42,7 +43,7 @@ export class RestRecordResource<T extends {id}> implements RecordResource<T> {
     }
 
     delete(id: string) {
-        return Rest.Delete<T>(`${this.metaTonicApiUrl}/records/${this.recordName}/${id}`);
+        return Rest.Delete(`${this.metaTonicApiUrl}/records/${this.recordName}/${id}`);
     }
 
     schema(): Promise<FormSchema> {

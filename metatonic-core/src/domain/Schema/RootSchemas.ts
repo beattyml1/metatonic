@@ -2,15 +2,11 @@ import {RecordSchemaType, SchemaField, SchemaRecordTypeParameters, SchemaType, S
 import {SchemaElement} from "./SchemaElement";
 import {SchemaTypeCategory} from "./SchemaEnums";
 
-interface JsMap<T> {
-    [key: string]: T;
+export interface Schema {
+    types: { [key: string]:SchemaType };
 }
 
-export type Schema = {
-    types: JsMap<SchemaType>;
-}
-
-export type FormInfo = SchemaElement & {
+export interface FormInfo extends SchemaElement {
     type: RecordSchemaType;
     typeName: string;
 };

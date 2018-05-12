@@ -24,7 +24,7 @@ export class RestClient {
         data?: TData): Promise<TResult> {
         return Http.makeRequest("PUT", resourceUrl, data);
 	}
-    async Delete<TResult>(resourceUrl): Promise<TResult> {
+    async Delete(resourceUrl): Promise<void> {
         return Http.makeRequest("DELETE", resourceUrl);
 	}
 }

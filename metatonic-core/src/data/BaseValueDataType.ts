@@ -49,19 +49,19 @@ export function createValueStoreDataType<T>(parse: (inputString: string, format?
 
         lessThan(x: string | ValueDataType): boolean|null {
             if (!hasValue(this.value)) return null;
-            let right = this.asDataType(x);
+            let right = this.__asDataType(x);
             if (!hasValue(right.value)) return null;
             return this.value < right.value;
         }
 
         greaterThan(x: string | ValueDataType): boolean|null {
             if (!hasValue(this.value)) return null;
-            let right = this.asDataType(x);
+            let right = this.__asDataType(x);
             if (!hasValue(right.value)) return null;
             return this.value > right.value;
         }
 
-        protected asDataType(x: string | ValueDataType) {
+        __asDataType(x: string | ValueDataType) {
             return typeof x === "string" ? BaseValueDataType.fromData(x) : x as BaseValueDataType;
         }
     }

@@ -1,22 +1,22 @@
 
 
-type DateTimeBaseParams = {
+export type DateTimeBaseParams = {
     min?: string;
     max?: string;
 }
 
-type DateTimeTypeBase = DateTimeBaseParams & { date?: boolean, time?: boolean, month?: boolean }
+export type DateTimeTypeBase = DateTimeBaseParams & { date?: boolean, time?: boolean, month?: boolean }
 
-type TimeTypeParams = {
+export type TimeTypeParams = {
     hasSeconds?: boolean;
     includesUserTimezone?: boolean;
 }
 
-type DateTypeParams = {
+export type DateTypeParams = {
 
 }
 
-type MonthTypeParams = {
+export type MonthTypeParams = {
 
 }
 
@@ -25,7 +25,7 @@ export type DateType = DateTypeParams & DateTimeBaseParams;
 export type MonthType = MonthTypeParams & DateTimeBaseParams;
 export type DateTimeType = DateType & TimeType;
 export enum DateTimeTypes { Date = "date", Time = "time", DateTime = "datetime", Month = "month", TimeStamp = "timestamp" };
-type ParametrizedType<TParams, TType extends DateTimeTypes> = {
+export type ParametrizedType<TParams, TType extends DateTimeTypes> = {
     type: TType;
     params: TParams;
 }

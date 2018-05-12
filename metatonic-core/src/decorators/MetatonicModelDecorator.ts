@@ -28,6 +28,13 @@ export function model(label?: string, params?: OptionalProps<SchemaRecordTypePar
         } else recordTypes.push(type);
     }
 }
+
+export function codeValue(){
+    return function (target: any, propertyKey: string, descriptor?: PropertyDescriptor): void {
+
+    }
+}
+
 let recordTypes: RecordSchemaType[] = [];
 let id = 1;
 function getId() {
@@ -73,7 +80,7 @@ function fieldAttribute(isMulti: boolean = false, editSelect: SchemaEntryType = 
         type: Type,
         label: string,
         options?: OptionalProps<SchemaField>) {
-        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor): void {
+        return function (target: any, propertyKey: string, descriptor?: PropertyDescriptor): void {
             let fieldTypeName = getTypeName(type);
             let parentTypeName = getTypeName(target.constructor);
             let parentTypeSchema = getRecordSchema(parentTypeName);
@@ -83,7 +90,7 @@ function fieldAttribute(isMulti: boolean = false, editSelect: SchemaEntryType = 
     }
 }
 
-export const field = fieldAttribute(false);
+export const field = fieldAttribute();
 export const list = fieldAttribute(true);
 export const select = fieldAttribute(false, SchemaEntryType.selection);
 

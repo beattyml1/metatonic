@@ -1,5 +1,4 @@
-import {Schema, FormSchema} from "../domain/Schema/RootSchemas";
-import {Nullable, Nothing, Maybe, OptionalProps} from "../CoreTypes";
+import {FormSchema} from "../domain/Schema/RootSchemas";
 import {FormNavigator} from "../services/PropertySelection";
 import {getFormSchemaFromJsonObject} from '../services/SchemaFromJsonService'
 import {FieldState} from "../domain/FieldState/FieldState";
@@ -12,11 +11,13 @@ import {hasValue} from "../extensions/hasValue";
 import {copyAndSet} from "../extensions/functional";
 import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
 import {FormProperties} from "../domain/EditorModels/FormProperties";
+import {ValidationMessageDetailed} from "../domain/contracts/Validation";
+import {PropertySelection} from "../services/PropertySelection";
 
 export module FormStateChanges {
-	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState);
+	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState) as FormNavigator;
 
-    export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector)
+    export const getProperty = (state: FormState, propertySelector: string) => getNav(state).locate(propertySelector) as PropertySelection
 
     export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = getProperty(state, propertySelector)
@@ -32,15 +33,60 @@ export module FormStateChanges {
         return copyAndSet(state, { formState });
 	}
 
-    export function trySubmit(state: FormState) {
-        let property = getProperty(state, "")
+	export function validateSync (state: FormState) {
+        let property = FormStateChanges.getProperty(state, "")
         let validations = getValidationMessages(property.getField(), property.getValue(), true);
-        return Object.assign({},
-			state, {
-				formState: Object.assign({},
-					state.formState,
-					<FieldState> { validationMessages: validations })
-			});
+        return Object.assign({}, state, {
+            formState: Object.assign({},
+                state.formState,
+                <FieldState> { validationMessages: validations })
+        });
+    }
+
+    export function finishLoad(state: FormState) {
+        return copyAndSet(state, {
+            formState: copyAndSet(state.formState, {
+                showLoader: false
+            })
+        });
+    }
+
+    export function startLoad(state: FormState) {
+        return copyAndSet(state, {
+            formState: copyAndSet(state.formState, {
+                showLoader: true
+            })
+        });
+    }
+
+    export function startSubmit(state: FormState) {
+    	return copyAndSet(state, {
+    		formState: copyAndSet(state.formState, {
+    			showLoader: true
+			})
+		});
+	}
+
+    export function submitSucceeded(state: FormState, payload: any) {
+    	return copyAndSet(state, {
+    		formData: payload
+		});
+    }
+
+    export function submitFailed(state: FormState, payload: { messages: ValidationMessageDetailed[] }) {
+        return copyAndSet(state, {
+            formState: copyAndSet(state.formState, {
+            	validationMessages: payload.messages
+			})
+        });
+	}
+
+	export function submitAttemptFinished(state: FormState) {
+        return copyAndSet(state, {
+            formState: copyAndSet(state.formState, {
+                showLoader: false
+            })
+        });
 	}
 
     export function itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
@@ -80,12 +126,14 @@ export module FormStateChanges {
     export function fullReload(state: { formProps: FormProperties }, formData: any, schema: FormSchema): FormState {
 	    schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schema), "")
         let formState = getDefaultFormState(schema.type);
+	    formData = formData || getDefaultDataForField(schema)
 		return {
-            formData: formData || getDefaultDataForField(schema),
+            formData,
             formProps: state.formProps,
             serverDocumentData: formData,
 			formState,
             schema,
+            isNew: !!formData.id,
             navigator: new FormNavigator(schema, formData, formState)
         };
 	}

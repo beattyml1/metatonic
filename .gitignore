@@ -11,4 +11,4 @@ built/**
 **.jsx
 **/coverage/**
 **package-lock.json
-
+**/lib/**

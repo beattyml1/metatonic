@@ -9,11 +9,11 @@ export interface PersistantDataStore {
 export interface RecordResource<T extends {id}> {
     getOne(id: any): Promise<T>;
     getAll(): Promise<T[]>;
+    getMany<TParams = OptionalProps<T>>(group?: string, parameters?: TParams): Promise<T[]>;
     textSearch(test: string): Promise<T[]>;
-    parametricSearch<TParams = OptionalProps<T>>(params: TParams): Promise<T[]>;
-    create(data: T);
-    update(data: T);
-    delete(id: any);
+    create(data: T): Promise<T>;
+    update(data: T): Promise<T>;
+    delete(id: any): Promise<void>;
     schema(): Promise<FormSchema>;
 }
 

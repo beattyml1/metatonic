@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-	    "module": "commonjs",
-        "moduleResolution": "node",
+        "module": "commonjs",
         "jsx": "react",
         "noImplicitAny": false,
         "removeComments": true,
@@ -10,12 +9,11 @@
         "outDir": "built/bin",
         "strictNullChecks": true,
         "target": "es2016",
-        "lib": ["es7", "dom"],
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "lib": ["dom", "es6", "es7"],
+        "experimentalDecorators": true
     },
 
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules", "test"],
     "filesGlobal": [
         "src/*.ts",
         "src/*.tsx",

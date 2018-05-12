@@ -5,8 +5,8 @@
 // import {SchemaField} from "metatonic-core";
 // import {SchemaType} from "metatonic-core";
 // import {getFormSchemaFromJsonObject,defaultComponentRegistry} from "metatonic-core";
-// import {exampleSchema} from "../../metatonic-core/test/TestSchema";
-// import {recordSchema} from "../../metatonic-core/test/TestUtils";
+// import {exampleSchema} from "metatonic-core";
+// import {recordSchema} from "metatonic-core";
 // import {getDefaultDataForField} from "metatonic-core";
 // import {ReactEditorResolver} from "../src/Services/ReactEditorService";
 // import {} from "metatonic-core";

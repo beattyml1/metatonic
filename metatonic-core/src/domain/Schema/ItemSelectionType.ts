@@ -6,7 +6,7 @@ export enum ItemCollectionSize {
     Large
 }
 
-export type ItemSelectionType<T>  = {
+export interface ItemSelectionType<T> {
     items?: T&{ $value, $description }[];
     itemSearchUrl: string;
     canAdd: boolean;

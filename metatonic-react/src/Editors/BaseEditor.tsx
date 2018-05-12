@@ -1,6 +1,13 @@
 import * as React from "react";
-import {BaseEditorModel} from "metatonic-core";
-import {AnyTypeParameterType, SchemaType} from "metatonic-core";
+// noinspection ES6UnusedImports
+import {
+    BaseEditorModel,
+    MetatonicFormEventDispatcher,
+    ValidationSeverity,
+    AnyTypeParameterType, SchemaType,
+    ComponentContext,
+    SchemaField
+} from "metatonic-core";
 import {BaseFieldContextComponent} from "../BaseFieldContextComponent";
 
 export abstract class BaseEditor
@@ -14,7 +21,7 @@ export abstract class BaseEditor
         return this.props.context.fieldLocator
     }
 
-    formDispatcher() {
+    formDispatcher(): MetatonicFormEventDispatcher {
         return this.props.resources.formDispatcher;
     }
 
@@ -31,5 +38,10 @@ export abstract class BaseEditor
             propertySelector: this.fieldLocator(),
             value: this.value()
         })
+    }
+
+    primaryInputAriaAttributes() {
+        return {
+        }
     }
 }

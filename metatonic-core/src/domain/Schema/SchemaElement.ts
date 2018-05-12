@@ -1,6 +1,6 @@
 import {NamedAndLabeled} from "./NamedAndLabeled";
-import {CustomValidation} from "./CustomValidation";
+import {SchemaValidation} from "./SchemaValidation";
 
 export interface SchemaElement extends NamedAndLabeled{
-    customValidations: CustomValidation[]
+    validations: SchemaValidation[]
 }

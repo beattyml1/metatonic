@@ -1,0 +1,18 @@
+.tab {
+    display: flex;
+}
+.tab>details {
+    padding: 10px;
+    padding-top:0;
+    border:1px solid gray;
+}
+.tab>details>summary {
+    margin-bottom: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px;
+    border-top: 2px solid gray;
+}
+.root-app-builder-layout {
+    text-align: left;
+}

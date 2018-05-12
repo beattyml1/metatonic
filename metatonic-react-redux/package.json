@@ -18,7 +18,6 @@
     "metatonic-core": "^0.0.5",
     "metatonic-react": "^0.0.5",
     "metatonic-redux": "^0.0.5",
-    "metatonic-react-redux": "^0.0.5",
     "moment": "^2.22.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

@@ -5,6 +5,7 @@ metastore is designed to be a store layer that handles gray areas between domain
 - Finilization/status
 - Auditing
 - Auto-archiving old data based on aging factor
+  - History data archived faster usually
 - Auto-archiving soft deletes
 - Dynamic But Enforced Schema 
 - Workflows/Triggered Jobs

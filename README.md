@@ -1,7 +1,7 @@
 # metatonic-platform
 [![Build Status](https://travis-ci.org/beattyml1/metatonic.svg?branch=master)](https://travis-ci.org/beattyml1/metatonic)
-[![Maintainability](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/maintainability)](https://codeclimate.com/github/beattyml1/metatonic-platform/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/5b37844e034f88e365dc/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic-platform/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/maintainability)](https://codeclimate.com/github/beattyml1/metatonic/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic/test_coverage)
 
 |Name                   | Status            | Coverage        |NPM|
 |:----------------------|:------------------|:----------------|:---------|

@@ -7,10 +7,11 @@ import { createMetatonicReduxThunkApp } from "metatonic-redux"
 import * as MetatonicRedux from "metatonic-redux"
 import {RestDataStore} from "metatonic-core";
 import {defaultComponentRegistry} from "metatonic-core";
-import {combineReducers, createStore, applyMiddleware} from "redux";
+import {combineReducers, createStore, applyMiddleware, compose} from "redux";
 import {} from "metatonic-redux";
 import {
     createAndLoadReactReduxFormForRecord} from "metatonic-react-redux";
+import thunk from 'redux-thunk'
 
 let metatonicConfig = {
     dataStore: new RestDataStore('/api'),
@@ -18,10 +19,11 @@ let metatonicConfig = {
 }
 let app = createMetatonicReduxThunkApp(metatonicConfig);
 let context = app.contexts['default'];
+let timeTravel = (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 
 let store = createStore(combineReducers({
-    metatonic: context.metatonicReducer
-}), applyMiddleware(app.reduxMiddleware));
+    metatonic: (s:any,a:any) => context.metatonicReducer(s as any, a as any)
+}), compose(applyMiddleware(thunk), timeTravel));
 
 let [MyForm, formId] = createAndLoadReactReduxFormForRecord(store, context, 'Home', '')
 

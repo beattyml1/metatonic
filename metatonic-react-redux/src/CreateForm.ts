@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 // noinspection ES6UnusedImports
 import {EditorResolver,FieldState, FormInfo, Schema } from "metatonic-core" // noinspection ES6UnusedImports
 import * as React from 'react'
+import {MetatonicGlobalState} from "metatonic-core";
 
 let formCounter = 1;
 export function createReactReduxFormInstance(context: MetatonicReduxContext, formId) {
@@ -15,7 +16,10 @@ export function createReactReduxFormInstance(context: MetatonicReduxContext, for
     context.registerForm(formId)
     let form = context.form(formId)
 
-    return connect(form.mapStateToProps, form.mapDispatchToProps)(MetaForm);
+    return connect(
+        (state: {metatonic: MetatonicGlobalState}) => form.mapStateToProps(state.metatonic.forms[formId]),
+        form.mapDispatchToProps
+    )(MetaForm);
 }
 
 export function createAndLoadReactReduxFormForRecord(store: Store<any>, context: MetatonicReduxContext, recordName, recordId?) {

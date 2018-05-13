@@ -13,8 +13,11 @@
     "test": "tsc && jest"
   },
   "dependencies": {
-    "core-js": "^2.5.5",
     "@types/core-js": "^0.9.46",
+    "@types/react": "^16.3.14",
+    "@types/react-redux": "^5.0.19",
+    "@types/redux": "^3.6.0",
+    "core-js": "^2.5.5",
     "metatonic-core": "^0.0.8",
     "metatonic-react": "^0.0.8",
     "metatonic-redux": "^0.0.8",
@@ -22,10 +25,7 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "@types/react": "^16.3.14",
-    "@types/react-redux": "^5.0.19",
-    "@types/redux": "^3.6.31",
+    "redux": "^3.4.0",
     "tsd": "^0.6.5"
   },
   "devDependencies": {

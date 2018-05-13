@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0",
+    "@types/redux": "^3.6.0",
     "metatonic-core": "^0.0.8",
     "metatonic-react": "^0.0.8",
-    "metatonic-redux": "^0.0.8",
     "metatonic-react-redux": "^0.0.8",
+    "metatonic-redux": "^0.0.8",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
-    "react-scripts-ts": "2.14.0"
+    "react-scripts-ts": "2.14.0",
+    "redux": "^3.4.0",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

@@ -53,6 +53,7 @@ let fieldAddClick = function (state: AppBuilderState) {
     return {
         ...state,
         field,
+        records: state.records.map(r => ({...r, fields: [ ...state.record.fields||[], field ]})),
         record: {
             ...state.record,
             fields: [ ...state.record.fields||[], field ]
@@ -64,11 +65,12 @@ function fieldEditClick(state: AppBuilderState, action: { payload }) {
     return {...state, field: action.payload } ;
 }
 
-function fieldPropChange(state: AppBuilderState, action: { type: AppBuilderActions; payload: { recordName, fieldName, propName, value, index } }) {
+function fieldPropChange(state: AppBuilderState, action: { type: AppBuilderActions; payload: { recordName, fieldName, propName, value, index, category } }) {
     let index = action.payload.index
     let field = index !== undefined ? state.record.fields[index] : state.field
     field = { ...field, [action.payload.propName]: action.payload.value }
     if (index !== undefined) state.record.fields[index] = field
+    if (index !== undefined) state.records.find(x => x.id == state.record.id)!.fields[index] = field
     return {...state, field };
 }
 

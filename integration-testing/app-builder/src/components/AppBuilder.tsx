@@ -4,6 +4,7 @@ import {FieldBuilder} from "./FieldBuilder";
 import {Record} from '../models/RecordModel'
 import {connect} from "react-redux";
 import {RecordBuilder, RecordBuilderBound} from "./RecordBuilder";
+import './AppBuilder.css'
 
 export type AppBuilderProps = {
     records: Record[]
@@ -20,13 +21,13 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
         return (
             <div className="app-editor">
                 <fieldset>
-                    <button type="button" onClick={this.props.onRecordAddClick}>Add Record</button>
                     <legend>Records</legend>
-                    <table>
+                    <table className="data-grid">
                         <thead>
                         <tr>
                             <th>Name</th>
                             <th>Label</th>
+                            <th><button type="button" onClick={this.props.onRecordAddClick} className="before-table-add-btn">Add Record</button></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,8 +42,15 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
                             <td><button type="button" onClick={() => this.props.onRecordEditClick(record)}>Edit</button></td>
                         </tr>)}
                         </tbody>
+
+                        <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><button type="button" onClick={this.props.onRecordAddClick} className="after-table-add-btn">Add Record</button></td>
+                        </tr>
+                        </tfoot>
                     </table>
-                    <button type="button" onClick={this.props.onRecordAddClick}>Add Record</button>
                 </fieldset>
                 <fieldset>
                     <legend>Edit Record</legend>

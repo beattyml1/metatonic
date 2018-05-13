@@ -30,7 +30,7 @@ export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
                     <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)}>
                         {props.records.map(r => <option value={r.name}>{r.label}</option>)}
                     </select>
-                    <button type="button" onClick={props.onFormPreviewUpdate}></button>
+                    <button type="button" onClick={props.onFormPreviewUpdate}>Update Preview</button>
                 </summary>
                 <AppPreviewBound />
             </details>

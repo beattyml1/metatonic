@@ -12,7 +12,7 @@ export type FieldBuilderProps = {
 
 
 export type FieldBuilderEvents = {
-    onFieldPropChange(recordName, fieldName, propName, value)
+    onFieldPropChange(recordName, fieldName, propName, value, category)
 }
 
 export class FieldBuilder extends React.Component<FieldBuilderEvents & FieldBuilderProps, any> {
@@ -65,14 +65,14 @@ export class FieldBuilder extends React.Component<FieldBuilderEvents & FieldBuil
     }
 
     onFieldPropChange(prop) {
-        return (event) => this.props.onFieldPropChange(this.props.record.name, this.props.field.name, prop, event.target.value);
+        return (event, category?) => this.props.onFieldPropChange(this.props.record.name, this.props.field.name, prop, event.target.value, category);
     }
 }
 
 export const FieldBuilderBound = connect(
     (state: {appBuilder: {records:any, field:any, record:any}}) => ((state||{}).appBuilder||{records:[] as any[], field:{name:''} as any, record: {} as any} as FieldBuilderProps),
     (dispatch) => ({
-        onFieldPropChange: (recordName, fieldName, propName, value) =>
-            dispatch({type: 'BUILDER__FIELD_PROP_CHANGE', payload: { recordName, fieldName, propName, value }})
+        onFieldPropChange: (recordName, fieldName, propName, value, category) =>
+            dispatch({type: 'BUILDER__FIELD_PROP_CHANGE', payload: { recordName, fieldName, propName, value, category }})
     } as FieldBuilderEvents)
 )(FieldBuilder);

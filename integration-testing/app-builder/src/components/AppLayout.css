@@ -1,17 +1,20 @@
-.tab {
+.tabs {
     display: flex;
+    flex-direction: column;
 }
-.tab>details {
+.tabs>details {
     padding: 10px;
     padding-top:0;
     border:1px solid gray;
+    min-width: 250px;
 }
-.tab>details>summary {
+.tabs>details>summary {
     margin-bottom: 20px;
     margin-left: -10px;
     margin-right: -10px;
     padding: 10px;
     border-top: 2px solid gray;
+    background:lightsteelblue;
 }
 .root-app-builder-layout {
     text-align: left;

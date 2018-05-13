@@ -69,7 +69,7 @@ export const BaseSchema = {
     'Numeric': typeSchema('Numeric', 'Numeric', SchemaTypeCategory.Numeric, []),
     'Decimal': typeSchema('Decimal', 'Decimal', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: false, isInteger: false }),
     'Float': typeSchema('Float', 'Float', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: true, isInteger: false }),
-    'Currency': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, undefined, {
+    'Currency': typeSchema('Currency', 'Currency', SchemaTypeCategory.Quantity, undefined, {
         unitSource: { unitCategory: {name: 'currency'} },
         numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
     'text': typeSchema('text', 'Text', SchemaTypeCategory.Text),

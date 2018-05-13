@@ -14,13 +14,22 @@
 }
 
 
-label {
-  font-size: 13px !important;
-}
+
 
 fieldset {
   padding: 10px 0 !important;
   border: none !important;
   border-top: 1px solid gray;
   margin: 20px 0;
+}
+
+fieldset>legend{
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+th {
+  font-size: 14px;
+  background: gainsboro;
+  border: gainsboro;
 }

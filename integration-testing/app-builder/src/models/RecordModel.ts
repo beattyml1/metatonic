@@ -2,10 +2,10 @@ import {field, model} from "metatonic-core";
 import {SchemaFieldInfo, SchemaEntryType} from "metatonic-core";
 import {list} from "metatonic-core";
 import {Field} from "./FieldModel";
-
+let id = 0
 @model('Record')
 export class Record {
-    id = '';
+    id = `record-${id++}`;
 
     @field("text", "Name", { required: true })
     name: string = '';

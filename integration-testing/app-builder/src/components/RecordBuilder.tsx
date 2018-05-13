@@ -13,7 +13,7 @@ export type RecordBuilderProps= {
 
 export type RecordBuilderEvents = {
     onRecordPropChange(recordName, propName, value)
-    onFieldPropChange(recordName, fieldName, propName, value, index)
+    onFieldPropChange(recordName, fieldName, propName, value, index, category)
     onFieldEditClick(field: Field)
     onFieldAddClick()
 }
@@ -66,7 +66,7 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
     }
 
     onFieldPropChange(fieldName, prop, index) {
-        return (event) => this.props.onFieldPropChange(this.props.record.name, fieldName, prop, event.target.value, index);
+        return (event, category?) => this.props.onFieldPropChange(this.props.record.name, fieldName, prop, event.target.value, index, category);
     }
 
     onRecordPropChange(prop) {
@@ -81,7 +81,7 @@ export const RecordBuilderBound = connect(
             dispatch({type: 'BUILDER__RECORD_PROP_CHANGE', payload: { recordName, propName, value }}),
         onFieldEditClick: (field) => dispatch({type: 'BUILDER__FIELD_EDIT_CLICK', payload: field }),
         onFieldAddClick: () => dispatch({type: 'BUILDER__FIELD_ADD_CLICK'}),
-        onFieldPropChange: (recordName, fieldName, propName, value, index) =>
-            dispatch({type: 'BUILDER__FIELD_PROP_CHANGE', payload: { recordName, fieldName, propName, value, index }})
+        onFieldPropChange: (recordName, fieldName, propName, value, index, category) =>
+            dispatch({type: 'BUILDER__FIELD_PROP_CHANGE', payload: { recordName, fieldName, propName, value, index, category }})
     } as RecordBuilderEvents)
 )(RecordBuilder);

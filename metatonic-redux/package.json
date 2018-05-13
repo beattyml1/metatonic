@@ -23,6 +23,7 @@
     "redux": "^3.4.0",
     "redux-observable": "^0.18.0",
     "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
     "rxjs": "^5.5.10",
     "tsd": "^0.6.5"
   },

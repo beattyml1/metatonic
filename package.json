@@ -33,6 +33,7 @@
     "collectCoverageFrom": [
       "metatonic-core/src/**.{ts,tsx}",
       "metatonic-react/src/**.{ts,tsx}",
+      "metatonic-redux/src/**.{ts,tsx}",
       "!**/node_modules/**",
       "!**/src/domain/**",
       "!**/vendor/**"

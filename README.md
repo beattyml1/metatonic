@@ -6,8 +6,8 @@
 |Name                   | Status            | Coverage        |NPM|
 |:----------------------|:------------------|:----------------|:---------|
 | metatonic-core        | Complete(ish)     | 96%             |[![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) |
-| metatonic-react       |Mostly done/testing| 46%             |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
-| metatonic-redux       |Mostly done/testing| 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-redux.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-react       |Mostly done/testing| 22%             |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-redux       |Mostly done/testing| 46%              |[![react:npm version](https://badge.fury.io/js/metatonic-redux.svg)](https://badge.fury.io/js/metatonic-react)
 | metatonic-react-redux |Mostly done/testing| 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
 | app-builder           | Early Dev         |||
 | Examples              | Early Dev         |||

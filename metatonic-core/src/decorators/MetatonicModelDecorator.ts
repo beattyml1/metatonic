@@ -16,7 +16,7 @@ export function model(label?: string, params?: OptionalProps<SchemaRecordTypePar
             name: constructor.name,
             label: label || constructor.name,
             category: SchemaTypeCategory.Record,
-            parentTypeNames: getParentTypeNames(constructor),
+            parentTypeNames: [...getParentTypeNames(constructor), 'Record'],
             parameters: copyAndSet(params as SchemaRecordTypeParameters, {
                 fields: existing ? existing.parameters.fields || [] : []
             }),

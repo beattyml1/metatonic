@@ -1,7 +1,7 @@
 import {SchemaType, SchemaField} from "../domain/Schema/Records";
 
 function classesForType(classForType: (x: string) => string) {
-    return (type: SchemaType) => type.parentTypeNames.concat(type.name).map(classForType).join(' ');
+    return (type: SchemaType) =>  type.parentTypeNames.concat(type.name).map(classForType).join(' ');
 }
 
 export const inputTypeClasses = classesForType(_ => `input-${_}`) as (type: SchemaType) => string;

@@ -11,7 +11,8 @@ describe('model', () => {
         class MyModel {}
         expect(getTsModels()).toHaveLength(1)
         expect(getTsModels()[0].name).toBe('MyModel');
-        expect(getTsModels()[0].parentTypeNames).toHaveLength(0)
+        expect(getTsModels()[0].parentTypeNames).toHaveLength(1)
+        expect(getTsModels()[0].parentTypeNames).toContain('Record');
     })
     it('should add set parentTypeNames when there are parent classes ', () => {
         class BaseModel {}
@@ -19,8 +20,9 @@ describe('model', () => {
         class MyModel extends BaseModel {}
         expect(getTsModels()).toHaveLength(1)
         expect(getTsModels()[0].name).toBe('MyModel');
-        expect(getTsModels()[0].parentTypeNames).toHaveLength(1);
+        expect(getTsModels()[0].parentTypeNames).toHaveLength(2);
         expect(getTsModels()[0].parentTypeNames).toContain('BaseModel');
+        expect(getTsModels()[0].parentTypeNames).toContain('Record');
     })
     it('should add the model with options', () => {
         @model('Label', {

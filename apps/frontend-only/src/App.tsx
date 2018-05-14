@@ -14,6 +14,7 @@ import {
 import thunk from 'redux-thunk'
 import {BaseSchema} from './BuiltInTypes'
 import './models'
+import 'metatonic-react/lib/editors'
 
 let metatonicConfig = {
     dataStore: new ObjectDataStorage({ $schema: { types: BaseSchema } }),

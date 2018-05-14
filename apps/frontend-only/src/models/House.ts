@@ -1,4 +1,4 @@
-import {model} from "metatonic-core/src/index";
+import {model} from "metatonic-core";
 import {field, list} from "metatonic-core";
 import {Homeowner} from "./Homeowner";
 import {SchemaEntryType} from "metatonic-core";

@@ -6,15 +6,18 @@ const logo = require('./logo.svg');
 import { Provider } from 'react-redux';
 import { createMetatonicReduxThunkApp } from "metatonic-redux"
 import * as MetatonicRedux from "metatonic-redux"
-import {RestDataStore} from "metatonic-core";
+import {ObjectDataStorage} from "metatonic-core";
 import {defaultComponentRegistry} from "metatonic-core";
 import {combineReducers, createStore, applyMiddleware} from "redux";
 import {} from "metatonic-redux";
 import { createAndLoadReactReduxFormForRecord} from "metatonic-react-redux";
 import {AppLayoutBound} from "./components/AppLayout";
+import {BaseSchema} from "./BuiltInTypes";
 
 let metatonicConfig = {
-    dataStore: new RestDataStore('/api'),
+    dataStore: new ObjectDataStorage({
+        $schema: { types: BaseSchema}
+    }),
     componentRegistry: defaultComponentRegistry
 }
 let app = createMetatonicReduxThunkApp(metatonicConfig);

@@ -10,7 +10,6 @@ export class EditorResolutionGroup<TEditor extends new (...args) => any,
     constructor(protected editors: EditorRegistry<TEditor, TLabeler, TRepeater>,
                 protected schema: Schema,
                 protected select: boolean) {
-
     }
 
     getEditorParts(type: string, uiHint?: string) {

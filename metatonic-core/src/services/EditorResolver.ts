@@ -21,6 +21,9 @@ class EditorResolverImplementation<
     }
 
     getEditorComponents(field: SchemaField): LabeledEditor<TEditor, TLabeler, TRepeater>|null {
+        if (!field.name && !field.entryType)
+            return this.edit.getEditorParts(field.typeName, field.uiControlPreference);
+
         if (field.entryType === SchemaEntryType.entry) {
             if (field.multiple) {
                 return this.multiEdit.getEditorParts(field.typeName, field.uiControlPreference)
@@ -29,7 +32,7 @@ class EditorResolverImplementation<
             }
         } else if (field.entryType === SchemaEntryType.selection) {
             return this.select.getEditorParts(field.typeName, field.uiControlPreference)
-        } else throw "Invalid entry type"
+        } else throw `Invalid entry type: ${field.entryType} for field: ${field.name}`
     }
 }
 

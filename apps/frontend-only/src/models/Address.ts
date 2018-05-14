@@ -13,9 +13,9 @@ export class Address {
     @field("text", "City")
     city: string;
 
-    @select("State", "State")
+    @field("text", "text", { maxLength: 2})
     state: string;
 
-    @field("ZipCode", "Zip Code")
+    @field("text", "Zip Code", { maxLength: 2 } )
     zipCode: string;
 }

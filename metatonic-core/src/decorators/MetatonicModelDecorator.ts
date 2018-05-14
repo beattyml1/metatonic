@@ -21,6 +21,7 @@ export function model(label?: string, params?: OptionalProps<SchemaRecordTypePar
                 fields: existing ? existing.parameters.fields || [] : []
             }),
             id: getId(),
+            validations: [],
             uiControlPreference: params ? params.uiControlPreference : undefined
         } as RecordSchemaType;
         if (existing) {
@@ -65,13 +66,19 @@ export function valueType() {
     }
 }
 
+let tsFieldId = 0;
+
 let getField = function (fieldTypeName: string, propertyKey: string, label: string, editSelect: SchemaEntryType, isMulti: boolean, options?: OptionalProps<SchemaField>) {
     return Object.assign({
+        id:`ts-field-${tsFieldId++}`,
         typeName: fieldTypeName,
         name: propertyKey,
         label: label,
         multiple: isMulti,
         entryType: editSelect,
+        validations: [],
+        type: undefined as any,
+        uiUniqueId: `ts-field-${tsFieldId++}`
     } as SchemaField, options || {});
 };
 

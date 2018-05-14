@@ -43,7 +43,7 @@ export class FormAsyncMethods {
         return {
             recordName,
             recordId,
-            schema: formState as FormSchema,
+            schema: schema as FormSchema,
             formState: formState as FieldState,
             formData: formData as any,
             editors: editorResolver as EditorResolver<any, any, any>,

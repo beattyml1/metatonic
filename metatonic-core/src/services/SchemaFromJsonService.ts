@@ -7,7 +7,7 @@ import {SchemaValidation, ValidationSeverity, ValidationTime} from "../domain/Sc
 
 export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
 	if (!schema.type) schema.type = schema.types[schema.typeName] as RecordSchemaType;
-	return Object.assign({}, schema, { type: addTypesToFields(schema.type, schema) });
+	return Object.assign({}, schema, { type: addTypesToFields(schema.type, schema), validations: (schema as FormSchema).validations || [] });
 }
 
 export function addTypeToField(field: SchemaFieldInfo, schema: Schema): SchemaField {

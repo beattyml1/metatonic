@@ -6,6 +6,8 @@ import {async} from "xhr-mock/lib/handle";
 import {FormSchema} from "metatonic-core";
 import {MetatonicReduxAppInstance} from "./MetatonicReduxAppInstance";
 import {createMetatonicAppInitializer} from "./createMetatonicAppInitializer";
+import {OptionalProps} from "metatonic-core/lib";
+import {initializeState, initializeStateEmpty, loadFinished, loadStarted} from "./Events";
 
 export class Thunks {
     constructor(public context: MetatonicReduxContext) {
@@ -31,22 +33,20 @@ export class Thunks {
         }
     }
 
-    initialLoad = (action: MetatonicRootAction) => {
-        let typeName = action.payload.typeName;
-        let recordId = action.payload.recordId;
-
+    initialLoad = (formId, typeName, recordId) => {
         return async (dispatch: (action: MetatonicRootAction) => void, getState: () => FormState) => {
-            await dispatch(copyAndSet(action, {type: FormEvents.loadStarted }));
-            let state = this.context.asyncMethods.fetchInitialFormState(typeName, recordId);
-            await dispatch(copyAndSet(action, {type: FormEvents.initializeState, payload: state }));
-            await dispatch(copyAndSet(action, {type: FormEvents.loadFinished }));
+            await dispatch(initializeStateEmpty(formId));
+            await dispatch(loadStarted(formId));
+            let state = await this.context.asyncMethods.fetchInitialFormState(typeName, recordId);
+            await dispatch(initializeState(formId, state));
+            await dispatch(loadFinished(formId));
         }
     }
 
     thunkActionWrapper(action: MetatonicRootAction) {
         switch (action.type) {
             case FormEvents.trySubmit: return this.submitThunk(action);
-            case FormEvents.initialize: return this.initialLoad(action);
+            case FormEvents.initialize: return this.initialLoad(action.meta.formId, action.payload.recordName, action.payload.recordId);
             default: return action;
         }
     }

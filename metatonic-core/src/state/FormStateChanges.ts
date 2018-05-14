@@ -43,6 +43,14 @@ export module FormStateChanges {
         });
     }
 
+    export function initializeFormStateEmpty() {
+        return {
+            formState: {
+
+            }
+        };
+    }
+
     export function finishLoad(state: FormState) {
         return copyAndSet(state, {
             formState: copyAndSet(state.formState, {

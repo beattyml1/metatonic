@@ -13,7 +13,6 @@ type AppBuilderState = {
 export function getSchema(state: { appBuilder: AppBuilderState, formPreviewState: {schema: FormSchema} } , recordName?) {
     if (!state || !state.appBuilder) return {};
     let typeName = recordName || (((state||{}).formPreviewState||{}).schema||{}).typeName;
-    console.log(typeName)
     let schemaSimple = {
         typeName: typeName,
         types: [

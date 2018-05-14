@@ -32,7 +32,6 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
                         </thead>
                         <tbody>
                         {this.props.records.map((record, index) => <tr>
-                            {console.log(record)}
                             <td>
                                 <input value={record.name} onChange={this.onRecordPropChange(record.name, 'name', index)} />
                             </td>

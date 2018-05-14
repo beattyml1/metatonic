@@ -33,8 +33,10 @@ export class FormAsyncMethods {
 
     async fetchInitialFormState(recordName: string, recordId) {
         let serverSchema = await this.resource(recordName).schema();
-        let schemaTypes = getTsModels().reduce((schema, model) => Object.assign({[model.name]: model }, schema), serverSchema);
-        let schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schemaTypes), '')
+        let schemaTypes = getTsModels().reduce((schema, model) => Object.assign({[model.name]: model}, schema), serverSchema.types);
+        let schemaUnexpanded = {...serverSchema, types: schemaTypes, typeName: recordName };
+
+        let schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schemaUnexpanded), '')
         let editorResolver = getEditorResolverContext(this.context.componentRegistry, schema);
         let formState = getDefaultFormState(schema.type);
         let formData = await this.fetchFormData(schema.type, recordId);
@@ -43,7 +45,7 @@ export class FormAsyncMethods {
             recordId,
             schema: formState as FormSchema,
             formState: formState as FieldState,
-            formData: formState as FieldState,
+            formData: formData as any,
             editors: editorResolver as EditorResolver<any, any, any>,
         };
     }

@@ -21,15 +21,15 @@ export class ObjectDataStorage implements PersistantDataStore {
 export  class ObjectStoreRecordResource<T extends {id}> implements RecordResource<T> {
     constructor(protected store, protected resourceName: string) {
         if (!this.store.records[this.resourceName]) this.store.records[this.resourceName] = {};
-        if (!this.store.records['$schema']) this.store.records['$schema'] = {};
     }
 
     getOne(id: string) {
-        return Promise.resolve(this.store.records[this.resourceName][id]);
+        return Promise.resolve(this.store.records[this.resourceName][id]||null);
     }
 
     getAll() {
-        return Promise.resolve((Object as any).values(this.store.records[this.resourceName]));
+
+        return Promise.resolve((Object as any).entries(this.store.records[this.resourceName]).filter(e => e[0] !== '$schema').map(e=>e[1]));
     }
 
     textSearch(test: string): Promise<T[]> {
@@ -57,6 +57,9 @@ export  class ObjectStoreRecordResource<T extends {id}> implements RecordResourc
     }
 
     schema(): Promise<FormSchema> {
-        return Promise.resolve(this.store.records["$schema"]);
+        let globalSchema = this.store['$schema']||{};
+        let globalTypes = globalSchema.types || {};
+        let resourceSchema = globalTypes[this.resourceName] || {};
+        return Promise.resolve(globalSchema);
     }
 }

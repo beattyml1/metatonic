@@ -32,12 +32,12 @@ export class MetatonicReduxContextInstance extends MetatonicBaseContext implemen
     metatonicReducer = (state: MetatonicGlobalState, action: MetatonicRootAction) => {
         let isMetatonicEventType = Object.keys(FormEvents).map(k => FormEvents[k]).includes(action.type);
         let hasFormId = action.meta && action.meta.formId;
-        if (!isMetatonicEventType || !hasFormId) return state||{};
+        if (!isMetatonicEventType || !hasFormId) return state||{forms:{}};
         let formId = action.meta.formId;
-        state = copyAndSet(state, {forms: state.forms||[]})
+        state = copyAndSet(state, {forms: state.forms||{}})
         return copyAndSet(state, {
             forms: {
-                ...state.forms||[],
+                ...state.forms||{},
                 [formId]: this.form(formId).reduce(state.forms[formId], action)
             }
         });

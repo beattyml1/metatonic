@@ -6,6 +6,7 @@ import {FormProperties} from "./EditorModels/FormProperties";
 export enum FormEvents {
     initialize = 'METATONIC_FORM__initialize',
     initializeState = 'METATONIC_FORM__initializeState',
+    initializeStateEmpty = 'METATONIC_FORM__initializeStateEmpty',
     propertyChanged = 'METATONIC_FORM__PROPERTY_CHANGED',
     propertiesChanged = 'METATONIC_FORM__PROPERTIES_CHANGED',
     trySubmit = 'METATONIC_FORM__TRY_SUBMIT',
@@ -20,7 +21,6 @@ export enum FormEvents {
     submitAttemptFinished = 'METATONIC_FORM__submitAttemptFinished',
     loadStarted = 'METATONIC_FORM__loadStarted',
     loadFinished = 'METATONIC_FORM__loadFinished'
-
 }
 
 export type AllMetatonicEvents = FormEvents;

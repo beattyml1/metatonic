@@ -13,6 +13,9 @@ import {FormProperties} from "metatonic-core";
 import {Map} from "./PrivateTypes";
 import {MetatonicReduxContextInstance} from "./MetatonicReduxContextInstance";
 
+// Needed for declaration generation
+// noinspection ES6UnusedImports
+
 let defaultDataStore = (apiUrl = '/api') => new RestDataStore(apiUrl)
 let defaultContextInitializer = (apiUrl = '/api') =>
     <MetatonicContextInitializer>{ componentRegistry: defaultComponentRegistry, dataStore: defaultDataStore() };

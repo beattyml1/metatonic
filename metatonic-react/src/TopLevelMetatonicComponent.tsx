@@ -33,7 +33,7 @@ export class TopLevelMetatonicComponent<TData> extends React.Component<FormPrope
 
     createTopField() {
         return {
-            label: "",
+            label: this.props.schema!.type.label,
             uiUniqueId: "",
             type: this.props.schema!.type,
             typeName: this.props.schema!.type.name

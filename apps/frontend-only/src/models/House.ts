@@ -10,11 +10,11 @@ class Currency {
 
 @model()
 export class House {
-    @field("Address", "Address", { canAdd: true })
-    address: Address;
-
     @field("Currency", "Asking Price", {min: '0', max: '100000000'})
     askingPrice: Currency;
+
+    @field("Address", "Address", { canAdd: true })
+    address: Address;
 
     @list("Homeowner", "Homeowners", { canAdd: true })
     homeowners: Homeowner[];

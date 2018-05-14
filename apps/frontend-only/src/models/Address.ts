@@ -13,7 +13,7 @@ export class Address {
     @field("text", "City")
     city: string;
 
-    @field("text", "text", { maxLength: 2})
+    @field("text", "State", { maxLength: 2})
     state: string;
 
     @field("text", "Zip Code", { maxLength: 2 } )

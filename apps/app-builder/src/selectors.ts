@@ -2,14 +2,18 @@ import {getFormSchemaFromJsonObject} from "metatonic-core";
 import {FormSchema} from "metatonic-core";
 import {Field} from "./models/FieldModel";
 import {Record} from "./models/RecordModel";
-import {RecordSchemaType} from "metatonic-core";
+import {RecordSchemaType,ObjectDataStorage,defaultComponentRegistry} from "metatonic-core";
 import {BaseSchema} from "./BuiltInTypes";
+import {SchemaTypeCategory} from "metatonic-core";
+import {createMetatonicReduxThunkApp} from "metatonic-redux/lib/thunk";
 
 type AppBuilderState = {
     field: Field,
     record: Record,
     records: Record[]
 }
+
+
 export function getSchema(state: { appBuilder: AppBuilderState, formPreviewState: {schema: FormSchema} } , recordName?) {
     if (!state || !state.appBuilder) return {};
     let typeName = recordName || (((state||{}).formPreviewState||{}).schema||{}).typeName;
@@ -19,6 +23,7 @@ export function getSchema(state: { appBuilder: AppBuilderState, formPreviewState
             ...state.appBuilder.records.map(record => {
                 return {
                     id: record.id,
+                    category: SchemaTypeCategory.Record,
                     name: record.name,
                     label: record.label,
                     uiControlPreference: record.uiControlPreference,

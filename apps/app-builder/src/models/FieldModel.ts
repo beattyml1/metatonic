@@ -6,7 +6,7 @@ import {SchemaField} from "metatonic-core";
 
 let fieldId = 0;
 
-@model('Field')
+//@model('Field')
 export class Field implements SchemaFieldInfo {
     @field("text", "Name", { required: true })
     name: string = '';
@@ -14,39 +14,39 @@ export class Field implements SchemaFieldInfo {
     id = `field-${fieldId++}`
     uiUniqueId = `field-${fieldId++}`
 
-    @field("text", "Label", { required: true })
+    //@field("text", "Label", { required: true })
     label: string = '';
 
-    @select("Record|ValueTypes", "Type", { required: true })
+    //@select("Record|ValueTypes", "Type", { required: true })
     typeName: string = '';
 
-    @field("code", "Type", { required: true })
+    //@field("code", "Type", { required: true })
     entryType?: SchemaEntryType = SchemaEntryType.entry;
 
-    @field("boolean", "Multiple", { required: true })
+    //@field("boolean", "Multiple", { required: true })
     multiple: boolean = false;
 
-    @list("Validation", "Validations")
+    //@list("Validation", "Validations")
     validations: Validation[] = [];
 
-    @field("boolean", "Required", { required: true })
+    //@field("boolean", "Required", { required: true })
     required: boolean = false;
 
-    @field("numeric", "Max Length", { required: false })
+    //@field("numeric", "Max Length", { required: false })
     maxLength?: number = undefined;
 
-    @field("numeric", "Max", { required: false })
+    //@field("numeric", "Max", { required: false })
     max?: string = undefined;
 
-    @field("numeric", "Min", { required: false })
+    //@field("numeric", "Min", { required: false })
     min?: string = undefined;
 
-    @field("boolean", "Can Add", { required: false })
+    //@field("boolean", "Can Add", { required: false })
     canAdd?: boolean = false;
 
-    @field("boolean", "Can Add", { required: false })
+    //@field("boolean", "Can Add", { required: false })
     canEditSelection?: boolean = false;
 
-    @field("text", "UI Preference", { required: false })
+    //@field("text", "UI Preference", { required: false })
     uiControlPreference?: string;
 }

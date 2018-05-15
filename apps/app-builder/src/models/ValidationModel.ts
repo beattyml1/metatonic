@@ -3,9 +3,9 @@ import {SchemaFieldInfo, SchemaEntryType, Maybe} from "metatonic-core";
 import {list, select} from "metatonic-core";
 import {ValidationSeverity, ValidationTime} from "metatonic-core";
 
-@model('Validation')
+//@model('Validation')
 export class Validation {
-    @field("text", "Name", { required: true })
+    //@field("text", "Name", { required: true })
     name: string;
 
     label: string = "";

@@ -3,19 +3,19 @@ import {SchemaFieldInfo, SchemaEntryType} from "metatonic-core";
 import {list} from "metatonic-core";
 import {Field} from "./FieldModel";
 let id = 0
-@model('Record')
+//@model('Record')
 export class Record {
     id = `record-${id++}`;
 
-    @field("text", "Name", { required: true })
+    //@field("text", "Name", { required: true })
     name: string = '';
 
-    @field("text", "Label", { required: true })
+    //@field("text", "Label", { required: true })
     label: string = '';
 
-    @list('Field', 'Fields')
+    //@list('Field', 'Fields')
     fields: Field[] = [];
 
-    @field("text", "UI Preference", { required: false })
+    //@field("text", "UI Preference", { required: false })
     uiControlPreference?: string = '';
 }

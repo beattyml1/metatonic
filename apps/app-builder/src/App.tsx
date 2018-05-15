@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import {primaryReducer} from './Store'
+import 'metatonic-react/lib/editors'
 
 const logo = require('./logo.svg');
 import { Provider } from 'react-redux';
@@ -13,15 +14,6 @@ import {} from "metatonic-redux";
 import { createAndLoadReactReduxFormForRecord} from "metatonic-react-redux";
 import {AppLayoutBound} from "./components/AppLayout";
 import {BaseSchema} from "./BuiltInTypes";
-
-let metatonicConfig = {
-    dataStore: new ObjectDataStorage({
-        $schema: { types: BaseSchema}
-    }),
-    componentRegistry: defaultComponentRegistry
-}
-let app = createMetatonicReduxThunkApp(metatonicConfig);
-let context = app.contexts['default'];
 
 // let store = createStore(combineReducers({
 //     metatonic: context.metatonicReducer

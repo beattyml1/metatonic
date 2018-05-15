@@ -36,7 +36,7 @@ export abstract class BaseEditor
     notifyChanged(value) {
         this.props.resources.formDispatcher.propertyChanged({
             propertySelector: this.fieldLocator(),
-            value: this.value()
+            value: value
         })
     }
 

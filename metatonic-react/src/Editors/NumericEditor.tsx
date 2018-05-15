@@ -14,7 +14,7 @@ export class NumericEditor extends BaseEditor<Numeric, NumericTypeInfo, BaseEdit
                    max={this.props.field.max || undefined}
                    min={this.props.field.min || undefined}
                    step={1}
-                   onChange={this.notifyChanged}
+                   onChange={e => this.notifyChanged(e.target.value)}
                    name={this.props.context.fieldLocator}
                    data-fieldName={this.field().name}
                    className={fieldInputClasses(this.field())}

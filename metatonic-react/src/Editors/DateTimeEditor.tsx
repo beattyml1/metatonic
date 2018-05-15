@@ -22,7 +22,7 @@ export class DateTimeEditor extends BaseEditor<Date|DateTime|TimeStamp, DateTime
                 required={this.field().required}
                 max={this.field().max}
                 min={this.field().min}  
-                onChange={(value) => this.notifyChanged(value)}
+                onChange={(e) => this.notifyChanged(e.target.value)}
                 name={this.props.context.fieldLocator}
                 data-fieldName={this.field().name}
                 className={fieldInputClasses(this.field())}

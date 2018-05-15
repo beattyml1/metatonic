@@ -20,7 +20,7 @@ export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, Text
                 className={fieldInputClasses(this.field())}
                 name={this.props.context.fieldLocator}
                 data-fieldName={this.field().name}
-                onChange={(value) => this.notifyChanged(value)}
+                onChange={(e) => this.notifyChanged(e.target.value)}
             />
         )
     }

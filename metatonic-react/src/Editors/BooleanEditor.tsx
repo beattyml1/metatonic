@@ -11,7 +11,7 @@ export class BooleanEditor extends BaseEditor<boolean, BooleanType, BaseEditorMo
         return (
             <input type="checkbox"
                    checked={this.value()}
-                   onChange={this.notifyChanged}
+                   onChange={e => this.notifyChanged(e.target.value)}
                    id={this.uniqueId()}
                    name={this.props.context.fieldLocator}
                    data-fieldName={this.field().name}

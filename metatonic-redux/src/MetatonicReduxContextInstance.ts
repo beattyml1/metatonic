@@ -79,8 +79,19 @@ export class MetatonicReduxFormInstance  implements MetatonicReduxFormFunctions 
         } as FormProperties
     }
     mapDispatchToProps = (dispatch: MetatonicDispatchFunction): MetatonicFormEventProps => {
-        return { onFormEvent:(action: MetatonicRootAction) => dispatch(this.context.wrapAction(action)) }
+        return {
+            onFormEvent: (action: MetatonicRootAction) =>
+                dispatch(this.formatAction(action))
+        }
     }
+
+    formatAction = (action: MetatonicAction) => {
+        return this.context.wrapAction({
+            ...action,
+            meta: { formId: this.formId }
+        })
+    }
+        
     state() {
         return this.context.appStore.getState().metatonic.forms[this.formId];
     }

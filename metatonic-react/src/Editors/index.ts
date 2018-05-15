@@ -4,3 +4,5 @@ import './RecordEditor';
 import './QuantityEditor';
 import './NumericEditor';
 import './TextFieldEditor';
+import './RecordTableEditor';
+import './Repeater'

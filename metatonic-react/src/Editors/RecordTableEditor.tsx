@@ -1,12 +1,14 @@
 import * as React from "react";
-import {SchemaRecordTypeParameters} from "metatonic-core";
+import {SchemaRecordTypeParameters,multiEditorFor} from "metatonic-core";
 import {RecordMultiParams} from "./RecordEditor";
 import {FieldCell} from "./FieldEditor";
 import {createContext, RecordSchemaType, BaseEditorModel, SchemaField, fieldEditorClasses} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import {} from 'metatonic-core/'
 import {getChildCellProps} from "metatonic-core";
+import FieldSet from "../LabeledFieldContainers/FieldSet";
 
+@multiEditorFor("Record", FieldSet)
 export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
     render() {
         let fields = this.type().fields;

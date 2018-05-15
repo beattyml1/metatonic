@@ -4,7 +4,6 @@ import {Person} from "./Person";
 import {SchemaEntryType} from "metatonic-core";
 
 @model('Home Owner')
-export class Homeowner {
-    @field("Person", "Person Info", { canAdd: true})
-    person: Person;
+export class Homeowner extends Person {
+
 }

@@ -16,6 +16,6 @@ export class House {
     @field("Address", "Address", { canAdd: true })
     address: Address;
 
-    @list("Homeowner", "Homeowners", { canAdd: true })
+    @list("Person", "Homeowners", { canAdd: true })
     homeowners: Homeowner[];
 }

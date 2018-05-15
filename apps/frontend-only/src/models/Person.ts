@@ -6,9 +6,9 @@ export class Person {
     @field("text", "First Name")
     firstName: string;
 
-    @field("text", "First Name")
+    @field("text", "Last Name")
     lastName: string;
 
-    @field("text", "First Name", { canAdd: true })
+    @field("Address", "Address", { canAdd: true })
     address: Address
 }

@@ -27,6 +27,10 @@ export class FieldDisplay extends React.Component<FieldEditorModel, {}> {
 }
 
 export class FieldCell extends React.Component<FieldEditorModel, {isEditing}> {
+    constructor(props){
+        super(props);
+        this.state = { isEditing: true };
+    }
     render() {
         if (this.state.isEditing) {
             return <FieldEditor value={this.props.value} field={this.props.field} context={this.props.context} fieldState={this.props.fieldState} resources={this.props.resources}/>

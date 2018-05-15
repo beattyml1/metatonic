@@ -91,7 +91,7 @@ export class MetatonicReduxFormInstance  implements MetatonicReduxFormFunctions 
             meta: { formId: this.formId }
         })
     }
-        
+
     state() {
         return this.context.appStore.getState().metatonic.forms[this.formId];
     }

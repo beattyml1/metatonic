@@ -38,8 +38,8 @@ export class FormAsyncMethods {
 
         let schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schemaUnexpanded), '')
         let editorResolver = getEditorResolverContext(this.context.componentRegistry, schema);
-        let formState = getDefaultFormState(schema.type);
         let formData = await this.fetchFormData(schema.type, recordId);
+        let formState = getDefaultFormState(schema.type, formData);
         return {
             recordName,
             recordId,

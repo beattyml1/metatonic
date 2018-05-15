@@ -133,8 +133,8 @@ export module FormStateChanges {
 
     export function fullReload(state: { formProps: FormProperties }, formData: any, schema: FormSchema): FormState {
 	    schema = addUniqueIdsToChildren(getFormSchemaFromJsonObject(schema), "")
-        let formState = getDefaultFormState(schema.type);
 	    formData = formData || getDefaultDataForField(schema)
+        let formState = getDefaultFormState(schema.type, formData);
 		return {
             formData,
             formProps: state.formProps,

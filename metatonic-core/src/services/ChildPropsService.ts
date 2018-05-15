@@ -16,10 +16,10 @@ export function getChildFieldProps<T = any>(props: BaseEditorModel<T>, field: Sc
 
 export function getChildCellProps<T = any>(props: BaseEditorModel<T>, field: SchemaField, rowIndex: number) {
     return {
-        value: props.value[field.name],
+        value: props.value[rowIndex][field.name],
         field: field,
         context: createContext(field, props.context, rowIndex) as ComponentContext,
-        fieldState: props.fieldState.children[rowIndex][field.name] as FieldState,
+        fieldState: props.fieldState.children[rowIndex].children[field.name] as FieldState,
         resources: props.resources,
     } as BaseEditorModel<any>
 }

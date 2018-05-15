@@ -36,7 +36,7 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
         return <th>{field.label}</th>
     }
 
-    row(record, rowIndex) {
+    row = (record, rowIndex) => {
         return (
         <tr>
             {this.getCells(record, rowIndex)}

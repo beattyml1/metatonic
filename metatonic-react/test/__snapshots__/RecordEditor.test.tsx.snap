@@ -4,7 +4,48 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
 <div
   className="edit-Record edit-Home undefined-field"
 >
-  <div />
+  <fieldset
+    className="field-set-field-container contain-Record contain-Person owners-field"
+  >
+    <legend
+      className="label-Record label-Person owners-field"
+      id="f0-label"
+    >
+      Owners
+    </legend>
+    <div
+      className="data-grid edit-Record edit-Person owners-field"
+    >
+      <div
+        className="data-grid-buttons"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Add
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Full Name
+            </th>
+            <th>
+              Phone Number
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+    <div
+      className="validation-list"
+    >
+      <div />
+    </div>
+  </fieldset>
   <fieldset
     className="field-set-field-container contain-Record contain-Address address-field"
   >
@@ -224,7 +265,117 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
 <div
   className="edit-Record edit-Home undefined-field"
 >
-  <div />
+  <fieldset
+    className="field-set-field-container contain-Record contain-Person owners-field"
+  >
+    <legend
+      className="label-Record label-Person owners-field"
+      id="f0-label"
+    >
+      Owners
+    </legend>
+    <div
+      className="data-grid edit-Record edit-Person owners-field"
+    >
+      <div
+        className="data-grid-buttons"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Add
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Full Name
+            </th>
+            <th>
+              Phone Number
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div
+                className="input-box-field-container contain-text fullName-field"
+              >
+                <label
+                  className="label-text fullName-field"
+                  htmlFor="f0f0r0"
+                  id="f0f0r0-label"
+                >
+                  Full Name
+                </label>
+                <input
+                  className="input-text fullName-field"
+                  data-fieldName="fullName"
+                  id="f0f0r0"
+                  maxLength={undefined}
+                  name="owners"
+                  onChange={[Function]}
+                  required={undefined}
+                  type="text"
+                  value="Jane Doe"
+                />
+                <div
+                  className="validation-list"
+                >
+                  <div />
+                </div>
+              </div>
+            </td>
+            <td>
+              <div
+                className="input-box-field-container contain-text contain-tel phone-field"
+              >
+                <label
+                  className="label-text label-tel phone-field"
+                  htmlFor="f0f1r0"
+                  id="f0f1r0-label"
+                >
+                  Phone Number
+                </label>
+                <input
+                  className="input-text input-tel phone-field"
+                  data-fieldName="phone"
+                  id="f0f1r0"
+                  maxLength={undefined}
+                  name="owners"
+                  onChange={[Function]}
+                  required={undefined}
+                  type="tel"
+                  value=""
+                />
+                <div
+                  className="validation-list"
+                >
+                  <div />
+                </div>
+              </div>
+            </td>
+            <td>
+              <button
+                onClick={[Function]}
+                type="button"
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="validation-list"
+    >
+      <div />
+    </div>
+  </fieldset>
   <fieldset
     className="field-set-field-container contain-Record contain-Address address-field"
   >

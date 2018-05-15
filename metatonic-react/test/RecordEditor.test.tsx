@@ -24,6 +24,7 @@ import {getDefaultFormState} from "metatonic-core";
 import {getEditorResolverContext} from "metatonic-core";
 import {FormUserEvents} from "metatonic-core";
 import {RecordSchemaType} from "metatonic-core";
+import * as beautify from 'json-beautify'
 
 describe('RecordEditor', () => {
     function createTopField(type: Core.SchemaType) {
@@ -81,12 +82,13 @@ describe('RecordEditor', () => {
                 zip: '15224'
             }
         };
+        let formState = getDefaultFormState(field.type, data);
         const tree = renderer
             .create(<RecordEditor
                 value={data}
                 field={field}
                 context={Core.createContext(field)}
-                fieldState={getDefaultFormState(field.type)}
+                fieldState={formState}
                 resources={{
                     editors, formDispatcher: new FormUserEvents({dispatch: () => {}})
                 }}></RecordEditor>)

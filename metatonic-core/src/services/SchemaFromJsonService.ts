@@ -4,6 +4,7 @@ import {SchemaFieldInfo} from "../domain/Schema/SchemaFieldInfo";
 import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
 import {hasValue} from "../extensions/hasValue";
 import {SchemaValidation, ValidationSeverity, ValidationTime} from "../domain/Schema/SchemaValidation";
+import {copyAndSet} from "../extensions/functional";
 
 export function getFormSchemaFromJsonObject(schema: FormSchema): FormSchema {
 	if (!schema.type) schema.type = schema.types[schema.typeName] as RecordSchemaType;
@@ -60,11 +61,14 @@ function addValidation(hasValidation: boolean): (validation: SchemaValidation) =
 export function addTypesToFields(type: SchemaType, schema: Schema): SchemaType {
 	if (type.category === SchemaTypeCategory.Record) {
 		let recordInfo = type.parameters as SchemaRecordTypeParameters;
-		return Object.assign({}, type, { parameters: <SchemaRecordTypeParameters> {
-			fields: recordInfo.fields.map(_ => addTypeToField(_, schema))
-		}});
-
+		return copyAndSet(type, {
+		    parameters: <SchemaRecordTypeParameters> {
+			    fields: recordInfo.fields.map(_ => addTypeToField(_, schema))
+            }
+		});
 	}
-	return type;
+	let parentTypes = type.parentTypeNames.map(tn => schema.types[tn]).filter(_=>_);
+	let parameters = parentTypes.reduce((params, parent) => ({...parent.parameters, ...params }), type.parameters)
+	return copyAndSet(type, {parameters}) as SchemaType;
 }
 

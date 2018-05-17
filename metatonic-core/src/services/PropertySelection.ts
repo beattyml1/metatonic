@@ -5,6 +5,23 @@ import {findField, getPropertyLocatorArray, typeOfField} from "./FieldNavigation
 import {FieldState} from "../domain/FieldState/FieldState";
 import {copyAndSet} from "../extensions/functional";
 
+function setItem(key: string|number, data: {[key:string]: any} | any[], value) {
+    return (isNumeric(key) && Array.isArray(data)) ?
+        data.slice().splice(parseInt(key as string), 1, value) : copyAndSet(data, { [key as string]: value });
+}
+
+function deepAssign(value, data, props) {
+    let isValue = !(props && props.length);
+    if (isValue) return value;
+    let isArray = Array.isArray(data) && !isNaN(props[0])
+    if (isArray) {
+        var arrayCopy = data.slice();
+        arrayCopy[props[0]] = deepAssign(value, data[props[0]], props.slice(1, props.length))
+        return arrayCopy;
+    }
+    return  { ...data, [props[0]]: deepAssign(value, data[props[0]], props.slice(1, props.length))}
+}
+
 export class FormNavigator {
 	constructor(public schema: FormSchema, public data, public formState: FieldState) {}
 	locate(propertySelector: string) {
@@ -43,22 +60,19 @@ export class PropertySelection {
 		let stringKeys = this._propertyLocatorArray.filter(x => !isNumeric(x)) as string[];
 		let allButLastStringKeys = stringKeys.slice(0, stringKeys.length-1)
 		let type = allButLastStringKeys.reduce(typeOfField, this.schema.type) as RecordSchemaType;
+		console.log('getField', stringKeys[stringKeys.length - 1], type)
 		return findField(type, stringKeys[stringKeys.length - 1])!;
 	}
 
     setValue(value) {
-        return this.reverseTraverse((previous, current) => {
-            let currentData = previous ? previous.data : value;
-            current.data = copyAndSet(current.data, { [current.key]: currentData });
-        }).last.data
+        return deepAssign(value, this.data, this._propertyLocatorArray)
     }
 
     setState(state: FieldState) {
         return this.reverseTraverse((previous, current) => {
             let currentState = previous ? previous.state : state;
             current.state = copyAndSet(current.state, {
-                children: copyAndSet(current.state.children, {
-                    [current.key]: currentState })
+                children: copyAndSet(current.state.children, { [current.key]: currentState })
             });
         }).last.state
     }
@@ -80,9 +94,9 @@ export class PropertySelection {
 	    let currentRecord = this.data;
 	    let currentState = this.fieldState;
 	    return this._propertyLocatorArray.map(x => {
-	        let item ={ key: x, data: currentRecord, state: currentState };
+	        let item ={ key: x as any, data: currentRecord, state: currentState };
             currentRecord = currentRecord[x];
-            currentState = isNumeric(x) ? currentState: currentState.children[x];
+            currentState = currentState.children[x];
             return item;
         });
     }

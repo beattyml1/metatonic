@@ -1,4 +1,4 @@
-import {Store} from "redux";
+import {Store, Middleware} from "redux";
 import {AllMetatonicEvents, FormState, MetatonicRootAction} from "metatonic-core";
 import {AppDispatcher} from "metatonic-core";
 import {MetatonicBaseContext} from "metatonic-core";
@@ -39,7 +39,7 @@ export class MetatonicReduxAppInstance implements MetatonicReduxApp {
         return new MetatonicReduxContextInstance(this, initializer.componentRegistry||defaultComponentRegistry, initializer.dataStore||defaultDataStore(), this.wrappers)
     }
 
-    reduxMiddleware = (store: Store<any>) => {
+    reduxMiddleware = ((store: Store<any>) => {
         this.appStore = store;
         this.appDispatcher = store;
 
@@ -47,5 +47,5 @@ export class MetatonicReduxAppInstance implements MetatonicReduxApp {
 
             next(action);
         }
-    }
+    }) as Middleware
 }

@@ -20,7 +20,8 @@ export class MetaForm<T = any> extends TopLevelMetatonicComponent<T> {
         );
     }
 
-    submit() {
-        this.dispatcher.trySubmit({});
+    submit = (e) => {
+        e.preventDefault()
+        this.dispatcher.trySubmit();
     }
 }

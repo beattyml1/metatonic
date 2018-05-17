@@ -9,7 +9,7 @@ import {FormState} from "metatonic-core";
 import {FormProperties} from "metatonic-core";
 import {FormUserEvents} from "metatonic-core";
 
-export class TopLevelMetatonicComponent<TData> extends React.Component<FormProperties> {
+export class TopLevelMetatonicComponent<TData> extends React.Component<FormProperties, {}> {
     protected dispatcher: FormUserEvents;
     protected editors: ReactEditorResolver;
     constructor(props, context?) {

@@ -32,7 +32,7 @@ export class FormUserEvents implements MetatonicFormEventDispatcher{
     localReload(payload: { schema: FormSchema, formData?: any, resources: MetatonicResources }) {
         this.store.dispatch({type: FormEvents.fullReload, payload } as any)
     }
-    trySubmit(payload?: { }) {
-
+    trySubmit() {
+        this.store.dispatch({type: FormEvents.trySubmit, payload: {} } as any)
     }
 }

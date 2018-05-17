@@ -43,7 +43,7 @@ export class Thunks {
         }
     }
 
-    thunkActionWrapper(action: MetatonicRootAction) {
+    thunkActionWrapper = (action: MetatonicRootAction) => {
         switch (action.type) {
             case FormEvents.trySubmit: return this.submitThunk(action);
             case FormEvents.initialize: return this.initialLoad(action.meta.formId, action.payload.recordName, action.payload.recordId);

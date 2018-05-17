@@ -14,11 +14,11 @@ export function getChildFieldProps<T = any>(props: BaseEditorModel<T>, field: Sc
     } as BaseEditorModel<any>
 }
 
-export function getChildCellProps<T = any>(props: BaseEditorModel<T>, field: SchemaField, rowIndex: number) {
+export function getChildCellProps<T = any>(props: BaseEditorModel<T>, field: SchemaField, rowIndex: number, context?:ComponentContext) {
     return {
         value: props.value[rowIndex][field.name],
         field: field,
-        context: createContext(field, props.context, rowIndex) as ComponentContext,
+        context: createContext(field, context||props.context) as ComponentContext,
         fieldState: props.fieldState.children[rowIndex].children[field.name] as FieldState,
         resources: props.resources,
     } as BaseEditorModel<any>

@@ -9,6 +9,7 @@ import {TextTypes, fieldInputClasses} from "metatonic-core";
 
 @editorFor("text", InputBoxLabelContainer, {isDefault: true})
 export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, TextModel, void> {
+    size = () => (this.field().maxLength && this.field().maxLength! <= 10) ? this.field().maxLength! : 20;
     render() {
         return (
             <input
@@ -16,6 +17,7 @@ export class TextFieldEditor extends BaseEditor<string, TextTypeParameters, Text
                 value={this.props.value}
                 type={getTextHtmlInputType(this.type().name as TextTypes)}
                 required={this.field().required}
+                size={this.size()}
                 maxLength={this.field().maxLength || this.type().maxLength}
                 className={fieldInputClasses(this.field())}
                 name={this.props.context.fieldLocator}

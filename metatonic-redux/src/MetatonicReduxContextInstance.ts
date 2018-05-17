@@ -21,6 +21,8 @@ export class MetatonicReduxContextInstance extends MetatonicBaseContext implemen
     constructor(app: MetatonicReduxApp, componentRegistry: ComponentRegistry, dataStore: PersistantDataStore, wrappers: (context: MetatonicReduxContext) => MetatonicReduxWrappers) {
         super(app, componentRegistry, dataStore);
         this.actionWrapper = wrappers(this).action;
+        this.appStore = app.appStore
+        this.appDispatcher = app.appDispatcher
     }
     public appStore: Store<any>;
     public appDispatcher: AppDispatcher;

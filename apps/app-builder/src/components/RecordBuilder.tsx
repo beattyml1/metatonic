@@ -23,12 +23,12 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
         return this.props.record ? (
             <div className="record-builder">
                 <label>
-                    Name
-                    <input value={this.props.record.name} onChange={this.onRecordPropChange('name')} />
-                </label>
-                <label>
                     Label
                     <input value={this.props.record.label} onChange={this.onRecordPropChange('label')} />
+                </label>
+                <label>
+                    Name
+                    <input value={this.props.record.name} onChange={this.onRecordPropChange('name')} />
                 </label>
                 <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
                 <fieldset>
@@ -36,20 +36,42 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                     <table>
                         <thead>
                         <tr>
-                            <th>Name</th>
                             <th>Label</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>List</th>
+                            <th>Required</th>
+                            <th>Max Length</th>
+                            <th>Max #</th>
+                            <th>Min #</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         {this.props.record.fields.map((field, index) => <tr>
                             <td>
-                                <input value={field.name} onChange={this.onFieldPropChange(field.name, 'name', index)} />
-                            </td>
-                            <td>
                                 <input value={field.label} onChange={this.onFieldPropChange(field.name, 'label', index)} />
                             </td>
                             <td>
+                                <input value={field.name} onChange={this.onFieldPropChange(field.name, 'name', index)} />
+                            </td>
+                            <td>
                                 <TypeSelector includeValues={true} field={field} records={this.props.records} onChange={this.onFieldPropChange(field.name, 'typeName', index)}/>
+                            </td>
+                            <td>
+                                <input type="checkbox" checked={field.multiple} onChange={this.onFieldPropChange(field.name, 'multiple', index)} />
+                            </td>
+                            <td>
+                                <input type="checkbox" checked={field.required} onChange={this.onFieldPropChange(field.name, 'required', index)} />
+                            </td>
+                            <td>
+                                <input type={"number"} value={field.maxLength} onChange={this.onFieldPropChange(field.name, 'maxLength', index)} />
+                            </td>
+                            <td>
+                                <input type={"number"} value={field.max} onChange={this.onFieldPropChange(field.name, 'max', index)} />
+                            </td>
+                            <td>
+                                <input type={"number"} value={field.min} onChange={this.onFieldPropChange(field.name, 'min', index)} />
                             </td>
                             <td><button type="button" onClick={e => this.props.onFieldEditClick(field)}>Edit Field</button></td>
                         </tr>)}
@@ -57,10 +79,10 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                     </table>
                     <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
                 </fieldset>
-                <fieldset>
-                    <legend>Edit Field</legend>
-                    <FieldBuilderBound/>
-                </fieldset>
+                {/*<fieldset>*/}
+                    {/*<legend>Edit Field</legend>*/}
+                    {/*<FieldBuilderBound/>*/}
+                {/*</fieldset>*/}
             </div>
         ) : <div></div>
     }

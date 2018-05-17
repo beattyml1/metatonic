@@ -16,21 +16,30 @@ export type AppLayoutEvents = {
 export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
     return (
         <div className="tabs root-app-builder-layout">
+            <form  className="app-builder-section" onSubmit={(e) => { e.preventDefault(); props.onFormPreviewUpdate(); return false; } }>
             <details open>
-                <summary>Builder</summary>
+                <summary>
+                    Builder
+                    <div className={"sectionControls"}>
+                        <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)}>
+                            {[
+                                <option value=""></option>,
+                                ...props.records.map(r => <option value={r.name}>{r.label}</option>)]
+                            }
+                        </select>
+                        <button type="submit" >Update Preview</button>
+                    </div>
+                </summary>
                 <AppBuilderBound />
             </details>
-            <details open>
+            </form>
+            <details open className="json-section">
                 <summary>JSON</summary>
                 <SchemaJsonDisplayBound />
             </details>
-            <details open>
+            <details open className="app-preview-section">
                 <summary>
                     Preview
-                    <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)}>
-                        {props.records.map(r => <option value={r.name}>{r.label}</option>)}
-                    </select>
-                    <button type="button" onClick={props.onFormPreviewUpdate}>Update Preview</button>
                 </summary>
                 <AppPreviewBound />
             </details>

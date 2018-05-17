@@ -1,14 +1,23 @@
 .tabs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-.tabs>details {
+.tabs details {
     padding: 10px;
     padding-top:0;
     border:1px solid gray;
     min-width: 250px;
 }
-.tabs>details>summary {
+
+.app-builder-section {
+}
+
+.app-builder-section, .app-preview-section {
+    flex-grow: 1;
+}
+
+.tabs details>summary {
     margin-bottom: 20px;
     margin-left: -10px;
     margin-right: -10px;
@@ -18,4 +27,7 @@
 }
 .root-app-builder-layout {
     text-align: left;
+}
+.sectionControls {
+    float: right;
 }

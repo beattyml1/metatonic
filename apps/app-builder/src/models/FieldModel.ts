@@ -10,6 +10,7 @@ let fieldId = 0;
 export class Field implements SchemaFieldInfo {
     @field("text", "Name", { required: true })
     name: string = '';
+    hasUserChangedName = false;
 
     id = `field-${fieldId++}`
     uiUniqueId = `field-${fieldId++}`
@@ -18,7 +19,7 @@ export class Field implements SchemaFieldInfo {
     label: string = '';
 
     //@select("Record|ValueTypes", "Type", { required: true })
-    typeName: string = '';
+    typeName: string = 'text';
 
     //@field("code", "Type", { required: true })
     entryType?: SchemaEntryType = SchemaEntryType.entry;

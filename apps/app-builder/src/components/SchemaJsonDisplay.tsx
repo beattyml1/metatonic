@@ -14,6 +14,6 @@ export function SchemaJsonDisplay(props: Schema) {
 }
 
 export const SchemaJsonDisplayBound = connect(
-    (state: any) => getSchema(state) as Schema,
+    (state: any) => getSchema(state, '') as Schema,
     (dispatch) => ({})
 )(SchemaJsonDisplay)

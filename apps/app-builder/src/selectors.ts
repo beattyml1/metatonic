@@ -4,7 +4,7 @@ import {Field} from "./models/FieldModel";
 import {Record} from "./models/RecordModel";
 import {RecordSchemaType,ObjectDataStorage,defaultComponentRegistry} from "metatonic-core";
 import {BaseSchema} from "./BuiltInTypes";
-import {SchemaTypeCategory} from "metatonic-core";
+import {SchemaTypeCategory, SchemaType, SchemaField, Schema}  from "metatonic-core";
 import {createMetatonicReduxThunkApp} from "metatonic-redux/lib/thunk";
 
 type AppBuilderState = {
@@ -13,27 +13,44 @@ type AppBuilderState = {
     records: Record[]
 }
 
+function getRecordType(record: Record) {
+    return {
+        id: record.id,
+        category: SchemaTypeCategory.Record,
+        name: record.name,
+        label: record.label,
+        uiControlPreference: record.uiControlPreference,
+        parentTypeNames: ["Record"],
+        validations:[],
+        parameters: {fields: record.fields.map(getField)}
+    } as SchemaType
+}
 
-export function getSchema(state: { appBuilder: AppBuilderState, formPreviewState: {schema: FormSchema} } , recordName?) {
-    if (!state || !state.appBuilder) return {};
+function typeMapForRecords(records: Record[]) {
+    return records.reduce((types, record) => ({
+        ...types,
+        [record.name]: getRecordType(record)
+    }), {})
+}
+
+function getField(field: Field) {
+    return {
+        ...field,
+        category: SchemaTypeCategory.Record
+    } as any as SchemaField
+}
+
+
+export function getSchema(state: { appBuilder: AppBuilderState, formPreviewState: {schema: FormSchema} } , recordName): FormSchema {
+    if (!state || !state.appBuilder) return {} as any;
     let typeName = recordName || (((state||{}).formPreviewState||{}).schema||{}).typeName;
     let schemaSimple = {
         typeName: typeName,
-        types: [
-            ...state.appBuilder.records.map(record => {
-                return {
-                    id: record.id,
-                    category: SchemaTypeCategory.Record,
-                    name: record.name,
-                    label: record.label,
-                    uiControlPreference: record.uiControlPreference,
-                    parameters: { fields: record.fields }
-                };
-            }),
-            ...Object.keys(BaseSchema).map(k=>BaseSchema[k])
-        ]
-    };
+        types: {
+            ...typeMapForRecords(state.appBuilder.records),
+            ...BaseSchema
+        }
+    } as Schema as any as FormSchema;
 
-    if (!typeName) return schemaSimple;
-    return getFormSchemaFromJsonObject(schemaSimple as any);
+    return (schemaSimple as any);
 }

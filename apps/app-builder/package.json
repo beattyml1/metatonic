@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "camelcase": "^5.0.0",
     "json-beautify": "^1.0.1",
     "metatonic-core": "^0.0.8",
     "metatonic-react": "^0.0.8",

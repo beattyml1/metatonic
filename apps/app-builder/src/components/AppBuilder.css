@@ -1,1 +1,23 @@
+.record-editor-fieldset {
+    width: 354px;
+    margin-left:10px;
+}
+.record-builder-field {
+    margin-right:10px;
+    width: 952px;
+}
 
+.app-editor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    space-between: 10px;
+}
+
+.app-editor>fieldset {
+    flex-grow: 1;
+}
+
+.error-list {
+    width: 100%;
+}

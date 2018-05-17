@@ -7,7 +7,8 @@ import {RecordBuilder, RecordBuilderBound} from "./RecordBuilder";
 import './AppBuilder.css'
 
 export type AppBuilderProps = {
-    records: Record[]
+    records: Record[],
+    messages: string[]
 }
 
 export type AppBuilderEvents = {
@@ -20,23 +21,23 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
     render() {
         return (
             <div className="app-editor">
-                <fieldset>
+                <fieldset className={"record-editor-fieldset"}>
                     <legend>Records</legend>
                     <table className="data-grid">
                         <thead>
                         <tr>
-                            <th>Name</th>
                             <th>Label</th>
+                            <th>Name</th>
                             <th><button type="button" onClick={this.props.onRecordAddClick} className="before-table-add-btn">Add Record</button></th>
                         </tr>
                         </thead>
                         <tbody>
                         {this.props.records.map((record, index) => <tr>
                             <td>
-                                <input value={record.name} onChange={this.onRecordPropChange(record.name, 'name', index)} />
+                                <input value={record.label} onChange={this.onRecordPropChange(record.name, 'label', index)} />
                             </td>
                             <td>
-                                <input value={record.label} onChange={this.onRecordPropChange(record.name, 'label', index)} />
+                                <input value={record.name} onChange={this.onRecordPropChange(record.name, 'name', index)} />
                             </td>
                             <td><button type="button" onClick={() => this.props.onRecordEditClick(record)}>Edit</button></td>
                         </tr>)}
@@ -51,10 +52,15 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
                         </tfoot>
                     </table>
                 </fieldset>
-                <fieldset>
+                <fieldset className={"record-builder-field"}>
                     <legend>Edit Record</legend>
                     <RecordBuilderBound/>
                 </fieldset>
+                <div className={'error-list'}>
+                    {this.props.messages.map(message =>
+                        <div className={"error"}>{message}</div>
+                    )}
+                </div>
             </div>
         );
     }
@@ -66,7 +72,10 @@ export class AppBuilder extends React.Component<AppBuilderProps & AppBuilderEven
 }
 
 export const AppBuilderBound = connect(
-    (state: {appBuilder: {records}}) => ((state||{}).appBuilder||{records:[]} as AppBuilderProps),
+    (state: {appBuilder: {records}, messages? }) => ({
+        ...((state||{}).appBuilder||{records:[]}),
+        messages: (state||{}).messages||[]
+    })as AppBuilderProps,
     (dispatch) => ({
         onRecordPropChange: (recordName, propName, value, index) =>
             dispatch({type: 'BUILDER__RECORD_PROP_CHANGE', payload: { recordName, propName, value, index }}),

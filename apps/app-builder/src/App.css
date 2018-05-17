@@ -33,3 +33,7 @@ th {
   background: gainsboro;
   border: gainsboro;
 }
+
+.error {
+  color: orangered;
+}

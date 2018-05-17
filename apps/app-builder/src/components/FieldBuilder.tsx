@@ -20,16 +20,20 @@ export class FieldBuilder extends React.Component<FieldBuilderEvents & FieldBuil
         return this.props.field ? (
             <div className="field-builder">
                 <label>
-                    Name
-                    <input value={this.props.field.name} onChange={this.onFieldPropChange('name')} />
-                </label>
-                <label>
                     Label
                     <input value={this.props.field.label} onChange={this.onFieldPropChange('label')}/>
                 </label>
                 <label>
+                    Name
+                    <input value={this.props.field.name} onChange={this.onFieldPropChange('name')} />
+                </label>
+                <label>
                     Type
                     <TypeSelector includeValues={true} field={this.props.field} records={this.props.records} onChange={this.onFieldPropChange('typeName')}/>
+                </label>
+                <label>
+                    List
+                    <input type="checkbox" checked={this.props.field.multiple} onChange={this.onFieldPropChange('label')}/>
                 </label>
                 <fieldset>
                     <legend>Validations</legend>

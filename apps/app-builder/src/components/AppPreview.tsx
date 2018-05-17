@@ -10,6 +10,7 @@ export type AppPreviewProps = { schema, formState, formData }
 export type AppPreviewEvents = {onFormEvent}
 
 export function AppPreview(props: {onFormEvent, schema, formState, formData }) {
+    console.log('props.formState', props.formState)
     return props.schema ? <MetaEdit
         editors={getEditorResolverContext(defaultComponentRegistry, props.schema)}
         {...props}

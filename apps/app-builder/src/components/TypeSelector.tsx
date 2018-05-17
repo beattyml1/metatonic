@@ -29,6 +29,7 @@ export function TypeSelector(props: { field: Field, records: Record[], onChange,
         return categories
     }, [] as { types: SchemaType[], category: string }[])
     return <select value={props.field.typeName} onChange={e => props.onChange(e, catForType(e.target.value)) } >
+        <option selected={true} disabled={true} value={""}>Choose One</option>
         <optgroup label="Records">
             {props.records.map(x =>
                 <option value={x.name} data-category="1">{x.label||x.name}</option>)}

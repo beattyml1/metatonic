@@ -56,26 +56,6 @@ function getRootType(category) {
     }
 
 }
-export const BaseSchema = {
-    'Record': recordSchema('Record', 'Record', []),
-    'Integer': typeSchema('Integer', 'Integer', SchemaTypeCategory.Numeric, ['Numeric'], {isInteger:true, isFloating: false }),
-    'date': typeSchema('date', "Date", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Date, params: { } }),
-    'time': typeSchema('time', "Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Time, params: { } }),
-    'datetime': typeSchema('date', "Date Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.DateTime, params: { } }),
-    'timestamp': typeSchema('timestamp', "Time Stamp", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.TimeStamp, params: { } }),
-    'Dollars': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [ 'Currency' ], {
-        unitSource: { unit: 'dollars'},
-        numericFormat: {} } as any as QuantityTypeParameters),
-    'Numeric': typeSchema('Numeric', 'Numeric', SchemaTypeCategory.Numeric, []),
-    'Decimal': typeSchema('Decimal', 'Decimal', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: false, isInteger: false }),
-    'Float': typeSchema('Float', 'Float', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: true, isInteger: false }),
-    'Currency': typeSchema('Currency', 'Currency', SchemaTypeCategory.Quantity, undefined, {
-        unitSource: { unitCategory: {name: 'currency'} },
-        numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
-    'text': typeSchema('text', 'Text', SchemaTypeCategory.Text),
-    'tel': typeSchema('tel', 'Phone', SchemaTypeCategory.Text, ['text']),
-    'email': typeSchema('email', 'Email', SchemaTypeCategory.Text, ['text'])
-}
 
 export const Units = [
     {
@@ -88,6 +68,27 @@ export const Units = [
         isBase: true
     }
 ] as Unit[];
+export const BaseSchema = {
+    'Record': recordSchema('Record', 'Record', []),
+    'Integer': typeSchema('Integer', 'Integer', SchemaTypeCategory.Numeric, ['Numeric'], {isInteger:true, isFloating: false }),
+    'date': typeSchema('date', "Date", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Date, params: { } }),
+    'time': typeSchema('time', "Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Time, params: { } }),
+    'datetime': typeSchema('date', "Date Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.DateTime, params: { } }),
+    'timestamp': typeSchema('timestamp', "Time Stamp", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.TimeStamp, params: { } }),
+    'Dollars': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [ 'Currency' ], {
+        unitSource: { unit: Units.find(x => x.key == 'US$')},
+        numericFormat: {} } as any as QuantityTypeParameters),
+    'Numeric': typeSchema('Numeric', 'Numeric', SchemaTypeCategory.Numeric, []),
+    'Decimal': typeSchema('Decimal', 'Decimal', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: false, isInteger: false }),
+    'Float': typeSchema('Float', 'Float', SchemaTypeCategory.Numeric, ['Numeric'], { isFloating: true, isInteger: false }),
+    'Currency': typeSchema('Currency', 'Currency', SchemaTypeCategory.Quantity, undefined, {
+        unitSource: { unitCategory: {name: 'currency'} },
+        numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
+    'Quantity': typeSchema('Quantity', 'Quantity', SchemaTypeCategory.Quantity, [], { fields: [ fieldSchema('value', 'Value', 'Numeric') ]} ),
+    'text': typeSchema('text', 'Text', SchemaTypeCategory.Text),
+    'tel': typeSchema('tel', 'Phone', SchemaTypeCategory.Text, ['text']),
+    'email': typeSchema('email', 'Email', SchemaTypeCategory.Text, ['text'])
+}
 
 export const ValueTypes = Object
     .keys(BaseSchema)

@@ -16,6 +16,6 @@ export class House {
     @field("Address", "Address", { canAdd: true })
     address: Address;
 
-    @list("Person", "Homeowners", { canAdd: true })
+    @list("Person", "Homeowners", { canAdd: true, uiControlPreference: 'repeater' })
     homeowners: Homeowner[];
 }

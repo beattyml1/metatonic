@@ -26,7 +26,9 @@ let timeTravel = (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any)
 
 let store = createStore(combineReducers({
     metatonic: (s:any,a:any) => context.metatonicReducer(s as any, a as any)
-}), compose(applyMiddleware(thunk), timeTravel));
+}), compose(applyMiddleware(thunk), applyMiddleware(app.reduxMiddleware), timeTravel));
+
+app.appStore = store;
 
 let [MyForm, formId] = createAndLoadReactReduxFormForRecord(store, context, 'House', '')
 

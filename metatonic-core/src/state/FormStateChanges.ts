@@ -98,7 +98,6 @@ export module FormStateChanges {
 	}
 
     export function itemAdded(state: FormState, propertySelector: string, item?, index?: number): FormState{
-        console.log('itemAdded', propertySelector, index, item)
         let property = getProperty(state, propertySelector);
 		let field = property.getField();
 

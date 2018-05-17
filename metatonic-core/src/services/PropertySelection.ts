@@ -60,7 +60,6 @@ export class PropertySelection {
 		let stringKeys = this._propertyLocatorArray.filter(x => !isNumeric(x)) as string[];
 		let allButLastStringKeys = stringKeys.slice(0, stringKeys.length-1)
 		let type = allButLastStringKeys.reduce(typeOfField, this.schema.type) as RecordSchemaType;
-		console.log('getField', stringKeys[stringKeys.length - 1], type)
 		return findField(type, stringKeys[stringKeys.length - 1])!;
 	}
 

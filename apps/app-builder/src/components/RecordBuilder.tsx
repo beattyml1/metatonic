@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Record} from '../models/RecordModel'
 import {TypeSelector} from "./TypeSelector";
 import {FieldBuilderBound} from "./FieldBuilder";
+import {AppBuilderActions} from "../Types";
 
 export type RecordBuilderProps= {
     record: Record
@@ -13,6 +14,7 @@ export type RecordBuilderProps= {
 
 export type RecordBuilderEvents = {
     onRecordPropChange(recordName, propName, value)
+    onFieldRemoveClick(field: Field)
     onFieldPropChange(recordName, fieldName, propName, value, index, category)
     onFieldEditClick(field: Field)
     onFieldAddClick()
@@ -22,15 +24,16 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
     render() {
         return this.props.record ? (
             <div className="record-builder">
-                <label>
-                    Label
-                    <input value={this.props.record.label} onChange={this.onRecordPropChange('label')} />
-                </label>
-                <label>
-                    Name
-                    <input value={this.props.record.name} onChange={this.onRecordPropChange('name')} />
-                </label>
-                <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
+                <div className={"field-grid-layout"}>
+                    <label>
+                        Label
+                        <input value={this.props.record.label} onChange={this.onRecordPropChange('label')} />
+                    </label>
+                    <label>
+                        Name
+                        <input value={this.props.record.name} onChange={this.onRecordPropChange('name')} />
+                    </label>
+                </div>
                 <fieldset>
                     <legend>Fields</legend>
                     <table>
@@ -44,7 +47,7 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                             <th>Max Length</th>
                             <th>Max #</th>
                             <th>Min #</th>
-                            <th></th>
+                            <th><button type="button" onClick={this.props.onFieldAddClick}>Add Field</button></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -73,7 +76,10 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                             <td>
                                 <input type={"number"} value={field.min} onChange={this.onFieldPropChange(field.name, 'min', index)} />
                             </td>
-                            <td><button type="button" onClick={e => this.props.onFieldEditClick(field)}>Edit Field</button></td>
+                            <td>
+                                <button type="button" onClick={e => this.props.onFieldEditClick(field)}>Edit</button>
+                                <button type="button" onClick={e => this.props.onFieldRemoveClick(field)}>Remove</button>
+                            </td>
                         </tr>)}
                         </tbody>
                     </table>
@@ -102,6 +108,7 @@ export const RecordBuilderBound = connect(
         onRecordPropChange: (recordName, propName, value) =>
             dispatch({type: 'BUILDER__RECORD_PROP_CHANGE', payload: { recordName, propName, value }}),
         onFieldEditClick: (field) => dispatch({type: 'BUILDER__FIELD_EDIT_CLICK', payload: field }),
+        onFieldRemoveClick: (field) => dispatch({type: AppBuilderActions.FieldRemoveClick, payload: field }),
         onFieldAddClick: () => dispatch({type: 'BUILDER__FIELD_ADD_CLICK'}),
         onFieldPropChange: (recordName, fieldName, propName, value, index, category) =>
             dispatch({type: 'BUILDER__FIELD_PROP_CHANGE', payload: { recordName, fieldName, propName, value, index, category }})

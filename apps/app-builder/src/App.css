@@ -13,14 +13,29 @@
   font-size: 1.5em;
 }
 
+.field-grid-layout {
+  display: flex;
+  flex-direction: row;
+}
 
+.field-grid-layout>label {
+  margin-right: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
 
 
 fieldset {
   padding: 10px 0 !important;
   border: none !important;
   border-top: 1px solid gray;
-  margin: 20px 0;
+  margin: 10px 10px;
+}
+
+fieldset fieldset {
+  margin: 10px 0;
 }
 
 fieldset>legend{
@@ -28,10 +43,22 @@ fieldset>legend{
   border-bottom: 1px solid black;
 }
 
-th {
+th, tfoot td {
   font-size: 14px;
   background: gainsboro;
   border: gainsboro;
+  padding: 5px;
+}
+th>button, tfoot td>button {
+  margin-left: -5px;
+}
+
+label>input {
+  display: block;
+}
+
+label {
+  font-size: 14px;
 }
 
 .error {

@@ -2,10 +2,11 @@
 import {Record} from "../models/RecordModel";
 import * as camelCase from 'camelcase'
 import {AppBuilderActions, AppBuilderState} from "../Types";
-import {replace} from "../commonFunctions";
+import {remove, replace} from "../commonFunctions";
+import {Field} from "../models/FieldModel";
 
 export function recordAddClick(state: AppBuilderState) {
-    let record = new Record();
+    let record = { ...new Record(), ...{fields: [new Field()]}} ;
     return {
         ...state,
         records: [...state.records, record],
@@ -15,6 +16,10 @@ export function recordAddClick(state: AppBuilderState) {
 
 export function recordEditClick(state: AppBuilderState, action: { type: AppBuilderActions; payload }) {
     return { ...state, record: action.payload, field: null };
+}
+
+export function recordRemoveClick(state: AppBuilderState, action: { type: AppBuilderActions; payload }) {
+    return { ...state, records: remove(state.records, action.payload), field: null, record: null };
 }
 
 let getRecordInitialState = function (index: any, state: AppBuilderState) {

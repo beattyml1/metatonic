@@ -2,7 +2,7 @@
 import {AppBuilderActions, AppBuilderState} from "../Types";
 import {Field} from "../models/FieldModel";
 import * as camelCase from 'camelcase'
-import {replace} from '../commonFunctions'
+import {remove, replace} from '../commonFunctions'
 
 
 
@@ -19,6 +19,11 @@ export let fieldAddClick = function (state: AppBuilderState) {
 
 export function fieldEditClick(state: AppBuilderState, action: { payload }) {
     return { ...state, field: action.payload } ;
+}
+
+export function fieldRemoveClick(state: AppBuilderState, action: { type: AppBuilderActions; payload }) {
+    let record = { ...state.record, fields: remove(state.record.fields, action.payload) }
+    return { ...state, record: record, records: replace(state.records, record), field: null };
 }
 
 export function fieldPropChange(state: AppBuilderState, action: { type: AppBuilderActions; payload: { recordName, fieldName, propName, value, index, category } }) {

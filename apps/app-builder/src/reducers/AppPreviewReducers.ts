@@ -57,7 +57,8 @@ export function formPreviewStateEvent(state: { appBuilder, formPreviewState }, a
             return {
                 ...state,
                 formPreviewState: getFormPreviewStateInitialForRecord(state, typeName),
-                typeName
+                typeName,
+                messages: []
             };
         default: return state||{
             appBuilder: {

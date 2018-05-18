@@ -11,6 +11,7 @@
 }
 
 .app-builder-section {
+    width: 100%;
 }
 
 .app-builder-section, .app-preview-section {
@@ -18,7 +19,7 @@
 }
 
 .tabs details>summary {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-left: -10px;
     margin-right: -10px;
     padding: 10px;

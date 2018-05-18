@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+//import 'foundation-sites/dist/css/foundation.css'
 import {primaryReducer} from './Store'
 import 'metatonic-react/lib/editors'
 

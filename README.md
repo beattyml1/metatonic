@@ -7,7 +7,7 @@
 
 [Code of Conduct](CodeOfConduct.md)
 
-[Documentation] (https://github.com/beattyml1/metatonic/wiki)
+[Documentation](https://github.com/beattyml1/metatonic/wiki)
 
 
 |Name                   | Coverage/Status|NPM|

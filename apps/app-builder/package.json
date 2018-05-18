@@ -17,6 +17,7 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
+  "homepage" : "http://beattyml1.github.io/metatonic-app-builder-demo",
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",

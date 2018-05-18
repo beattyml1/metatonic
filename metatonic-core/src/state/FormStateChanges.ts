@@ -13,6 +13,12 @@ import {addUniqueIdsToChildren} from "../services/IdGeneratorService";
 import {FormProperties} from "../domain/EditorModels/FormProperties";
 import {ValidationMessageDetailed} from "../domain/contracts/Validation";
 import {PropertySelection} from "../services/PropertySelection";
+import {SchemaField} from "../domain/Schema/Records";
+import {SchemaTypeCategory} from "../domain/Schema/SchemaEnums";
+import {Integer} from "../data/Integer";
+import {Float} from "../data/Float";
+import {Decimal} from "../data/Decimal";
+import {NumericTypeInfo} from "../domain/Schema/Numerics";
 
 export module FormStateChanges {
 	export const getNav = (state: FormState) => new FormNavigator(state.schema, state.formData, state.formState) as FormNavigator;
@@ -21,7 +27,7 @@ export module FormStateChanges {
 
     export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = getProperty(state, propertySelector)
-		let formData = copyAndSet(state.formData, property.setValue(value));
+		let formData = copyAndSet(state.formData, property.setValue(formatValue(value, property.getField())));
 
 		state = copyAndSet(state, {formData});
 		property = getProperty(state, propertySelector);
@@ -32,6 +38,14 @@ export module FormStateChanges {
 
         return copyAndSet(state, { formState });
 	}
+
+	function formatValue(value, field: SchemaField) {
+            if (field.type.category !== SchemaTypeCategory.Numeric) return value;
+            let type = field.type.parameters as NumericTypeInfo;
+            return type.isInteger ? Integer.fromData(value) :
+                 type.isFloating ? Float.fromData(value) :
+                 Decimal.fromData(value);
+    }
 
 	export function validateSync (state: FormState) {
         let property = FormStateChanges.getProperty(state, "")

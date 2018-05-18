@@ -6,7 +6,7 @@
 .tabs details {
     padding: 10px;
     padding-top:0;
-    border:1px solid gray;
+    border:1px solid var(--muted-dark-a);
     min-width: 250px;
 }
 
@@ -23,8 +23,7 @@
     margin-left: -10px;
     margin-right: -10px;
     padding: 10px;
-    border-top: 2px solid gray;
-    background:lightsteelblue;
+    background: var(--muted-a);
 }
 .root-app-builder-layout {
     text-align: left;

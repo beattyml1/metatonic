@@ -63,7 +63,7 @@ export const BaseSchema = {
     'time': typeSchema('time', "Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Time, params: { } }),
     'datetime': typeSchema('date', "Date Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.DateTime, params: { } }),
     'timestamp': typeSchema('timestamp', "Time Stamp", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.TimeStamp, params: { } }),
-    'Dollars': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [ 'Currency' ], {
+    'Dollars': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [ 'Currency', 'Quantity' ], {
         unitSource: { unit: 'dollars'},
         numericFormat: {} } as any as QuantityTypeParameters),
     'Numeric': typeSchema('Numeric', 'Numeric', SchemaTypeCategory.Numeric, []),
@@ -72,6 +72,7 @@ export const BaseSchema = {
     'Currency': typeSchema('Currency', 'Currency', SchemaTypeCategory.Quantity, undefined, {
         unitSource: { unitCategory: {name: 'currency'} },
         numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
+    'Quantity': typeSchema('Quantity', 'Quantity', SchemaTypeCategory.Quantity, [], { fields: [ fieldSchema('value', 'Value', 'Numeric') ]} ),
     'text': typeSchema('text', 'Text', SchemaTypeCategory.Text),
     'tel': typeSchema('tel', 'Phone', SchemaTypeCategory.Text, ['text']),
     'email': typeSchema('email', 'Email', SchemaTypeCategory.Text, ['text'])

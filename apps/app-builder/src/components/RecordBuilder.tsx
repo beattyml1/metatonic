@@ -82,8 +82,16 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                             </td>
                         </tr>)}
                         </tbody>
+                        <tfoot>
+                        <tr>
+                            <td/><td/><td/><td/><td/><td/><td/><td/>
+                            <td>
+                                <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
+                            </td>
+                        </tr>
+                        </tfoot>
                     </table>
-                    <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
+
                 </fieldset>
                 {/*<fieldset>*/}
                     {/*<legend>Edit Field</legend>*/}

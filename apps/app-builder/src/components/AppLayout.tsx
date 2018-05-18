@@ -5,6 +5,7 @@ import {AppPreviewBound} from "./AppPreview";
 import {Record} from '../models/RecordModel';
 import './AppLayout.css'
 import {connect} from "react-redux";
+import './AppPreview.css'
 
 export type AppLayoutProps = {
     records: Record[]
@@ -19,7 +20,7 @@ export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
             <form  className="app-builder-section" onSubmit={(e) => { e.preventDefault(); props.onFormPreviewUpdate(); return false; } }>
             <details open>
                 <summary>
-                    Builder
+                    App Builder
                     <div className={"sectionControls"}>
                         <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)}>
                             {[
@@ -34,12 +35,12 @@ export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
             </details>
             </form>
             <details open className="json-section">
-                <summary>JSON</summary>
+                <summary>JSON Schema</summary>
                 <SchemaJsonDisplayBound />
             </details>
             <details open className="app-preview-section">
                 <summary>
-                    Preview
+                    App Preview
                 </summary>
                 <AppPreviewBound />
             </details>

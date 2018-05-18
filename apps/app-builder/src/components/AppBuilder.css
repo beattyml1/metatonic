@@ -21,3 +21,18 @@
 .error-list {
     width: 100%;
 }
+
+/*select {*/
+    /*appearance:none;*/
+    /*-webkit-appearance: none;*/
+    /*-moz-appearance:none;*/
+    /*border-radius: 0;*/
+    /*!*height: 20px;*!*/
+    /*padding:5px;*/
+    /*border: 1px solid var(--muted-dark-a);*/
+    /*padding-right: 20px;*/
+/*}*/
+/*select:after {*/
+    /*margin-left: -10px;*/
+    /*content: "&#25BC"*/
+/*}*/

@@ -1,6 +1,6 @@
 {
   "name": "metatonic-core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Dynamic Data Entry Framework",
   "main": "lib/index.js",
   "types": "lib/indext.d.ts",

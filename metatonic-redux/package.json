@@ -1,6 +1,6 @@
 {
   "name": "metatonic-redux",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Dynamic Data Entry Framework",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,7 @@
     "@types/jest": "^19.2.4",
     "@types/redux": "^3.6.0",
     "core-js": "^2.5.3",
-    "metatonic-core": "^0.0.8",
+    "metatonic-core": "^0.0.9",
     "moment": "^2.20.1",
     "react-redux": "^5.0.7",
     "redux": "^3.4.0",

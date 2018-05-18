@@ -1,0 +1,41 @@
+@import "../global-styles/pallete.scss";
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tabs details {
+    padding: 10px;
+    padding-top:0;
+    border:1px solid $easy-outline;
+}
+
+.app-builder-section {
+    width: 100%;
+}
+
+.app-builder-section, .app-preview-section {
+    flex-grow: 1;
+}
+
+.tabs details>summary {
+    margin-bottom: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px;
+    background: $easy;
+}
+
+
+.root-app-builder-layout {
+    text-align: left;
+}
+.sectionControls {
+    float: right;
+    margin-top: -5px;
+}
+
+.app-builder-section table {
+    width: 100%;
+}

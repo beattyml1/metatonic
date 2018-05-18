@@ -1,39 +1,32 @@
 .tabs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
 .tabs details {
-    padding: 10px;
-    padding-top:0;
-    border:1px solid var(--muted-dark-a);
-}
+  padding: 10px;
+  padding-top: 0;
+  border: 1px solid #9bcf9e; }
 
 .app-builder-section {
-    width: 100%;
-}
+  width: 100%; }
 
 .app-builder-section, .app-preview-section {
-    flex-grow: 1;
-}
+  flex-grow: 1; }
 
-.tabs details>summary {
-    margin-bottom: 10px;
-    margin-left: -10px;
-    margin-right: -10px;
-    padding: 10px;
-    background: var(--muted-a);
-}
-
+.tabs details > summary {
+  margin-bottom: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 10px;
+  background: #abdead; }
 
 .root-app-builder-layout {
-    text-align: left;
-}
+  text-align: left; }
+
 .sectionControls {
-    float: right;
-    margin-top: -5px;
-}
+  float: right;
+  margin-top: -5px; }
 
 .app-builder-section table {
-    width: 100%;
-}
+  width: 100%; }

@@ -21,9 +21,10 @@
   },
   "homepage": "http://beattyml1.github.io/metatonic-app-builder-demo",
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "sass": "node-sass ./src -o ./src",
+    "start": "npm run sass && react-scripts-ts start",
+    "build": "npm run sass && react-scripts-ts build",
+    "test": "npm run sass && react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -34,7 +35,8 @@
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^5.0.19",
-    "typescript": "^2.8.3",
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.1.0",
+    "node-sass": "^4.9.0",
+    "typescript": "^2.8.3"
   }
 }

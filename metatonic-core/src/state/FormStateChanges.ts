@@ -27,12 +27,13 @@ export module FormStateChanges {
 
     export function propertyChanged(state: FormState, propertySelector: string, value): FormState{
 		let property = getProperty(state, propertySelector)
-		let formData = copyAndSet(state.formData, property.setValue(formatValue(value, property.getField())));
+        let field = property.getField()
+		let formData = copyAndSet(state.formData, property.setValue(value));
 
 		state = copyAndSet(state, {formData});
 		property = getProperty(state, propertySelector);
 
-		let validationMessages = getValidationMessages(property.getField(), property.getValue(), false);
+		let validationMessages = getValidationMessages(field, value, false);
         let fieldState =  copyAndSet(property.getState(), { validationMessages })
         let formState = property.setState(fieldState);
 

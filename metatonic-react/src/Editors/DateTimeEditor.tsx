@@ -2,7 +2,7 @@ import * as React from "react";
 import {TextModel} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
 import {getDateHtmlInputType, DateTimeType} from "metatonic-core";
-import {editorFor} from "metatonic-core";
+import {editorFor,dataTypeForField} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 import {TimeStamp, DateTime, Date} from "metatonic-core";
 import {DateTimeModel} from "metatonic-core";
@@ -22,7 +22,7 @@ export class DateTimeEditor extends BaseEditor<Date|DateTime|TimeStamp, DateTime
                 required={this.field().required}
                 max={this.field().max}
                 min={this.field().min}  
-                onChange={(e) => this.notifyChanged(e.target.value)}
+                onChange={(e) => this.notifyChanged(dataTypeForField(this.field())!.fromData(e.target.value))}
                 name={this.props.context.fieldLocator}
                 data-fieldName={this.field().name}
                 className={fieldInputClasses(this.field())}

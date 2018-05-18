@@ -11,10 +11,8 @@ import {FormUserEvents} from "metatonic-core";
 
 export class TopLevelMetatonicComponent<TData> extends React.Component<FormProperties, {}> {
     protected dispatcher: FormUserEvents;
-    protected editors: ReactEditorResolver;
     constructor(props, context?) {
         super(props, context);
-        this.editors = this.props.editors as ReactEditorResolver;
         this.dispatcher = new FormUserEvents({ dispatch: (this.props.onFormEvent || (() => {}))});
     }
 
@@ -27,7 +25,7 @@ export class TopLevelMetatonicComponent<TData> extends React.Component<FormPrope
                     field={field}
                     context={createContext(field)}
                     fieldState={this.props.formState||getDefaultFormState(field.type)}
-                    resources={ { editors: this.editors,  formDispatcher: this.dispatcher } }/>
+                    resources={ { editors: this.props.editors as ReactEditorResolver,  formDispatcher: this.dispatcher } }/>
         );
     }
 

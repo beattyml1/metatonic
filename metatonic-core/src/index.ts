@@ -18,7 +18,8 @@ export {
     addUniqueIdsToChildren,
     getDefaultFormState, getDefaultDataForField,
     getTextHtmlInputType, getDateHtmlInputType,
-    typeOfField, findField, createContext, getUniqueId, getNumericField
+    typeOfField, findField, createContext, getUniqueId, getNumericField,
+    dataTypeForType, dataTypeForField
 } from './services';
 export * from './services/TypeEditorClasses';
 export * from './services/ChildPropsService';

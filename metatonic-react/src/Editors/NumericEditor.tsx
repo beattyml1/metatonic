@@ -1,6 +1,6 @@
 import * as React from "react";
 import {BaseEditor} from "./BaseEditor";
-import {Numeric, editorFor, NumericTypeInfo, BaseEditorModel, Decimal, fieldInputClasses} from "metatonic-core";
+import {Numeric, editorFor, NumericTypeInfo, BaseEditorModel, Decimal, fieldInputClasses, dataTypeForField} from "metatonic-core";
 import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAndContainer";
 
 @editorFor("Numeric", InputBoxLabelContainer, { isDefault: true })
@@ -14,7 +14,7 @@ export class NumericEditor extends BaseEditor<Numeric, NumericTypeInfo, BaseEdit
                    max={this.props.field.max || undefined}
                    min={this.props.field.min || undefined}
                    step={1}
-                   onChange={e => this.notifyChanged(e.target.value)}
+                   onChange={e => this.notifyChanged(dataTypeForField(this.field())!.fromData(e.target.value))}
                    name={this.props.context.fieldLocator}
                    data-fieldName={this.field().name}
                    className={fieldInputClasses(this.field())}

@@ -9,6 +9,9 @@ export type AppBuilderState = {
 }
 
 export enum AppBuilderActions {
+    StylesApplied = 'STYLES__APPLY',
+    StyleEditorLoaded = "STYLES__EDITOR_LOAD",
+    StylesChanged = "STYLES__STYLES_CHANGED",
     RecordPropChange = 'BUILDER__RECORD_PROP_CHANGE',
     RecordEditClick = 'BUILDER__RECORD_EDIT_CLICK',
     RecordAddClick = 'BUILDER__RECORD_ADD_CLICK',
@@ -17,4 +20,5 @@ export enum AppBuilderActions {
     FieldEditClick = 'BUILDER__FIELD_EDIT_CLICK',
     FieldAddClick = 'BUILDER__FIELD_ADD_CLICK',
     FieldRemoveClick = 'BUILDER__FIELD_REMOVE_CLICK',
+
 };

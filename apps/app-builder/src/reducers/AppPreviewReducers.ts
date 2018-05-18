@@ -46,13 +46,12 @@ export function formPreviewStateEvent(state: { appBuilder, formPreviewState }, a
     switch (action.type) {
         case 'FORM_PREVIEW__RECORD_SELECTED':
             let typeName = action.payload
+        case '@@INIT':
         case 'FORM_PREVIEW__UPDATE':
             typeName = typeName || selectedTypeName(state);
             if (!typeName) return state;
 
             let messages = validateAppBuilder(state);
-            console.log('allmessages', messages)
-
             if (messages && messages.length) return {...state, messages, typeName}
             return {
                 ...state,

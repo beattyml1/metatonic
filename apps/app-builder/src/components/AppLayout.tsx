@@ -6,9 +6,12 @@ import {Record} from '../models/RecordModel';
 import './AppLayout.css'
 import {connect} from "react-redux";
 import './AppPreview.css'
+import {StyleEditorBound} from "./StyleEditor";
 
 export type AppLayoutProps = {
-    records: Record[]
+    records: Record[],
+    typeName,
+    previewStyles
 }
 export type AppLayoutEvents = {
     onFormPreviewUpdate, onFormPreviewRecordChanged
@@ -22,7 +25,7 @@ export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
                 <summary>
                     App Builder
                     <div className={"sectionControls"}>
-                        <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)}>
+                        <select onChange={(e) => props.onFormPreviewRecordChanged(e.target.value)} value={props.typeName}>
                             {[
                                 <option value=""></option>,
                                 ...props.records.map(r => <option value={r.name}>{r.label}</option>)]
@@ -34,22 +37,35 @@ export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
                 <AppBuilderBound />
             </details>
             </form>
-            <details open className="json-section">
-                <summary>JSON Schema</summary>
-                <SchemaJsonDisplayBound />
-            </details>
             <details open className="app-preview-section">
                 <summary>
                     App Preview
                 </summary>
                 <AppPreviewBound />
             </details>
+            <details open className="style-editor-section">
+                <summary>
+                    Styles
+                </summary>
+                <StyleEditorBound />
+            </details>
+            <details open className="json-section">
+                <summary>JSON Schema</summary>
+                <SchemaJsonDisplayBound />
+            </details>
+            <style>
+                {props.previewStyles}
+            </style>
         </div>
     )
 }
 
 export const AppLayoutBound = connect(
-    (state: {appBuilder: {records}}) => ((state||{}).appBuilder||{records:[]} as AppLayoutProps),
+    (state: any) => ({
+        ...((state||{}).appBuilder||{records:[]}),
+        previewStyles: (state||{}).appliedStyles,
+        ...(state||{})
+    } as AppLayoutProps),
     (dispatch) => ({
         onFormPreviewUpdate: () => dispatch({ type: 'FORM_PREVIEW__UPDATE'}),
         onFormPreviewRecordChanged: (x) => dispatch({ type: 'FORM_PREVIEW__RECORD_SELECTED', payload: x}),

@@ -7,7 +7,6 @@
     padding: 10px;
     padding-top:0;
     border:1px solid var(--muted-dark-a);
-    min-width: 250px;
 }
 
 .app-builder-section {
@@ -25,9 +24,16 @@
     padding: 10px;
     background: var(--muted-a);
 }
+
+
 .root-app-builder-layout {
     text-align: left;
 }
 .sectionControls {
     float: right;
+    margin-top: -5px;
+}
+
+.app-builder-section table {
+    width: 100%;
 }

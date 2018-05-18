@@ -29,7 +29,43 @@ import {Field} from "./models/FieldModel";
 //         } return state;
 //     }
 // }
+let defaultStyles =
+`.app-preview-section label {
+                    
+},
+.app-preview-section input {
+    
+}
 
+.edit-Address .city-field.contain-text,
+.edit-Address .state-field.contain-text,
+.edit-Address .zip-field.contain-text{
+  display: inline-block;
+  margin-right: 10px;
+}`
+
+let defaultAddress = {
+    ...new Record(),
+    fields: [
+        { ...new Field(), name: 'address1', label: 'Address 1' },
+        { ...new Field(), name: 'address2', label: 'Address 2' },
+        { ...new Field(), name: 'city', label: 'City' },
+        { ...new Field(), name: 'state', label: 'State', maxLength: 2 },
+        { ...new Field(), name: 'zip', label: 'Zip', maxLength: 5 },
+    ],
+    name:'Address',
+    label: 'Address'
+}
+
+let defaultPerson = {
+    ...new Record(),
+    fields: [
+        { ...new Field(), name: 'fullName', label: 'Full Name' },
+        { ...new Field(), name: 'address', label: 'Address', typeName: 'Address' },
+    ],
+    name:'Person',
+    label: 'Person'
+}
 
 
 let formPreviewRecordSelected = function (state, action) {
@@ -59,19 +95,27 @@ let appBuilderReducer = function (state: AppBuilderState, action: { type: AppBui
 function globals(reducer: Reducer) {
     return (state, action) => {
         if (action.type == '@@INIT') {
-            let record = {...new Record(), ...{fields: [new Field()]} }
-            return {
+            let record = defaultPerson;
+            state = {
                 appBuilder: {
-                    records: [record],
+                    records: [defaultAddress, defaultPerson],
                     record: record,
                     field: record.fields[0]
                 },
                 formPreviewState: {
 
-                }
+                },
+                styles: defaultStyles,
+                appliedStyles: defaultStyles,
+                typeName: 'Person'
             }
         }
         state = reducer(state, action);
+        switch (action.type) {
+            case AppBuilderActions.StyleEditorLoaded: return {...state, CodeEditor: action.payload.editor, SassCompiler: action.payload.compiler};
+            case AppBuilderActions.StylesChanged: return {...state, styles: action.payload}
+            case AppBuilderActions.StylesApplied: return { ...state, appliedStyles: action.payload }
+        }
         state = formPreviewStateEvent(state, action)
         return state
     }
@@ -80,6 +124,10 @@ export const primaryReducer = globals(combineReducers({
     appBuilder: appBuilderReducer,
     formPreviewState: (state, action) => formReduce('preview')(state, {...action, meta:{formId: 'preview'}}),
     messages: s => s||[],
-    typeName: s => s||''
+    typeName: s => s||'',
+    styles: s => s||'',
+    appliedStyles: s => s||'',
+    CodeEditor: s => s||null,
+    SassCompiler:s => s||null
 }));
 

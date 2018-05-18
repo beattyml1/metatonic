@@ -21,10 +21,14 @@
   /*--muted-a: rgba(143, 214, 148, 1);*/
   /*--muted-a: #acf9b1;*/
   --muted-a: #B9E3C6;
+  --muted-bright-a: #44e374;
   /*--muted-a: #ccf6d9;*/
   --muted-dark-a: #617b61;
   --dark-a: rgba(39, 45, 45, 1);
-  --mid-a: rgba(232, 98, 82, 1);
+  --mid-a: rgb(230, 79, 71);
+  --mid-grad-a: rgb(204, 73, 61);
+  --mid-light-a: rgb(255, 181, 179);
+  --mid-dark-a: rgb(128, 54, 46);
 
   --dark-b: rgba(1, 4, 0, 1);
   --muted-b: rgba(191, 215, 234, 1);
@@ -63,11 +67,12 @@
 }
 
 button {
-  background: var(--muted-a);
-  padding: 5px;
-  color:var(--dark-a);
-  border: 1px solid var(--muted-dark-a);
+  background: linear-gradient(to bottom, var(--mid-a), var(--mid-grad-a));
+  padding: 6px;
+  color:white;
+  border: 1px solid var(--mid-dark-a);
   margin: 0 5px;
+  border-radius: 3px;
 }
 
 button:last-child {
@@ -99,6 +104,9 @@ fieldset {
 
 fieldset fieldset {
   margin: 10px 0;
+}
+button {
+  font-size: 13px;
 }
 
 fieldset>legend{

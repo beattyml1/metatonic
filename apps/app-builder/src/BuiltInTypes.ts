@@ -57,7 +57,7 @@ function getRootType(category) {
 
 }
 export const BaseSchema = {
-    'Record': recordSchema('Record', 'Record', []),
+    'Record': recordSchema('Record', 'Record', [], {parentTypeNames:[]}),
     'Integer': typeSchema('Integer', 'Integer', SchemaTypeCategory.Numeric, ['Numeric'], {isInteger:true, isFloating: false }),
     'date': typeSchema('date', "Date", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Date, params: { } }),
     'time': typeSchema('time', "Time", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Time, params: { } }),

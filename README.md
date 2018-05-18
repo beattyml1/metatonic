@@ -3,18 +3,26 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/maintainability)](https://codeclimate.com/github/beattyml1/metatonic/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic/test_coverage)
 
-|Name                   | Status            | Coverage        |NPM|
-|:----------------------|:------------------|:----------------|:---------|
-| metatonic-core        | Complete(ish)     | 96%             |[![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) |
-| metatonic-react       |Mostly done/testing| 22%             |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
-| metatonic-redux       |Mostly done/testing| 46%              |[![react:npm version](https://badge.fury.io/js/metatonic-redux.svg)](https://badge.fury.io/js/metatonic-react)
-| metatonic-react-redux |Mostly done/testing| 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
-| app-builder           | Early Dev         |||
-| Examples              | Early Dev         |||
-| metatonic-server      | Early Dev         |||
-| metatonic-metatstore  | Brainstorming     |||     
+Metatonic is a set of libraries and tools for writing large data entry applications extremely quickly.
 
-The N/A items above are still in early stage development. Test coverage for the parts of metatonic-react that have been written is the current number one priority, followed by finishing that module and fleshing out examples and documentation. 
+[App Builder](https://beattyml1.github.io/metatonic-app-builder-demo/)
+
+[Code of Conduct](CodeOfConduct.md)
+
+[Documentation](https://github.com/beattyml1/metatonic/wiki)
+
+
+|Name                   | Coverage/Status|NPM|
+|:----------------------|:----------------|:---------|
+| metatonic-core        | 96%             |[![core:npm version](https://badge.fury.io/js/metatonic-core.svg)](https://badge.fury.io/js/metatonic-core) |
+| metatonic-react       | 22%             |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-redux       | 46%              |[![react:npm version](https://badge.fury.io/js/metatonic-redux.svg)](https://badge.fury.io/js/metatonic-react)
+| metatonic-react-redux | 0%              |[![react:npm version](https://badge.fury.io/js/metatonic-react.svg)](https://badge.fury.io/js/metatonic-react)
+| apps/app-builder           |Mostly Working||
+| apps/frontend-only         |Mostly Working||
+| apps/server-rendered-with-database  |Early Dev||
+| metatonic-server      | Early Dev         ||
+| metatonic-metatstore  | Brainstorming     ||     
 
 Everything is still a work in progress. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 

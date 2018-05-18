@@ -3,6 +3,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/maintainability)](https://codeclimate.com/github/beattyml1/metatonic/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2cf095093d525eab45c9/test_coverage)](https://codeclimate.com/github/beattyml1/metatonic/test_coverage)
 
+Metatonic is a set of libraries and tools for writing large data entry applications extremely quickly.
+
 [App Builder](https://beattyml1.github.io/metatonic-app-builder-demo/)
 
 [Code of Conduct](CodeOfConduct.md)
@@ -21,8 +23,6 @@
 | apps/server-rendered-with-database  |Early Dev||
 | metatonic-server      | Early Dev         ||
 | metatonic-metatstore  | Brainstorming     ||     
-
-The N/A items above are still in early stage development. Test coverage for the parts of metatonic-react that have been written is the current number one priority, followed by finishing that module and fleshing out examples and documentation. 
 
 Everything is still a work in progress. I'd love your help as long as your down with the [Code of Conduct](CodeOfConduct.md)
 

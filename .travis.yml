@@ -15,6 +15,7 @@ before_script:
 
 script: 
 - npm run cover
+- npm run test-apps  
 
 after_script:
   - ./auto-publish.sh

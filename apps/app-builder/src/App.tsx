@@ -21,8 +21,8 @@ import {BaseSchema} from "./BuiltInTypes";
 // }), applyMiddleware(app.reduxMiddleware));
 
 // let [MyForm, formId] = createAndLoadReactReduxFormForRecord(store, context, 'Home', '')
-
-let store = createStore(primaryReducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
+let timeTravel =(window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__();
+let store = timeTravel ? createStore(primaryReducer, timeTravel) : createStore(primaryReducer);
 
 class App extends React.Component {
   render() {

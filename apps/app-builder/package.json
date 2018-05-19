@@ -22,9 +22,10 @@
   "homepage": "http://beattyml1.github.io/metatonic-app-builder-demo",
   "scripts": {
     "sass": "node-sass ./src -o ./src",
-    "start": "npm run sass && react-scripts-ts start",
+    "sass-watch": "node-sass -w ./src -o ./src",
+    "start": "npm run sass && npm run sass-watch &  react-scripts-ts start",
     "build": "npm run sass && react-scripts-ts build",
-    "test": "npm run sass && react-scripts-ts test --env=jsdom",
+    "test": "CI=${CI} npm run sass && react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

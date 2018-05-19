@@ -94,7 +94,7 @@ let appBuilderReducer = function (state: AppBuilderState, action: { type: AppBui
 
 function globals(reducer: Reducer) {
     return (state, action) => {
-        if (action.type == '@@INIT') {
+        if (!state) {
             let record = defaultPerson;
             state = {
                 appBuilder: {

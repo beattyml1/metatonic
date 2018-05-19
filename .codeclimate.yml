@@ -12,3 +12,4 @@ exclude_patterns:
 - "**/*.d.ts"
 - "apps/server-rendered-with-database"
 - "apps/**.tsx"
+- "apps"

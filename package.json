@@ -47,7 +47,6 @@
     },
     "testMatch": [
       "**/test/*.test.(ts|tsx|js)"
-
     ],
     "testPathIgnorePatterns": [
       "node_modules",

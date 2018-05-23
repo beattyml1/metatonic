@@ -41,3 +41,11 @@ rm -R node_modules
 npm install
 echo
 cd ..
+
+cd metatonic-themes
+echo
+echo --- Starting Install metatonic-themes --
+rm -R node_modules
+npm install
+echo
+cd ..

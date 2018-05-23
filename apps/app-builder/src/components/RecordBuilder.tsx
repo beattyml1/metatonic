@@ -5,6 +5,7 @@ import {Record} from '../models/RecordModel'
 import {TypeSelector} from "./TypeSelector";
 import {FieldBuilderBound} from "./FieldBuilder";
 import {AppBuilderActions} from "../Types";
+import {ButtonGroup} from "metatonic-react/lib/controls";
 
 export type RecordBuilderProps= {
     record: Record
@@ -77,8 +78,10 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                                 <input type={"number"} value={field.min} onChange={this.onFieldPropChange(field.name, 'min', index)} />
                             </td>
                             <td>
-                                <button type="button" onClick={e => this.props.onFieldEditClick(field)}>Edit</button>
-                                <button type="button" onClick={e => this.props.onFieldRemoveClick(field)}>Remove</button>
+                                <ButtonGroup actions={[
+                                    { label: 'Edit', onClick: e => this.props.onFieldEditClick(field) },
+                                    { label: 'Remove', onClick: e => this.props.onFieldRemoveClick(field) }
+                                ]}/>
                             </td>
                         </tr>)}
                         </tbody>

@@ -22,6 +22,14 @@
     width: 100%;
 }
 
+.app-editor table input[type="number"] {
+    width: 100px;
+}
+
+.app-editor table button {
+    white-space: nowrap;
+}
+
 /*select {*/
     /*appearance:none;*/
     /*-webkit-appearance: none;*/

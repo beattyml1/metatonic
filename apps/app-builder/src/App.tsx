@@ -1,20 +1,15 @@
 import * as React from 'react';
 import './App.css';
+import 'metatonic-themes/css/default-theme.css'
 //import 'foundation-sites/dist/css/foundation.css'
 import {primaryReducer} from './Store'
 import 'metatonic-react/lib/editors'
 
 const logo = require('./logo.svg');
 import { Provider } from 'react-redux';
-import { createMetatonicReduxThunkApp } from "metatonic-redux"
-import * as MetatonicRedux from "metatonic-redux"
-import {ObjectDataStorage} from "metatonic-core";
-import {defaultComponentRegistry} from "metatonic-core";
-import {combineReducers, createStore, applyMiddleware} from "redux";
+import {combineReducers, createStore, } from "redux";
 import {} from "metatonic-redux";
-import { createAndLoadReactReduxFormForRecord} from "metatonic-react-redux";
 import {AppLayoutBound} from "./components/AppLayout";
-import {BaseSchema} from "./BuiltInTypes";
 
 // let store = createStore(combineReducers({
 //     metatonic: context.metatonicReducer

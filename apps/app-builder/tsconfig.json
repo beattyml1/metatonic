@@ -10,7 +10,7 @@
     "outDir": "build",
     "strictNullChecks": true,
     "target": "es5",
-    "lib": ["es7", "dom", "es6", "es2015"],
+    "lib": ["es7", "dom", "es6", "es2015", "es2017"],
     "allowJs": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

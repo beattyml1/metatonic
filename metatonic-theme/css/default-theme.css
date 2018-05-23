@@ -1,0 +1,73 @@
+a, table button, .text-link {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+  color: #FF3E34;
+  cursor: hand; }
+
+.text-link-group .button-separator,
+table .button-separator {
+  color: #d3d3d3; }
+  .text-link-group .button-separator:after,
+  table .button-separator:after {
+    content: "|"; }
+
+button {
+  background: linear-gradient(#FF3E34, #cd4540);
+  padding: 6px;
+  color: white;
+  border: 1px solid #582623;
+  margin: 0 5px;
+  border-radius: 3px;
+  font-size: 13px; }
+
+button:last-child {
+  margin-right: 0; }
+
+button:first-child {
+  margin-left: 0; }
+
+fieldset {
+  padding: 10px 0 !important;
+  border: none !important;
+  margin: 10px 10px; }
+
+fieldset fieldset {
+  margin: 10px 0; }
+
+fieldset > legend {
+  width: 100%;
+  color: #4a4a4a;
+  border-bottom: 1px solid #4a4a4a; }
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #f1f1f1;
+  color: #4a4a4a; }
+
+td:last-child > button:last-child, th:last-child > button:last-child {
+  margin-right: 0; }
+
+td:last-child, th:last-child {
+  text-align: right; }
+
+th, td {
+  padding: 10px; }
+
+th, tfoot td, thead {
+  font-size: 13px;
+  background: #f1f1f1;
+  border: #f1f1f1;
+  font-weight: 500;
+  text-transform: uppercase; }
+
+label > input {
+  display: block; }
+
+label {
+  font-size: 13px;
+  color: #4a4a4a; }
+
+.error {
+  color: red; }

@@ -4,7 +4,7 @@ export default class ModalBase extends React.Component<{isOpen: boolean}, {isOpe
     render() {
         // TODO: Figure out how to force react to accept the open property
         return (
-            <dialog className="modal">
+            <dialog className="modal" open={this.props.isOpen}>
                 {(this.props as any).children}
             </dialog>
         );

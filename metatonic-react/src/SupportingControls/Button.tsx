@@ -1,19 +1,11 @@
 import * as React from "react";
-import {MouseEventHandler} from "react";
-import {RequiredProps} from "metatonic-core";
 
-export type OnClick = Pick<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick">
-export type Children = Pick<React.HTMLAttributes, "children">
-export type RequiredChildren = RequiredProps<Children>
-export type RequiredOnClick = RequiredProps<OnClick>
-let x: RequiredChildren
-x = { children: undefined }
-
-export class Button extends React.Component<{} & React.ButtonHTMLAttributes <HTMLButtonElement>, {} > {
-    btnClasses = 'btn'
+export type ButtonStyle = 'button' | 'text-link' | 'icon';
+export class Button extends React.Component<{ buttonStyle?: ButtonStyle } & React.ButtonHTMLAttributes<HTMLButtonElement>, {} > {
     render() {
+        let classes = [this.props.buttonStyle, this.props.className].filter(_=>_);
         return (
-            <button {...this.props} type="button" className={this.props.className ? `${btnClasses} ${this.props.className}` : this.btnClasses }>
+            <button {...this.props} type="button" className={classes.join(' ')}>
                 {this.props.children}
             </button>
         );

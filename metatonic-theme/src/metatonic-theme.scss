@@ -1,0 +1,105 @@
+@import "colors";
+@import "src/variables";
+@import "src/utils";
+
+@mixin metatonic-theme (
+  $button, $button-grad, $link-color, $button-outline
+) {
+  // Text Link
+  a, table button, .text-link {
+    @include text-link($link-color)
+  }
+  .text-link-group .button-separator,
+  table .button-separator {
+    color: $text-light-gray;
+    &:after {
+      content: "|"
+    }
+  }
+
+
+  // Button
+  $button-padding: 6px;
+  $button-h-margin: 5px;
+  button {
+    background: linear-gradient($button, $button-grad);
+    padding: $button-padding;
+    color:white;
+    border: 1px solid $button-outline;
+    margin: 0 $button-h-margin;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+
+  button:last-child {
+    margin-right: 0;
+  }
+  button:first-child {
+    margin-left: 0;
+  }
+
+
+
+  // Fieldsets
+  fieldset {
+    padding: 10px 0 !important;
+    border: none !important;
+    margin: 10px 10px;
+  }
+
+  fieldset fieldset {
+    margin: 10px 0;
+  }
+
+  fieldset>legend{
+    width: 100%;
+    color: $text-dark-gray;
+    border-bottom: 1px solid $text-dark-gray;
+  }
+
+  // Tables
+  table {
+    border-collapse: collapse;
+    border: 1px solid $table-header-background;
+    color: $text-dark-gray;
+  }
+
+  td:last-child>button:last-child, th:last-child>button:last-child {
+    margin-right: 0;
+  }
+
+  td:last-child, th:last-child {
+    text-align: right;
+  }
+  th, td {
+    padding: 10px;
+  }
+
+
+  th, tfoot td, thead {
+    font-size: 13px;
+    background: $table-header-background;
+    border: $table-header-background;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  // Labels
+  label>input {
+    display: block;
+  }
+
+  label {
+    font-size: 13px;
+    color: $text-dark-gray;
+  }
+
+  .error {
+    color: red;
+  }
+}
+
+@mixin metatonic-default-theme() {
+  @include metatonic-theme($button, $button-grad, $link-color, $button-outline)
+}
+

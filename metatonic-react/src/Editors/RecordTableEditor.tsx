@@ -8,6 +8,7 @@ import {} from 'metatonic-core/'
 import {getChildCellProps} from "metatonic-core";
 import FieldSet from "../LabeledFieldContainers/FieldSet";
 import {getDefaultDataForField} from "metatonic-core";
+import {ButtonGroup} from "../SupportingControls/ButtonGroup";
 
 @multiEditorFor("Record", FieldSet, { uiHint: 'table' })
 export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
@@ -43,7 +44,10 @@ export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRe
         <tr>
             {this.getCells(record, rowIndex, context)}
             <td>
-                <button type="button" onClick={() => this.remove(rowIndex)}>Remove</button>
+                <ButtonGroup actions={[
+                    { label: 'Edit', onClick: () => this.edit(rowIndex, record) },
+                    { label: 'Remove', onClick: () => this.remove(rowIndex) }
+                ]}/>
                 {/*<button type="button" onClick={() => this.edit(rowIndex, record)}>Edit</button>*/}
             </td>
         </tr>);

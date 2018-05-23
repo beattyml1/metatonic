@@ -1,0 +1,25 @@
+{
+  "name": "metatonic-themes",
+  "version": "0.0.9",
+  "description": "Defualt themes for metatonic",
+  "scripts": {
+    "sass": "node-sass ./src -o ./css",
+    "sass-watch": "node-sass -w ./src -o ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beattyml1/metatonic.git"
+  },
+  "keywords": [
+    "metatonic"
+  ],
+  "author": "Matthew Beatty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beattyml1/metatonic/issues"
+  },
+  "homepage": "https://github.com/beattyml1/metatonic#readme",
+  "devDependencies": {
+    "node-sass": "^4.9.0"
+  }
+}

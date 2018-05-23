@@ -1,0 +1,11 @@
+@import "colors";
+@import "src/variables";
+
+@mixin text-link($link-color) {
+  background:none;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+  color: $link-color;
+  cursor: hand;
+}

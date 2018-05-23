@@ -1,7 +1,7 @@
 import {Store} from "redux";
 import {AllMetatonicEvents, FormState, MetatonicRootAction} from "metatonic-core";
 import {AppDispatcher} from "metatonic-core";
-import {PersistantDataStore} from "metatonic-core";
+import {PersistentDataStore} from "metatonic-core";
 import {ComponentRegistry} from "metatonic-core";
 import { MetatonicApp, MetatonicContext} from "metatonic-core";
 import {MetatonicReduxApp, MetatonicReduxContext} from "./MetatonicReduxApp.interfaces";
@@ -20,8 +20,8 @@ export type MetatonicReduxWrappers = {
 
 
 export type MetatonicAppConfig = {
-    dataStore?: PersistantDataStore,
-    dataStores?: Map<PersistantDataStore>,
+    dataStore?: PersistentDataStore,
+    dataStores?: Map<PersistentDataStore>,
     componentRegistry?: ComponentRegistry
     componentRegistries?: Map<ComponentRegistry>
     contexts?: Map<MetatonicContextInitializer>
@@ -50,5 +50,5 @@ export interface MetatonicReduxFormFunctions {
 
 export type MetatonicContextInitializer = {
     componentRegistry?: ComponentRegistry;
-    dataStore?: PersistantDataStore;
+    dataStore?: PersistentDataStore;
 }

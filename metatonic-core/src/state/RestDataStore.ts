@@ -1,14 +1,28 @@
-import {PersistantDataStore, RecordResource} from "./PersistantDataStore";
+import {PersistentDataStore, RecordResource} from "./PersistentDataStore";
 import {Rest} from "../services/Rest";
 import {FormSchema} from "../domain/Schema/RootSchemas";
 import {OptionalProps} from "../CoreTypes";
-export class RestDataStore implements PersistantDataStore {
+import {UnitCategory} from "../domain/Schema/Quantities";
+import {Unit} from "../domain/Schema/Quantities";
+export class RestDataStore implements PersistentDataStore {
     constructor(protected metaTonicApiUrl: string){}
     records<T extends {id}>(resourceName: string) {
         return new RestRecordResource<T>(this.metaTonicApiUrl, resourceName)
     }
     schema(): Promise<FormSchema> {
-        return Rest.Get<FormSchema, any>(`${this.metaTonicApiUrl}/$global-schema`);
+        return Rest.Get<FormSchema, any>(`${this.metaTonicApiUrl}/schema`);
+    }
+
+    units(params?: { category?: string; measurementSystem?: string; group?: string }): Promise<Unit[]> {
+        return Rest.Get<Unit[]>(`units`, params);
+    }
+
+    unit(key): Promise<Unit> {
+        return Rest.Get<Unit>(`units/${key}`);
+    }
+
+    unitCategory(name): Promise<UnitCategory> {
+        return Rest.Get<UnitCategory>(`unitCategories/${name}`);
     }
 }
 

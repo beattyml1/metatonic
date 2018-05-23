@@ -1,12 +1,18 @@
-import {PersistantDataStore, RecordResource} from "./PersistantDataStore";
+import {PersistentDataStore, RecordResource} from "./PersistentDataStore";
 import {FormSchema} from "../domain/Schema/RootSchemas";
 import {OptionalProps} from "../CoreTypes";
+import {Unit, UnitCategory} from "../domain/Schema/Quantities";
+import {hasValue, isKnown} from "../extensions/hasValue";
 
 let id = 0;
 
-export class ObjectDataStorage implements PersistantDataStore {
+let filter = (filterVal, val) => !hasValue(filterVal) || filterVal === val;
+
+export class ObjectDataStorage implements PersistentDataStore {
     constructor(protected store) {
         if (!store.records) store.records = {};
+        if (!store.$units) store.$units = [];
+        if (!store.$unitCategories) store.$unitCategories = [];
     }
 
     records<T extends {id}>(resourceName: string): RecordResource<T> {
@@ -15,6 +21,20 @@ export class ObjectDataStorage implements PersistantDataStore {
 
     schema(): Promise<FormSchema> {
         return Promise.resolve(this.store["$schema"]);
+    }
+
+    units(params?: { category?: string; measurementSystem?: string; group?: string }): Promise<Unit[]> {
+        let allUnits = this.store['$units'] as Unit[];
+        return Promise.resolve(allUnits.filter(u => !params || (
+            filter(params!.category, u!.category!.name) && filter(params!.measurementSystem, u!.measurementSystem!.name))));
+    }
+
+    unit(key): Promise<Unit> {
+        return Promise.resolve(this.store['$units'].find(u => u.key === key));
+    }
+
+    unitCategory(name): Promise<UnitCategory> {
+        return Promise.resolve(this.store['$unitCategories'].find(u => u.name === name));
     }
 }
 
@@ -37,7 +57,8 @@ export  class ObjectStoreRecordResource<T extends {id}> implements RecordResourc
     }
 
     getMany<TParams = OptionalProps<T>>(group: string, params: TParams): Promise<T[]> {
-        throw 'Not implemented'
+        let allRecords = Object.values(this.store.records[this.resourceName]) as any[];
+        return Promise.resolve(allRecords.filter(matchesFilter(params)));
     }
 
     create(data: T) {
@@ -63,3 +84,16 @@ export  class ObjectStoreRecordResource<T extends {id}> implements RecordResourc
         return Promise.resolve(globalSchema);
     }
 }
+
+let matchesFilter = (filter) => (value) => {
+    return Object.keys(filter).every((key) => {
+        if (!isKnown(filter[key])) return true;
+        if (filter[key] === value[key]) return true;
+        if (typeof value[key] === 'object') return matchesFilter(filter[key])(value[key]);
+        if (typeof filter[key] === 'object') return Array.isArray(filter[key]) ? arrayFilter(filter[key])(value[key]) : rangeFilter(filter[key])(value[key]);
+        return filter[key].toString() === filter[key].toString();
+    })
+}
+
+let arrayFilter = (filter: any[]) => value => filter.includes(value);
+let rangeFilter = (filter: {start, end}) => value => filter.start <= value && filter.end <= value

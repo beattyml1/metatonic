@@ -1,5 +1,5 @@
 import {AllMetatonicEvents, FormState, MetatonicRootAction} from "metatonic-core";
-import {PersistantDataStore} from "metatonic-core";
+import {PersistentDataStore} from "metatonic-core";
 import {ComponentRegistry, defaultComponentRegistry} from "metatonic-core";
 import {
     MetatonicAppConfig, MetatonicContextInitializer, MetatonicReduxApp,

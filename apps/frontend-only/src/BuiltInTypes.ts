@@ -4,6 +4,7 @@ import {SchemaEntryType, SchemaTypeCategory} from "metatonic-core";
 import {SchemaFieldInfo} from "metatonic-core";
 import {DateTimeTypes} from "metatonic-core";
 import {LeftRight, QuantityTypeParameters, Unit, UnitCategory} from "metatonic-core";
+import {UnitSourceSpec, NumericTypeInfo, DateTimeTypeData} from "metatonic-core";
 export {getFormSchemaFromJsonObject} from 'metatonic-core';
 
 let _id = 0;
@@ -33,6 +34,7 @@ export function fieldSchema(name: string, label: string, typeName: string, optio
 }
 
 export function typeSchema(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {
+    parameters = parameters || getDefaultParameters(category)
     return Object.assign({
         name,
         label,
@@ -54,17 +56,28 @@ function getRootType(category) {
         case SchemaTypeCategory.Text: return 'text';
         case SchemaTypeCategory.Code: return 'Code';
     }
+}
 
+export function getDefaultParameters(category) {
+    switch (category) {
+        case SchemaTypeCategory.Quantity: return { unitSource: {} as UnitSourceSpec, numericFormat: getDefaultParameters(SchemaTypeCategory.Numeric) } as QuantityTypeParameters;
+        case SchemaTypeCategory.Numeric: return {isInteger: false, isFloating: false} as NumericTypeInfo;
+        case SchemaTypeCategory.DateTime: return {type: DateTimeTypes.Date, params: {}} as DateTimeTypeData;
+        case SchemaTypeCategory.Boolean: return {};
+        case SchemaTypeCategory.Text: return {};
+        case SchemaTypeCategory.Code: return {};
+    }
 }
 
 export const Units = [
     {
-        unitCategory: { name: 'currency', side: LeftRight.Left }as UnitCategory,
+        category: { name: 'currency', side: LeftRight.Left } as UnitCategory,
         abbreviation: '$',
         key: 'US$',
-        scopedShortAbreviation: '$',
+        scopedShortAbbreviation: '$',
         fullNameSingular:'Dollar',
         fullNamePlural: 'Dollars',
+        measurementSystem: { name: 'US' },
         isBase: true
     }
 ] as Unit[];

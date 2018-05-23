@@ -1,4 +1,4 @@
-import {PersistantDataStore} from "../../state/PersistantDataStore";
+import {PersistentDataStore} from "../../state/PersistentDataStore";
 import {EditorResolver} from "../../services/EditorResolver";
 import {MetatonicResources} from "../MetatonicResources";
 import {FormSchema, Schema} from "../Schema/RootSchemas";

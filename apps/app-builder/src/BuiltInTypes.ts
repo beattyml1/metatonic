@@ -80,10 +80,10 @@ export const BaseSchema = {
 
 export const Units = [
     {
-        unitCategory: { name: 'currency', side: LeftRight.Left }as UnitCategory,
+        category: { name: 'currency', side: LeftRight.Left }as UnitCategory,
         abbreviation: '$',
         key: 'US$',
-        scopedShortAbreviation: '$',
+        scopedShortAbbreviation: '$',
         fullNameSingular:'Dollar',
         fullNamePlural: 'Dollars',
         isBase: true

@@ -36,9 +36,9 @@ export const exampleSchema = {
         'date': typeSchema('date', "Date", SchemaTypeCategory.DateTime, undefined, {type:DateTimeTypes.Date, params: { } }),
         'Dollars': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, [
             'Currency'
-        ], { unitSource: { unit: 'dollars'}, numericFormat: {}} as any as QuantityTypeParameters),
+        ], { unitSource: { unitKey: 'dollars', unitCategoryName: 'currency' }, numericFormat: {}} as any as QuantityTypeParameters),
         'Numeric': typeSchema('Numeric', 'Numeric', SchemaTypeCategory.Numeric, []),
-        'Currency': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, undefined, { unitSource: { unitCategory: {name: 'currency'} }, numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
+        'Currency': typeSchema('Dollars', 'Dollars', SchemaTypeCategory.Quantity, undefined, { unitSource: { unitCategoryName: 'currency' }, numericFormat: {fixedDecimalDigits: 2, isFloating: false, isInteger: false}} as QuantityTypeParameters),
         'text': typeSchema('text', 'Text', SchemaTypeCategory.Text),
         'tel': typeSchema('tel', 'Phone', SchemaTypeCategory.Text, ['text'])
     }

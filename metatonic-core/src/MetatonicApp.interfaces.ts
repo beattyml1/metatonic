@@ -1,6 +1,6 @@
 import {AppDispatcher} from "./domain/contracts/AppDispatcher";
 import {ComponentRegistry} from "./services/EditorRegistry";
-import {PersistantDataStore} from "./state/PersistantDataStore";
+import {PersistentDataStore} from "./state/PersistentDataStore";
 import {MetatonicResources} from "./domain/MetatonicResources";
 import {FormState} from "./domain/StateManagementTypes";
 import {MetatonicFormEventDispatcher} from "./domain/contracts/MetatonicFormEventDispatcher";
@@ -19,7 +19,7 @@ export interface MetatonicApp {
 export interface MetatonicContext {
     app: MetatonicApp,
     componentRegistry: ComponentRegistry,
-    dataStore: PersistantDataStore,
+    dataStore: PersistentDataStore,
     asyncMethods: FormAsyncMethods;
 }
 

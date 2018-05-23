@@ -17,10 +17,10 @@ export type MeasurementSystem = {
 }
 
 export type Unit = {
-    unitCategory: UnitCategory;
+    category: UnitCategory;
     key: string;
     abbreviation: string;
-    scopedShortAbreviation: string;
+    scopedShortAbbreviation: string;
     fullNameSingular: string;
     fullNamePlural: string;
     measurementSystem: MeasurementSystem;
@@ -38,6 +38,11 @@ export type QuantityTypeParameters = {
 
 export type UnitSourceSpec = {
     unit?: Unit;
-    unitCategory?: UnitCategoryData;
+    unitCategoryName?: string;
+    unitCategory?: UnitCategory;
     unitGroup?: string;
+    unitKey?: string;
+    units?: Unit[];
+    measurementSystemName?: string;
+    groupName?: string;
 }

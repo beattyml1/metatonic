@@ -8,9 +8,14 @@ export enum ItemCollectionSize {
 
 export interface ItemSelectionType<T> {
     items?: T&{ $value, $description }[];
-    itemSearchUrl: string;
+    group?: string;
+    params?: any;
+    url?: string;
     canAdd: boolean;
-    size: ItemCollectionSize
+    size: ItemCollectionSize;
+    codeName: string;
+    descriptionName: string;
+    shouldShowCodeAndDescription: boolean;
 };
 
 export type CodeDescriptionItem = { code: string; description?: string; };

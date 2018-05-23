@@ -43,7 +43,7 @@ export function getDefaultSingleEdit(type: SchemaType) {
 function getDefaultSingleQuantityEdit(type: QuantityTypeParameters) {
     return {
         value: getDefaultSingleNumericEdit(type.numericFormat),
-        unit: type.unitSource.unit || ""
+        unit: type.unitSource.unitKey || ""
     } as Quantity
 }
 

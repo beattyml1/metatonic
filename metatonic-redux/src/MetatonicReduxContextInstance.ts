@@ -1,6 +1,6 @@
 import {AllMetatonicEvents, FormState, MetatonicRootAction} from "metatonic-core";
 import {MetatonicBaseContext} from "metatonic-core";
-import {PersistantDataStore} from "metatonic-core";
+import {PersistentDataStore} from "metatonic-core";
 import {ComponentRegistry, defaultComponentRegistry} from "metatonic-core";
 import {
     MetatonicReduxApp, MetatonicReduxContext, MetatonicDispatchFunction,
@@ -18,7 +18,7 @@ import {MetatonicGlobalState} from "metatonic-core";
 import {copyAndSet} from "metatonic-core";
 
 export class MetatonicReduxContextInstance extends MetatonicBaseContext implements  MetatonicReduxContext{
-    constructor(app: MetatonicReduxApp, componentRegistry: ComponentRegistry, dataStore: PersistantDataStore, wrappers: (context: MetatonicReduxContext) => MetatonicReduxWrappers) {
+    constructor(app: MetatonicReduxApp, componentRegistry: ComponentRegistry, dataStore: PersistentDataStore, wrappers: (context: MetatonicReduxContext) => MetatonicReduxWrappers) {
         super(app, componentRegistry, dataStore);
         this.actionWrapper = wrappers(this).action;
         this.appStore = app.appStore

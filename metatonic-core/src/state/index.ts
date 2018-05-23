@@ -1,5 +1,5 @@
 export * from './FormStateChanges'
-export * from './PersistantDataStore'
+export * from './PersistentDataStore'
 export * from './RestDataStore'
 export * from './LocalStorageDataStore'
 export * from './FormUserEvents'

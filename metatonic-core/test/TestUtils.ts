@@ -3,6 +3,9 @@ import {OptionalProps} from "../src/CoreTypes";
 import {SchemaEntryType, SchemaTypeCategory} from "../src/domain/Schema/SchemaEnums";
 import {SchemaFieldInfo} from "../src/domain/Schema/SchemaFieldInfo";
 export {getFormSchemaFromJsonObject} from '../src/services/SchemaFromJsonService';
+import {QuantityTypeParameters, UnitSourceSpec} from '../src/domain/Schema/Quantities'
+import {NumericTypeInfo} from "../src/domain/Schema/Numerics";
+import {DateTimeTypeData, DateTimeTypes} from "../src/domain/Schema/DateTimeType";
 
 let _id = 0;
 let id = () => (_id++).toString();
@@ -31,6 +34,7 @@ export function fieldSchema(name: string, label: string, typeName: string, optio
 }
 
 export function typeSchema(name: string, label: string, category: SchemaTypeCategory, parentTypeNames?: any[], parameters?: AnyTypeParameterType) {
+    parameters = parameters || getDefaultParameters(category)
     return Object.assign({
         name,
         label,
@@ -52,5 +56,15 @@ function getRootType(category) {
         case SchemaTypeCategory.Text: return 'text';
         case SchemaTypeCategory.Code: return 'Code';
     }
+}
 
+export function getDefaultParameters(category) {
+    switch (category) {
+        case SchemaTypeCategory.Quantity: return { unitSource: {} as UnitSourceSpec, numericFormat: getDefaultParameters(SchemaTypeCategory.Numeric) } as QuantityTypeParameters;
+        case SchemaTypeCategory.Numeric: return {isInteger: false, isFloating: false} as NumericTypeInfo;
+        case SchemaTypeCategory.DateTime: return {type: DateTimeTypes.Date, params: {}} as DateTimeTypeData;
+        case SchemaTypeCategory.Boolean: return {};
+        case SchemaTypeCategory.Text: return {};
+        case SchemaTypeCategory.Code: return {};
+    }
 }

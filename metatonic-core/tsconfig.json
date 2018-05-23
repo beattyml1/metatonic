@@ -10,7 +10,7 @@
         "outDir": "lib",
         "strictNullChecks": true,
         "target": "es5",
-        "lib": ["dom", "es6", "es7", "es2015"],
+        "lib": ["dom", "es6", "es7", "es2015", "es2017"],
         "experimentalDecorators": true,
         "rootDir": "."
     },

@@ -7,7 +7,9 @@ export {
     select,
     selectFor,
     editorFor,
-    multiEditorFor
+    multiEditorFor,
+    validation,
+    codeValue
 } from './decorators'
 export {
     Rest, RestClient, Http,
@@ -41,6 +43,6 @@ export * from './CoreTypes'
 
 export {
     RestDataStore, ObjectDataStorage,
-    PersistantDataStore, RecordResource
+    PersistentDataStore, RecordResource
 } from './state';
 export * from './MetatonicBaseContext'

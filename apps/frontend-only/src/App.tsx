@@ -15,19 +15,21 @@ import thunk from 'redux-thunk'
 import {BaseSchema} from './BuiltInTypes'
 import './models'
 import 'metatonic-react/lib/editors'
+import {Units} from "./BuiltInTypes";
+import {LeftRight} from "metatonic-core";
 
 let metatonicConfig = {
-    dataStore: new ObjectDataStorage({ $schema: { types: BaseSchema } }),
+    dataStore: new ObjectDataStorage({ $schema: { types: BaseSchema }, $units: Units, $unitCategories: [{ name: 'currency', side: LeftRight.Left }] }),
     componentRegistry: defaultComponentRegistry
 };
 let app = createMetatonicReduxThunkApp(metatonicConfig);
 let context = app.contexts['default'];
 let timeTravel = (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-let middleware = [applyMiddleware(thunk), applyMiddleware(app.reduxMiddleware), timeTravel].filter(x=>x)
+let middleware = compose(applyMiddleware(thunk), applyMiddleware(app.reduxMiddleware), ...[timeTravel].filter(x=>x))
 
 let store = createStore(combineReducers({
     metatonic: (s:any,a:any) => context.metatonicReducer(s as any, a as any)
-}), compose(...middleware));
+}), middleware);
 
 app.appStore = store;
 

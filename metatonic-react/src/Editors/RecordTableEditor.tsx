@@ -1,34 +1,39 @@
 import * as React from "react";
 import {SchemaRecordTypeParameters,multiEditorFor} from "metatonic-core";
-import {RecordMultiParams} from "./RecordEditor";
 import {FieldCell} from "./FieldEditor";
 import {createContext, RecordSchemaType, BaseEditorModel, SchemaField, fieldEditorClasses} from "metatonic-core";
 import {BaseEditor} from "./BaseEditor";
-import {} from 'metatonic-core/'
 import {getChildCellProps} from "metatonic-core";
 import FieldSet from "../LabeledFieldContainers/FieldSet";
 import {getDefaultDataForField} from "metatonic-core";
 import {ButtonGroup} from "../SupportingControls/ButtonGroup";
+import {Button} from "../SupportingControls/Button";
 
 @multiEditorFor("Record", FieldSet, { uiHint: 'table' })
-export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>> {
+export class RecordMultiEditor extends BaseEditor<{[key:string]:any}[], SchemaRecordTypeParameters, BaseEditorModel<any>, { isEditing, itemEditing }> {
     render() {
         let fields = this.type().fields;
         return (
             <div className={`data-grid ${fieldEditorClasses(this.field())}`}>
                 <div className="data-grid-buttons">
-                    <button onClick={this.add} type="button">Add</button>
+
                 </div>
                 <table>
                     <thead>
                     <tr>
                         {fields.map(this.headerCell)}
-                        <th></th>
+                        <th><Button onClick={this.add} type="button">Add {this.type().label}</Button></th>
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.value.map(this.row)}
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        {fields.map(f=><th></th>)}
+                        <th><Button onClick={this.add} type="button">Add {this.type().label}</Button></th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         )

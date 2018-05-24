@@ -18,14 +18,7 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
     >
       <div
         className="data-grid-buttons"
-      >
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+      />
       <table>
         <thead>
           <tr>
@@ -35,10 +28,35 @@ exports[`RecordEditor renders correctly with default/blank data 1`] = `
             <th>
               Phone Number
             </th>
-            <th />
+            <th>
+              <button
+                className=""
+                onClick={[Function]}
+                type="button"
+              >
+                Add 
+                Person
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody />
+        <tfoot>
+          <tr>
+            <th />
+            <th />
+            <th>
+              <button
+                className=""
+                onClick={[Function]}
+                type="button"
+              >
+                Add 
+                Person
+              </button>
+            </th>
+          </tr>
+        </tfoot>
       </table>
     </div>
     <div
@@ -285,14 +303,7 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
     >
       <div
         className="data-grid-buttons"
-      >
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          Add
-        </button>
-      </div>
+      />
       <table>
         <thead>
           <tr>
@@ -302,7 +313,16 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
             <th>
               Phone Number
             </th>
-            <th />
+            <th>
+              <button
+                className=""
+                onClick={[Function]}
+                type="button"
+              >
+                Add 
+                Person
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -336,15 +356,48 @@ exports[`RecordEditor renders correctly with fully filled data 1`] = `
               />
             </td>
             <td>
-              <button
-                onClick={[Function]}
-                type="button"
+              <span
+                className="button-group"
               >
-                Remove
-              </button>
+                <button
+                  buttonStyle={undefined}
+                  className="row-action-button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Edit
+                </button>
+                <span
+                  className="button-separator"
+                />
+                <button
+                  buttonStyle={undefined}
+                  className="row-action-button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Remove
+                </button>
+              </span>
             </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <th />
+            <th />
+            <th>
+              <button
+                className=""
+                onClick={[Function]}
+                type="button"
+              >
+                Add 
+                Person
+              </button>
+            </th>
+          </tr>
+        </tfoot>
       </table>
     </div>
     <div

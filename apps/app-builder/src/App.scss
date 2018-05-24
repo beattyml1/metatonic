@@ -10,11 +10,20 @@
   padding: 5px;
   color: white;
   border-left: 10px solid $bright;
-}
 
-.App-header h1 {
-  margin: 5px 0;
-  font-weight: 300;
+  h1 {
+    margin: 5px 0;
+    font-weight: 300;
+    display: inline-block;
+  }
+  &>a {
+    color: $bright;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+  }
 }
 
 .App-title {

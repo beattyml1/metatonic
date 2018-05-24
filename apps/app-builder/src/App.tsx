@@ -24,7 +24,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Metatonic App Builder</h1>
+            <h1 className="App-title">Metatonic App Builder</h1>
+            <a href={"https://www.npmjs.com/search?q=metatonic"}>NPM</a>
+            <a href={"https://github.com/beattyml1/metatonic/wiki"}>Docs</a>
+            <a href={"https://github.com/beattyml1/metatonic"}>GitHub</a>
         </header>
           <Provider store={store}>
               <AppLayoutBound />

@@ -42,7 +42,7 @@ npm install
 echo
 cd ..
 
-cd metatonic-themes
+cd metatonic-theme
 echo
 echo --- Starting Install metatonic-themes --
 rm -R node_modules

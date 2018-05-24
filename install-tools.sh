@@ -5,4 +5,4 @@ echo -- Installing globals --
 npm install -g jest
 npm install -g typescript@2.8.3
 npm install -g autopublish
-
+npm install -g node-sass

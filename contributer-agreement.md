@@ -7,4 +7,4 @@ By adding my name to the list below or responding over e-mail, text, or social m
   - The only piece of code that would ever be considered for closed sourcing is the app builder web app in order to help support continued development
 
 # Public Signees
-- 
+- Matthew Beatty (Repo owner)

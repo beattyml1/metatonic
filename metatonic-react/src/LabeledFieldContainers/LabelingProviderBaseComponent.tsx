@@ -3,7 +3,8 @@ import {SchemaField, BaseEditorModel} from "metatonic-core";
 import {BaseFieldContextComponent} from "../BaseFieldContextComponent";
 import {ComponentContext} from "metatonic-core";
 
-export abstract class LabeledEditorContainer extends BaseFieldContextComponent<BaseEditorModel<any>, void> {
+export abstract class LabeledEditorContainer<T extends BaseEditorModel<any> = BaseEditorModel<any>, TState extends {} = {}>
+    extends BaseFieldContextComponent<T, {}> {
     content() {
         return (this.props as any).children;
     }

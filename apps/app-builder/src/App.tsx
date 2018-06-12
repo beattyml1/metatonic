@@ -4,12 +4,13 @@ import 'metatonic-themes/css/default-theme.css'
 //import 'foundation-sites/dist/css/foundation.css'
 import {primaryReducer} from './Store'
 import 'metatonic-react/lib/editors'
+import './Editors/WrappedEditors'
 
-const logo = require('./logo.svg');
+
 import { Provider } from 'react-redux';
 import {combineReducers, createStore, } from "redux";
 import {} from "metatonic-redux";
-import {AppLayoutBound} from "./components/AppLayout";
+import {AppLayoutBound} from "./components/AppLayout/AppLayout";
 
 // let store = createStore(combineReducers({
 //     metatonic: context.metatonicReducer
@@ -24,7 +25,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-            <h1 className="App-title">Metatonic App Builder</h1>
+            <img src="favicon.png" className={"m-badge"} />
+            <h1 className="App-title">
+                Metatonic App Builder
+            </h1>
             <a href={"https://www.npmjs.com/search?q=metatonic"}>NPM</a>
             <a href={"https://github.com/beattyml1/metatonic/wiki"}>Docs</a>
             <a href={"https://github.com/beattyml1/metatonic"}>GitHub</a>

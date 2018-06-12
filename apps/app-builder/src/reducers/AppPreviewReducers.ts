@@ -1,7 +1,7 @@
 
 import {getDefaultFormState} from "metatonic-core";
 import {getDefaultDataForField,getFormSchemaFromJsonObject,SchemaTypeCategory} from "metatonic-core";
-import {getSchema} from "../selectors";
+import {getSchema} from "../logic/selectors";
 
 function selectedTypeName(state) {
     return (state||{}).typeName

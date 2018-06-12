@@ -19,7 +19,19 @@ import {Units} from "./BuiltInTypes";
 import {LeftRight} from "metatonic-core";
 
 let metatonicConfig = {
-    dataStore: new ObjectDataStorage({ $schema: { types: BaseSchema }, $units: Units, $unitCategories: [{ name: 'currency', side: LeftRight.Left }] }),
+    dataStore: new ObjectDataStorage({
+        $schema: { types: BaseSchema },
+        $units: Units,
+        $unitCategories: [{ name: 'currency', side: LeftRight.Left }],
+        records: {
+            "States": {
+                "PA": { id: "PA", $value: "PA", $description: "Pennsylvania" },
+                "MD": { id: "MD", $value: "MD", $description: "Maryland" },
+                "CA": { id: "CA", $value: "CA", $description: "California" },
+                "NY": { id: "NY", $value: "NY", $description: "New York" }
+            }
+        }
+    }),
     componentRegistry: defaultComponentRegistry
 };
 let app = createMetatonicReduxThunkApp(metatonicConfig);

@@ -1,6 +1,6 @@
 
-import {Field} from "./models/FieldModel";
-import {Record} from "./models/RecordModel";
+import {Field} from "../models/FieldModel";
+import {Record} from "../models/RecordModel";
 
 export type AppBuilderState = {
     field: Field,
@@ -9,6 +9,8 @@ export type AppBuilderState = {
 }
 
 export enum AppBuilderActions {
+    AddField = 'BUILDER__ADD_FIELD',
+    EditField = 'BUILDER__EDIT_FIELD',
     StylesApplied = 'STYLES__APPLY',
     StyleEditorLoaded = "STYLES__EDITOR_LOAD",
     StylesChanged = "STYLES__STYLES_CHANGED",

@@ -1,9 +1,9 @@
 import {getFormSchemaFromJsonObject} from "metatonic-core";
 import {FormSchema} from "metatonic-core";
-import {Field} from "./models/FieldModel";
-import {Record} from "./models/RecordModel";
+import {Field} from "../models/FieldModel";
+import {Record} from "../models/RecordModel";
 import {RecordSchemaType,ObjectDataStorage,defaultComponentRegistry} from "metatonic-core";
-import {BaseSchema} from "./BuiltInTypes";
+import {BaseSchema} from "../models/BuiltInTypes";
 import {SchemaTypeCategory, SchemaType, SchemaField, Schema}  from "metatonic-core";
 import {createMetatonicReduxThunkApp} from "metatonic-redux/lib/thunk";
 
@@ -22,7 +22,7 @@ function getRecordType(record: Record) {
         uiControlPreference: record.uiControlPreference,
         parentTypeNames: ["Record"],
         validations:[],
-        parameters: {fields: record.fields.map(getField)}
+        parameters: {fields: record.fields.map(getField), items: []}
     } as SchemaType
 }
 

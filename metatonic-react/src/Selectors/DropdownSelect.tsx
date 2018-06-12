@@ -8,9 +8,10 @@ import InputBoxLabelContainer from "../LabeledFieldContainers/InputFieldLabelAnd
 @selectFor("Record", InputBoxLabelContainer)
 export class DropdownSelect extends BaseEditor<any, SchemaRecordTypeParameters, BaseEditorModel<any>, void> {
     render() {
+        let items = this.type().items || [];
         return (
-            <select value={this.value()} id={this.uniqueId()} onChange={(value) => this.notifyChanged(value)} className={fieldInputClasses(this.field())}>
-                {this.type().items.map(item =>
+            <select value={this.value()} id={this.uniqueId()} onChange={(e) => this.notifyChanged(e.target.value)} className={fieldInputClasses(this.field())}>
+                {items.map(item =>
                     <option value={item.$value}>{item.$description}</option>
                 )}
             </select>

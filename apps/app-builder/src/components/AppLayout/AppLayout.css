@@ -6,7 +6,7 @@
 .tabs details {
   padding: 10px;
   padding-top: 0;
-  border: 1px solid #9bcf9e; }
+  border: 1px solid #d8d0d5; }
 
 .app-builder-section {
   width: 100%; }
@@ -19,7 +19,8 @@
   margin-left: -10px;
   margin-right: -10px;
   padding: 10px;
-  background: #abdead; }
+  background: #efecee;
+  color: #4b3a44; }
 
 .root-app-builder-layout {
   text-align: left; }

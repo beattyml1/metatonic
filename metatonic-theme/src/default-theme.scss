@@ -1,3 +1,3 @@
-@import "src/variables";
-@import "src/metatonic-theme";
+@import "variables.scss";
+@import "metatonic-theme.scss";
 @include metatonic-default-theme()

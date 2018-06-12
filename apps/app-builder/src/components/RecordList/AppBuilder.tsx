@@ -1,11 +1,11 @@
 import * as React from 'react'
-import {Field} from "../models/FieldModel";
-import {FieldBuilder} from "./FieldBuilder";
-import {Record} from '../models/RecordModel'
+import {Field} from "../../models/FieldModel";
+import {FieldBuilder} from "../FieldBuilder";
+import {Record} from '../../models/RecordModel'
 import {connect} from "react-redux";
-import {RecordBuilder, RecordBuilderBound} from "./RecordBuilder";
+import {RecordBuilder, RecordBuilderBound} from "../RecordBuilder";
 import './AppBuilder.css'
-import {AppBuilderActions} from "../Types";
+import {AppBuilderActions} from "../../types/Types";
 
 export type AppBuilderProps = {
     records: Record[],

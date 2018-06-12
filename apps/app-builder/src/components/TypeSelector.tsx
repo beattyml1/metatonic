@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Field} from "../models/FieldModel";
 import {Record} from "../models/RecordModel";
-import {BaseSchema} from '../BuiltInTypes'
+import {BaseSchema} from '../models/BuiltInTypes'
 import {SchemaType,SchemaTypeCategory} from "metatonic-core";
 
 

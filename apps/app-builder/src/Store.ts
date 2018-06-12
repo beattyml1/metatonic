@@ -1,15 +1,16 @@
-
 import {combineReducers, Reducer} from "redux";
 import {formReduce} from 'metatonic-redux/lib/src/PrimaryFormReducer'
-import {AppBuilderActions, AppBuilderState} from "./Types";
+import {AppBuilderActions, AppBuilderState} from "./types/Types";
 import {fieldAddClick, fieldEditClick, fieldPropChange, fieldRemoveClick} from "./reducers/FieldAppBuilderReducers";
 import {
-    recordAddClick, recordEditClick, recordPropChange,
+    recordAddClick,
+    recordEditClick,
+    recordPropChange,
     recordRemoveClick
 } from "./reducers/RecordAppBuilderReducers";
 import {formPreviewStateEvent} from "./reducers/AppPreviewReducers";
 import {Record} from './models/RecordModel'
-import {Field} from "./models/FieldModel";
+import {defaultAddress, defaultPerson, defaultStyles} from "./data/defaultData";
 
 // function compute(reducer: Reducer<any>) {
 //     return (s, a) => {
@@ -29,43 +30,11 @@ import {Field} from "./models/FieldModel";
 //         } return state;
 //     }
 // }
-let defaultStyles =
-`.app-preview-section label {
-                    
-},
-.app-preview-section input {
-    
-}
 
-.edit-Address .city-field.contain-text,
-.edit-Address .state-field.contain-text,
-.edit-Address .zip-field.contain-text{
-  display: inline-block;
-  margin-right: 10px;
-}`
 
-let defaultAddress = {
-    ...new Record(),
-    fields: [
-        { ...new Field(), name: 'address1', label: 'Address 1' },
-        { ...new Field(), name: 'address2', label: 'Address 2' },
-        { ...new Field(), name: 'city', label: 'City' },
-        { ...new Field(), name: 'state', label: 'State', maxLength: 2 },
-        { ...new Field(), name: 'zip', label: 'Zip', maxLength: 5 },
-    ],
-    name:'Address',
-    label: 'Address'
-}
 
-let defaultPerson = {
-    ...new Record(),
-    fields: [
-        { ...new Field(), name: 'fullName', label: 'Full Name' },
-        { ...new Field(), name: 'address', label: 'Address', typeName: 'Address' },
-    ],
-    name:'Person',
-    label: 'Person'
-}
+
+
 
 
 let formPreviewRecordSelected = function (state, action) {
@@ -92,7 +61,7 @@ let appBuilderReducer = function (state: AppBuilderState, action: { type: AppBui
     }
 }
 
-function globals(reducer: Reducer) {
+export function globals(reducer: Reducer) {
     return (state, action) => {
         if (!state) {
             let record = defaultPerson;

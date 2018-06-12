@@ -1,8 +1,9 @@
 
-import {AppBuilderActions, AppBuilderState} from "../Types";
+import {AppBuilderActions, AppBuilderState} from "../types/Types";
 import {Field} from "../models/FieldModel";
 import * as camelCase from 'camelcase'
-import {remove, replace} from '../commonFunctions'
+import {remove, replace} from '../logic/commonFunctions'
+import {getFieldAndParentType, getTypeForFieldLocator} from "../logic/fieldLocators";
 
 
 
@@ -16,6 +17,33 @@ export let fieldAddClick = function (state: AppBuilderState) {
         records: replace(state.records, record)
     };
 };
+
+
+
+// export let fieldAdd = function (state: AppBuilderState, action) {
+//     let fieldLocator = action.payload.fieldLocator;
+//     let type = getTypeForFieldLocator(fieldLocator, schema);
+//
+//     let field = new Field();
+//     field.label = 'New Field';
+//     field.name = 'newField';
+//     let record = state.records.find(r => r.id === type.id);
+//     record = {...record, fields: [ ...record.fields||[], field ]}
+//     return {
+//         ...state,
+//         field,
+//         record,
+//         records: replace(state.records, record)
+//     };
+// };
+//
+// export function fieldEdit(state: AppBuilderState, action: { payload }) {
+//     let fieldLocator = action.payload.fieldLocator;
+//     let {field, parentType} = getFieldAndParentType(fieldLocator, schema);
+//     let record = state.records.find(r => r.id === parentType.id);
+//     let f = record.fields.find(f => f.id === field.id);
+//     return { ...state, field: f } ;
+// }
 
 export function fieldEditClick(state: AppBuilderState, action: { payload }) {
     return { ...state, field: action.payload } ;

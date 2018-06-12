@@ -1,6 +1,6 @@
-@import "colors";
-@import "src/variables";
-@import "src/utils";
+@import "colors.scss";
+@import "variables.scss";
+@import "utils.scss";
 
 @mixin metatonic-theme (
   $button, $button-grad, $link-color, $button-outline

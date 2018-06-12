@@ -13,5 +13,4 @@ export default class InputBoxLabelContainer extends LabeledEditorContainer {
             {this.renderValidationMessages()}
         </div>);
 	}
-
 }

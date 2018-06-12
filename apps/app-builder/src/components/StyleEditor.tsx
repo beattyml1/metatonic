@@ -1,6 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {AppBuilderActions} from "../Types";
+import {AppBuilderActions} from "../types/Types";
 import './StyleEditor.css'
 import AceEditor from 'react-ace'
 export class StyleEditor extends React.Component<{

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {SchemaJsonDisplay, SchemaJsonDisplayBound} from "./SchemaJsonDisplay";
-import {AppBuilder, AppBuilderBound} from "./AppBuilder";
-import {AppPreviewBound} from "./AppPreview";
-import {Record} from '../models/RecordModel';
+import {SchemaJsonDisplay, SchemaJsonDisplayBound} from "../SchemaJsonDisplay";
+import {AppBuilder, AppBuilderBound} from "../RecordList/AppBuilder";
+import {AppPreviewBound} from "../FormView/AppPreview";
+import {Record} from '../../models/RecordModel';
 import './AppLayout.css'
 import {connect} from "react-redux";
-import './AppPreview.css'
-import {StyleEditorBound} from "./StyleEditor";
+import {StyleEditorBound} from "../StyleEditor";
 
 export type AppLayoutProps = {
     records: Record[],
@@ -18,6 +17,7 @@ export type AppLayoutEvents = {
 }
 
 export function AppLayout(props: AppLayoutProps & AppLayoutEvents) {
+    console.log('App Preview')
     return (
         <div className="tabs root-app-builder-layout">
             <form  className="app-builder-section" onSubmit={(e) => { e.preventDefault(); props.onFormPreviewUpdate(); return false; } }>

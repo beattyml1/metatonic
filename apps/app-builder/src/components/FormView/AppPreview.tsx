@@ -5,6 +5,7 @@ import {MetaEdit} from 'metatonic-react'
 import {defaultComponentRegistry, getEditorResolverContext} from "metatonic-core";
 import {ReactEditorResolver} from "metatonic-react";
 import {getDefaultDataForField} from "metatonic-core";
+import './AppPreview.css'
 
 export type AppPreviewProps = { schema, formState, formData }
 export type AppPreviewEvents = {onFormEvent}

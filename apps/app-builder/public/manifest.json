@@ -1,11 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Metatonic App Builder",
+  "name": "Metatonic App Builder",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+
+      "sizes": "256x256 96x96 64x64 32x32 24x24 16x16",
+      "type": "image\/png",
+      "src": "favicon.png"
     }
   ],
   "start_url": "./index.html",

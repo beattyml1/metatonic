@@ -1,8 +1,8 @@
 
 import {Record} from "../models/RecordModel";
 import * as camelCase from 'camelcase'
-import {AppBuilderActions, AppBuilderState} from "../Types";
-import {remove, replace} from "../commonFunctions";
+import {AppBuilderActions, AppBuilderState} from "../types/Types";
+import {remove, replace} from "../logic/commonFunctions";
 import {Field} from "../models/FieldModel";
 
 export function recordAddClick(state: AppBuilderState) {

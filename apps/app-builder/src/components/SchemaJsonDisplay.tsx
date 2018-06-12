@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Schema} from "metatonic-core";
 import {connect} from "react-redux";
-import {getSchema} from "../selectors";
+import {getSchema} from "../logic/selectors";
 import * as beautify from 'json-beautify'
 
 

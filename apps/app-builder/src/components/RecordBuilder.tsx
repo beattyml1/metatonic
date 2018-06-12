@@ -4,8 +4,9 @@ import {connect} from "react-redux";
 import {Record} from '../models/RecordModel'
 import {TypeSelector} from "./TypeSelector";
 import {FieldBuilderBound} from "./FieldBuilder";
-import {AppBuilderActions} from "../Types";
+import {AppBuilderActions} from "../types/Types";
 import {ButtonGroup} from "metatonic-react/lib/controls";
+import {SchemaEntryType} from 'metatonic-core';
 
 export type RecordBuilderProps= {
     record: Record
@@ -44,6 +45,7 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                             <th>Name</th>
                             <th>Type</th>
                             <th>List</th>
+                            <th>Select</th>
                             <th>Required</th>
                             <th>Max Length</th>
                             <th>Max #</th>
@@ -64,6 +66,13 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                             </td>
                             <td>
                                 <input type="checkbox" checked={field.multiple} onChange={this.onFieldPropChange(field.name, 'multiple', index)} />
+                            </td>
+                            <td>
+                                <input type="checkbox"
+                                       checked={field.entryType === SchemaEntryType.selection}
+                                       onChange={this.onFieldPropChange(field.name, 'entryType', index, v =>
+                                           v ? SchemaEntryType.selection : SchemaEntryType.entry)}
+                                />
                             </td>
                             <td>
                                 <input type="checkbox" checked={field.required} onChange={this.onFieldPropChange(field.name, 'required', index)} />
@@ -87,7 +96,7 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td/><td/><td/><td/><td/><td/><td/><td/>
+                            <td/><td/><td/><td/><td/><td/><td/><td/><td/>
                             <td>
                                 <button type="button" onClick={this.props.onFieldAddClick}>Add Field</button>
                             </td>
@@ -104,8 +113,9 @@ export class RecordBuilder extends React.Component<RecordBuilderEvents & RecordB
         ) : <div></div>
     }
 
-    onFieldPropChange(fieldName, prop, index) {
-        return (event, category?) => this.props.onFieldPropChange(this.props.record.name, fieldName, prop, event.target.value, index, category);
+    onFieldPropChange(fieldName, prop, index, transformValue?) {
+        transformValue = transformValue || (_ => _)
+        return (event, category?) => this.props.onFieldPropChange(this.props.record.name, fieldName, prop, transformValue(event.target.value), index, category);
     }
 
     onRecordPropChange(prop) {

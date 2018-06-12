@@ -3,12 +3,12 @@ a, table button, .text-link {
   border: none;
   text-decoration: underline;
   padding: 0;
-  color: #cc0077;
+  color: #610038;
   cursor: hand; }
 
 .text-link-group .button-separator,
 table .button-separator {
-  color: #d8d0d5; }
+  color: #d3d3d3; }
   .text-link-group .button-separator:after,
   table .button-separator:after {
     content: "|"; }
@@ -38,13 +38,13 @@ fieldset fieldset {
 
 fieldset > legend {
   width: 100%;
-  color: #4b3a44;
-  border-bottom: 1px solid #4b3a44; }
+  color: #4a4a4a;
+  border-bottom: 1px solid #4a4a4a; }
 
 table {
   border-collapse: collapse;
-  border: 1px solid #efecee;
-  color: #4b3a44; }
+  border: 1px solid #e4dfe2;
+  color: #4a4a4a; }
 
 td:last-child > button:last-child, th:last-child > button:last-child {
   margin-right: 0; }
@@ -57,8 +57,8 @@ th, td {
 
 th, tfoot td, thead {
   font-size: 13px;
-  background: #efecee;
-  border: #efecee;
+  background: #e4dfe2;
+  border: #e4dfe2;
   font-weight: 500;
   text-transform: uppercase; }
 
@@ -67,7 +67,7 @@ label > input {
 
 label {
   font-size: 13px;
-  color: #4b3a44; }
+  color: #4a4a4a; }
 
 .error {
   color: red; }

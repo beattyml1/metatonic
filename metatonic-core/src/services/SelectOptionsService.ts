@@ -11,6 +11,6 @@ export class SelectOptionsService {
         let type = field.type as RecordSchemaType;
         let optionsSpec = type.parameters as ItemSelectionType<any>;
         let resource = this.store.records(type.name);
-        optionsSpec.items = resource.getMany(optionsSpec.group, optionsSpec.params);
+        optionsSpec.items = await resource.getMany(optionsSpec.group, optionsSpec.params)||[];
     }
 }
